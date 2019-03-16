@@ -16,12 +16,13 @@ Pod::Spec.new do |main|
   #
 
   main.name                = "PocketSwift"
-  main.version             = "0.1"
+  main.version             = "0.0.1"
   main.summary             = "A short description of PocketSwift."
   main.homepage            = "https://github.com/wgarcia4190/BlockchainSwift"
   main.license             = { :type => 'MIT' }
   main.author              = { "Wilson Garcia" => "wilson@pokt.network" }
 
+  # main.source              = { :git => "https://github.com/pokt-network/pocket-swift.git", :tag => "s.version.to_s" }
   main.source              = { :git => "https://github.com/pokt-network/pocket-swift.git", :branch => "pocket-swift-0.01" }
   main.source_files        = "PocketSwift/PocketSwift/**/*.{h,m,swift}"
   main.exclude_files       = "PocketSwift/PocketSwiftTests/**/*.{h,m,swift}", "PocketSwift/Pods/*"
