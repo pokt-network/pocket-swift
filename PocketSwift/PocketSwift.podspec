@@ -31,6 +31,20 @@ Pod::Spec.new do |main|
   main.cocoapods_version   = ">= 1.4.0"
   main.platform            = :ios, "11.0"
 
+  main.subspec 'Core' do |core|
+    core.source_files      = "PocketSwift/PocketSwift/Packages/Core/**/*.{h,m,swift}"
+  end
+
+  main.subspec 'Eth' do |eth|
+    eth.source_files      = "PocketSwift/PocketSwift/Packages/Eth/**/*.{h,m,swift}"
+    eth.dependency        = "PocketSwift/Core"
+  end
+
+  main.subspec 'Aion' do |aion|
+    aion.source_files      = "PocketSwift/PocketSwift/Packages/Aion/**/*.{h,m,swift}"
+    aion.dependency        = "PocketSwift/Core"
+  end
+
   # Framework dependencies
   main.dependency "RxSwift",    "~> 4.0"
 
