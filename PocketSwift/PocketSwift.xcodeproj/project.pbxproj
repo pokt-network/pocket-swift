@@ -27,6 +27,9 @@
 		C83901FB223D9D150092A9DF /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83901EC223D9D150092A9DF /* Repository.swift */; };
 		C83901FC223D9D150092A9DF /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83901ED223D9D150092A9DF /* Input.swift */; };
 		C83901FD223D9D150092A9DF /* PocketCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83901EE223D9D150092A9DF /* PocketCore.swift */; };
+		C8390200223D9DFD0092A9DF /* Blockchain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83901FF223D9DFD0092A9DF /* Blockchain.swift */; };
+		C8390202223D9F490092A9DF /* Relay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8390201223D9F490092A9DF /* Relay.swift */; };
+		C8390205223DA1330092A9DF /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8390204223DA1330092A9DF /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +71,9 @@
 		C83901EC223D9D150092A9DF /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		C83901ED223D9D150092A9DF /* Input.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 		C83901EE223D9D150092A9DF /* PocketCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PocketCore.swift; sourceTree = "<group>"; };
+		C83901FF223D9DFD0092A9DF /* Blockchain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blockchain.swift; sourceTree = "<group>"; };
+		C8390201223D9F490092A9DF /* Relay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relay.swift; sourceTree = "<group>"; };
+		C8390204223DA1330092A9DF /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		F134964CF4DC5419172A8474 /* Pods-PocketSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketSwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketSwiftTests/Pods-PocketSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +152,8 @@
 			isa = PBXGroup;
 			children = (
 				C83901DA223D9D150092A9DF /* Architecture */,
+				C83901FE223D9DE90092A9DF /* Model */,
+				C8390203223DA11E0092A9DF /* Util */,
 				C83901EE223D9D150092A9DF /* PocketCore.swift */,
 			);
 			path = Core;
@@ -234,6 +242,23 @@
 				C83901ED223D9D150092A9DF /* Input.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		C83901FE223D9DE90092A9DF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C83901FF223D9DFD0092A9DF /* Blockchain.swift */,
+				C8390201223D9F490092A9DF /* Relay.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C8390203223DA11E0092A9DF /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				C8390204223DA1330092A9DF /* Utils.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		D8E79B7FBB6F06149E66BD2B /* Pods */ = {
@@ -443,10 +468,13 @@
 				C83901F8223D9D150092A9DF /* Endpoint.swift in Sources */,
 				C83901F1223D9D150092A9DF /* Configuration.swift in Sources */,
 				C83901FD223D9D150092A9DF /* PocketCore.swift in Sources */,
+				C8390200223D9DFD0092A9DF /* Blockchain.swift in Sources */,
 				C83901FA223D9D150092A9DF /* WebService.swift in Sources */,
+				C8390205223DA1330092A9DF /* Utils.swift in Sources */,
 				C83901EF223D9D150092A9DF /* Dictionary+Extension.swift in Sources */,
 				C83901F0223D9D150092A9DF /* ServerConfiguration.swift in Sources */,
 				C83901F9223D9D150092A9DF /* Model.swift in Sources */,
+				C8390202223D9F490092A9DF /* Relay.swift in Sources */,
 				C83901F6223D9D150092A9DF /* Controller.swift in Sources */,
 				C83901F7223D9D150092A9DF /* LiveData.swift in Sources */,
 			);
