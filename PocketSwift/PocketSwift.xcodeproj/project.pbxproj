@@ -32,6 +32,8 @@
 		C8390205223DA1330092A9DF /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8390204223DA1330092A9DF /* Utils.swift */; };
 		C8390209223DA2CB0092A9DF /* RelayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8390208223DA2CB0092A9DF /* RelayController.swift */; };
 		C839020B223DA2D80092A9DF /* RelayRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C839020A223DA2D80092A9DF /* RelayRepository.swift */; };
+		C839022B223DA9D30092A9DF /* PocketEth.swift in Sources */ = {isa = PBXBuildFile; fileRef = C839022A223DA9D30092A9DF /* PocketEth.swift */; };
+		C839022D223DAA0B0092A9DF /* PocketAion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C839022C223DAA0B0092A9DF /* PocketAion.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,8 @@
 		C8390204223DA1330092A9DF /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		C8390208223DA2CB0092A9DF /* RelayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelayController.swift; sourceTree = "<group>"; };
 		C839020A223DA2D80092A9DF /* RelayRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelayRepository.swift; sourceTree = "<group>"; };
+		C839022A223DA9D30092A9DF /* PocketEth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketEth.swift; sourceTree = "<group>"; };
+		C839022C223DAA0B0092A9DF /* PocketAion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketAion.swift; sourceTree = "<group>"; };
 		F134964CF4DC5419172A8474 /* Pods-PocketSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketSwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketSwiftTests/Pods-PocketSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -177,6 +181,7 @@
 		C83901D4223D9AB70092A9DF /* Aion */ = {
 			isa = PBXGroup;
 			children = (
+				C839022C223DAA0B0092A9DF /* PocketAion.swift */,
 			);
 			path = Aion;
 			sourceTree = "<group>";
@@ -184,6 +189,7 @@
 		C83901D5223D9ABE0092A9DF /* Eth */ = {
 			isa = PBXGroup;
 			children = (
+				C839022A223DA9D30092A9DF /* PocketEth.swift */,
 			);
 			path = Eth;
 			sourceTree = "<group>";
@@ -490,10 +496,12 @@
 				C83901F5223D9D150092A9DF /* Dynamic.swift in Sources */,
 				C83901F8223D9D150092A9DF /* Endpoint.swift in Sources */,
 				C8390209223DA2CB0092A9DF /* RelayController.swift in Sources */,
+				C839022B223DA9D30092A9DF /* PocketEth.swift in Sources */,
 				C83901F1223D9D150092A9DF /* Configuration.swift in Sources */,
 				C83901FD223D9D150092A9DF /* PocketCore.swift in Sources */,
 				C8390200223D9DFD0092A9DF /* Blockchain.swift in Sources */,
 				C83901FA223D9D150092A9DF /* WebService.swift in Sources */,
+				C839022D223DAA0B0092A9DF /* PocketAion.swift in Sources */,
 				C8390205223DA1330092A9DF /* Utils.swift in Sources */,
 				C83901EF223D9D150092A9DF /* Dictionary+Extension.swift in Sources */,
 				C83901F0223D9D150092A9DF /* ServerConfiguration.swift in Sources */,
