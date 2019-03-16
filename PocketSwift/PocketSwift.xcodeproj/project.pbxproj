@@ -12,6 +12,21 @@
 		C839019A223D82660092A9DF /* PocketSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8390190223D82660092A9DF /* PocketSwift.framework */; };
 		C839019F223D82660092A9DF /* PocketSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C839019E223D82660092A9DF /* PocketSwiftTests.swift */; };
 		C83901A1223D82660092A9DF /* PocketSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = C8390193223D82660092A9DF /* PocketSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C83901EF223D9D150092A9DF /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83901DC223D9D150092A9DF /* Dictionary+Extension.swift */; };
+		C83901F0223D9D150092A9DF /* ServerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83901DE223D9D150092A9DF /* ServerConfiguration.swift */; };
+		C83901F1223D9D150092A9DF /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83901DF223D9D150092A9DF /* Configuration.swift */; };
+		C83901F2223D9D150092A9DF /* WebServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83901E1223D9D150092A9DF /* WebServiceImpl.swift */; };
+		C83901F3223D9D150092A9DF /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83901E3223D9D150092A9DF /* Observer.swift */; };
+		C83901F4223D9D150092A9DF /* ObjectAssociation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83901E4223D9D150092A9DF /* ObjectAssociation.swift */; };
+		C83901F5223D9D150092A9DF /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83901E5223D9D150092A9DF /* Dynamic.swift */; };
+		C83901F6223D9D150092A9DF /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83901E6223D9D150092A9DF /* Controller.swift */; };
+		C83901F7223D9D150092A9DF /* LiveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83901E7223D9D150092A9DF /* LiveData.swift */; };
+		C83901F8223D9D150092A9DF /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83901E8223D9D150092A9DF /* Endpoint.swift */; };
+		C83901F9223D9D150092A9DF /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83901EA223D9D150092A9DF /* Model.swift */; };
+		C83901FA223D9D150092A9DF /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83901EB223D9D150092A9DF /* WebService.swift */; };
+		C83901FB223D9D150092A9DF /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83901EC223D9D150092A9DF /* Repository.swift */; };
+		C83901FC223D9D150092A9DF /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83901ED223D9D150092A9DF /* Input.swift */; };
+		C83901FD223D9D150092A9DF /* PocketCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83901EE223D9D150092A9DF /* PocketCore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +53,21 @@
 		C83901A0223D82660092A9DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C83901AC223D842B0092A9DF /* QA.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = QA.xcconfig; sourceTree = "<group>"; };
 		C83901AD223D84350092A9DF /* PROD.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = PROD.xcconfig; sourceTree = "<group>"; };
+		C83901DC223D9D150092A9DF /* Dictionary+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
+		C83901DE223D9D150092A9DF /* ServerConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConfiguration.swift; sourceTree = "<group>"; };
+		C83901DF223D9D150092A9DF /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		C83901E1223D9D150092A9DF /* WebServiceImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceImpl.swift; sourceTree = "<group>"; };
+		C83901E3223D9D150092A9DF /* Observer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
+		C83901E4223D9D150092A9DF /* ObjectAssociation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectAssociation.swift; sourceTree = "<group>"; };
+		C83901E5223D9D150092A9DF /* Dynamic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
+		C83901E6223D9D150092A9DF /* Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
+		C83901E7223D9D150092A9DF /* LiveData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveData.swift; sourceTree = "<group>"; };
+		C83901E8223D9D150092A9DF /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		C83901EA223D9D150092A9DF /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		C83901EB223D9D150092A9DF /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		C83901EC223D9D150092A9DF /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		C83901ED223D9D150092A9DF /* Input.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
+		C83901EE223D9D150092A9DF /* PocketCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PocketCore.swift; sourceTree = "<group>"; };
 		F134964CF4DC5419172A8474 /* Pods-PocketSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketSwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketSwiftTests/Pods-PocketSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,6 +145,8 @@
 		C83901AB223D840B0092A9DF /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				C83901DA223D9D150092A9DF /* Architecture */,
+				C83901EE223D9D150092A9DF /* PocketCore.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -141,6 +173,67 @@
 			children = (
 			);
 			path = Eth;
+			sourceTree = "<group>";
+		};
+		C83901DA223D9D150092A9DF /* Architecture */ = {
+			isa = PBXGroup;
+			children = (
+				C83901DB223D9D150092A9DF /* Extension */,
+				C83901DD223D9D150092A9DF /* Config */,
+				C83901E0223D9D150092A9DF /* Network */,
+				C83901E2223D9D150092A9DF /* Component */,
+				C83901E9223D9D150092A9DF /* Protocol */,
+			);
+			path = Architecture;
+			sourceTree = "<group>";
+		};
+		C83901DB223D9D150092A9DF /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C83901DC223D9D150092A9DF /* Dictionary+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		C83901DD223D9D150092A9DF /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				C83901DE223D9D150092A9DF /* ServerConfiguration.swift */,
+				C83901DF223D9D150092A9DF /* Configuration.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		C83901E0223D9D150092A9DF /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C83901E1223D9D150092A9DF /* WebServiceImpl.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		C83901E2223D9D150092A9DF /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				C83901E3223D9D150092A9DF /* Observer.swift */,
+				C83901E4223D9D150092A9DF /* ObjectAssociation.swift */,
+				C83901E5223D9D150092A9DF /* Dynamic.swift */,
+				C83901E6223D9D150092A9DF /* Controller.swift */,
+				C83901E7223D9D150092A9DF /* LiveData.swift */,
+				C83901E8223D9D150092A9DF /* Endpoint.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		C83901E9223D9D150092A9DF /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				C83901EA223D9D150092A9DF /* Model.swift */,
+				C83901EB223D9D150092A9DF /* WebService.swift */,
+				C83901EC223D9D150092A9DF /* Repository.swift */,
+				C83901ED223D9D150092A9DF /* Input.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		D8E79B7FBB6F06149E66BD2B /* Pods */ = {
@@ -341,6 +434,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C83901FC223D9D150092A9DF /* Input.swift in Sources */,
+				C83901F4223D9D150092A9DF /* ObjectAssociation.swift in Sources */,
+				C83901F2223D9D150092A9DF /* WebServiceImpl.swift in Sources */,
+				C83901F3223D9D150092A9DF /* Observer.swift in Sources */,
+				C83901FB223D9D150092A9DF /* Repository.swift in Sources */,
+				C83901F5223D9D150092A9DF /* Dynamic.swift in Sources */,
+				C83901F8223D9D150092A9DF /* Endpoint.swift in Sources */,
+				C83901F1223D9D150092A9DF /* Configuration.swift in Sources */,
+				C83901FD223D9D150092A9DF /* PocketCore.swift in Sources */,
+				C83901FA223D9D150092A9DF /* WebService.swift in Sources */,
+				C83901EF223D9D150092A9DF /* Dictionary+Extension.swift in Sources */,
+				C83901F0223D9D150092A9DF /* ServerConfiguration.swift in Sources */,
+				C83901F9223D9D150092A9DF /* Model.swift in Sources */,
+				C83901F6223D9D150092A9DF /* Controller.swift in Sources */,
+				C83901F7223D9D150092A9DF /* LiveData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,6 +652,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4E15465B2934C5ED0BC6239C /* Pods-PocketSwiftTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 92ZQH7W9RZ;
 				INFOPLIST_FILE = PocketSwiftTests/Info.plist;
@@ -563,6 +672,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F134964CF4DC5419172A8474 /* Pods-PocketSwiftTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 92ZQH7W9RZ;
 				INFOPLIST_FILE = PocketSwiftTests/Info.plist;
