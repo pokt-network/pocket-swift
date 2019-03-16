@@ -37,12 +37,12 @@ Pod::Spec.new do |main|
 
   main.subspec 'Eth' do |eth|
     eth.source_files      = "PocketSwift/PocketSwift/Packages/Eth/**/*.{h,m,swift}"
-    eth.dependency        = "PocketSwift/Core"
+    eth.dependency  "PocketSwift/Core"
   end
 
   main.subspec 'Aion' do |aion|
     aion.source_files      = "PocketSwift/PocketSwift/Packages/Aion/**/*.{h,m,swift}"
-    aion.dependency        = "PocketSwift/Core"
+    aion.dependency "PocketSwift/Core"
   end
 
   # Framework dependencies
