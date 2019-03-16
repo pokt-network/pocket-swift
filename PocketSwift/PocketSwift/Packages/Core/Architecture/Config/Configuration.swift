@@ -11,11 +11,11 @@ import Foundation
 public class Configuration {
     
     let devID: String
-    let blockchains: [String]
+    let blockchains: [Blockchain]
     let maxNodes: Int
     let requestTimeOut: Int
     
-    public init(devID: String, blockchains: [String] = [], maxNodes: Int = 5, requestTimeOut: Int = 1000) {
+    public init(devID: String, blockchains: [Blockchain] = [], maxNodes: Int = 5, requestTimeOut: Int = 1000) {
         self.devID = devID
         self.blockchains = blockchains
         self.maxNodes = maxNodes
