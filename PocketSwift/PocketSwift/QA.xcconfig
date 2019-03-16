@@ -1,0 +1,16 @@
+//
+//  QA.xcconfig
+//  PocketSwift
+//
+//  Created by Wilson Garcia on 3/15/19.
+//  Copyright © 2019 Wilson Garcia. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+protocol            = http
+server_url          = dispatch.staging.pokt.network
+dispatch_path       = /v1/dispatch
+report_path         = /v1/report
+relay_path          = /v1/relay
