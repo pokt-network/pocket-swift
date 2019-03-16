@@ -1,5 +1,5 @@
 #
-#  Be sure to run `pod spec lint BlockchainSwift.podspec' to ensure this is a
+#  Be sure to run `pod spec lint PocketSwift.podspec' to ensure this is a
 #  valid spec and to remove all comments including this before submitting the spec.
 #
 #  To learn more about Podspec attributes see http://docs.cocoapods.org/specification.html
@@ -22,7 +22,7 @@ Pod::Spec.new do |main|
   main.license             = { :type => 'MIT' }
   main.author              = { "Wilson Garcia" => "wilson@pokt.network" }
 
-  main.source              = { :git => "https://github.com/pokt-network/pocket-swift", :branch => "pocket-swift-0.01" }
+  main.source              = { :git => "https://github.com/pokt-network/pocket-swift.git", :branch => "pocket-swift-0.01" }
   main.source_files        = "PocketSwift/PocketSwift/**/*.{h,m,swift}"
   main.exclude_files       = "PocketSwift/PocketSwiftTests/**/*.{h,m,swift}", "PocketSwift/Pods/*"
 
