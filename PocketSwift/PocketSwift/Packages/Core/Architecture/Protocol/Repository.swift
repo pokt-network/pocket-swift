@@ -20,17 +20,20 @@ extension Repository {
     }
     
     func request<Response>(with endpoint: Endpoint<Response>, andNotify observable: LiveData<Response>) {
+        var timer: UInt64? = nil
+        
         WebService.load(endpoint: endpoint)
+            .do(onCompleted: {
+                timer = DispatchTime.now().uptimeNanoseconds - timer!
+            }, onSubscribe: {
+                timer = DispatchTime.now().uptimeNanoseconds
+            })
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { response in
                 observable.value = response
             }, onError: { error in
                 observable.error = error
-            }, onCompleted: {
-                print("completed")
-            }, onDisposed: {
-                print("disposed")
             })
             .disposed(by: self.disposeBag)
     }
