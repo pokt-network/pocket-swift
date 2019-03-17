@@ -27,6 +27,10 @@ extension Repository {
                 observable.value = response
             }, onError: { error in
                 observable.error = error
+            }, onCompleted: {
+                print("completed")
+            }, onDisposed: {
+                print("disposed")
             })
             .disposed(by: self.disposeBag)
     }
