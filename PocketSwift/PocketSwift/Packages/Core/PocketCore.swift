@@ -22,8 +22,8 @@ public class PocketCore: NSObject {
         }
         
         self.configuration = Configuration(devID: devID, blockchains: blockchains, maxNodes: maxNodes, requestTimeOut: requestTimeOut)
-        self.relayController = RelayController()
-        self.dispatchController = DispatchController()
+        self.relayController = RelayController(with: self.configuration)
+        self.dispatchController = DispatchController(with: self.configuration)
     }
     
     public convenience init(devID: String, networkName: String, netID: Int , version: String, maxNodes: Int = 5, requestTimeOut: Int = 1000) {
@@ -59,7 +59,18 @@ public class PocketCore: NSObject {
     }
     
     public func send(relay: Relay, onSuccess: @escaping (_ data: Relay) ->(), onError: @escaping (_ error: Error) -> ()){
-        self.relayController.send(relay: relay)
+        
+        if !relay.isValid() {
+            onError(PocketError.invalidRelay)
+        }
+        
+        let node: Node? = getNode(netID: relay.netID, network: relay.blockchain, version: relay.version)
+        guard let relayNode = node else {
+            onError(PocketError.nodeNotFound)
+            return
+        }
+        
+        self.relayController.send(relay: relay, to: relayNode.ipPort)
         self.relayController.relayObserver.observe(in: self, with: { response in
             onSuccess(response)
         }, error: { error in

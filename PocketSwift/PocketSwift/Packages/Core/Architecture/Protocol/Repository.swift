@@ -11,6 +11,7 @@ import RxSwift
 
 protocol Repository {
     var disposeBag: DisposeBag {get set}
+    var configuration: Configuration {get set}
     func request<Response>(with endpoint: Endpoint<Response>, andNotify observable: LiveData<Response>)
 }
 
@@ -28,6 +29,7 @@ extension Repository {
             }, onSubscribe: {
                 timer = DispatchTime.now().uptimeNanoseconds
             })
+            .timeout(RxTimeInterval(self.configuration.requestTimeOut), scheduler: MainScheduler.instance)
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { response in

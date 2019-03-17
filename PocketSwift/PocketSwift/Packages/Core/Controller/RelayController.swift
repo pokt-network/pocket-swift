@@ -11,16 +11,16 @@ import Foundation
 public class RelayController: Controller {
     private let relayRepository: RelayRepository
     internal let relayObserver: LiveData<Relay>
-    
-    override init() {
-        self.relayRepository = RelayRepository()
+
+    override init(with configuration: Configuration) {
+        self.relayRepository = RelayRepository(with: configuration)
         self.relayObserver = LiveData()
         
-        super.init()
+        super.init(with: configuration)
         self.observables.append(self.relayObserver)
     }
     
-    func send(relay: Relay) {
-        self.relayRepository.send(relay: relay, observer: self.relayObserver)
+    func send(relay: Relay, to baseURL: String) {
+        self.relayRepository.send(relay: relay, to: baseURL, observer: self.relayObserver)
     }
 }
