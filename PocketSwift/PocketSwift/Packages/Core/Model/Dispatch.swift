@@ -30,9 +30,9 @@ struct Dispatch: Input {
     
     private func createNodesArray(json: JSON?, data: [String]) -> [Node] {
         var nodes: [Node] = []
-        if let ipPortArray = json?.value() as? Array<String> {
+        if let ipPortArray = json?.value() as? Array<JSON> {
             ipPortArray.forEach { ipPort in
-                nodes.append(Node(network: data[0], netID: Int(data[1]) ?? 0, version: data[2], ipPort: ipPort))
+                nodes.append(Node(network: data[0], netID: Int(data[1]) ?? 0, version: data[2], ipPort: ipPort.value() as! String))
             }
         }
         
