@@ -12,8 +12,8 @@ import RxSwift
 public class DispatchRepository: Repository {
     var disposeBag: DisposeBag = DisposeBag()
     
-    func retrieveServiceNodes(from dispatch: Dispatch, observer: LiveData<String>) {
-        let nodeEndpoints: Endpoint<String> = Endpoint(name: "RetrieveServiceNodes", method: .post, path: Environment().get(configuration: ServerConfiguration.DispatchPath), parameters: dispatch.toParameters())
+    func retrieveServiceNodes(from dispatch: Dispatch, observer: LiveData<JSON>) {
+        let nodeEndpoints: Endpoint<JSON> = Endpoint(name: "RetrieveServiceNodes", method: .post, path: Environment().get(configuration: ServerConfiguration.DispatchPath), parameters: dispatch.toParameters())
         request(with: nodeEndpoints, andNotify: observer)
     }
 }
