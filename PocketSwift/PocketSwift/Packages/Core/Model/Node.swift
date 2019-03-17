@@ -32,6 +32,23 @@ public struct Node: Model {
         }
     }
     
+    init(network: String, netID: Int, version: String, ipPort: String) {
+        self.netID = netID
+        self.network = network
+        self.version = version
+        self.ipPort = ipPort
+        
+        var ipPortData = ipPort.components(separatedBy: ":")
+        self.ip = ipPortData[0]
+        self.port = Int(ipPortData[1]) ?? 0
+        
+        if !self.ipPort.contains(nonSSLProtocol) || !self.ipPort.contains(SSLProtocol) {
+            self.ipPort = "\(nonSSLProtocol)\(ipPort)"
+        }
+        
+        
+    }
+    
     func isEqual(netID: Int, network: String, version: String) -> Bool {
         if self.netID == netID && self.network == network && self.version == version {
             return true

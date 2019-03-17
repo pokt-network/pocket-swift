@@ -14,7 +14,7 @@ public class Configuration {
     let blockchains: [Blockchain]
     let maxNodes: Int
     let requestTimeOut: Int
-    let nodes: Array<Node> = []
+    var nodes: Array<Node> = []
     
     public init(devID: String, blockchains: [Blockchain] = [], maxNodes: Int = 5, requestTimeOut: Int = 1000) {
         self.devID = devID

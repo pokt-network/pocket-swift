@@ -67,12 +67,17 @@ public class PocketCore: NSObject {
         })
     }
     
-    public func retrieveNodes(onSuccess: @escaping (_ nodes: [Node]) ->(), onError: @escaping (_ error: Error) -> ()) {
+    public func retrieveNodes(onSuccess: @escaping (_ findNodes: Bool) ->(), onError: @escaping (_ error: Error) -> ()) {
         self.dispatchController.retrieveServiceNodes(from: self.getDispatch())
-        self.dispatchController.dispatchObserver.observe(in: self, with: { response in
-            print(response)
+        self.dispatchController.dispatchObserver.observe(in: self, with: { (response: JSON) in
+            let nodes: [Node] = self.getDispatch().parseDispatchResponse(response: response)
+            if nodes.isEmpty {
+                onSuccess(false)
+            } else {
+                onSuccess(true)
+            }
         }, error: { error in
-            
+            onError(error)
         })
     }
     
