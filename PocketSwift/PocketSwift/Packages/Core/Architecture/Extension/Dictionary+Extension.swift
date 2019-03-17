@@ -8,16 +8,16 @@
 
 import Foundation
 
-extension Dictionary where Key == String, Value == String {
+extension Dictionary where Key == String, Value == Any {
     
-    mutating func fill(_ data: String...) {
+    mutating func fill(_ data: Any...) {
         if data.count % 2 != 0 {
             fatalError("You need to add pair values")
         }
         
         var key: Int = 0
         repeat {
-            self[data[key]] = data[key + 1]
+            self[data[key] as! String] = data[key + 1]
             key += 2
         } while key < data.count - 1
     }

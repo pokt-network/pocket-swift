@@ -19,7 +19,7 @@ public struct Blockchain: Model, Input {
         self.version = version
     }
     
-    func toParameters() -> [String : String] {
+    func toParameters() -> Parameters {
         var data: Parameters = [:]
         data.fill("Name", self.name, "NetID", "\(self.netID)", "Version", self.version)
         return data

@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias Parameters = [String: String]
+typealias Parameters = [String: Any]
 typealias Path = String
 
 enum Method: String {
@@ -41,10 +41,9 @@ final class Endpoint<Response> {
         }
         
         
-        components.queryItems = parameters.map {
-            URLQueryItem(name: $0, value: $1)
+        self.parameters.forEach{parameter in
+            components.queryItems?.append(URLQueryItem(name: parameter.key, value: parameter.value as? String))
         }
-        
         
         guard let finalURL = components.url else {
             fatalError("Could not get url")

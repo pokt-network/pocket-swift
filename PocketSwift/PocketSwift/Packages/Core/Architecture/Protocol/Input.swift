@@ -9,5 +9,5 @@
 import Foundation
 
 protocol Input {
-    func toParameters() -> [String: String]
+    func toParameters() -> Parameters
 }
