@@ -12,11 +12,11 @@ public class DispatchController: Controller {
     private let dispatchRepository: DispatchRepository
     internal let dispatchObserver: LiveData<JSON>
     
-    override init() {
-        self.dispatchRepository = DispatchRepository()
+    override init(with configuration: Configuration) {
+        self.dispatchRepository = DispatchRepository(with: configuration)
         self.dispatchObserver = LiveData()
         
-        super.init()
+        super.init(with: configuration)
         self.observables.append(self.dispatchObserver)
     }
     

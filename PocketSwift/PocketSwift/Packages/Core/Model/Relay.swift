@@ -23,7 +23,7 @@ public struct Relay: Model, Input {
         self.devID = devID
     }
     
-    private func isValid() -> Bool {
+    func isValid() -> Bool {
         do {
             return try Utils.areDirty(self.blockchain, self.version, self.data, self.devID)
         } catch {

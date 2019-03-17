@@ -11,11 +11,11 @@ import RxSwift
 
 final class WebServiceImpl: WebService {
     
-    private let baseURL = URL(string: Environment().get(configuration: ServerConfiguration.ServerURL))!
-    
     func load<Response>(endpoint: Endpoint<Response>) -> Observable<Response> {
+        let baseURL = URL(string: endpoint.baseURL)!
+    
         return Observable<Response>.create { observer in
-            let task: URLSessionDataTask = URLSession.shared.dataTask(with: endpoint.request(with: self.baseURL)) { (data: Data?, response: URLResponse?, error: Error?) in
+            let task: URLSessionDataTask = URLSession.shared.dataTask(with: endpoint.request(with: baseURL)) { (data: Data?, response: URLResponse?, error: Error?) in
                 do {
                     guard error == nil else {
                         observer.onError(error!)

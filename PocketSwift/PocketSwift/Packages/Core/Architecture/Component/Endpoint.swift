@@ -21,13 +21,15 @@ final class Endpoint<Response> {
     let parameters: Parameters
     let name: String
     let decode: (Data, Int) throws -> Response
+    let baseURL: String
     
-    init(name: String = "", method: Method = .get, path: Path, parameters: Parameters = [:], decode: @escaping (Data, Int) throws -> Response) {
+    init(baseURL: String = Environment().get(configuration: ServerConfiguration.ServerURL), name: String = "", method: Method = .get, path: Path, parameters: Parameters = [:], decode: @escaping (Data, Int) throws -> Response) {
         self.name = name
         self.method = method
         self.path = path
         self.parameters = parameters
         self.decode = decode
+        self.baseURL = baseURL
     }
     
     private func get(httpMethod: Method) -> String {
@@ -63,8 +65,8 @@ final class Endpoint<Response> {
 }
 
 extension Endpoint where Response: Swift.Decodable {
-    convenience init(name: String = "", method: Method = .get, path: Path, parameters: Parameters = [:]) {
-        self.init(name: name, method: method, path: path, parameters: parameters) { data, _ in
+    convenience init(baseURL: String = Environment().get(configuration: ServerConfiguration.ServerURL), name: String = "", method: Method = .get, path: Path, parameters: Parameters = [:]) {
+        self.init(baseURL: baseURL, name: name, method: method, path: path, parameters: parameters) { data, _ in
             return try JSONDecoder().decode(Response.self, from: data)
         }
     }
@@ -81,7 +83,7 @@ extension Endpoint where Response: Swift.Decodable {
 }*/
 
 extension Endpoint where Response == Void {
-    convenience init(name: String = "", method: Method = .get, path: Path, parameters: Parameters = [:]) {
-        self.init(name: name, method: method, path: path, parameters: parameters, decode: { _, _ in ()})
+    convenience init(baseURL: String = Environment().get(configuration: ServerConfiguration.ServerURL), name: String = "", method: Method = .get, path: Path, parameters: Parameters = [:]) {
+        self.init(baseURL: baseURL, name: name, method: method, path: path, parameters: parameters, decode: { _, _ in ()})
     }
 }

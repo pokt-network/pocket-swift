@@ -10,9 +10,11 @@ import Foundation
 
 public class Controller {
     var observables: [Dynamic]
+    var configuration: Configuration
     
-    init() {
+    init(with configuration: Configuration) {
         self.observables = []
+        self.configuration = configuration
     }
     
     func onCleared() {

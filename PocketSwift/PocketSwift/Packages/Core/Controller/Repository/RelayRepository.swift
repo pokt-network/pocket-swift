@@ -11,9 +11,14 @@ import RxSwift
 
 public class RelayRepository: Repository {
     var disposeBag: DisposeBag = DisposeBag()
+    var configuration: Configuration
     
-    func send(relay: Relay, observer: LiveData<Relay>) {
-        let relayEndpoint: Endpoint<Relay> = Endpoint(name: "Relay", method: .post, path: Environment().get(configuration: ServerConfiguration.RelayPath), parameters: relay.toParameters())
+    init(with configuration: Configuration) {
+        self.configuration = configuration
+    }
+    
+    func send(relay: Relay, to baseURL: String, observer: LiveData<Relay>) {
+        let relayEndpoint: Endpoint<Relay> = Endpoint(baseURL: baseURL, name: "Relay", method: .post, path: Environment().get(configuration: ServerConfiguration.RelayPath), parameters: relay.toParameters())
         request(with: relayEndpoint, andNotify: observer)
     }
 }

@@ -40,6 +40,7 @@
 		C8390235223DBA380092A9DF /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8390234223DBA380092A9DF /* Node.swift */; };
 		C84F2C90223E88FA00BA1AA8 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84F2C8F223E88FA00BA1AA8 /* JSON.swift */; };
 		C84F2C92223E90C900BA1AA8 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84F2C91223E90C900BA1AA8 /* Array+Extensions.swift */; };
+		C8E43FD5223EFEC700623885 /* PocketError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E43FD4223EFEC700623885 /* PocketError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		C8390234223DBA380092A9DF /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		C84F2C8F223E88FA00BA1AA8 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		C84F2C91223E90C900BA1AA8 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		C8E43FD4223EFEC700623885 /* PocketError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketError.swift; sourceTree = "<group>"; };
 		F134964CF4DC5419172A8474 /* Pods-PocketSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketSwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketSwiftTests/Pods-PocketSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -209,6 +211,7 @@
 		C83901DA223D9D150092A9DF /* Architecture */ = {
 			isa = PBXGroup;
 			children = (
+				C8E43FD3223EFEB200623885 /* Error */,
 				C83901DB223D9D150092A9DF /* Extension */,
 				C83901DD223D9D150092A9DF /* Config */,
 				C83901E0223D9D150092A9DF /* Network */,
@@ -305,6 +308,14 @@
 				C8390230223DB8630092A9DF /* DispatchRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		C8E43FD3223EFEB200623885 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				C8E43FD4223EFEC700623885 /* PocketError.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 		D8E79B7FBB6F06149E66BD2B /* Pods */ = {
@@ -523,6 +534,7 @@
 				C8390200223D9DFD0092A9DF /* Blockchain.swift in Sources */,
 				C839022F223DB54A0092A9DF /* Dispatch.swift in Sources */,
 				C83901FA223D9D150092A9DF /* WebService.swift in Sources */,
+				C8E43FD5223EFEC700623885 /* PocketError.swift in Sources */,
 				C839022D223DAA0B0092A9DF /* PocketAion.swift in Sources */,
 				C8390205223DA1330092A9DF /* Utils.swift in Sources */,
 				C83901EF223D9D150092A9DF /* Dictionary+Extension.swift in Sources */,
