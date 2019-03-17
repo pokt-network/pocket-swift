@@ -28,21 +28,30 @@ struct Dispatch: Input {
         return parameter
     }
     
+    private func createNodesArray(json: JSON?, data: [String]) -> [Node] {
+        var nodes: [Node] = []
+        if let ipPortArray = json?.value() as? Array<String> {
+            ipPortArray.forEach { ipPort in
+                nodes.append(Node(network: data[0], netID: Int(data[1]) ?? 0, version: data[2], ipPort: ipPort))
+            }
+        }
+        
+        return nodes
+    }
+    
     func parseDispatchResponse(response: JSON) -> [Node] {
         var nodes: [Node] = []
-        if let reponseArray = response.value() as? [[String: [String]]] {
+        if let reponseArray = response.value() as? [[String: JSON]] {
             reponseArray.forEach { dict in
                 if !dict.isEmpty {
                     let key = dict.keys.first!
                     let data: [String] = key.components(separatedBy: "|")
                     
-                    dict[key]?.forEach { ipPort in
-                        nodes.append(Node(network: data[0], netID: Int(data[1]) ?? 0, version: data[2], ipPort: ipPort))
-                    }
+                    nodes = createNodesArray(json: dict[key], data: data)
                 }
             }
         }
-        if let responseObject = response.value() as? [String: [String]] {
+        if let responseObject = response.value() as? [String: JSON] {
             if responseObject.isEmpty {
                 fatalError("Failed to parse Node objec")
             }
@@ -53,10 +62,7 @@ struct Dispatch: Input {
                 fatalError("Failed to parsed service nodes with error: Node information is missing 1 or more params: \(data.toString())");
             }
             
-            responseObject[key]?.forEach{ ipPort in
-                nodes.append(Node(network: data[0], netID: Int(data[1]) ?? 0, version: data[2], ipPort: ipPort))
-            }
-            
+            nodes = createNodesArray(json: responseObject[key], data: data)
         }
         if !nodes.isEmpty {
             self.configuration.nodes = nodes
