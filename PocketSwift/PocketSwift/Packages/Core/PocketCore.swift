@@ -70,7 +70,7 @@ public class PocketCore: NSObject {
     public func retrieveNodes(onSuccess: @escaping (_ nodes: [Node]) ->(), onError: @escaping (_ error: Error) -> ()) {
         self.dispatchController.retrieveServiceNodes(from: self.getDispatch())
         self.dispatchController.dispatchObserver.observe(in: self, with: { response in
-            
+            print(response)
         }, error: { error in
             
         })
