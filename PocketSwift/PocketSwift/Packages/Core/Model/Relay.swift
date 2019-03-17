@@ -31,7 +31,7 @@ public struct Relay: Model, Input {
         }
     }
     
-    func toParameters() -> [String : String] {
+    func toParameters() -> Parameters {
         var data: Parameters = [:]
         data.fill("Blockchain", self.blockchain, "NetID", "\(self.netID)", "Version", self.version, "Data", self.data, "DevID", self.devID)
         return data

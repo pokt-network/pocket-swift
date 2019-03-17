@@ -12,6 +12,8 @@ public class PocketCore: NSObject {
     
     private let configuration: Configuration
     private let relayController: RelayController
+    private let dispatchController: DispatchController
+    private var dispatch: Dispatch? = nil
     
     public init(devID: String, networkName: String, netIDs:[Int], version: String, maxNodes: Int = 5, requestTimeOut: Int = 1000) {
         var blockchains: [Blockchain] = []
@@ -21,6 +23,7 @@ public class PocketCore: NSObject {
         
         self.configuration = Configuration(devID: devID, blockchains: blockchains, maxNodes: maxNodes, requestTimeOut: requestTimeOut)
         self.relayController = RelayController()
+        self.dispatchController = DispatchController()
     }
     
     public convenience init(devID: String, networkName: String, netID: Int , version: String, maxNodes: Int = 5, requestTimeOut: Int = 1000) {
@@ -32,6 +35,29 @@ public class PocketCore: NSObject {
         return Relay(blockchain: blockchain, netID: netID, version: version, data: data, devID: devID)
     }
     
+    func getDispatch() -> Dispatch {
+        guard let dispatch = self.dispatch else {
+            self.dispatch = Dispatch(configuration: self.configuration)
+            return self.dispatch!
+        }
+        return dispatch
+    }
+    
+    func getNode(netID: Int, network: String, version: String) -> Node? {
+        if self.configuration.isNodeEmpty() {
+            return nil
+        }
+        
+        var nodes: Array<Node> = []
+        self.configuration.nodes.forEach { node in
+            if node.isEqual(netID: netID, network: network, version: version) {
+                nodes.append(node)
+            }
+        }
+        
+        return nodes.isEmpty ? nil : nodes[Int.random(in: 0 ..< nodes.count)]
+    }
+    
     public func send(relay: Relay, onSuccess: @escaping (_ data: Relay) ->(), onError: @escaping (_ error: Error) -> ()){
         self.relayController.send(relay: relay)
         self.relayController.relayObserver.observe(in: self, with: { response in
@@ -40,5 +66,18 @@ public class PocketCore: NSObject {
             onError(error)
         })
     }
-        
+    
+    public func retrieveNodes(onSuccess: @escaping (_ nodes: [Node]) ->(), onError: @escaping (_ error: Error) -> ()) {
+        self.dispatchController.retrieveServiceNodes(from: self.getDispatch())
+        self.dispatchController.dispatchObserver.observe(in: self, with: { response in
+            
+        }, error: { error in
+            
+        })
+    }
+    
+    deinit {
+        self.dispatchController.onCleared()
+        self.relayController.onCleared()
+    }
 }
