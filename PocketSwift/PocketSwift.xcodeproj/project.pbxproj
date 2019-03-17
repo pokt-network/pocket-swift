@@ -38,6 +38,7 @@
 		C8390231223DB8630092A9DF /* DispatchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8390230223DB8630092A9DF /* DispatchRepository.swift */; };
 		C8390233223DB8E20092A9DF /* DispatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8390232223DB8E20092A9DF /* DispatchController.swift */; };
 		C8390235223DBA380092A9DF /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8390234223DBA380092A9DF /* Node.swift */; };
+		C84F2C90223E88FA00BA1AA8 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84F2C8F223E88FA00BA1AA8 /* JSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		C8390230223DB8630092A9DF /* DispatchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchRepository.swift; sourceTree = "<group>"; };
 		C8390232223DB8E20092A9DF /* DispatchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchController.swift; sourceTree = "<group>"; };
 		C8390234223DBA380092A9DF /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		C84F2C8F223E88FA00BA1AA8 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		F134964CF4DC5419172A8474 /* Pods-PocketSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketSwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketSwiftTests/Pods-PocketSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -278,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				C8390204223DA1330092A9DF /* Utils.swift */,
+				C84F2C8F223E88FA00BA1AA8 /* JSON.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				C8390205223DA1330092A9DF /* Utils.swift in Sources */,
 				C83901EF223D9D150092A9DF /* Dictionary+Extension.swift in Sources */,
 				C83901F0223D9D150092A9DF /* ServerConfiguration.swift in Sources */,
+				C84F2C90223E88FA00BA1AA8 /* JSON.swift in Sources */,
 				C8390233223DB8E20092A9DF /* DispatchController.swift in Sources */,
 				C83901F9223D9D150092A9DF /* Model.swift in Sources */,
 				C8390202223D9F490092A9DF /* Relay.swift in Sources */,
