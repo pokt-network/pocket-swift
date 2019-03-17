@@ -9,29 +9,19 @@
 import Foundation
 
 enum ServerConfiguration: String {
-    case ServerURL = "Server URL"
-    case ConnectionProtocol = "Protocol"
-    case DispatchPath = "Dispatch Path"
-    case ReportPath = "Report Path"
-    case RelayPath = "Relay Path"
+    case ServerURL = "dispatch.staging.pokt.network"
+    case ConnectionProtocol = "http"
+    case DispatchPath = "/v1/dispatch"
+    case ReportPath = "/v1/report"
+    case RelayPath = "/v1/relay"
 }
 
 struct Environment {
-    fileprivate var infoDict: [String: Any] {
-        get {
-            if let dict = Bundle.main.infoDictionary {
-                return dict
-            } else {
-                fatalError("Property List not found")
-            }
-        }
-    }
-    
     func get(configuration: ServerConfiguration) -> String {
         if configuration == ServerConfiguration.ServerURL {
-            return (infoDict[ServerConfiguration.ConnectionProtocol.rawValue] as! String)
-                .appending("://").appending(infoDict[configuration.rawValue] as! String)
+            return ServerConfiguration.ConnectionProtocol.rawValue.appending("://").appending(configuration.rawValue)
+
         }
-        return infoDict[configuration.rawValue] as! String
+        return configuration.rawValue
     }
 }
