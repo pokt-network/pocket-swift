@@ -75,4 +75,9 @@ public class PocketCore: NSObject {
             
         })
     }
+    
+    deinit {
+        self.dispatchController.onCleared()
+        self.relayController.onCleared()
+    }
 }
