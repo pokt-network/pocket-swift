@@ -10,7 +10,7 @@ import Foundation
 
 public class DispatchController: Controller {
     private let dispatchRepository: DispatchRepository
-    internal let dispatchObserver: LiveData<JSON>
+    internal let dispatchObserver: LiveData<[[String: [String]]]>
     
     override init() {
         self.dispatchRepository = DispatchRepository()
