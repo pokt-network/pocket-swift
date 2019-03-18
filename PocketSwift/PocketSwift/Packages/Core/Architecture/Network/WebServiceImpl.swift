@@ -24,6 +24,10 @@ final class WebServiceImpl: WebService {
                     
                     observer.onNext(try endpoint.decode(data ?? Data(), self.getCode(response: response, data: data)))
                     observer.onCompleted()
+                    
+                } catch let DecodingError.dataCorrupted(context){
+                    print(context.underlyingError!.code)
+                    observer.onError(context.underlyingError!)
                 } catch let error {
                     observer.onError(error)
                 }
