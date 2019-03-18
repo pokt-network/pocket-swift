@@ -26,4 +26,11 @@ extension Dictionary where Key == String, Value == Any {
         let data = try JSONSerialization.data(withJSONObject: self, options: .sortedKeys)
         return String(data: data, encoding: .utf8)
     }
+    
+    func hasError() -> (Bool, String?) {
+        if self["error"] != nil {
+            return (true, (self["error"] as! String).toDict()!["message"] as? String)
+        }
+        return (false, nil)
+    }
 }
