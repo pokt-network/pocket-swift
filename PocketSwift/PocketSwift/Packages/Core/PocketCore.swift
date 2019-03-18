@@ -8,11 +8,17 @@
 
 import Foundation
 
-public class PocketCore: NSObject {
+protocol PocketPlugin {
+    func createWallet(subnetwork: String, data: String) -> Wallet
+    func importWallet(address: String, privateKey: String, subnetwork: String, data: String)
+}
+
+public class PocketCore: NSObject, PocketPlugin {
     
     private let configuration: Configuration
     private let relayController: RelayController
     private let dispatchController: DispatchController
+    private let reportController: ReportController
     private var dispatch: Dispatch? = nil
     
     public init(devID: String, networkName: String, netIDs:[Int], version: String, maxNodes: Int = 5, requestTimeOut: Int = 1000) {
@@ -24,6 +30,7 @@ public class PocketCore: NSObject {
         self.configuration = Configuration(devID: devID, blockchains: blockchains, maxNodes: maxNodes, requestTimeOut: requestTimeOut)
         self.relayController = RelayController(with: self.configuration)
         self.dispatchController = DispatchController(with: self.configuration)
+        self.reportController = ReportController(with: self.configuration)
     }
     
     public convenience init(devID: String, networkName: String, netID: Int , version: String, maxNodes: Int = 5, requestTimeOut: Int = 1000) {
@@ -31,8 +38,20 @@ public class PocketCore: NSObject {
         self.init(devID: devID, networkName: networkName, netIDs: netIDs, version: version, maxNodes: maxNodes, requestTimeOut: requestTimeOut)
     }
     
+    func createWallet(subnetwork: String, data: String) -> Wallet{
+        preconditionFailure("This method must be overridden")
+    }
+    
+    func importWallet(address: String, privateKey: String, subnetwork: String, data: String) {
+        preconditionFailure("This method must be overridden") 
+    }
+    
     public func createRelay(blockchain: String, netID: Int, version: String, data: String, devID: String) -> Relay {
         return Relay(blockchain: blockchain, netID: netID, version: version, data: data, devID: devID)
+    }
+    
+    public func createReport(ip: String, message: String) -> Report {
+        return Report(ip: ip, message: message)
     }
     
     func getDispatch() -> Dispatch {
@@ -82,6 +101,20 @@ public class PocketCore: NSObject {
             onSuccess(response)
         }, error: { error in
             onError(error!)
+        })
+    }
+    
+    public func send(report: Report, onSuccess: @escaping (_ data: String) ->(), onError: @escaping (_ error: Error) -> ()){
+        if !report.isValid() {
+            onError(PocketError.invalidReport)
+            return
+        }
+        
+        self.reportController.send(report: report)
+        self.reportController.reportObserver.observe(in: self, with: {reponse in
+            
+        }, error: {error in
+            
         })
     }
     

@@ -11,6 +11,7 @@ import Foundation
 enum PocketError: Error {
     case nodeNotFound
     case invalidRelay
+    case invalidReport
     case custom(message: String)
 }
 
@@ -21,6 +22,8 @@ extension PocketError: LocalizedError {
             return NSLocalizedString("Node is empty;", comment: "Node is empty")
         case .invalidRelay:
             return NSLocalizedString("Relay is missing a property, please verify all properties.", comment: "Relay is missing a property, please verify all properties.")
+        case .invalidReport:
+            return NSLocalizedString("Report is missing a property, please verify all properties.", comment: "Report is missing a property, please verify all properties.")
         case let .custom(message) :
             return NSLocalizedString(message, comment: message)
         }

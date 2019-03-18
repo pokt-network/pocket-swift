@@ -11,6 +11,7 @@
 		7A0754D4B061327F0B4393B8 /* Pods_PocketSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B83A5DB3BFF44163DB2CAA96 /* Pods_PocketSwiftTests.framework */; };
 		C80576A1223FC57E00B041EB /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80576A0223FC57E00B041EB /* String+Extensions.swift */; };
 		C80576A3223FD0F400B041EB /* Error+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80576A2223FD0F400B041EB /* Error+Extensions.swift */; };
+		C80576A5223FF6F100B041EB /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80576A4223FF6F100B041EB /* Wallet.swift */; };
 		C839019A223D82660092A9DF /* PocketSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8390190223D82660092A9DF /* PocketSwift.framework */; };
 		C839019F223D82660092A9DF /* PocketSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C839019E223D82660092A9DF /* PocketSwiftTests.swift */; };
 		C83901A1223D82660092A9DF /* PocketSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = C8390193223D82660092A9DF /* PocketSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -43,6 +44,9 @@
 		C84F2C90223E88FA00BA1AA8 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84F2C8F223E88FA00BA1AA8 /* JSON.swift */; };
 		C84F2C92223E90C900BA1AA8 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84F2C91223E90C900BA1AA8 /* Array+Extensions.swift */; };
 		C8E43FD5223EFEC700623885 /* PocketError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E43FD4223EFEC700623885 /* PocketError.swift */; };
+		C8F25FC022402BC10081B039 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F25FBF22402BC10081B039 /* Report.swift */; };
+		C8F25FC2224031410081B039 /* ReportRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F25FC1224031410081B039 /* ReportRepository.swift */; };
+		C8F25FC4224031CE0081B039 /* ReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F25FC3224031CE0081B039 /* ReportController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +67,7 @@
 		B83A5DB3BFF44163DB2CAA96 /* Pods_PocketSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C80576A0223FC57E00B041EB /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		C80576A2223FD0F400B041EB /* Error+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extensions.swift"; sourceTree = "<group>"; };
+		C80576A4223FF6F100B041EB /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		C8390190223D82660092A9DF /* PocketSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PocketSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8390193223D82660092A9DF /* PocketSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PocketSwift.h; sourceTree = "<group>"; };
 		C8390194223D82660092A9DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -100,6 +105,9 @@
 		C84F2C8F223E88FA00BA1AA8 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		C84F2C91223E90C900BA1AA8 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		C8E43FD4223EFEC700623885 /* PocketError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketError.swift; sourceTree = "<group>"; };
+		C8F25FBF22402BC10081B039 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
+		C8F25FC1224031410081B039 /* ReportRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRepository.swift; sourceTree = "<group>"; };
+		C8F25FC3224031CE0081B039 /* ReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportController.swift; sourceTree = "<group>"; };
 		F134964CF4DC5419172A8474 /* Pods-PocketSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketSwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketSwiftTests/Pods-PocketSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -284,6 +292,8 @@
 				C8390201223D9F490092A9DF /* Relay.swift */,
 				C839022E223DB54A0092A9DF /* Dispatch.swift */,
 				C8390234223DBA380092A9DF /* Node.swift */,
+				C80576A4223FF6F100B041EB /* Wallet.swift */,
+				C8F25FBF22402BC10081B039 /* Report.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -303,6 +313,7 @@
 				C8390207223DA2BD0092A9DF /* Repository */,
 				C8390208223DA2CB0092A9DF /* RelayController.swift */,
 				C8390232223DB8E20092A9DF /* DispatchController.swift */,
+				C8F25FC3224031CE0081B039 /* ReportController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -312,6 +323,7 @@
 			children = (
 				C839020A223DA2D80092A9DF /* RelayRepository.swift */,
 				C8390230223DB8630092A9DF /* DispatchRepository.swift */,
+				C8F25FC1224031410081B039 /* ReportRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -533,11 +545,14 @@
 				C839020B223DA2D80092A9DF /* RelayRepository.swift in Sources */,
 				C83901F5223D9D150092A9DF /* Dynamic.swift in Sources */,
 				C80576A1223FC57E00B041EB /* String+Extensions.swift in Sources */,
+				C8F25FC022402BC10081B039 /* Report.swift in Sources */,
 				C83901F8223D9D150092A9DF /* Endpoint.swift in Sources */,
 				C8390209223DA2CB0092A9DF /* RelayController.swift in Sources */,
+				C8F25FC4224031CE0081B039 /* ReportController.swift in Sources */,
 				C839022B223DA9D30092A9DF /* PocketEth.swift in Sources */,
 				C83901F1223D9D150092A9DF /* Configuration.swift in Sources */,
 				C83901FD223D9D150092A9DF /* PocketCore.swift in Sources */,
+				C80576A5223FF6F100B041EB /* Wallet.swift in Sources */,
 				C8390200223D9DFD0092A9DF /* Blockchain.swift in Sources */,
 				C839022F223DB54A0092A9DF /* Dispatch.swift in Sources */,
 				C83901FA223D9D150092A9DF /* WebService.swift in Sources */,
@@ -549,6 +564,7 @@
 				C84F2C90223E88FA00BA1AA8 /* JSON.swift in Sources */,
 				C80576A3223FD0F400B041EB /* Error+Extensions.swift in Sources */,
 				C8390233223DB8E20092A9DF /* DispatchController.swift in Sources */,
+				C8F25FC2224031410081B039 /* ReportRepository.swift in Sources */,
 				C83901F9223D9D150092A9DF /* Model.swift in Sources */,
 				C8390202223D9F490092A9DF /* Relay.swift in Sources */,
 				C83901F6223D9D150092A9DF /* Controller.swift in Sources */,
