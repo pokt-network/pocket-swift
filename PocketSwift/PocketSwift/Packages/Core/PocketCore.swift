@@ -122,7 +122,7 @@ public class PocketCore: NSObject, PocketPlugin {
         self.dispatchController.retrieveServiceNodes(from: self.getDispatch())
         self.dispatchController.dispatchObserver.observe(in: self, with: { (response: JSON) in
             let nodes: [Node] = self.getDispatch().parseDispatchResponse(response: response)
-            if nodes.isEmpty {
+            if !nodes.isEmpty {
                 onSuccess(nodes)
             } else {
                 onError(PocketError.nodeNotFound)
