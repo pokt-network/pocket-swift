@@ -26,8 +26,17 @@ final class WebServiceImpl: WebService {
                     observer.onCompleted()
                     
                 } catch let DecodingError.dataCorrupted(context){
-                    print(context.underlyingError!.code)
-                    observer.onError(context.underlyingError!)
+                    switch context.underlyingError!.code {
+                    case 3840:
+                        do{
+                            let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! Response
+                            observer.onNext(json)
+                        } catch {
+                            observer.onError(error)
+                        }
+                    default:
+                        observer.onError(context.underlyingError!)
+                    }
                 } catch let error {
                     observer.onError(error)
                 }
