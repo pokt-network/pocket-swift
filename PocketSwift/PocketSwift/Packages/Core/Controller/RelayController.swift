@@ -10,7 +10,7 @@ import Foundation
 
 public class RelayController: Controller {
     private let relayRepository: RelayRepository
-    internal let relayObserver: LiveData<Relay>
+    internal let relayObserver: LiveData<String>
 
     override init(with configuration: Configuration) {
         self.relayRepository = RelayRepository(with: configuration)
