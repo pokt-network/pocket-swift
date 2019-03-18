@@ -37,7 +37,6 @@ class LiveData<ObservedType>: Dynamic {
         self.observers[owner.description] = observer
         if let _errorCallback = error {
             self.errorCallback = _errorCallback
-            print(self.errorCallback)
         }
     }
     
