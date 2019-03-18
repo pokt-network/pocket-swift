@@ -29,7 +29,7 @@ extension Dictionary where Key == String, Value == Any {
     
     func hasError() -> (Bool, String?) {
         if self["error"] != nil {
-            return (true, (self["error"] as! String).toDict()!["message"] as? String)
+            return (true, (self["error"] as! [String: Any])["message"] as? String)
         }
         return (false, nil)
     }
