@@ -77,7 +77,7 @@ public class PocketCore: NSObject {
             
             onSuccess(response)
         }, error: { error in
-            onError(error)
+            onError(error!)
         })
     }
     
@@ -91,7 +91,7 @@ public class PocketCore: NSObject {
                 onSuccess(true)
             }
         }, error: { error in
-            onError(error)
+            onError(error!)
         })
     }
     
