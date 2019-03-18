@@ -59,9 +59,9 @@ public class PocketCore: NSObject {
     }
     
     public func send(relay: Relay, onSuccess: @escaping (_ data: Relay) ->(), onError: @escaping (_ error: Error) -> ()){
-        
         if !relay.isValid() {
             onError(PocketError.invalidRelay)
+            return
         }
         
         let node: Node? = getNode(netID: relay.netID, network: relay.blockchain, version: relay.version)
