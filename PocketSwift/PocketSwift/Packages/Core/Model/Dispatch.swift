@@ -28,11 +28,23 @@ struct Dispatch: Input {
         return parameter
     }
     
-    private func createNodesArray(json: JSON?, data: [String]) -> [Node] {
+    private func createNodesArray(dictionary: [String: JSON]) -> [Node] {
+        if dictionary.isEmpty {
+            fatalError("Failed to parse Node objec")
+        }
+        
         var nodes: [Node] = []
-        if let ipPortArray = json?.value() as? Array<JSON> {
-            ipPortArray.forEach { ipPort in
-                nodes.append(Node(network: data[0], netID: Int(data[2]) ?? 0, version: data[1], ipPort: ipPort.value() as! String))
+        dictionary.keys.forEach { key in
+            let data: [String] = key.components(separatedBy: "|")
+            
+            if data.count != 3 {
+                fatalError("Failed to parsed service nodes with error: Node information is missing 1 or more params: \(data.toString())");
+            }
+            
+            if let ipPortArray = dictionary[key]?.value() as? Array<JSON> {
+                ipPortArray.forEach { ipPort in
+                    nodes.append(Node(network: data[0], netID: Int(data[2]) ?? 0, version: data[1], ipPort: ipPort.value() as! String))
+                }
             }
         }
         
@@ -44,25 +56,12 @@ struct Dispatch: Input {
         if let reponseArray = response.value() as? [[String: JSON]] {
             reponseArray.forEach { dict in
                 if !dict.isEmpty {
-                    let key = dict.keys.first!
-                    let data: [String] = key.components(separatedBy: "|")
-                    
-                    nodes.append(contentsOf: createNodesArray(json: dict[key], data: data))
+                    nodes.append(contentsOf: createNodesArray(dictionary: dict))
                 }
             }
         }
         if let responseObject = response.value() as? [String: JSON] {
-            if responseObject.isEmpty {
-                fatalError("Failed to parse Node objec")
-            }
-            let key = responseObject.keys.first!
-            let data: [String] = key.components(separatedBy: "|")
-            
-            if data.count != 3 {
-                fatalError("Failed to parsed service nodes with error: Node information is missing 1 or more params: \(data.toString())");
-            }
-            
-            nodes = createNodesArray(json: responseObject[key], data: data)
+            nodes.append(contentsOf: createNodesArray(dictionary: responseObject))
         }
         if !nodes.isEmpty {
             self.configuration.nodes = nodes
