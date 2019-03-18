@@ -17,8 +17,8 @@ public class ReportRepository: Repository {
         self.configuration = configuration
     }
     
-    func send(report: Report, observer: LiveData<JSON>) {
-        let nodeEndpoints: Endpoint<JSON> = Endpoint(name: "SendReport", method: .post, path: ServerConfiguration.ReportPath.rawValue, parameters: report.toParameters())
+    func send(report: Report, observer: LiveData<String>) {
+        let nodeEndpoints: Endpoint<String> = Endpoint(name: "SendReport", method: .post, path: ServerConfiguration.ReportPath.rawValue, parameters: report.toParameters())
         request(with: nodeEndpoints, andNotify: observer)
     }
 }
