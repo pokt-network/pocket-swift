@@ -9,12 +9,12 @@
 import Foundation
 
 public struct Node: Model {
-    let network: String
-    let netID: Int
-    let version: String
-    let ip: String
-    let port: Int
-    var ipPort: String
+    public let network: String
+    public let netID: Int
+    public let version: String
+    public let ip: String
+    public let port: Int
+    public var ipPort: String
     
     private let nonSSLProtocol = "http://"
     private let SSLProtocol = "https://"

@@ -9,10 +9,10 @@
 import Foundation
 
 public struct Wallet: Model {
-    let address: String
-    let privateKey: String
-    let subNetwork: String
-    let data: String
+    public let address: String
+    public let privateKey: String
+    public let subNetwork: String
+    public let data: String
     
     init(address: String, privateKey: String, subNetwork: String, data: String) {
         self.address = address
