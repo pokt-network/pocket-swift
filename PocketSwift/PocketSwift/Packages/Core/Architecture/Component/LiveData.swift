@@ -33,9 +33,12 @@ class LiveData<ObservedType>: Dynamic {
         self.observers = [:]
     }
     
-    func observe(in owner: NSObject, with observer: @escaping Observer<ObservedType>, error: ((Error) -> ())? = nil) {
+    func observe(in owner: NSObject, with observer: @escaping Observer<ObservedType>, error: ((Error?) -> ())? = nil) {
         self.observers[owner.description] = observer
-        self.errorCallback = error as? ((Error?) -> ())
+        if let _errorCallback = error {
+            self.errorCallback = _errorCallback
+            print(self.errorCallback)
+        }
     }
     
     private func notify(_ value: ObservedType){
