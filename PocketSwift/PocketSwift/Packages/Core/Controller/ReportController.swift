@@ -10,7 +10,7 @@ import Foundation
 
 public class ReportController: Controller {
     private let reportRepository: ReportRepository
-    internal let reportObserver: LiveData<JSON>
+    internal let reportObserver: LiveData<String>
     
     override init(with configuration: Configuration) {
         self.reportRepository = ReportRepository(with: configuration)
