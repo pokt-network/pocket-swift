@@ -47,7 +47,7 @@ struct Dispatch: Input {
                     let key = dict.keys.first!
                     let data: [String] = key.components(separatedBy: "|")
                     
-                    nodes = createNodesArray(json: dict[key], data: data)
+                    nodes.append(contentsOf: createNodesArray(json: dict[key], data: data))
                 }
             }
         }

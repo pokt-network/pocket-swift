@@ -72,11 +72,11 @@ public class PocketCore: NSObject {
         
         self.relayController.send(relay: relay, to: relayNode.ipPort)
         self.relayController.relayObserver.observe(in: self, with: { response in
-            let responseObject = response.toDict()
-            let errorObject = responseObject?.hasError()
+            let errorObject = response.toDict()?.hasError()
             
             if errorObject?.0 ?? false {
                 onError(PocketError.custom(message: errorObject?.1 ?? "Unknown Error"))
+                return
             }
             
             onSuccess(response)
