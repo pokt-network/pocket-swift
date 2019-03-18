@@ -17,8 +17,8 @@ public class RelayRepository: Repository {
         self.configuration = configuration
     }
     
-    func send(relay: Relay, to baseURL: String, observer: LiveData<Relay>) {
-        let relayEndpoint: Endpoint<Relay> = Endpoint(baseURL: baseURL, name: "Relay", method: .post, path: Environment().get(configuration: ServerConfiguration.RelayPath), parameters: relay.toParameters())
+    func send(relay: Relay, to baseURL: String, observer: LiveData<String>) {
+        let relayEndpoint: Endpoint<String> = Endpoint(baseURL: baseURL, name: "Relay", method: .post, path: Environment().get(configuration: ServerConfiguration.RelayPath), parameters: relay.toParameters())
         request(with: relayEndpoint, andNotify: observer)
     }
 }

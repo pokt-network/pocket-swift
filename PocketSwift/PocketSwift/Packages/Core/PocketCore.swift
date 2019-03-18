@@ -58,7 +58,7 @@ public class PocketCore: NSObject {
         return nodes.isEmpty ? nil : nodes[Int.random(in: 0 ..< nodes.count)]
     }
     
-    public func send(relay: Relay, onSuccess: @escaping (_ data: Relay) ->(), onError: @escaping (_ error: Error) -> ()){
+    public func send(relay: Relay, onSuccess: @escaping (_ data: String) ->(), onError: @escaping (_ error: Error) -> ()){
         if !relay.isValid() {
             onError(PocketError.invalidRelay)
             return
@@ -72,6 +72,9 @@ public class PocketCore: NSObject {
         
         self.relayController.send(relay: relay, to: relayNode.ipPort)
         self.relayController.relayObserver.observe(in: self, with: { response in
+            print(response)
+            print(response.toDict())
+            
             onSuccess(response)
         }, error: { error in
             onError(error)
