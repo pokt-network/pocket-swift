@@ -6,28 +6,30 @@
 //  Copyright © 2019 Wilson Garcia. All rights reserved.
 //
 
-import XCTest
+import Quick
+import Nimble
+import Mockingjay
+
 @testable import PocketSwift
 
-class PocketSwiftTests: XCTestCase {
+class PocketSwiftTests: QuickSpec {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    override func spec() {
+        describe("Pocket Class tests") {
+            var pocketCore: PocketCore!
+            
+            beforeEach {
+                pocketCore = PocketCore(devID: "DEVID1", networkName: "ETH", netID: 4, version: "0")
+            }
+            
+            it("should instantiate a Pocket instance") {
+                expect(pocketCore).toNot(beNil())
+            }
+            
+            it("should retrieve a list of nodes from the Node Dispatcher") {
+                var nodes: [Node] 
+            }
+            
         }
     }
 

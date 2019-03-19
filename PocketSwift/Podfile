@@ -10,8 +10,9 @@ target 'PocketSwift' do
   target 'PocketSwiftTests' do
     inherit! :search_paths
     
-    pod 'RxBlocking', '~> 4.0'
-    pod 'RxTest',     '~> 4.0'
+    pod 'Quick'
+    pod 'Nimble'
+    pod 'Mockingjay'
   end
 
 end
