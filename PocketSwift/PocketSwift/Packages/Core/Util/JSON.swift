@@ -110,4 +110,15 @@ public enum JSON: Codable {
             return nil
         }
     }
+    
+    func hasError() -> (Bool, String){
+        let error: [String: JSON] = self.value() as! [String : JSON]
+        guard let errorJSON = error["error"] else {
+            return (false, "")
+        }
+        
+        let message = (errorJSON.value() as! [String: JSON])["title"]?.value() as! String
+        return (true, message)
+        
+    }
 }
