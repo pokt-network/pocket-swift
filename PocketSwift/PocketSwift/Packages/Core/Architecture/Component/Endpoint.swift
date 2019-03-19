@@ -36,6 +36,10 @@ final class Endpoint<Response> {
         return httpMethod.rawValue
     }
     
+    func getURL() -> URL {
+        return URL(string: "\(baseURL)\(path)")!
+    }
+    
     func request(with baseURL: URL) -> URLRequest {
         let URL = baseURL.appendingPathComponent(path)
         guard let components = NSURLComponents(url: URL, resolvingAgainstBaseURL: false) else {
