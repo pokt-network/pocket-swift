@@ -21,8 +21,8 @@ class PocketSwiftTests: QuickSpec {
             var pocketCoreFail: PocketCore!
             
             beforeEach {
-                pocketCore = PocketCore(devID: "DEVID1", networkName: "ETH", netID: 4, version: "0")
-                pocketCoreFail = PocketCore(devID: "DEVID1", networkName: "ETH2", netID: 4, version: "0")
+                pocketCore = PocketCore(devID: "DEVID1", networkName: "ETH", netIDs: [4], version: "0", maxNodes: 5, requestTimeOut: 1000, schedulerProvider: .test)
+                pocketCoreFail = PocketCore(devID: "DEVID1", networkName: "ETH2", netIDs: [4], version: "0", maxNodes: 5, requestTimeOut: 1000, schedulerProvider: .test)
             }
             
             it("should instantiate a Pocket instance") {
@@ -31,48 +31,25 @@ class PocketSwiftTests: QuickSpec {
             
             context("get"){
                 it("should retrieve a list of nodes from the Node Dispatcher") {
-                    let nodeEndpoints: Endpoint<JSON> = Endpoint(name: "RetrieveServiceNodes", method: .post, path: ServerConfiguration.DispatchPath.rawValue, parameters: pocketCore.getDispatch().toParameters())
                     
-                    do{
-                        let webservice: WebServiceImpl = WebServiceImpl()
-                        let response: JSON? = try webservice.load(endpoint: nodeEndpoints).toBlocking().first()
-                        
-                        expect(response).toEventuallyNot(beNil())
-                        expect(response?.value()).toEventuallyNot(beNil())
-                        
-                        
-                    } catch {
+                    pocketCore.retrieveNodes(onSuccess: { nodes in
+                        expect(nodes).toEventuallyNot(beNil())
+                        expect(nodes).toEventuallyNot(beEmpty())
+                    }, onError: { error in
                         fatalError()
-                    }
+                    })
                 }
                 
                 it("should fail to retrieve a list of nodes from the Node Dispatcher") {
-                    let nodeEndpoints: Endpoint<JSON> = Endpoint(name: "RetrieveServiceNodes", method: .post, path: ServerConfiguration.DispatchPath.rawValue, parameters: pocketCoreFail.getDispatch().toParameters())
-                    
-                    do{
-                        let webservice: WebServiceImpl = WebServiceImpl()
-                        let response: JSON? = try webservice.load(endpoint: nodeEndpoints).toBlocking().first()
-                        
-                        let responseObject: [String: JSON] = response?.value() as! [String : JSON]
-                        let key = responseObject.keys.first!
-                        let value: Array<String> = responseObject[key]!.value() as! Array<String>
-                        
-                        expect(value).toEventually(beEmpty())
-                        
-                        
-                    } catch {
+                    pocketCoreFail.retrieveNodes(onSuccess: { nodes in
                         fatalError()
-                    }
+                    }, onError: {error in
+                        expect(error).to(matchError(PocketError.nodeNotFound))
+                    })
                 }
                 
                 it("should send a relay to a node in the network") {
-                    let nodeEndpoints: Endpoint<JSON> = Endpoint(name: "RetrieveServiceNodes", method: .post, path: ServerConfiguration.DispatchPath.rawValue, parameters: pocketCore.getDispatch().toParameters())
-                    
-                    do{
-                        let webservice: WebServiceImpl = WebServiceImpl()
-                        let response: JSON? = try webservice.load(endpoint: nodeEndpoints).toBlocking().first()
-                        let nodes: [Node] = pocketCore.getDispatch().parseDispatchResponse(response: response!)
-                        
+                    pocketCore.retrieveNodes(onSuccess: {nodes in
                         expect(nodes).toEventuallyNot(beNil())
                         
                         let address: String = "0xf892400Dc3C5a5eeBc96070ccd575D6A720F0F9f"
@@ -81,25 +58,20 @@ class PocketSwiftTests: QuickSpec {
                         
                         expect(relay.isValid()).to(beTrue())
                         
-                        let relayEndpoint: Endpoint<String> = Endpoint(baseURL: nodes[0].ipPort, name: "Relay", method: .post, path: ServerConfiguration.RelayPath.rawValue, parameters: relay.toParameters())
-                        let relayResponse: String? = try webservice.load(endpoint: relayEndpoint).toBlocking().first()
-                        let relayResponseObject = relayResponse!.toDict()?.hasError()
-                        
-                        expect(relayResponseObject?.0).to(beFalse())
-                        
-                    } catch {
+                        pocketCore.send(relay: relay, onSuccess: { response in
+                            expect(response).notTo(beNil())
+                            expect(response).notTo(beEmpty())
+                        }, onError: {error in
+                            fatalError()
+                        })
+                    }, onError: {error in
                         fatalError()
-                    }
+                    })
+
                 }
                 
                 it("should fail to send a relay to a node in the network with bad relay properties \"netID\"") {
-                    let nodeEndpoints: Endpoint<JSON> = Endpoint(name: "RetrieveServiceNodes", method: .post, path: ServerConfiguration.DispatchPath.rawValue, parameters: pocketCore.getDispatch().toParameters())
-                    
-                    do{
-                        let webservice: WebServiceImpl = WebServiceImpl()
-                        let response: JSON? = try webservice.load(endpoint: nodeEndpoints).toBlocking().first()
-                        let nodes: [Node] = pocketCore.getDispatch().parseDispatchResponse(response: response!)
-                        
+                    pocketCore.retrieveNodes(onSuccess: {nodes in
                         expect(nodes).toEventuallyNot(beNil())
                         
                         let address: String = "0xf892400Dc3C5a5eeBc96070ccd575D6A720F0F9f"
@@ -108,59 +80,72 @@ class PocketSwiftTests: QuickSpec {
                         
                         expect(relay.isValid()).to(beTrue())
                         
-                        let relayEndpoint: Endpoint<JSON> = Endpoint(baseURL: nodes[0].ipPort, name: "Relay", method: .post, path: ServerConfiguration.RelayPath.rawValue, parameters: relay.toParameters())
-                        let relayResponse: JSON? = try webservice.load(endpoint: relayEndpoint).toBlocking().first()
-                        
-                        expect(relayResponse?.hasError().0).toEventually(beTrue())
-                    } catch {
+                        pocketCore.send(relay: relay, onSuccess: { response in
+                            fatalError()
+                        }, onError: {error in
+                            expect(error).to(matchError(PocketError.nodeNotFound))
+                        })
+                    }, onError: {error in
                         fatalError()
-                    }
+                    })
+                }
+                
+                it("should fail to send a relay to a node in the network with bad relay properties \"Data\"") {
+                    pocketCore.retrieveNodes(onSuccess: {nodes in
+                        expect(nodes).toEventuallyNot(beNil())
+                        
+                        let address: String = "0xf892400Dc3C5a5eeBc96070ccd575D6A720F0F9fssss"
+                        let data: String = "{\"jsonrpc\":\"2.0\",\"method\":\"eth_getBalance\",\"params\":[\"\(address)\",\"latest\"],\"id\":67}"
+                        let relay = pocketCore.createRelay(blockchain: "ETH", netID: 4, version: "0", data: data, devID: "DEVID1")
+                        
+                        expect(relay.isValid()).to(beTrue())
+                        
+                        pocketCore.send(relay: relay, onSuccess: { response in
+                            fatalError()
+                        }, onError: {error in
+                            expect(error).to(matchError(PocketError.custom(message: "invalid argument 0: hex string has length 44, want 40 for common.Address")))
+                        })
+                    }, onError: {error in
+                        fatalError()
+                    })
                 }
                 
                 it("should send a report of a node to the Node Dispatcher") {
-                    let nodeEndpoints: Endpoint<JSON> = Endpoint(name: "RetrieveServiceNodes", method: .post, path: ServerConfiguration.DispatchPath.rawValue, parameters: pocketCore.getDispatch().toParameters())
-                    
-                    do{
-                        let webservice: WebServiceImpl = WebServiceImpl()
-                        let response: JSON? = try webservice.load(endpoint: nodeEndpoints).toBlocking().first()
-                        let nodes: [Node] = pocketCore.getDispatch().parseDispatchResponse(response: response!)
-                        
+                    pocketCore.retrieveNodes(onSuccess: {nodes in
                         expect(nodes).toEventuallyNot(beNil())
                         
                         let report = pocketCore.createReport(ip: nodes[0].ip, message: "test please ignore")
-                        
                         expect(report.isValid()).to(beTrue())
                         
-                        let reportEndpoints: Endpoint<String> = Endpoint(name: "SendReport", method: .post, path: ServerConfiguration.ReportPath.rawValue, parameters: report.toParameters())
-                        let reportResponse: String? = try webservice.load(endpoint: reportEndpoints).toBlocking().first()
-                        
-                        expect(reportResponse).toEventually(beginWith("Okay"))
-                    } catch {
+                        pocketCore.send(report: report, onSuccess: { response in
+                            expect(response).notTo(beNil())
+                            expect(response).notTo(beEmpty())
+                            expect(response).toEventually(beginWith("Okay"))
+                        }, onError: {error in
+                            fatalError()
+                        })
+                    }, onError: {error in
                         fatalError()
-                    }
+                    })
                 }
                 
                 it("should fail to send a report of a node to the Node Dispatcher with no Node IP") {
-                    let nodeEndpoints: Endpoint<JSON> = Endpoint(name: "RetrieveServiceNodes", method: .post, path: ServerConfiguration.DispatchPath.rawValue, parameters: pocketCore.getDispatch().toParameters())
-                    
-                    do{
-                        let webservice: WebServiceImpl = WebServiceImpl()
-                        let response: JSON? = try webservice.load(endpoint: nodeEndpoints).toBlocking().first()
-                        let nodes: [Node] = pocketCore.getDispatch().parseDispatchResponse(response: response!)
-                        
+                    pocketCore.retrieveNodes(onSuccess: {nodes in
                         expect(nodes).toEventuallyNot(beNil())
                         
                         let report = pocketCore.createReport(ip: "", message: "test please ignore")
-                        
                         expect(report.isValid()).to(beFalse())
                         
-                        /*let reportEndpoints: Endpoint<String> = Endpoint(name: "SendReport", method: .post, path: ServerConfiguration.ReportPath.rawValue, parameters: report.toParameters())
-                        let reportResponse: String? = try webservice.load(endpoint: reportEndpoints).toBlocking().first()
-                        
-                        expect(reportResponse).toEventually(beginWith("Okay"))*/
-                    } catch {
+                        /*pocketCore.send(report: report, onSuccess: { response in
+                            expect(response).notTo(beNil())
+                            expect(response).notTo(beEmpty())
+                            expect(response).toEventually(beginWith("Okay"))
+                        }, onError: {error in
+                            fatalError()
+                        })*/
+                    }, onError: {error in
                         fatalError()
-                    }
+                    })
                 }
             }
             

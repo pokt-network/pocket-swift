@@ -12,9 +12,11 @@ import RxSwift
 public class ReportRepository: Repository {
     var disposeBag: DisposeBag = DisposeBag()
     var configuration: Configuration
+    var schedulerProvider: SchedulerProvider
     
-    init(with configuration: Configuration) {
+    init(with configuration: Configuration, and schedulerProvider: SchedulerProvider) {
         self.configuration = configuration
+        self.schedulerProvider = schedulerProvider
     }
     
     func send(report: Report, observer: LiveData<String>) {

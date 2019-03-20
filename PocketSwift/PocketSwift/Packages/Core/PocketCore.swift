@@ -21,16 +21,20 @@ public class PocketCore: NSObject, PocketPlugin {
     private let reportController: ReportController
     private var dispatch: Dispatch? = nil
     
-    public init(devID: String, networkName: String, netIDs:[Int], version: String, maxNodes: Int = 5, requestTimeOut: Int = 1000) {
+    init(devID: String, networkName: String, netIDs:[Int], version: String, maxNodes: Int = 5, requestTimeOut: Int = 1000, schedulerProvider: SchedulerProvider = .main){
         var blockchains: [Blockchain] = []
         netIDs.forEach{ netID in
             blockchains.append(Blockchain(name: networkName, netID: netID, version: version))
         }
         
         self.configuration = Configuration(devID: devID, blockchains: blockchains, maxNodes: maxNodes, requestTimeOut: requestTimeOut)
-        self.relayController = RelayController(with: self.configuration)
-        self.dispatchController = DispatchController(with: self.configuration)
-        self.reportController = ReportController(with: self.configuration)
+        self.relayController = RelayController(with: self.configuration, and: schedulerProvider)
+        self.dispatchController = DispatchController(with: self.configuration, and: schedulerProvider)
+        self.reportController = ReportController(with: self.configuration, and: schedulerProvider)
+    }
+    
+    public convenience init(devID: String, networkName: String, netIDs:[Int], version: String, maxNodes: Int = 5, requestTimeOut: Int = 1000) {
+        self.init(devID: devID, networkName: networkName, netIDs: netIDs, version: version, maxNodes: maxNodes, requestTimeOut: requestTimeOut, schedulerProvider: .main)
     }
     
     public convenience init(devID: String, networkName: String, netID: Int , version: String, maxNodes: Int = 5, requestTimeOut: Int = 1000) {
@@ -89,8 +93,9 @@ public class PocketCore: NSObject, PocketPlugin {
             return
         }
         
-        self.relayController.send(relay: relay, to: relayNode.ipPort)
-        self.relayController.relayObserver.observe(in: self, with: { response in
+        self.relayController.relayObserver.observe(in: self, for: {
+            self.relayController.send(relay: relay, to: relayNode.ipPort)
+        }, with: { response in
             let errorObject = response.toDict()?.hasError()
             
             if errorObject?.0 ?? false {
@@ -110,8 +115,9 @@ public class PocketCore: NSObject, PocketPlugin {
             return
         }
         
-        self.reportController.send(report: report)
-        self.reportController.reportObserver.observe(in: self, with: {reponse in
+        self.reportController.reportObserver.observe(in: self, for: {
+            self.reportController.send(report: report)
+        },with: {reponse in
             
         }, error: {error in
             
@@ -119,8 +125,9 @@ public class PocketCore: NSObject, PocketPlugin {
     }
     
     public func retrieveNodes(onSuccess: @escaping (_ nodes: [Node]) ->(), onError: @escaping (_ error: Error) -> ()) {
-        self.dispatchController.retrieveServiceNodes(from: self.getDispatch())
-        self.dispatchController.dispatchObserver.observe(in: self, with: { (response: JSON) in
+        self.dispatchController.dispatchObserver.observe(in: self, for: {
+            self.dispatchController.retrieveServiceNodes(from: self.getDispatch())
+        }, with: { (response: JSON) in
             let nodes: [Node] = self.getDispatch().parseDispatchResponse(response: response)
             if !nodes.isEmpty {
                 onSuccess(nodes)

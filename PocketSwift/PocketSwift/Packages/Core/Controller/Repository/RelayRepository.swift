@@ -12,9 +12,11 @@ import RxSwift
 public class RelayRepository: Repository {
     var disposeBag: DisposeBag = DisposeBag()
     var configuration: Configuration
+    var schedulerProvider: SchedulerProvider
     
-    init(with configuration: Configuration) {
+    init(with configuration: Configuration, and schedulerProvider: SchedulerProvider) {
         self.configuration = configuration
+        self.schedulerProvider = schedulerProvider
     }
     
     func send(relay: Relay, to baseURL: String, observer: LiveData<String>) {
