@@ -12,11 +12,11 @@ public class ReportController: Controller {
     private let reportRepository: ReportRepository
     internal let reportObserver: LiveData<String>
     
-    override init(with configuration: Configuration) {
-        self.reportRepository = ReportRepository(with: configuration)
+    override init(with configuration: Configuration, and schedulerProvider: SchedulerProvider) {
+        self.reportRepository = ReportRepository(with: configuration, and: schedulerProvider)
         self.reportObserver = LiveData()
         
-        super.init(with: configuration)
+        super.init(with: configuration, and: schedulerProvider)
         self.observables.append(self.reportObserver)
     }
     

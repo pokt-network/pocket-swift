@@ -11,10 +11,12 @@ import Foundation
 public class Controller {
     var observables: [Dynamic]
     var configuration: Configuration
+    var schedulerProvider: SchedulerProvider
     
-    init(with configuration: Configuration) {
+    init(with configuration: Configuration, and schedulerProvider: SchedulerProvider) {
         self.observables = []
         self.configuration = configuration
+        self.schedulerProvider = schedulerProvider
     }
     
     func onCleared() {

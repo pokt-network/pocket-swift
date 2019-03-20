@@ -12,9 +12,11 @@ import RxSwift
 public class DispatchRepository: Repository {
     var disposeBag: DisposeBag = DisposeBag()
     var configuration: Configuration
+    var schedulerProvider: SchedulerProvider
     
-    init(with configuration: Configuration) {
+    init(with configuration: Configuration, and schedulerProvider: SchedulerProvider) {
         self.configuration = configuration
+        self.schedulerProvider = schedulerProvider
     }
     
     func retrieveServiceNodes(from dispatch: Dispatch, observer: LiveData<JSON>) {

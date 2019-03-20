@@ -12,6 +12,7 @@
 		C80576A1223FC57E00B041EB /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80576A0223FC57E00B041EB /* String+Extensions.swift */; };
 		C80576A3223FD0F400B041EB /* Error+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80576A2223FD0F400B041EB /* Error+Extensions.swift */; };
 		C80576A5223FF6F100B041EB /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80576A4223FF6F100B041EB /* Wallet.swift */; };
+		C80934982241AF490073B734 /* SchedulerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80934972241AF490073B734 /* SchedulerProvider.swift */; };
 		C839019A223D82660092A9DF /* PocketSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8390190223D82660092A9DF /* PocketSwift.framework */; };
 		C839019F223D82660092A9DF /* PocketSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C839019E223D82660092A9DF /* PocketSwiftTests.swift */; };
 		C83901A1223D82660092A9DF /* PocketSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = C8390193223D82660092A9DF /* PocketSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -68,6 +69,7 @@
 		C80576A0223FC57E00B041EB /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		C80576A2223FD0F400B041EB /* Error+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extensions.swift"; sourceTree = "<group>"; };
 		C80576A4223FF6F100B041EB /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
+		C80934972241AF490073B734 /* SchedulerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerProvider.swift; sourceTree = "<group>"; };
 		C8390190223D82660092A9DF /* PocketSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PocketSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8390193223D82660092A9DF /* PocketSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PocketSwift.h; sourceTree = "<group>"; };
 		C8390194223D82660092A9DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				C83901E6223D9D150092A9DF /* Controller.swift */,
 				C83901E7223D9D150092A9DF /* LiveData.swift */,
 				C83901E8223D9D150092A9DF /* Endpoint.swift */,
+				C80934972241AF490073B734 /* SchedulerProvider.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -464,21 +467,21 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-PocketSwiftTests/Pods-PocketSwiftTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -540,6 +543,7 @@
 				C83901F4223D9D150092A9DF /* ObjectAssociation.swift in Sources */,
 				C83901F2223D9D150092A9DF /* WebServiceImpl.swift in Sources */,
 				C84F2C92223E90C900BA1AA8 /* Array+Extensions.swift in Sources */,
+				C80934982241AF490073B734 /* SchedulerProvider.swift in Sources */,
 				C8390231223DB8630092A9DF /* DispatchRepository.swift in Sources */,
 				C83901F3223D9D150092A9DF /* Observer.swift in Sources */,
 				C8390235223DBA380092A9DF /* Node.swift in Sources */,

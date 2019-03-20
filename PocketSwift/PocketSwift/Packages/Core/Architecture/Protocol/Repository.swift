@@ -8,10 +8,12 @@
 
 import Foundation
 import RxSwift
+import RxBlocking
 
 protocol Repository {
     var disposeBag: DisposeBag {get set}
     var configuration: Configuration {get set}
+    var schedulerProvider: SchedulerProvider {get set}
     func request<Response>(with endpoint: Endpoint<Response>, andNotify observable: LiveData<Response>)
 }
 
@@ -23,21 +25,31 @@ extension Repository {
     func request<Response>(with endpoint: Endpoint<Response>, andNotify observable: LiveData<Response>) {
         var timer: UInt64? = nil
         
-        WebService.load(endpoint: endpoint)
-            .do(onCompleted: {
-                timer = DispatchTime.now().uptimeNanoseconds - timer!
-            }, onSubscribe: {
-                timer = DispatchTime.now().uptimeNanoseconds
-            })
-            .timeout(RxTimeInterval(self.configuration.requestTimeOut), scheduler: MainScheduler.instance)
-            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { response in
+        switch(schedulerProvider) {
+        case .main:
+            WebService.load(endpoint: endpoint)
+                .do(onCompleted: {
+                    timer = DispatchTime.now().uptimeNanoseconds - timer!
+                }, onSubscribe: {
+                    timer = DispatchTime.now().uptimeNanoseconds
+                })
+                .timeout(RxTimeInterval(self.configuration.requestTimeOut), scheduler: MainScheduler.instance)
+                .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+                .observeOn(MainScheduler.instance)
+                .subscribe(onNext: { response in
+                    observable.value = response
+                }, onError: { error in
+                    observable.error = error
+                })
+                .disposed(by: self.disposeBag)
+        default:
+            do{
+                let response = try WebService.load(endpoint: endpoint).toBlocking().first()
                 observable.value = response
-            }, onError: { error in
+            }catch let error {
                 observable.error = error
-            })
-            .disposed(by: self.disposeBag)
+            }
+        }
     }
 }
 

@@ -12,11 +12,11 @@ public class RelayController: Controller {
     private let relayRepository: RelayRepository
     internal let relayObserver: LiveData<String>
 
-    override init(with configuration: Configuration) {
-        self.relayRepository = RelayRepository(with: configuration)
+    override init(with configuration: Configuration, and schedulerProvider: SchedulerProvider) {
+        self.relayRepository = RelayRepository(with: configuration, and: schedulerProvider)
         self.relayObserver = LiveData()
         
-        super.init(with: configuration)
+        super.init(with: configuration, and: schedulerProvider)
         self.observables.append(self.relayObserver)
     }
     
