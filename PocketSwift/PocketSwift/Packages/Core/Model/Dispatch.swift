@@ -34,17 +34,12 @@ struct Dispatch: Input {
         }
         
         var nodes: [Node] = []
-        dictionary.keys.forEach { key in
-            let data: [String] = key.components(separatedBy: "|")
-            
-            if data.count != 3 {
-                fatalError("Failed to parsed service nodes with error: Node information is missing 1 or more params: \(data.toString())");
-            }
-            
-            if let ipPortArray = dictionary[key]?.value() as? Array<JSON> {
-                ipPortArray.forEach { ipPort in
-                    nodes.append(Node(network: data[0], netID: Int(data[2]) ?? 0, version: data[1], ipPort: ipPort.value() as! String))
-                }
+        let network = dictionary["name"]?.value() as! String
+        let netID = dictionary["netid"]?.value() as! String
+        
+        if let ipPortArray = dictionary["ips"]?.value() as? Array<JSON> {
+            ipPortArray.forEach { ipPort in
+                nodes.append(Node(network: network, netID: Int(netID) ?? 0, ipPort: ipPort.value() as! String))
             }
         }
         
@@ -53,15 +48,15 @@ struct Dispatch: Input {
     
     func parseDispatchResponse(response: JSON) -> [Node] {
         var nodes: [Node] = []
-        if let reponseArray = response.value() as? [[String: JSON]] {
-            reponseArray.forEach { dict in
-                if !dict.isEmpty {
-                    nodes.append(contentsOf: createNodesArray(dictionary: dict))
+        
+        if let reponseArray = response.value() as? [JSON] {
+            reponseArray.forEach { responseJson in
+                if let responseDict = responseJson.value() as? [String: JSON] {
+                    if !responseDict.isEmpty {
+                        nodes.append(contentsOf: createNodesArray(dictionary: responseDict))
+                    }
                 }
             }
-        }
-        if let responseObject = response.value() as? [String: JSON] {
-            nodes.append(contentsOf: createNodesArray(dictionary: responseObject))
         }
         if !nodes.isEmpty {
             self.configuration.nodes = nodes

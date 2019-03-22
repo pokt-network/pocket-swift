@@ -21,10 +21,10 @@ public class PocketCore: NSObject, PocketPlugin {
     private let reportController: ReportController
     private var dispatch: Dispatch? = nil
     
-    init(devID: String, networkName: String, netIDs:[Int], version: String, maxNodes: Int = 5, requestTimeOut: Int = 1000, schedulerProvider: SchedulerProvider = .main){
+    init(devID: String, networkName: String, netIDs:[Int], maxNodes: Int = 5, requestTimeOut: Int = 1000, schedulerProvider: SchedulerProvider = .main){
         var blockchains: [Blockchain] = []
         netIDs.forEach{ netID in
-            blockchains.append(Blockchain(name: networkName, netID: netID, version: version))
+            blockchains.append(Blockchain(name: networkName, netID: netID))
         }
         
         self.configuration = Configuration(devID: devID, blockchains: blockchains, maxNodes: maxNodes, requestTimeOut: requestTimeOut)
@@ -33,13 +33,13 @@ public class PocketCore: NSObject, PocketPlugin {
         self.reportController = ReportController(with: self.configuration, and: schedulerProvider)
     }
     
-    public convenience init(devID: String, networkName: String, netIDs:[Int], version: String, maxNodes: Int = 5, requestTimeOut: Int = 1000) {
-        self.init(devID: devID, networkName: networkName, netIDs: netIDs, version: version, maxNodes: maxNodes, requestTimeOut: requestTimeOut, schedulerProvider: .main)
+    public convenience init(devID: String, networkName: String, netIDs:[Int], maxNodes: Int = 5, requestTimeOut: Int = 1000) {
+        self.init(devID: devID, networkName: networkName, netIDs: netIDs, maxNodes: maxNodes, requestTimeOut: requestTimeOut, schedulerProvider: .main)
     }
     
-    public convenience init(devID: String, networkName: String, netID: Int , version: String, maxNodes: Int = 5, requestTimeOut: Int = 1000) {
+    public convenience init(devID: String, networkName: String, netID: Int, maxNodes: Int = 5, requestTimeOut: Int = 1000) {
         let netIDs: [Int] = [netID]
-        self.init(devID: devID, networkName: networkName, netIDs: netIDs, version: version, maxNodes: maxNodes, requestTimeOut: requestTimeOut)
+        self.init(devID: devID, networkName: networkName, netIDs: netIDs, maxNodes: maxNodes, requestTimeOut: requestTimeOut)
     }
     
     func createWallet(subnetwork: String, data: String) -> Wallet{
@@ -50,8 +50,8 @@ public class PocketCore: NSObject, PocketPlugin {
         preconditionFailure("This method must be overridden") 
     }
     
-    public func createRelay(blockchain: String, netID: Int, version: String, data: String, devID: String) -> Relay {
-        return Relay(blockchain: blockchain, netID: netID, version: version, data: data, devID: devID)
+    public func createRelay(blockchain: String, netID: Int, data: String, devID: String) -> Relay {
+        return Relay(blockchain: blockchain, netID: netID, data: data, devID: devID)
     }
     
     public func createReport(ip: String, message: String) -> Report {
@@ -66,19 +66,31 @@ public class PocketCore: NSObject, PocketPlugin {
         return dispatch
     }
     
-    func getNode(netID: Int, network: String, version: String) -> Node? {
+    func getNode(tries: Int = 0, netID: Int, network: String, callback: @escaping (_ nodes: Node?)->()) {
         if self.configuration.isNodeEmpty() {
-            return nil
+            if tries > 0 {
+                callback(nil)
+                return
+            }
+            
+            self.retrieveNodes(onSuccess: { nodes in
+                self.configuration.nodes = nodes
+                self.getNode(tries: tries + 1, netID: netID, network: network, callback: callback)
+                
+            }, onError: {error in
+                callback(nil)
+            })
+            return
         }
         
         var nodes: Array<Node> = []
         self.configuration.nodes.forEach { node in
-            if node.isEqual(netID: netID, network: network, version: version) {
+            if node.isEqual(netID: netID, network: network) {
                 nodes.append(node)
             }
         }
         
-        return nodes.isEmpty ? nil : nodes[Int.random(in: 0 ..< nodes.count)]
+        callback(nodes.isEmpty ? nil : nodes[Int.random(in: 0 ..< nodes.count)])
     }
     
     public func send(relay: Relay, onSuccess: @escaping (_ data: String) ->(), onError: @escaping (_ error: Error) -> ()){
@@ -87,26 +99,28 @@ public class PocketCore: NSObject, PocketPlugin {
             return
         }
         
-        let node: Node? = getNode(netID: relay.netID, network: relay.blockchain, version: relay.version)
-        guard let relayNode = node else {
-            onError(PocketError.nodeNotFound)
-            return
-        }
-        
-        self.relayController.relayObserver.observe(in: self, for: {
-            self.relayController.send(relay: relay, to: relayNode.ipPort)
-        }, with: { response in
-            let errorObject = response.toDict()?.hasError()
-            
-            if errorObject?.0 ?? false {
-                onError(PocketError.custom(message: errorObject?.1 ?? "Unknown Error"))
+        getNode(netID: relay.netID, network: relay.blockchain) {node in
+            guard let relayNode = node else {
+                onError(PocketError.nodeNotFound)
                 return
             }
             
-            onSuccess(response)
-        }, error: { error in
-            onError(error!)
-        })
+            self.relayController.relayObserver.observe(in: self, for: {
+                self.relayController.send(relay: relay, to: relayNode.ipPort)
+            }, with: { response in
+                let errorObject = response.toDict()?.hasError()
+                
+                if errorObject?.0 ?? false {
+                    onError(PocketError.custom(message: errorObject?.1 ?? "Unknown Error"))
+                    return
+                }
+                
+                onSuccess(response)
+            }, error: { error in
+                onError(error!)
+            })
+        }
+        
     }
     
     public func send(report: Report, onSuccess: @escaping (_ data: String) ->(), onError: @escaping (_ error: Error) -> ()){

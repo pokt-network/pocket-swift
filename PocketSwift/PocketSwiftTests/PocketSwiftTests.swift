@@ -21,8 +21,8 @@ class PocketSwiftTests: QuickSpec {
             var pocketCoreFail: PocketCore!
             
             beforeEach {
-                pocketCore = PocketCore(devID: "DEVID1", networkName: "ETH", netIDs: [4], version: "0", maxNodes: 5, requestTimeOut: 1000, schedulerProvider: .test)
-                pocketCoreFail = PocketCore(devID: "DEVID1", networkName: "ETH2", netIDs: [4], version: "0", maxNodes: 5, requestTimeOut: 1000, schedulerProvider: .test)
+                pocketCore = PocketCore(devID: "DEVID1", networkName: "ETH", netIDs: [4, 1], maxNodes: 5, requestTimeOut: 1000, schedulerProvider: .test)
+                pocketCoreFail = PocketCore(devID: "DEVID1", networkName: "ETH2", netIDs: [4, 1], maxNodes: 5, requestTimeOut: 1000, schedulerProvider: .test)
             }
             
             it("should instantiate a Pocket instance") {
@@ -49,64 +49,45 @@ class PocketSwiftTests: QuickSpec {
                 }
                 
                 it("should send a relay to a node in the network") {
-                    pocketCore.retrieveNodes(onSuccess: {nodes in
-                        expect(nodes).toEventuallyNot(beNil())
+                    let address: String = "0xf892400Dc3C5a5eeBc96070ccd575D6A720F0F9f"
+                    let data: String = "{\"jsonrpc\":\"2.0\",\"method\":\"eth_getBalance\",\"params\":[\"\(address)\",\"latest\"],\"id\":67}"
+                    let relay = pocketCore.createRelay(blockchain: "ETH", netID: 4, data: data, devID: "DEVID1")
                         
-                        let address: String = "0xf892400Dc3C5a5eeBc96070ccd575D6A720F0F9f"
-                        let data: String = "{\"jsonrpc\":\"2.0\",\"method\":\"eth_getBalance\",\"params\":[\"\(address)\",\"latest\"],\"id\":67}"
-                        let relay = pocketCore.createRelay(blockchain: "ETH", netID: 4, version: "0", data: data, devID: "DEVID1")
+                    expect(relay.isValid()).to(beTrue())
                         
-                        expect(relay.isValid()).to(beTrue())
-                        
-                        pocketCore.send(relay: relay, onSuccess: { response in
-                            expect(response).notTo(beNil())
-                            expect(response).notTo(beEmpty())
-                        }, onError: {error in
-                            fatalError()
-                        })
+                    pocketCore.send(relay: relay, onSuccess: { response in
+                        expect(response).notTo(beNil())
+                        expect(response).notTo(beEmpty())
                     }, onError: {error in
                         fatalError()
                     })
-
                 }
                 
                 it("should fail to send a relay to a node in the network with bad relay properties \"netID\"") {
-                    pocketCore.retrieveNodes(onSuccess: {nodes in
-                        expect(nodes).toEventuallyNot(beNil())
+                    let address: String = "0xf892400Dc3C5a5eeBc96070ccd575D6A720F0F9f"
+                    let data: String = "{\"jsonrpc\":\"2.0\",\"method\":\"eth_getBalance\",\"params\":[\"\(address)\",\"latest\"],\"id\":67}"
+                    let relay = pocketCore.createRelay(blockchain: "ETH", netID: 10, data: data, devID: "DEVID1")
                         
-                        let address: String = "0xf892400Dc3C5a5eeBc96070ccd575D6A720F0F9f"
-                        let data: String = "{\"jsonrpc\":\"2.0\",\"method\":\"eth_getBalance\",\"params\":[\"\(address)\",\"latest\"],\"id\":67}"
-                        let relay = pocketCore.createRelay(blockchain: "ETH", netID: 10, version: "0", data: data, devID: "DEVID1")
+                    expect(relay.isValid()).to(beTrue())
                         
-                        expect(relay.isValid()).to(beTrue())
-                        
-                        pocketCore.send(relay: relay, onSuccess: { response in
-                            fatalError()
-                        }, onError: {error in
-                            expect(error).to(matchError(PocketError.nodeNotFound))
-                        })
-                    }, onError: {error in
+                    pocketCore.send(relay: relay, onSuccess: { response in
                         fatalError()
+                    }, onError: {error in
+                        expect(error).to(matchError(PocketError.nodeNotFound))
                     })
                 }
                 
                 it("should fail to send a relay to a node in the network with bad relay properties \"Data\"") {
-                    pocketCore.retrieveNodes(onSuccess: {nodes in
-                        expect(nodes).toEventuallyNot(beNil())
+                    let address: String = "0xf892400Dc3C5a5eeBc96070ccd575D6A720F0F9fssss"
+                    let data: String = "{\"jsonrpc\":\"2.0\",\"method\":\"eth_getBalance\",\"params\":[\"\(address)\",\"latest\"],\"id\":67}"
+                    let relay = pocketCore.createRelay(blockchain: "ETH", netID: 4, data: data, devID: "DEVID1")
                         
-                        let address: String = "0xf892400Dc3C5a5eeBc96070ccd575D6A720F0F9fssss"
-                        let data: String = "{\"jsonrpc\":\"2.0\",\"method\":\"eth_getBalance\",\"params\":[\"\(address)\",\"latest\"],\"id\":67}"
-                        let relay = pocketCore.createRelay(blockchain: "ETH", netID: 4, version: "0", data: data, devID: "DEVID1")
+                    expect(relay.isValid()).to(beTrue())
                         
-                        expect(relay.isValid()).to(beTrue())
-                        
-                        pocketCore.send(relay: relay, onSuccess: { response in
-                            fatalError()
-                        }, onError: {error in
-                            expect(error).to(matchError(PocketError.custom(message: "invalid argument 0: hex string has length 44, want 40 for common.Address")))
-                        })
-                    }, onError: {error in
+                    pocketCore.send(relay: relay, onSuccess: { response in
                         fatalError()
+                    }, onError: {error in
+                        expect(error).to(matchError(PocketError.custom(message: "invalid argument 0: hex string has length 44, want 40 for common.Address")))
                     })
                 }
                 
@@ -148,8 +129,6 @@ class PocketSwiftTests: QuickSpec {
                     })
                 }
             }
-            
         }
     }
-
 }
