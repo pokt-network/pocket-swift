@@ -11,7 +11,6 @@ import Foundation
 public struct Node: Model {
     public let network: String
     public let netID: Int
-    public let version: String
     public let ip: String
     public let port: Int
     public var ipPort: String
@@ -19,10 +18,9 @@ public struct Node: Model {
     private let nonSSLProtocol = "http://"
     private let SSLProtocol = "https://"
     
-    init(network: String, netID: Int, version: String, ip: String, port: Int, ipPort: String) {
+    init(network: String, netID: Int, ip: String, port: Int, ipPort: String) {
         self.netID = netID
         self.network = network
-        self.version = version
         self.ip = ip
         self.port = port
         self.ipPort = ipPort
@@ -32,10 +30,9 @@ public struct Node: Model {
         }
     }
     
-    init(network: String, netID: Int, version: String, ipPort: String) {
+    init(network: String, netID: Int, ipPort: String) {
         self.netID = netID
         self.network = network
-        self.version = version
         self.ipPort = ipPort
         
         var ipPortData = ipPort.components(separatedBy: ":")
@@ -49,8 +46,8 @@ public struct Node: Model {
         
     }
     
-    func isEqual(netID: Int, network: String, version: String) -> Bool {
-        if self.netID == netID && self.network == network && self.version == version {
+    func isEqual(netID: Int, network: String) -> Bool {
+        if self.netID == netID && self.network == network {
             return true
         }
         return false
