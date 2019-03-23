@@ -8,13 +8,13 @@
 
 import Foundation
 
-public struct Wallet: Model {
+public struct Wallet {
     public let address: String
     public let privateKey: String
     public let subNetwork: String
-    public let data: String
+    public let data: [AnyHashable: Any]?
     
-    init(address: String, privateKey: String, subNetwork: String, data: String) {
+    init(address: String, privateKey: String, subNetwork: String, data: [AnyHashable: Any]?) {
         self.address = address
         self.privateKey = privateKey
         self.subNetwork = subNetwork

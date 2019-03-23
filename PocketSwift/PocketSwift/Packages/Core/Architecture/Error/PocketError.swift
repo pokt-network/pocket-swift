@@ -13,6 +13,9 @@ enum PocketError: Error {
     case invalidRelay
     case invalidReport
     case custom(message: String)
+    case pluginCreation(message: String)
+    case walletCreation(message: String)
+    case walletImport(message: String)
 }
 
 extension PocketError: LocalizedError {
@@ -24,7 +27,10 @@ extension PocketError: LocalizedError {
             return NSLocalizedString("Relay is missing a property, please verify all properties.", comment: "Relay is missing a property, please verify all properties.")
         case .invalidReport:
             return NSLocalizedString("Report is missing a property, please verify all properties.", comment: "Report is missing a property, please verify all properties.")
-        case let .custom(message) :
+        case let .custom(message),
+             let .pluginCreation(message),
+             let .walletCreation(message),
+             let .walletImport(message) :
             return NSLocalizedString(message, comment: message)
         }
     }
