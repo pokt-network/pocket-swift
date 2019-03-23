@@ -7,10 +7,94 @@
 //
 
 import Foundation
+import JavaScriptCore
 
-public class PocketAion: NSObject {
+public class PocketAion: PocketCore {
     
-    public func test() {
-        print("test Aion")
+    private let jsContext: JSContext = JSContext()
+    
+    init(devID: String, netIDs: [Int], maxNodes: Int = 5, requestTimeOut: Int = 1000, schedulerProvider: SchedulerProvider) {
+        super.init(devID: devID, networkName: "AION", netIDs: netIDs, maxNodes: maxNodes, requestTimeOut: requestTimeOut, schedulerProvider: schedulerProvider)
+        
+        self.jsContext.exceptionHandler = {(context: JSContext?, error: JSValue?) in
+            try? self.throwErrorWith(message: error?.toString() ?? "no details")
+        }
+        
+        // Retrieve and evaluate all javascript dependencies
+        do {
+            let cryptoPolyfillJS = try AionUtils.getFileForResource(name: "crypto-polyfill", ext: "js")
+            let promiseJs = try AionUtils.getFileForResource(name: "promiseDeps", ext: "js")
+            let bigIntJs = try AionUtils.getFileForResource(name: "bigInt-polyfill", ext: "js")
+            let distJS = try AionUtils.getFileForResource(name: "web3Aion", ext: "js")
+            
+            self.jsContext.evaluateScript("var window = this;")
+            self.jsContext.evaluateScript(cryptoPolyfillJS)
+            self.jsContext.evaluateScript(promiseJs)
+            self.jsContext.evaluateScript(bigIntJs)
+            self.jsContext.evaluateScript(distJS)
+            self.jsContext.evaluateScript("var aionInstance = new AionWeb3();")
+        }catch let error {
+            fatalError(error.localizedDescription)
+        }
     }
+    
+    public convenience init(devID: String, netIDs: [Int], maxNodes: Int = 5, requestTimeOut: Int = 1000) {
+        self.init(devID: devID, netIDs: netIDs, maxNodes: maxNodes, requestTimeOut: requestTimeOut, schedulerProvider: .main)
+    }
+    
+    public convenience init(devID: String, netID: Int, maxNodes: Int = 5, requestTimeOut: Int = 1000) {
+        let netIDs: [Int] = [netID]
+        self.init(devID: devID, netIDs: netIDs, maxNodes: maxNodes, requestTimeOut: requestTimeOut)
+    }
+    
+    
+    private func throwErrorWith(message: String) throws {
+        throw PocketError.custom(message: "Unknown error happened: \(message)")
+    }
+    
+    override func createWallet(subnetwork: String, data: [AnyHashable : Any]?) throws -> Wallet {
+        guard let account = self.jsContext.evaluateScript("aionInstance.eth.accounts.create()")?.toObject() as? [AnyHashable: Any] else {
+            throw PocketError.walletCreation(message: "Failed to create account")
+        }
+        
+        guard let privateKey = account["privateKey"] as? String else {
+            throw PocketError.walletCreation(message: "Invalid private key")
+        }
+        
+        guard let address = account["address"] as? String else {
+            throw PocketError.walletCreation(message: "Invalid address")
+        }
+        
+        return Wallet(address: address, privateKey: privateKey, subNetwork: subnetwork, data: data)
+    }
+    
+    override func importWallet(address: String?, privateKey: String, subnetwork: String, data: [AnyHashable : Any]?) throws -> Wallet {
+        guard let publicKey = address else {
+            throw PocketError.walletImport(message: "Invalid public key")
+        }
+        
+        if (self.jsContext.evaluateScript("var account = aionInstance.eth.accounts.privateKeyToAccount('\(privateKey)')") != nil) {
+            guard let account = self.jsContext.objectForKeyedSubscript("account")?.toObject() as? [AnyHashable: Any] else {
+                throw PocketError.walletImport(message: "Failed to create account object")
+            }
+            
+            if account["address"] as? String != publicKey {
+                throw PocketError.walletImport(message: "Invalid address provided.")
+            }
+            
+            return Wallet(address: publicKey, privateKey: privateKey, subNetwork: subnetwork, data: nil)
+        }
+        
+        throw PocketError.walletImport(message: "Failed to create account js object")
+    }
+    
+    private func removeJSGlobalObjects() {
+        self.jsContext.evaluateScript("window.transactionCreationCallback = ''")
+        self.jsContext.evaluateScript("account = ''")
+    }
+    
+    deinit {
+        self.removeJSGlobalObjects()
+    }
+
 }

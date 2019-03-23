@@ -9,8 +9,8 @@
 import Foundation
 
 protocol PocketPlugin {
-    func createWallet(subnetwork: String, data: String) -> Wallet
-    func importWallet(address: String, privateKey: String, subnetwork: String, data: String)
+    func createWallet(subnetwork: String, data: [AnyHashable: Any]?) throws -> Wallet
+    func importWallet(address: String?, privateKey: String, subnetwork: String, data: [AnyHashable : Any]?) throws -> Wallet
 }
 
 public class PocketCore: NSObject, PocketPlugin {
@@ -42,12 +42,12 @@ public class PocketCore: NSObject, PocketPlugin {
         self.init(devID: devID, networkName: networkName, netIDs: netIDs, maxNodes: maxNodes, requestTimeOut: requestTimeOut)
     }
     
-    func createWallet(subnetwork: String, data: String) -> Wallet{
+    func createWallet(subnetwork: String, data: [AnyHashable : Any]?) throws -> Wallet {
         preconditionFailure("This method must be overridden")
     }
     
-    func importWallet(address: String, privateKey: String, subnetwork: String, data: String) {
-        preconditionFailure("This method must be overridden") 
+    func importWallet(address: String?, privateKey: String, subnetwork: String, data: [AnyHashable : Any]?) throws -> Wallet {
+        preconditionFailure("This method must be overridden")
     }
     
     public func createRelay(blockchain: String, netID: Int, data: String, devID: String) -> Relay {

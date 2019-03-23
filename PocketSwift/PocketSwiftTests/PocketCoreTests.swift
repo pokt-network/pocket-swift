@@ -13,10 +13,10 @@ import RxBlocking
 
 @testable import PocketSwift
 
-class PocketSwiftTests: QuickSpec {
+class PocketCoreTests: QuickSpec {
 
     override func spec() {
-        describe("Pocket Class tests") {
+        describe("Pocket Core Class tests") {
             var pocketCore: PocketCore!
             var pocketCoreFail: PocketCore!
             
@@ -25,7 +25,7 @@ class PocketSwiftTests: QuickSpec {
                 pocketCoreFail = PocketCore(devID: "DEVID1", networkName: "ETH2", netIDs: [4, 1], maxNodes: 5, requestTimeOut: 1000, schedulerProvider: .test)
             }
             
-            it("should instantiate a Pocket instance") {
+            it("should instantiate a Pocket Core instance") {
                 expect(pocketCore).toNot(beNil())
             }
             
