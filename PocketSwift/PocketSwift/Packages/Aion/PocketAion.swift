@@ -9,18 +9,18 @@
 import Foundation
 import JavaScriptCore
 
-public class PocketAion: PocketCore {
-    
+public class PocketAion: PocketCore, PocketPlugin {
+    var network: String = "AION"
+    //public var eth: EthRCP!
     private let jsContext: JSContext = JSContext()
     
     init(devID: String, netIDs: [Int], maxNodes: Int = 5, requestTimeOut: Int = 1000, schedulerProvider: SchedulerProvider) {
-        super.init(devID: devID, networkName: "AION", netIDs: netIDs, maxNodes: maxNodes, requestTimeOut: requestTimeOut, schedulerProvider: schedulerProvider)
+        super.init(devID: devID, networkName: self.network, netIDs: netIDs, maxNodes: maxNodes, requestTimeOut: requestTimeOut, schedulerProvider: schedulerProvider)
         
         self.jsContext.exceptionHandler = {(context: JSContext?, error: JSValue?) in
             try? self.throwErrorWith(message: error?.toString() ?? "no details")
         }
         
-        // Retrieve and evaluate all javascript dependencies
         do {
             let cryptoPolyfillJS = try AionUtils.getFileForResource(name: "crypto-polyfill", ext: "js")
             let promiseJs = try AionUtils.getFileForResource(name: "promiseDeps", ext: "js")
@@ -36,6 +36,8 @@ public class PocketAion: PocketCore {
         }catch let error {
             fatalError(error.localizedDescription)
         }
+        
+        //self.eth = EthRCP(pocketAion: self)
     }
     
     public convenience init(devID: String, netIDs: [Int], maxNodes: Int = 5, requestTimeOut: Int = 1000) {
@@ -52,7 +54,7 @@ public class PocketAion: PocketCore {
         throw PocketError.custom(message: "Unknown error happened: \(message)")
     }
     
-    override func createWallet(subnetwork: String, data: [AnyHashable : Any]?) throws -> Wallet {
+    override public func createWallet(subnetwork: String, data: [AnyHashable : Any]?) throws -> Wallet {
         guard let account = self.jsContext.evaluateScript("aionInstance.eth.accounts.create()")?.toObject() as? [AnyHashable: Any] else {
             throw PocketError.walletCreation(message: "Failed to create account")
         }
@@ -68,7 +70,7 @@ public class PocketAion: PocketCore {
         return Wallet(address: address, privateKey: privateKey, subNetwork: subnetwork, data: data)
     }
     
-    override func importWallet(address: String?, privateKey: String, subnetwork: String, data: [AnyHashable : Any]?) throws -> Wallet {
+    override public func importWallet(address: String?, privateKey: String, subnetwork: String, data: [AnyHashable : Any]?) throws -> Wallet {
         guard let publicKey = address else {
             throw PocketError.walletImport(message: "Invalid public key")
         }
@@ -86,6 +88,45 @@ public class PocketAion: PocketCore {
         }
         
         throw PocketError.walletImport(message: "Failed to create account js object")
+    }
+    
+    public func createTransaction(wallet: Wallet, params: [AnyHashable : Any]) throws -> Transaction {
+        var pocketTx = Transaction(obj: ["network": self.network, "subnetwork": wallet.subNetwork])
+        let pocketTxData = try AionTransactionData(nonce: params["nonce"], to: params["to"], data: params["data"], value: params["value"], gasPrice: params["nrgPrice"], gas: params["nrg"])
+        
+        pocketTx.transactionData = pocketTxData
+        
+        let promiseBlock: @convention(block) (JavaScriptCore.JSValue, JavaScriptCore.JSValue) -> () = { (error, result) in
+            if !error.isNull {
+                try? self.throwErrorWith(message: "Failed to sign transaction with error: \(error)")
+            }else{
+                let resultObject = result.toObject() as! [AnyHashable: Any]
+                
+                guard let rawTx = resultObject["rawTransaction"] as? String else {
+                    try? self.throwErrorWith(message: "Failed to retrieve raw signed transaction")
+                    return
+                }
+                
+                pocketTx.serializedTransaction = rawTx
+            }
+        }
+        
+        guard let window = self.jsContext.objectForKeyedSubscript("window") else {
+            throw PocketError.transactionCreation(message: "Failed to retrieve window js object")
+        }
+        
+        window.setObject(promiseBlock, forKeyedSubscript: "transactionCreationCallback" as NSString)
+        let signTxJSStr = try AionUtils.getFileForResource(name: "signTransaction", ext: "js")
+        
+        if !signTxJSStr.isEmpty {
+            self.jsContext.evaluateScript(pocketTxData.getStringFormatted(signTx: signTxJSStr, privateKey: wallet.privateKey))
+        }else {
+            throw PocketError.transactionCreation(message: "Failed to retrieve signed tx js string")
+        }
+        
+        self.removeJSGlobalObjects()
+        
+        return pocketTx
     }
     
     private func removeJSGlobalObjects() {

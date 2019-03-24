@@ -16,6 +16,7 @@ enum PocketError: Error {
     case pluginCreation(message: String)
     case walletCreation(message: String)
     case walletImport(message: String)
+    case transactionCreation(message: String)
 }
 
 extension PocketError: LocalizedError {
@@ -30,7 +31,8 @@ extension PocketError: LocalizedError {
         case let .custom(message),
              let .pluginCreation(message),
              let .walletCreation(message),
-             let .walletImport(message) :
+             let .walletImport(message),
+             let .transactionCreation(message):
             return NSLocalizedString(message, comment: message)
         }
     }

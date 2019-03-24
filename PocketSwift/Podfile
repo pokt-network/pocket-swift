@@ -7,7 +7,7 @@ target 'PocketSwift' do
   inhibit_all_warnings!
 
   pod 'RxSwift',    '~> 4.0'
-   pod 'RxBlocking', '~> 4.0'
+  pod 'RxBlocking', '~> 4.0'
 
   target 'PocketSwiftTests' do
     inherit! :search_paths
