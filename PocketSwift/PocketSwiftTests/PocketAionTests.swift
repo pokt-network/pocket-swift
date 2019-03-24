@@ -71,6 +71,36 @@ class PocketAionTests: QuickSpec {
                     expect(error).to(matchError(PocketError.walletImport(message: "Invalid public key")))
                 }
             }
+            
+            it("should create a Transaction instance") {
+                do{
+                    let receiverAccount = try pocketAion.createWallet(subnetwork: subnet.mastery.rawValue, data: nil)
+                    let account = try pocketAion.createWallet(subnetwork: subnet.mastery.rawValue, data: nil)
+                    let txParams: [AnyHashable: Any] = ["nonce": "1", "to": receiverAccount.address , "data": "", "value": "0x989680", "nrgPrice": "0x989680", "nrg": "0x989680"]
+                    
+                    let signedTx = try pocketAion.createTransaction(wallet: account, params: txParams)
+                    
+                    expect(signedTx).notTo(beNil())
+                    expect(signedTx.serializedTransaction).notTo(beNil())
+                    
+                } catch {
+                  fatalError()
+                }
+            }
+            
+            it("should fail to create a Transaction instance due to the nonce parameter is nil") {
+                do{
+                    let receiverAccount = try pocketAion.createWallet(subnetwork: subnet.mastery.rawValue, data: nil)
+                    let account = try pocketAion.createWallet(subnetwork: subnet.mastery.rawValue, data: nil)
+                    let txParams: [AnyHashable: Any] = ["to": receiverAccount.address , "data": "", "value": "0x989680", "nrgPrice": "0x989680", "nrg": "0x989680"]
+                    
+                    let _ = try pocketAion.createTransaction(wallet: account, params: txParams)
+                    fatalError()
+                    
+                } catch let error{
+                    expect(error).to(matchError(PocketError.transactionCreation(message: "Failed to retrieve the nonce")))
+                }
+            }
         }
     }
 
