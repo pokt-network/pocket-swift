@@ -12,16 +12,18 @@ struct RelayData: Input {
     let jsonrpc: String
     let method: String
     let params: [String]
+    let id: Int
     
     init(jsonrpc: String, method: String, params: [String]) {
         self.jsonrpc = jsonrpc
         self.method = method
         self.params = params
+        self.id = Int(Date().timeIntervalSince1970)
     }
     
     func toParameters() -> Parameters {
         var data: Parameters = [:]
-        data.fill("jsonrpc", self.jsonrpc, "method", self.method, "params", self.params)
+        data.fill("jsonrpc", self.jsonrpc, "method", self.method, "params", self.params, "id", self.id)
         return data
     }
 }

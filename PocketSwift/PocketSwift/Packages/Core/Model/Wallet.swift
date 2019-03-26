@@ -11,13 +11,13 @@ import Foundation
 public struct Wallet {
     public let address: String
     public let privateKey: String
-    public let subNetwork: String
+    public let networkID: Int
     public let data: [AnyHashable: Any]?
     
-    init(address: String, privateKey: String, subNetwork: String, data: [AnyHashable: Any]?) {
+    init(address: String, privateKey: String, networkID: Int, data: [AnyHashable: Any]?) {
         self.address = address
         self.privateKey = privateKey
-        self.subNetwork = subNetwork
+        self.networkID = networkID
         self.data = data
     }
 }

@@ -55,6 +55,7 @@
 		C84E023C2247C97A00B891A8 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E023B2247C97A00B891A8 /* Network.swift */; };
 		C84F2C90223E88FA00BA1AA8 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84F2C8F223E88FA00BA1AA8 /* JSON.swift */; };
 		C84F2C92223E90C900BA1AA8 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84F2C91223E90C900BA1AA8 /* Array+Extensions.swift */; };
+		C856BAD922491D5000150D85 /* DefaultBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C856BAD822491D5000150D85 /* DefaultBlock.swift */; };
 		C8E43FD5223EFEC700623885 /* PocketError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E43FD4223EFEC700623885 /* PocketError.swift */; };
 		C8F25FC022402BC10081B039 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F25FBF22402BC10081B039 /* Report.swift */; };
 		C8F25FC2224031410081B039 /* ReportRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F25FC1224031410081B039 /* ReportRepository.swift */; };
@@ -128,6 +129,7 @@
 		C84E023B2247C97A00B891A8 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		C84F2C8F223E88FA00BA1AA8 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		C84F2C91223E90C900BA1AA8 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		C856BAD822491D5000150D85 /* DefaultBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBlock.swift; sourceTree = "<group>"; };
 		C8E43FD4223EFEC700623885 /* PocketError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketError.swift; sourceTree = "<group>"; };
 		C8F25FBF22402BC10081B039 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		C8F25FC1224031410081B039 /* ReportRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRepository.swift; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 			isa = PBXGroup;
 			children = (
 				C84E02392247C7AF00B891A8 /* EthRPCMethod.swift */,
+				C856BAD822491D5000150D85 /* DefaultBlock.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -650,6 +653,7 @@
 				C84F2C90223E88FA00BA1AA8 /* JSON.swift in Sources */,
 				C80407ED224698910014EFE0 /* Transaction.swift in Sources */,
 				C84E02372247C6C900B891A8 /* EthRPC.swift in Sources */,
+				C856BAD922491D5000150D85 /* DefaultBlock.swift in Sources */,
 				C80576A3223FD0F400B041EB /* Error+Extensions.swift in Sources */,
 				C8390233223DB8E20092A9DF /* DispatchController.swift in Sources */,
 				C8F25FC2224031410081B039 /* ReportRepository.swift in Sources */,

@@ -9,8 +9,8 @@
 import Foundation
 
 protocol PocketSDK {
-    func createWallet(subnetwork: String, data: [AnyHashable: Any]?) throws -> Wallet
-    func importWallet(address: String?, privateKey: String, subnetwork: String, data: [AnyHashable : Any]?) throws -> Wallet
+    func createWallet(networkID: Int, data: [AnyHashable: Any]?) throws -> Wallet
+    func importWallet(address: String?, privateKey: String, networkID: Int, data: [AnyHashable : Any]?) throws -> Wallet
 }
 
 protocol PocketPlugin: PocketSDK {
@@ -47,11 +47,11 @@ public class PocketCore: NSObject, PocketSDK {
         self.init(devID: devID, networkName: networkName, netIDs: netIDs, maxNodes: maxNodes, requestTimeOut: requestTimeOut)
     }
     
-    func createWallet(subnetwork: String, data: [AnyHashable : Any]?) throws -> Wallet {
+    func createWallet(networkID: Int, data: [AnyHashable : Any]?) throws -> Wallet {
         preconditionFailure("This method must be overridden")
     }
     
-    func importWallet(address: String?, privateKey: String, subnetwork: String, data: [AnyHashable : Any]?) throws -> Wallet {
+    func importWallet(address: String?, privateKey: String, networkID: Int, data: [AnyHashable : Any]?) throws -> Wallet {
         preconditionFailure("This method must be overridden")
     }
     
