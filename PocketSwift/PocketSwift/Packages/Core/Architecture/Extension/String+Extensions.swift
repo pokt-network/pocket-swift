@@ -20,4 +20,20 @@ extension String {
         }
         return nil
     }
+    
+    func toHex() -> Int64? {
+        if self.hasZeroHexPrefix() {
+            let newVal = self.dropFirst(2)
+            return Int64(newVal, radix: 16)
+        }
+        
+        return Int64(self, radix: 16)
+    }
+    
+    private func hasZeroHexPrefix() -> Bool{
+        if self.hasPrefix("0x") {
+            return true
+        }
+        return false
+    }
 }

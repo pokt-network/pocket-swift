@@ -36,13 +36,13 @@ class PocketCoreTests: QuickSpec {
                         expect(nodes).toEventuallyNot(beNil())
                         expect(nodes).toEventuallyNot(beEmpty())
                     }, onError: { error in
-                        fatalError()
+                        XCTFail()
                     })
                 }
                 
                 it("should fail to retrieve a list of nodes from the Node Dispatcher") {
                     pocketCoreFail.retrieveNodes(onSuccess: { nodes in
-                        fatalError()
+                        XCTFail()
                     }, onError: {error in
                         expect(error).to(matchError(PocketError.nodeNotFound))
                     })
@@ -59,7 +59,7 @@ class PocketCoreTests: QuickSpec {
                         expect(response).notTo(beNil())
                         expect(response).notTo(beEmpty())
                     }, onError: {error in
-                        fatalError()
+                        XCTFail()
                     })
                 }
                 
@@ -71,7 +71,7 @@ class PocketCoreTests: QuickSpec {
                     expect(relay.isValid()).to(beTrue())
                         
                     pocketCore.send(relay: relay, onSuccess: { response in
-                        fatalError()
+                        XCTFail()
                     }, onError: {error in
                         expect(error).to(matchError(PocketError.nodeNotFound))
                     })
@@ -85,7 +85,7 @@ class PocketCoreTests: QuickSpec {
                     expect(relay.isValid()).to(beTrue())
                         
                     pocketCore.send(relay: relay, onSuccess: { response in
-                        fatalError()
+                        XCTFail()
                     }, onError: {error in
                         expect(error).to(matchError(PocketError.custom(message: "invalid argument 0: hex string has length 44, want 40 for common.Address")))
                     })
@@ -103,10 +103,10 @@ class PocketCoreTests: QuickSpec {
                             expect(response).notTo(beEmpty())
                             expect(response).toEventually(beginWith("Okay"))
                         }, onError: {error in
-                            fatalError()
+                            XCTFail()
                         })
                     }, onError: {error in
-                        fatalError()
+                        XCTFail()
                     })
                 }
                 
@@ -125,7 +125,7 @@ class PocketCoreTests: QuickSpec {
                             fatalError()
                         })*/
                     }, onError: {error in
-                        fatalError()
+                        XCTFail()
                     })
                 }
             }

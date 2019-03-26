@@ -8,7 +8,10 @@
 
 import Foundation
 
-struct Network {
-    let netID: Int
+public struct Network {
     let eth: EthRPC
+    
+    init(eth: EthRPC) {
+        self.eth = eth
+    }
 }

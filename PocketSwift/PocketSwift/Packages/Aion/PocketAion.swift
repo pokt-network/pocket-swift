@@ -11,8 +11,8 @@ import JavaScriptCore
 
 public class PocketAion: PocketCore, PocketPlugin {
     var network: String = "AION"
-    //public var eth: EthRCP!
     private let jsContext: JSContext = JSContext()
+    private var networks: [Int: Network] = [:]
     
     init(devID: String, netIDs: [Int], maxNodes: Int = 5, requestTimeOut: Int = 1000, schedulerProvider: SchedulerProvider) {
         super.init(devID: devID, networkName: self.network, netIDs: netIDs, maxNodes: maxNodes, requestTimeOut: requestTimeOut, schedulerProvider: schedulerProvider)
@@ -37,7 +37,10 @@ public class PocketAion: PocketCore, PocketPlugin {
             fatalError(error.localizedDescription)
         }
         
-        //self.eth = EthRCP(pocketAion: self)
+        netIDs.forEach{ netID in
+            self.networks[netID] = Network(eth: AionEthRPC(pocketAion: self, netID: netID))
+        }
+        
     }
     
     public convenience init(devID: String, netIDs: [Int], maxNodes: Int = 5, requestTimeOut: Int = 1000) {
@@ -49,12 +52,19 @@ public class PocketAion: PocketCore, PocketPlugin {
         self.init(devID: devID, netIDs: netIDs, maxNodes: maxNodes, requestTimeOut: requestTimeOut)
     }
     
+    public func network(_ netID: Int) -> Network {
+        if !self.networks.keys.contains(netID) {
+            fatalError("The Network ID provided is not available")
+        }
+        return self.networks[netID]!
+    }
+    
     
     private func throwErrorWith(message: String) throws {
         throw PocketError.custom(message: "Unknown error happened: \(message)")
     }
     
-    override public func createWallet(subnetwork: String, data: [AnyHashable : Any]?) throws -> Wallet {
+    override public func createWallet(networkID: Int, data: [AnyHashable : Any]?) throws -> Wallet {
         guard let account = self.jsContext.evaluateScript("aionInstance.eth.accounts.create()")?.toObject() as? [AnyHashable: Any] else {
             throw PocketError.walletCreation(message: "Failed to create account")
         }
@@ -67,10 +77,10 @@ public class PocketAion: PocketCore, PocketPlugin {
             throw PocketError.walletCreation(message: "Invalid address")
         }
         
-        return Wallet(address: address, privateKey: privateKey, subNetwork: subnetwork, data: data)
+        return Wallet(address: address, privateKey: privateKey, networkID: networkID, data: data)
     }
     
-    override public func importWallet(address: String?, privateKey: String, subnetwork: String, data: [AnyHashable : Any]?) throws -> Wallet {
+    override public func importWallet(address: String?, privateKey: String, networkID: Int, data: [AnyHashable : Any]?) throws -> Wallet {
         guard let publicKey = address else {
             throw PocketError.walletImport(message: "Invalid public key")
         }
@@ -84,14 +94,14 @@ public class PocketAion: PocketCore, PocketPlugin {
                 throw PocketError.walletImport(message: "Invalid address provided.")
             }
             
-            return Wallet(address: publicKey, privateKey: privateKey, subNetwork: subnetwork, data: nil)
+            return Wallet(address: publicKey, privateKey: privateKey, networkID: networkID, data: nil)
         }
         
         throw PocketError.walletImport(message: "Failed to create account js object")
     }
     
     public func createTransaction(wallet: Wallet, params: [AnyHashable : Any]) throws -> Transaction {
-        var pocketTx = Transaction(obj: ["network": self.network, "subnetwork": wallet.subNetwork])
+        var pocketTx = Transaction(obj: ["network": self.network, "subnetwork": wallet.networkID])
         let pocketTxData = try AionTransactionData(nonce: params["nonce"], to: params["to"], data: params["data"], value: params["value"], gasPrice: params["nrgPrice"], gas: params["nrg"])
         
         pocketTx.transactionData = pocketTxData
