@@ -47,6 +47,8 @@ Pod::Spec.new do |main|
 
   # Framework dependencies
   main.dependency "RxSwift",    "~> 4.0"
+  main.dependency "RxBlocking",    "~> 4.0"
+  main.dependency "BigInt"
 
 
 end

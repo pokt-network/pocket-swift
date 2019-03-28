@@ -22,12 +22,17 @@ struct AionTransactionData: TransactionData {
         if tupleValidation.result {
             throw PocketError.transactionCreation(message: "Failed to retrieve the \(tupleValidation.property)")
         }
-        self.nonce = nonce as! String
-        self.to = to as! String
+        
+        guard let nonceStr: String = nonce as? String, let toStr: String = to as? String, let valueStr: String = value as? String, let gasPriceStr: String = gasPrice as? String, let gasStr: String = gas as? String else {
+            fatalError("Invalid Parameters")
+        }
+        
+        self.nonce = nonceStr
+        self.to = toStr
         self.data = data as? String ?? ""
-        self.value = value as! String
-        self.gasPrice = gasPrice as! String
-        self.gas = gas as! String
+        self.value = valueStr
+        self.gasPrice = gasPriceStr
+        self.gas = gasStr
     }
     
     func getStringFormatted(signTx: String, privateKey: String) -> String {
