@@ -72,7 +72,7 @@ class PocketAionTests: QuickSpec {
                 }
             }
             
-            it("should create a Transaction instance and send it") {
+            it("should create ,sign and send a Transaction") {
                 do{
                     let receiverAccount = try pocketAion.createWallet(networkID: subnet.mastery.rawValue, data: nil)
                     let account = try pocketAion.createWallet(networkID: subnet.mastery.rawValue, data: nil)
