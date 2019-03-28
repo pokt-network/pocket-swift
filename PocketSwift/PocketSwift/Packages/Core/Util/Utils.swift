@@ -11,9 +11,9 @@ import Foundation
 class Utils {
     private init(){}
         
-    class func  areDirty(_ values: String...) throws -> Bool {
+    class func areDirty(_ values: String?...) throws -> Bool {
         for value in values {
-            if value.isEmpty {
+            if value == nil || value!.isEmpty {
                 return false
             }
         }

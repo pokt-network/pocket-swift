@@ -10,13 +10,18 @@ import Foundation
 
 extension Dictionary where Key == String, Value == Any {
     
-    mutating func fill(_ data: Any...) {
+    mutating func fill(_ data: Any?...) {
         if data.count % 2 != 0 {
             fatalError("You need to add pair values")
         }
         
         var key: Int = 0
         repeat {
+            if data[key + 1] == nil {
+                key += 2
+                continue
+            }
+            
             self[data[key] as! String] = data[key + 1]
             key += 2
         } while key < data.count - 1

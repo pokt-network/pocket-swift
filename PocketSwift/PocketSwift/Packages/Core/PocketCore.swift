@@ -8,17 +8,17 @@
 
 import Foundation
 
-protocol PocketSDK {
+protocol Pocket {
     func createWallet(networkID: Int, data: [AnyHashable: Any]?) throws -> Wallet
     func importWallet(address: String?, privateKey: String, networkID: Int, data: [AnyHashable : Any]?) throws -> Wallet
 }
 
-protocol PocketPlugin: PocketSDK {
-    var network: String {get set}
+protocol PocketPlugin: Pocket {
+    var NETWORK: String {get set}
     func createTransaction(wallet: Wallet, params: [AnyHashable : Any]) throws -> Transaction
 }
 
-public class PocketCore: NSObject, PocketSDK {
+public class PocketCore: NSObject, Pocket {
     
     let configuration: Configuration
     private let relayController: RelayController

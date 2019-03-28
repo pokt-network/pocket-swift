@@ -120,6 +120,20 @@ class PocketAionTests: QuickSpec {
                     XCTFail()
                 })
             }
+            
+            it("should get storage") {
+                guard let account = try? pocketAion.createWallet(networkID: subnet.mastery.rawValue, data: nil) else {
+                    XCTFail()
+                    return
+                }
+                
+                pocketAion.network(subnet.mastery.rawValue).eth.getStorageAt(address: account.address, position: 0, blockTag: .latest, onSuccess: {response in
+                    print(response)
+                }, onError: {error in
+                    print(error)
+                    XCTFail()
+                })
+            }
         }
     }
 

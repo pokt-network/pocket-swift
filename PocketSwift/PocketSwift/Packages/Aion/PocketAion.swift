@@ -10,12 +10,12 @@ import Foundation
 import JavaScriptCore
 
 public class PocketAion: PocketCore, PocketPlugin {
-    var network: String = "AION"
+    var NETWORK: String = "AION"
     private let jsContext: JSContext = JSContext()
     private var networks: [Int: Network] = [:]
     
     init(devID: String, netIDs: [Int], maxNodes: Int = 5, requestTimeOut: Int = 1000, schedulerProvider: SchedulerProvider) {
-        super.init(devID: devID, networkName: self.network, netIDs: netIDs, maxNodes: maxNodes, requestTimeOut: requestTimeOut, schedulerProvider: schedulerProvider)
+        super.init(devID: devID, networkName: self.NETWORK, netIDs: netIDs, maxNodes: maxNodes, requestTimeOut: requestTimeOut, schedulerProvider: schedulerProvider)
         
         self.jsContext.exceptionHandler = {(context: JSContext?, error: JSValue?) in
             try? self.throwErrorWith(message: error?.toString() ?? "no details")
@@ -38,7 +38,7 @@ public class PocketAion: PocketCore, PocketPlugin {
         }
         
         netIDs.forEach{ netID in
-            self.networks[netID] = Network(eth: AionEthRPC(pocketAion: self, netID: netID))
+            self.networks[netID] = Network(eth: AionEthRPC(pocketAion: self, netID: netID), net: AionNetRPC(pocketAion: self, netID: netID))
         }
         
     }

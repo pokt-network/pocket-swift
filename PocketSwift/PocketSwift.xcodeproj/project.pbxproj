@@ -21,10 +21,14 @@
 		C80D8B5F22458DBB003AE3E8 /* resource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C80D8B5E22458DBB003AE3E8 /* resource.bundle */; };
 		C80D8B6222458E7D003AE3E8 /* AionUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80D8B6122458E7D003AE3E8 /* AionUtils.swift */; };
 		C80D8B6422459400003AE3E8 /* PocketAionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80D8B6322459400003AE3E8 /* PocketAionTests.swift */; };
+		C82D7738224D20F400612EE1 /* RPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82D7737224D20F400612EE1 /* RPC.swift */; };
+		C82D773A224D215D00612EE1 /* NetRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82D7739224D215D00612EE1 /* NetRPC.swift */; };
+		C82D773C224D218A00612EE1 /* NetRPCMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82D773B224D218A00612EE1 /* NetRPCMethod.swift */; };
+		C82D773E224D21F700612EE1 /* AionNetRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82D773D224D21F700612EE1 /* AionNetRPC.swift */; };
 		C839019A223D82660092A9DF /* PocketSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8390190223D82660092A9DF /* PocketSwift.framework */; };
 		C839019F223D82660092A9DF /* PocketCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C839019E223D82660092A9DF /* PocketCoreTests.swift */; };
 		C83901A1223D82660092A9DF /* PocketSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = C8390193223D82660092A9DF /* PocketSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C83901EF223D9D150092A9DF /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83901DC223D9D150092A9DF /* Dictionary+Extension.swift */; };
+		C83901EF223D9D150092A9DF /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83901DC223D9D150092A9DF /* Dictionary+Extensions.swift */; };
 		C83901F0223D9D150092A9DF /* ServerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83901DE223D9D150092A9DF /* ServerConfiguration.swift */; };
 		C83901F1223D9D150092A9DF /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83901DF223D9D150092A9DF /* Configuration.swift */; };
 		C83901F2223D9D150092A9DF /* WebServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83901E1223D9D150092A9DF /* WebServiceImpl.swift */; };
@@ -60,6 +64,7 @@
 		C8F25FC022402BC10081B039 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F25FBF22402BC10081B039 /* Report.swift */; };
 		C8F25FC2224031410081B039 /* ReportRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F25FC1224031410081B039 /* ReportRepository.swift */; };
 		C8F25FC4224031CE0081B039 /* ReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F25FC3224031CE0081B039 /* ReportController.swift */; };
+		C8FA35392249E01900D31B8C /* BigInt+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FA35382249E01900D31B8C /* BigInt+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +95,10 @@
 		C80D8B5E22458DBB003AE3E8 /* resource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = resource.bundle; sourceTree = "<group>"; };
 		C80D8B6122458E7D003AE3E8 /* AionUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AionUtils.swift; sourceTree = "<group>"; };
 		C80D8B6322459400003AE3E8 /* PocketAionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketAionTests.swift; sourceTree = "<group>"; };
+		C82D7737224D20F400612EE1 /* RPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPC.swift; sourceTree = "<group>"; };
+		C82D7739224D215D00612EE1 /* NetRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetRPC.swift; sourceTree = "<group>"; };
+		C82D773B224D218A00612EE1 /* NetRPCMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetRPCMethod.swift; sourceTree = "<group>"; };
+		C82D773D224D21F700612EE1 /* AionNetRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AionNetRPC.swift; sourceTree = "<group>"; };
 		C8390190223D82660092A9DF /* PocketSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PocketSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8390193223D82660092A9DF /* PocketSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PocketSwift.h; sourceTree = "<group>"; };
 		C8390194223D82660092A9DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -98,7 +107,7 @@
 		C83901A0223D82660092A9DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C83901AC223D842B0092A9DF /* QA.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = QA.xcconfig; sourceTree = "<group>"; };
 		C83901AD223D84350092A9DF /* PROD.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = PROD.xcconfig; sourceTree = "<group>"; };
-		C83901DC223D9D150092A9DF /* Dictionary+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
+		C83901DC223D9D150092A9DF /* Dictionary+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extensions.swift"; sourceTree = "<group>"; };
 		C83901DE223D9D150092A9DF /* ServerConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConfiguration.swift; sourceTree = "<group>"; };
 		C83901DF223D9D150092A9DF /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		C83901E1223D9D150092A9DF /* WebServiceImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceImpl.swift; sourceTree = "<group>"; };
@@ -134,6 +143,7 @@
 		C8F25FBF22402BC10081B039 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		C8F25FC1224031410081B039 /* ReportRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRepository.swift; sourceTree = "<group>"; };
 		C8F25FC3224031CE0081B039 /* ReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportController.swift; sourceTree = "<group>"; };
+		C8FA35382249E01900D31B8C /* BigInt+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BigInt+Extensions.swift"; sourceTree = "<group>"; };
 		F134964CF4DC5419172A8474 /* Pods-PocketSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketSwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketSwiftTests/Pods-PocketSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -179,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				C80407F62246C8B30014EFE0 /* AionEthRPC.swift */,
+				C82D773D224D21F700612EE1 /* AionNetRPC.swift */,
 			);
 			path = RPC;
 			sourceTree = "<group>";
@@ -299,10 +310,11 @@
 		C83901DB223D9D150092A9DF /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				C83901DC223D9D150092A9DF /* Dictionary+Extension.swift */,
+				C83901DC223D9D150092A9DF /* Dictionary+Extensions.swift */,
 				C84F2C91223E90C900BA1AA8 /* Array+Extensions.swift */,
 				C80576A0223FC57E00B041EB /* String+Extensions.swift */,
 				C80576A2223FD0F400B041EB /* Error+Extensions.swift */,
+				C8FA35382249E01900D31B8C /* BigInt+Extensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -348,6 +360,8 @@
 				C83901ED223D9D150092A9DF /* Input.swift */,
 				C80407EE2246A7350014EFE0 /* TransactionData.swift */,
 				C84E02362247C6C900B891A8 /* EthRPC.swift */,
+				C82D7737224D20F400612EE1 /* RPC.swift */,
+				C82D7739224D215D00612EE1 /* NetRPC.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -403,6 +417,7 @@
 			children = (
 				C84E02392247C7AF00B891A8 /* EthRPCMethod.swift */,
 				C856BAD822491D5000150D85 /* DefaultBlock.swift */,
+				C82D773B224D218A00612EE1 /* NetRPCMethod.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -491,10 +506,11 @@
 				TargetAttributes = {
 					C839018F223D82660092A9DF = {
 						CreatedOnToolsVersion = 10.1;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 					};
 					C8390198223D82660092A9DF = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -504,6 +520,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = C8390186223D82660092A9DF;
 			productRefGroup = C8390191223D82660092A9DF /* Products */;
@@ -546,9 +563,11 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-PocketSwiftTests/Pods-PocketSwiftTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -556,9 +575,11 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -623,6 +644,7 @@
 				C80934982241AF490073B734 /* SchedulerProvider.swift in Sources */,
 				C84E023C2247C97A00B891A8 /* Network.swift in Sources */,
 				C8390231223DB8630092A9DF /* DispatchRepository.swift in Sources */,
+				C82D773A224D215D00612EE1 /* NetRPC.swift in Sources */,
 				C83901F3223D9D150092A9DF /* Observer.swift in Sources */,
 				C8390235223DBA380092A9DF /* Node.swift in Sources */,
 				C83901FB223D9D150092A9DF /* Repository.swift in Sources */,
@@ -632,6 +654,7 @@
 				C8F25FC022402BC10081B039 /* Report.swift in Sources */,
 				C80D8B6222458E7D003AE3E8 /* AionUtils.swift in Sources */,
 				C83901F8223D9D150092A9DF /* Endpoint.swift in Sources */,
+				C8FA35392249E01900D31B8C /* BigInt+Extensions.swift in Sources */,
 				C8390209223DA2CB0092A9DF /* RelayController.swift in Sources */,
 				C8F25FC4224031CE0081B039 /* ReportController.swift in Sources */,
 				C839022B223DA9D30092A9DF /* PocketEth.swift in Sources */,
@@ -648,14 +671,17 @@
 				C839022D223DAA0B0092A9DF /* PocketAion.swift in Sources */,
 				C8390205223DA1330092A9DF /* Utils.swift in Sources */,
 				C80407EF2246A7350014EFE0 /* TransactionData.swift in Sources */,
-				C83901EF223D9D150092A9DF /* Dictionary+Extension.swift in Sources */,
+				C83901EF223D9D150092A9DF /* Dictionary+Extensions.swift in Sources */,
 				C83901F0223D9D150092A9DF /* ServerConfiguration.swift in Sources */,
+				C82D773C224D218A00612EE1 /* NetRPCMethod.swift in Sources */,
 				C84F2C90223E88FA00BA1AA8 /* JSON.swift in Sources */,
 				C80407ED224698910014EFE0 /* Transaction.swift in Sources */,
 				C84E02372247C6C900B891A8 /* EthRPC.swift in Sources */,
+				C82D773E224D21F700612EE1 /* AionNetRPC.swift in Sources */,
 				C856BAD922491D5000150D85 /* DefaultBlock.swift in Sources */,
 				C80576A3223FD0F400B041EB /* Error+Extensions.swift in Sources */,
 				C8390233223DB8E20092A9DF /* DispatchController.swift in Sources */,
+				C82D7738224D20F400612EE1 /* RPC.swift in Sources */,
 				C8F25FC2224031410081B039 /* ReportRepository.swift in Sources */,
 				C80407F22246A7850014EFE0 /* AionTransactionData.swift in Sources */,
 				C83901F9223D9D150092A9DF /* Model.swift in Sources */,
@@ -830,7 +856,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -857,7 +883,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Pokt.PocketSwift;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -877,7 +903,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Pokt.PocketSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -897,7 +923,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Pokt.PocketSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

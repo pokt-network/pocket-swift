@@ -7,37 +7,24 @@
 //
 
 import Foundation
+import BigInt
 
-protocol EthRPC {
-    var pocket: PocketCore {get set}
-    var netID: Int {get set}
-    var network: String {get set}
+protocol EthRPC: RPC {
     func send(transaction: Transaction, onSuccess: @escaping (String) -> (), onError: @escaping (Error) -> ())
     func sendTransaction(for wallet: Wallet, with params: [AnyHashable : Any], onSuccess: @escaping (String) -> (), onError: @escaping (Error) -> ())
-    func getBalance(address: String, blockTag: DefaultBlock, onSuccess: @escaping (Int64) -> (), onError: @escaping (Error) -> ())
-}
-
-extension EthRPC {
-    func createEthRelay(ethMethod: EthRPCMethod, params: [String]) throws -> Relay?  {
-        do{
-            let relayData: RelayData = RelayData(jsonrpc: "2.0", method: ethMethod.rawValue, params: params)
-        
-            guard let relayDataJson = try relayData.toParameters().toJson() else {
-                throw PocketError.invalidRelay
-            }
-        
-            let relay: Relay = self.pocket.createRelay(blockchain: self.network, netID: self.netID, data: relayDataJson, devID: self.pocket.configuration.devID)
-            return relay
-        }catch let error {
-            throw error
-        }        
-    }
-    
-    func getInteger(dic: [String: Any]?) throws -> Int64 {
-        guard let result: Int64 = (dic?["result"] as? String)?.toHex() else {
-            throw PocketError.custom(message: "Error parsing get balance response")
-        }
-        
-        return result
-    }
+    func getBalance(address: String, blockTag: DefaultBlock, onSuccess: @escaping (BigInt) -> (), onError: @escaping (Error) -> ())
+    func getStorageAt(address: String, position: BigInt, blockTag: DefaultBlock, onSuccess: @escaping (BigInt) -> (), onError: @escaping (Error) -> ())
+    func getTransactionCount(address: String, blockTag: DefaultBlock, onSuccess: @escaping (BigInt) -> (), onError: @escaping (Error) -> ())
+    func getBlockTransactionCountByHash(blockHash: String, onSuccess: @escaping (BigInt) -> (), onError: @escaping (Error) -> ())
+    func getBlockTransactionCountByNumber(blockTag: DefaultBlock, onSuccess: @escaping (BigInt) -> (), onError: @escaping (Error) -> ())
+    func getCode(address: String, blockTag: DefaultBlock, onSuccess: @escaping (String) -> (), onError: @escaping (Error) -> ())
+    func call(from: String?, to: String, nrg: BigInt?, nrgPrice: BigInt?, value: BigInt?, data: String?, blockTag: DefaultBlock, onSuccess: @escaping (String) -> (), onError: @escaping (Error) -> ())
+    func getBlockByHash(blockHash: String, fullTx: Bool, onSuccess: @escaping ([String: JSON]) -> (), onError: @escaping (Error) -> ())
+    func getBlockByNumber(blockHash: String, fullTx: Bool, onSuccess: @escaping ([String: JSON]) -> (), onError: @escaping (Error) -> ())
+    func getTransactionByHash(txHash: String, onSuccess: @escaping ([String: JSON]) -> (), onError: @escaping (Error) -> ())
+    func getTransactionByBlockHashAndIndex(blockHash: String, index: BigInt, onSuccess: @escaping ([String: JSON]) -> (), onError: @escaping (Error) -> ())
+    func getTransactionByBlockHashAndNumber(blockTag: DefaultBlock, index: BigInt, onSuccess: @escaping ([String: JSON]) -> (), onError: @escaping (Error) -> ())
+    func getTransactionReceipt(txHash: String, onSuccess: @escaping ([String: JSON]) -> (), onError: @escaping (Error) -> ())
+    func getLogs(fromBlock: DefaultBlock, toBlock: DefaultBlock, address: String?, topics: [String]?, blockhash: String?, onSuccess: @escaping ([String: [JSON]]) -> (), onError: @escaping (Error) -> ())
+    func estimateGas(to: String, from: String?, nrg: BigInt?, nrgPrice: BigInt?, value: BigInt?, data: String?, blockTag: DefaultBlock, onSuccess: @escaping (BigInt) -> (), onError: @escaping (Error) -> ())
 }

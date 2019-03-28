@@ -10,8 +10,10 @@ import Foundation
 
 public struct Network {
     let eth: EthRPC
+    let net: NetRPC
     
-    init(eth: EthRPC) {
+    init(eth: EthRPC, net: NetRPC) {
         self.eth = eth
+        self.net = net
     }
 }
