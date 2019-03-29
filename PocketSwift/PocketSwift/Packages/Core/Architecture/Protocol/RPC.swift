@@ -70,16 +70,15 @@ extension RPC {
         return result
     }
     
-    func getJSON(dic: [String: Any]?) throws -> [String: JSON] {
-        guard let result: [String: JSON] = (dic?["result"] as? [String: JSON]) else {
+    func getJSON(dic: [String: Any]?) throws -> [String: Any] {
+        guard let result: [String: Any] = (dic?["result"] as? [String: Any]) else {
             throw PocketError.custom(message: "Error parsing JSON response")
         }
-        
         return result
     }
     
-    func getJSONArray(dic: [String: Any]?) throws -> [String: [JSON]] {
-        guard let result: [String: [JSON]] = (dic?["result"] as? [String: [JSON]]) else {
+    func getJSONArray(dic: [String: Any]?) throws -> [[String: Any]] {
+        guard let result: [[String: Any]] = (dic?["result"] as? [[String: Any]]) else {
             throw PocketError.custom(message: "Error parsing JSON Array response")
         }
         
