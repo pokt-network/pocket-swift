@@ -12,6 +12,8 @@ enum PocketError: Error {
     case nodeNotFound
     case invalidRelay
     case invalidReport
+    case invalidAddress
+    case invalidParameter(message: String)
     case custom(message: String)
     case pluginCreation(message: String)
     case walletCreation(message: String)
@@ -22,13 +24,16 @@ enum PocketError: Error {
 extension PocketError: LocalizedError {
     public var errorDescription: String? {
         switch self {
+        case .invalidAddress:
+            return NSLocalizedString("The address provided is invalid", comment: "The address provided is invalid")
         case .nodeNotFound:
             return NSLocalizedString("Node is empty;", comment: "Node is empty")
         case .invalidRelay:
             return NSLocalizedString("Relay is missing a property, please verify all properties.", comment: "Relay is missing a property, please verify all properties.")
         case .invalidReport:
             return NSLocalizedString("Report is missing a property, please verify all properties.", comment: "Report is missing a property, please verify all properties.")
-        case let .custom(message),
+        case let .invalidParameter(message),
+             let .custom(message),
              let .pluginCreation(message),
              let .walletCreation(message),
              let .walletImport(message),

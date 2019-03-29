@@ -11,9 +11,9 @@ import BigInt
 
 public struct AionNetRPC: NetRPC {
     
-    var pocket: PocketCore
-    var netID: Int
-    var network: String
+    public var pocket: PocketCore
+    public var netID: Int
+    public var network: String
     
     private let pocketAion: PocketAion
 

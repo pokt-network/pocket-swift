@@ -70,6 +70,12 @@ public struct AionEthRPC: EthRPC {
     
     public func getBalance(address: String, blockTag: DefaultBlock, onSuccess: @escaping (BigInt) -> (), onError: @escaping (Error) -> ()) {
         do {
+            
+            if address.isEmpty {
+                onError(PocketError.invalidAddress)
+                return
+            }
+            
             let params: [String] = [address, blockTag.getValue()]
             guard let relay = try self.createEthRelay(ethMethod: EthRPCMethod.getBalance, params: params) else {
                 onError(PocketError.invalidRelay)
@@ -93,14 +99,23 @@ public struct AionEthRPC: EthRPC {
     
     public func getStorageAt(address: String, position: BigInt, blockTag: DefaultBlock, onSuccess: @escaping (BigInt) -> (), onError: @escaping (Error) -> ()) {
         do {
-            let params: [String] = [address, blockTag.getValue(), position.toHexString()]
+            if address.isEmpty {
+                onError(PocketError.invalidAddress)
+                return
+            }
+            
+            let params: [String] = [address, position.toHexString(), blockTag.getValue()]
             guard let relay: Relay = try self.createEthRelay(ethMethod: EthRPCMethod.getStorageAt, params: params) else {
                 onError(PocketError.invalidRelay)
                 return
             }
             
             self.pocket.send(relay: relay, onSuccess: { response in
-                print(response)
+                guard let result = try? self.getInteger(dic: response.toDict()) else {
+                    onError(PocketError.custom(message: "Error parsing get storage at response"))
+                    return
+                }
+                onSuccess(result)
             }, onError: { error in
                 onError(error)
             })
@@ -111,6 +126,12 @@ public struct AionEthRPC: EthRPC {
     
     public func getTransactionCount(address: String, blockTag: DefaultBlock, onSuccess: @escaping (BigInt) -> (), onError: @escaping (Error) -> ()) {
         do {
+            
+            if address.isEmpty {
+                onError(PocketError.invalidAddress)
+                return
+            }
+            
             let params: [String] = [address, blockTag.getValue()]
             guard let relay = try self.createEthRelay(ethMethod: EthRPCMethod.getTransactionCount, params: params) else {
                 onError(PocketError.invalidRelay)
@@ -134,6 +155,11 @@ public struct AionEthRPC: EthRPC {
     
     public func getBlockTransactionCountByHash(blockHash: String, onSuccess: @escaping (BigInt) -> (), onError: @escaping (Error) -> ()) {
         do {
+            if blockHash.isEmpty {
+                onError(PocketError.invalidParameter(message: "Block hash param is missing"))
+                return
+            }
+            
             let params: [String] = [blockHash]
             guard let relay = try self.createEthRelay(ethMethod: EthRPCMethod.getBlockTransactionCountByHash, params: params) else {
                 onError(PocketError.invalidRelay)
@@ -180,7 +206,12 @@ public struct AionEthRPC: EthRPC {
     
     public func getCode(address: String, blockTag: DefaultBlock, onSuccess: @escaping (String) -> (), onError: @escaping (Error) -> ()) {
         do {
-            let params: [String] = [blockTag.getValue()]
+            if address.isEmpty {
+                onError(PocketError.invalidAddress)
+                return
+            }
+            
+            let params: [String] = [address, blockTag.getValue()]
             guard let relay = try self.createEthRelay(ethMethod: EthRPCMethod.getCode, params: params) else {
                 onError(PocketError.invalidRelay)
                 return
@@ -203,8 +234,13 @@ public struct AionEthRPC: EthRPC {
     
     public func call(from: String?, to: String, nrg: BigInt?, nrgPrice: BigInt?, value: BigInt?, data: String?, blockTag: DefaultBlock, onSuccess: @escaping (String) -> (), onError: @escaping (Error) -> ()) {
         do{
+            if to.isEmpty {
+                onError(PocketError.invalidParameter(message: "Destination address (to) param is missing"))
+                return
+            }
+            
             var txParams = [String: Any]()
-            txParams.fill("to", to, "from", from ?? "", "nrg", nrg?.toHexString() ?? "", "nrgPrice", nrgPrice?.toHexString() ?? "", "value", value?.toHexString() ?? "", "data", data ?? "")
+            txParams.fill("from", from, "nrg", nrg?.toHexString(), "nrgPrice", nrgPrice?.toHexString(), "value", value?.toHexString(), "data", data)
             
             guard let txParamsJson = try? txParams.toJson() else {
                 onError(PocketError.custom(message: "Invalid Parameters"))
@@ -218,7 +254,7 @@ public struct AionEthRPC: EthRPC {
             
             self.pocket.send(relay: relay, onSuccess: { response in
                 guard let result = try? self.getString(dic: response.toDict()) else {
-                    onError(PocketError.custom(message: "Error parsing get block transaction count by number count response"))
+                    onError(PocketError.custom(message: "Error parsing call response"))
                     return
                 }
                 onSuccess(result)
@@ -231,8 +267,14 @@ public struct AionEthRPC: EthRPC {
         }
     }
     
-    public func getBlockByHash(blockHash: String, fullTx: Bool = false, onSuccess: @escaping ([String: JSON]) -> (), onError: @escaping (Error) -> ()) {
+    public func getBlockByHash(blockHash: String, fullTx: Bool = false, onSuccess: @escaping ([String: Any]) -> (), onError: @escaping (Error) -> ()) {
         do{
+            
+            if blockHash.isEmpty {
+                onError(PocketError.invalidParameter(message: "Block Hash param is missing"))
+                return
+            }
+            
             let params: [Any] = [blockHash, fullTx]
             guard let relay = try self.createEthRelay(ethMethod: EthRPCMethod.getBlockByHash, params: params) else {
                 onError(PocketError.invalidRelay)
@@ -254,9 +296,9 @@ public struct AionEthRPC: EthRPC {
         }
     }
     
-    public func getBlockByNumber(blockHash: String, fullTx: Bool = false, onSuccess: @escaping ([String: JSON]) -> (), onError: @escaping (Error) -> ()) {
+    public func getBlockByNumber(blockTag: DefaultBlock, fullTx: Bool = false, onSuccess: @escaping ([String: Any]) -> (), onError: @escaping (Error) -> ()) {
         do{
-            let params: [Any] = [blockHash, fullTx]
+            let params: [Any] = [blockTag.getValue(), fullTx]
             guard let relay = try self.createEthRelay(ethMethod: EthRPCMethod.getBlockByNumber, params: params) else {
                 onError(PocketError.invalidRelay)
                 return
@@ -277,8 +319,14 @@ public struct AionEthRPC: EthRPC {
         }
     }
     
-    public func getTransactionByHash(txHash: String, onSuccess: @escaping ([String: JSON]) -> (), onError: @escaping (Error) -> ()) {
+    public func getTransactionByHash(txHash: String, onSuccess: @escaping ([String: Any]) -> (), onError: @escaping (Error) -> ()) {
         do{
+            
+            if txHash.isEmpty {
+                onError(PocketError.invalidParameter(message: "Transaction hash param is missing"))
+                return
+            }
+            
             let params: [Any] = [txHash]
             guard let relay = try self.createEthRelay(ethMethod: EthRPCMethod.getTransactionByHash, params: params) else {
                 onError(PocketError.invalidRelay)
@@ -300,8 +348,13 @@ public struct AionEthRPC: EthRPC {
         }
     }
     
-    public func getTransactionByBlockHashAndIndex(blockHash: String, index: BigInt, onSuccess: @escaping ([String: JSON]) -> (), onError: @escaping (Error) -> ()) {
+    public func getTransactionByBlockHashAndIndex(blockHash: String, index: BigInt, onSuccess: @escaping ([String: Any]) -> (), onError: @escaping (Error) -> ()) {
         do{
+            if blockHash.isEmpty {
+                onError(PocketError.invalidParameter(message: "One or more params are missing"))
+                return
+            }
+            
             let params: [Any] = [blockHash, index.toHexString()]
             guard let relay = try self.createEthRelay(ethMethod: EthRPCMethod.getTransactionByBlockHashAndIndex, params: params) else {
                 onError(PocketError.invalidRelay)
@@ -323,7 +376,7 @@ public struct AionEthRPC: EthRPC {
         }
     }
     
-    public func getTransactionByBlockHashAndNumber(blockTag: DefaultBlock, index: BigInt, onSuccess: @escaping ([String: JSON]) -> (), onError: @escaping (Error) -> ()) {
+    public func getTransactionByBlockNumberAndIndex(blockTag: DefaultBlock, index: BigInt, onSuccess: @escaping ([String: Any]) -> (), onError: @escaping (Error) -> ()) {
         do{
             let params: [Any] = [blockTag.getNumber(), index.toHexString()]
             guard let relay = try self.createEthRelay(ethMethod: EthRPCMethod.getTransactionByBlockNumberAndIndex, params: params) else {
@@ -346,8 +399,14 @@ public struct AionEthRPC: EthRPC {
         }
     }
     
-    public func getTransactionReceipt(txHash: String, onSuccess: @escaping ([String: JSON]) -> (), onError: @escaping (Error) -> ()) {
+    public func getTransactionReceipt(txHash: String, onSuccess: @escaping ([String: Any]) -> (), onError: @escaping (Error) -> ()) {
         do{
+            
+            if txHash.isEmpty {
+                onError(PocketError.invalidParameter(message: "Transaction hash param is missing"))
+                return
+            }
+            
             let params: [Any] = [txHash]
             guard let relay = try self.createEthRelay(ethMethod: EthRPCMethod.getTransactionReceipt, params: params) else {
                 onError(PocketError.invalidRelay)
@@ -369,7 +428,7 @@ public struct AionEthRPC: EthRPC {
         }
     }
     
-    public func getLogs(fromBlock: DefaultBlock = .latest , toBlock: DefaultBlock = .latest, address: String?, topics: [String]?, blockhash: String?, onSuccess: @escaping ([String: [JSON]]) -> (), onError: @escaping (Error) -> ()) {
+    public func getLogs(fromBlock: DefaultBlock = .latest , toBlock: DefaultBlock = .latest, address: String?, topics: [String]?, blockhash: String?, onSuccess: @escaping ([[String: Any]]) -> (), onError: @escaping (Error) -> ()) {
         do{
             var txParams = [String: Any]()
             txParams.fill("address", address, "topics", topics)
