@@ -26,5 +26,5 @@ protocol EthRPC: RPC {
     func getTransactionByBlockNumberAndIndex(blockTag: DefaultBlock, index: BigInt, onSuccess: @escaping ([String: Any]) -> (), onError: @escaping (Error) -> ())
     func getTransactionReceipt(txHash: String, onSuccess: @escaping ([String: Any]) -> (), onError: @escaping (Error) -> ())
     func getLogs(fromBlock: DefaultBlock, toBlock: DefaultBlock, address: String?, topics: [String]?, blockhash: String?, onSuccess: @escaping ([[String: Any]]) -> (), onError: @escaping (Error) -> ())
-    func estimateGas(to: String, from: String?, nrg: BigInt?, nrgPrice: BigInt?, value: BigInt?, data: String?, blockTag: DefaultBlock, onSuccess: @escaping (BigInt) -> (), onError: @escaping (Error) -> ())
+    func estimateGas(from: String?, to: String, nrg: BigInt?, nrgPrice: BigInt?, value: BigInt?, data: String?, blockTag: DefaultBlock, onSuccess: @escaping (BigInt) -> (), onError: @escaping (Error) -> ())
 }

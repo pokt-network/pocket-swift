@@ -76,7 +76,7 @@ public struct AionNetRPC: NetRPC {
             }
             
             self.pocket.send(relay: relay, onSuccess: { response in
-                guard let result = try? self.getInteger(dic: response.toDict()) else {
+                guard let result = try? self.getBigInt(dic: response.toDict()) else {
                     onError(PocketError.custom(message: "Error parsing peerCount response"))
                     return
                 }

@@ -54,6 +54,10 @@ extension RPC {
         return result
     }
     
+    func getBigInt(dic: [String: Any]?) throws -> BigInt {
+        return BigInt(dic?["result"] as? Int ?? 0)
+    }
+    
     func getString(dic: [String: Any]?) throws -> String {
         guard let result: String = (dic?["result"] as? String) else {
             throw PocketError.custom(message: "Error parsing string response")

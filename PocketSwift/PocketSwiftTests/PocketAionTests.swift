@@ -86,6 +86,8 @@ class PocketAionTests: QuickSpec {
             var CALL_DATA: String!
             var TX_HASH: String!
             var BLOCK_HASH_LOGS: String!
+            var ESTIMATE_GAS_TO: String!
+            var ESTIMATE_GAS_DATA: String!
             
             beforeEach {
                 pocketAion = PocketAion(devID: "DEVID1", netIDs: [subnet.mastery.rawValue], maxNodes: 5, requestTimeOut: 1000, schedulerProvider: .test)
@@ -98,6 +100,8 @@ class PocketAionTests: QuickSpec {
                 CALL_DATA = "0xbbaa08200000000000000000000000000000014c00000000000000000000000000000154"
                 TX_HASH = "0x123075c535309a3b0dbbe5c97a7a5298ec7f1bd3ae1b684ec529df3ce16cab2e"
                 BLOCK_HASH_LOGS = "0xa9316ee7207cf2ac1fd886673d5c14835a86cda97eae8f0d382b95678932c8d0"
+                ESTIMATE_GAS_TO = "0xA0707404B9BE7a5F630fCed3763d28FA5C988964fDC25Aa621161657a7Bf4b89"
+                ESTIMATE_GAS_DATA = "0xbbaa0820000000000000000000000000000000020000000000000000000000000000000a"
             }
             
             
@@ -292,7 +296,56 @@ class PocketAionTests: QuickSpec {
                     XCTFail()
                 })
             }
-
+            
+            it("should retrieve the estimate gas value for a transaction") {
+                pocketAion.network(subnet.mastery.rawValue).eth.estimateGas(from: nil, to: ESTIMATE_GAS_TO, nrg: nil, nrgPrice: nil, value: nil, data: ESTIMATE_GAS_DATA, blockTag: .latest, onSuccess: {response in
+                    expect(response).notTo(beNil())
+                }, onError: { error in
+                    XCTFail()
+                })
+            }
+            
+            it("should fail to retrieve the estimate gas value for a transaction") {
+                pocketAion.network(subnet.mastery.rawValue).eth.estimateGas(from: nil, to: "", nrg: nil, nrgPrice: nil, value: nil, data: ESTIMATE_GAS_DATA, blockTag: .latest, onSuccess: {response in
+                    XCTFail()
+                }, onError: { error in
+                    expect(error).to(matchError(PocketError.invalidParameter(message: "Destination address (to) param is missing")))
+                })
+            }
+        }
+        
+        describe("PocketAion NET Namespace RPC Calls") {
+            var pocketAion: PocketAion!
+            
+            beforeEach {
+                pocketAion = PocketAion(devID: "DEVID1", netIDs: [subnet.mastery.rawValue], maxNodes: 5, requestTimeOut: 1000, schedulerProvider: .test)
+            }
+            
+            it("should retrieve the current network id") {
+                pocketAion.network(subnet.mastery.rawValue).net.version(onSuccess: {response in
+                    expect(response).notTo(beNil())
+                }, onError: { error in
+                    XCTFail()
+                })
+            }
+            
+            it("should retrieve the listening status of the node") {
+                pocketAion.network(subnet.mastery.rawValue).net.listening(onSuccess: {response in
+                    expect(response).to(beTrue())
+                }, onError: { error in
+                    XCTFail()
+                })
+            }
+            
+            it("should retrieve the number of peers currently connected") {
+                pocketAion.network(subnet.mastery.rawValue).net.peerCount(onSuccess: {response in
+                    expect(response).to(beGreaterThanOrEqualTo(0))
+                }, onError: { error in
+                    XCTFail()
+                })
+            }
+            
+            
         }
     }
 
