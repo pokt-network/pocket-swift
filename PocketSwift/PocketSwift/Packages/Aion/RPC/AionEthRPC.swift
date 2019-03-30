@@ -240,13 +240,9 @@ public struct AionEthRPC: EthRPC {
             }
             
             var txParams = [String: Any]()
-            txParams.fill("from", from, "nrg", nrg?.toHexString(), "nrgPrice", nrgPrice?.toHexString(), "value", value?.toHexString(), "data", data)
+            txParams.fill("from", from, "to", to, "nrg", nrg?.toHexString(), "nrgPrice", nrgPrice?.toHexString(), "value", value?.toHexString(), "data", data)
             
-            guard let txParamsJson = try? txParams.toJson() else {
-                onError(PocketError.custom(message: "Invalid Parameters"))
-                return
-            }
-            let params: [String] = [txParamsJson, blockTag.getValue()]
+            let params: [Any] = [txParams, blockTag.getValue()]
             guard let relay = try self.createEthRelay(ethMethod: EthRPCMethod.call, params: params) else {
                 onError(PocketError.invalidRelay)
                 return
@@ -440,13 +436,7 @@ public struct AionEthRPC: EthRPC {
                 txParams["toBlock"] = toBlock.getValue()
             }
             
-            guard let txParamsJson = try? txParams.toJson() else {
-                onError(PocketError.custom(message: "Invalid Parameters"))
-                return
-            }
-            
-            let params: [Any] = [txParamsJson]
-            
+            let params: [Any] = [txParams]
             guard let relay = try self.createEthRelay(ethMethod: EthRPCMethod.getLogs, params: params) else {
                 onError(PocketError.invalidRelay)
                 return
@@ -467,16 +457,17 @@ public struct AionEthRPC: EthRPC {
         }
     }
     
-    public func estimateGas(to: String, from: String?, nrg: BigInt?, nrgPrice: BigInt?, value: BigInt?, data: String?, blockTag: DefaultBlock, onSuccess: @escaping (BigInt) -> (), onError: @escaping (Error) -> ()) {
+    public func estimateGas(from: String?, to: String, nrg: BigInt?, nrgPrice: BigInt?, value: BigInt?, data: String?, blockTag: DefaultBlock, onSuccess: @escaping (BigInt) -> (), onError: @escaping (Error) -> ()) {
         do{
+            if to.isEmpty {
+                onError(PocketError.invalidParameter(message: "Destination address (to) param is missing"))
+                return
+            }
+            
             var txParams = [String: Any]()
             txParams.fill("to", to, "from", from, "nrg", nrg?.toHexString(), "nrgPrice", nrgPrice?.toHexString(), "value", value?.toHexString(), "data", data)
             
-            guard let txParamsJson = try? txParams.toJson() else {
-                onError(PocketError.custom(message: "Invalid Parameters"))
-                return
-            }
-            let params: [String] = [txParamsJson, blockTag.getValue()]
+            let params: [Any] = [txParams, blockTag.getValue()]
             guard let relay = try self.createEthRelay(ethMethod: EthRPCMethod.estimateGas, params: params) else {
                 onError(PocketError.invalidRelay)
                 return

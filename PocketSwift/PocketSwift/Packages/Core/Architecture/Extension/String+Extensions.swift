@@ -31,6 +31,10 @@ extension String {
         return BigInt(self, radix: 16)
     }
     
+    func toBigInt() -> BigInt {
+        return BigInt(self)!
+    }
+    
     private func hasZeroHexPrefix() -> Bool{
         if self.hasPrefix("0x") {
             return true
