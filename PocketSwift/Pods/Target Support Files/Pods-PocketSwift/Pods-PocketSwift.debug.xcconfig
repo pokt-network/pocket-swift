@@ -1,8 +1,8 @@
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/BigInt" "${PODS_CONFIGURATION_BUILD_DIR}/RxAtomic" "${PODS_CONFIGURATION_BUILD_DIR}/RxBlocking" "${PODS_CONFIGURATION_BUILD_DIR}/RxSwift" "${PODS_CONFIGURATION_BUILD_DIR}/SipHash"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/BigInt" "${PODS_CONFIGURATION_BUILD_DIR}/RNCryptor" "${PODS_CONFIGURATION_BUILD_DIR}/RxAtomic" "${PODS_CONFIGURATION_BUILD_DIR}/RxBlocking" "${PODS_CONFIGURATION_BUILD_DIR}/RxSwift" "${PODS_CONFIGURATION_BUILD_DIR}/SipHash" "${PODS_CONFIGURATION_BUILD_DIR}/SwiftKeychainWrapper"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks' '@executable_path/../../Frameworks'
-OTHER_CFLAGS = $(inherited) -iquote "${PODS_CONFIGURATION_BUILD_DIR}/BigInt/BigInt.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/RxAtomic/RxAtomic.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/RxBlocking/RxBlocking.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/RxSwift/RxSwift.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/SipHash/SipHash.framework/Headers"
-OTHER_LDFLAGS = $(inherited) -framework "BigInt" -framework "RxAtomic" -framework "RxBlocking" -framework "RxSwift" -framework "SipHash"
+OTHER_CFLAGS = $(inherited) -iquote "${PODS_CONFIGURATION_BUILD_DIR}/BigInt/BigInt.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/RNCryptor/RNCryptor.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/RxAtomic/RxAtomic.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/RxBlocking/RxBlocking.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/RxSwift/RxSwift.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/SipHash/SipHash.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -framework "BigInt" -framework "RNCryptor" -framework "RxAtomic" -framework "RxBlocking" -framework "RxSwift" -framework "SipHash" -framework "SwiftKeychainWrapper"
 OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)

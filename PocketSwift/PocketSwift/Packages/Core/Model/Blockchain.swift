@@ -9,17 +9,17 @@
 import Foundation
 
 public struct Blockchain: Model, Input {
-    let name: String
-    let netID: Int
+    let network: String
+    let netID: String
     
-    init(name: String, netID: Int) {
-        self.name = name
+    init(network: String, netID: String) {
+        self.network = network
         self.netID = netID
     }
     
     func toParameters() -> Parameters {
         var data: Parameters = [:]
-        data.fill("Name", self.name, "NetID", "\(self.netID)")
+        data.fill("Name", self.network, "NetID", self.netID)
         return data
     }
 }

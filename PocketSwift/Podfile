@@ -9,6 +9,8 @@ target 'PocketSwift' do
   pod 'RxSwift',    '~> 4.0'
   pod 'RxBlocking', '~> 4.0'
   pod 'BigInt'
+  pod 'SwiftKeychainWrapper'
+  pod 'RNCryptor'
 
   target 'PocketSwiftTests' do
     inherit! :search_paths

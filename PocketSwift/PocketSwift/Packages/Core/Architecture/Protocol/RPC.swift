@@ -10,38 +10,38 @@ import Foundation
 import BigInt
 
 protocol RPC {
-    var pocket: PocketCore {get set}
-    var netID: Int {get set}
+    var pocket: Pocket {get set}
+    var netID: String {get set}
     var network: String {get set}
 }
 
 extension RPC {
     func createEthRelay(ethMethod: EthRPCMethod, params: [Any]) throws -> Relay?  {
-        do{
+        do {
             let relayData: RelayData = RelayData(jsonrpc: "2.0", method: ethMethod.rawValue, params: params)
             
             guard let relayDataJson = try relayData.toParameters().toJson() else {
                 throw PocketError.invalidRelay
             }
             
-            let relay: Relay = self.pocket.createRelay(blockchain: self.network, netID: self.netID, data: relayDataJson, devID: self.pocket.configuration.devID)
+            let relay: Relay = Relay.init(network: self.network, netID: self.netID, data: relayDataJson, devID: self.pocket.configuration.devID)
             return relay
-        }catch let error {
+        } catch let error {
             throw error
         }
     }
     
     func createNetRelay(netMethod: NetRPCMethod, params: [Any] = []) throws -> Relay?  {
-        do{
+        do {
             let relayData: RelayData = RelayData(jsonrpc: "2.0", method: netMethod.rawValue, params: params)
             
             guard let relayDataJson = try relayData.toParameters().toJson() else {
                 throw PocketError.invalidRelay
             }
             
-            let relay: Relay = self.pocket.createRelay(blockchain: self.network, netID: self.netID, data: relayDataJson, devID: self.pocket.configuration.devID)
+            let relay: Relay = Relay.init(network: self.network, netID: self.netID, data: relayDataJson, devID: self.pocket.configuration.devID)
             return relay
-        }catch let error {
+        } catch let error {
             throw error
         }
     }

@@ -10,8 +10,8 @@ import Foundation
 
 public class Configuration {
     
+    var blockchains: [Blockchain]
     let devID: String
-    let blockchains: [Blockchain]
     let maxNodes: Int
     let requestTimeOut: Int
     var nodes: Array<Node> = []

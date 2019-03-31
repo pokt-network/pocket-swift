@@ -17,7 +17,7 @@ struct AionTransactionData: TransactionData {
     let gas: String
     
     init(nonce: Any?, to: Any?, data: Any?, value: Any?, gasPrice: Any?, gas: Any?) throws {
-        let tupleValidation = Utils.areNilOrClen(("nonce", nonce), ("receiver of the transaction (to)", to), ("value", value), ("gas price", gasPrice), ("gas value", gas))
+        let tupleValidation = Utils.areNilOrClean(("nonce", nonce), ("receiver of the transaction (to)", to), ("value", value), ("gas price", gasPrice), ("gas value", gas))
         
         if tupleValidation.result {
             throw PocketError.transactionCreation(message: "Failed to retrieve the \(tupleValidation.property)")

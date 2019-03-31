@@ -9,13 +9,13 @@
 import Foundation
 
 public struct Relay: Model, Input {
-    let blockchain: String
-    let netID: Int
+    let network: String
+    let netID: String
     let data: String
     let devID: String
     
-    init(blockchain: String, netID: Int, data: String, devID: String) {
-        self.blockchain = blockchain
+    init(network: String, netID: String, data: String, devID: String) {
+        self.network = network
         self.netID = netID
         self.data = data
         self.devID = devID
@@ -23,7 +23,7 @@ public struct Relay: Model, Input {
     
     func isValid() -> Bool {
         do {
-            return try Utils.areDirty(self.blockchain, self.data, self.devID)
+            return try Utils.areDirty(self.network, self.data, self.devID)
         } catch {
             fatalError("There was a problem validating your relay")
         }
@@ -31,7 +31,7 @@ public struct Relay: Model, Input {
     
     func toParameters() -> Parameters {
         var data: Parameters = [:]
-        data.fill("Blockchain", self.blockchain, "NetID", "\(self.netID)", "Data", self.data, "DevID", self.devID)
+        data.fill("Blockchain", self.network, "NetID", "\(self.netID)", "Data", self.data, "DevID", self.devID)
         return data
     }
 }

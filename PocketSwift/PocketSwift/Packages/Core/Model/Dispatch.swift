@@ -39,7 +39,7 @@ struct Dispatch: Input {
         
         if let ipPortArray = dictionary["ips"]?.value() as? Array<JSON> {
             ipPortArray.forEach { ipPort in
-                nodes.append(Node(network: network, netID: Int(netID) ?? 0, ipPort: ipPort.value() as! String))
+                nodes.append(Node(network: network, netID: netID, ipPort: ipPort.value() as! String))
             }
         }
         

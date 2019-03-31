@@ -11,13 +11,13 @@ import BigInt
 
 public struct AionNetRPC: NetRPC {
     
-    public var pocket: PocketCore
-    public var netID: Int
+    public var pocket: Pocket
+    public var netID: String
     public var network: String
     
     private let pocketAion: PocketAion
 
-    init(pocketAion: PocketAion, netID: Int) {
+    init(pocketAion: PocketAion, netID: String) {
         self.pocket = pocketAion
         self.network = pocketAion.NETWORK
         self.netID = netID
