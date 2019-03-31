@@ -3,6 +3,7 @@ PODS:
     - SipHash (~> 1.2)
   - Nimble (7.3.1)
   - Quick (1.3.2)
+  - RNCryptor (5.0.3)
   - RxAtomic (4.4.0)
   - RxBlocking (4.4.0):
     - RxAtomic (~> 4.4)
@@ -10,33 +11,40 @@ PODS:
   - RxSwift (4.4.0):
     - RxAtomic (~> 4.4)
   - SipHash (1.2.2)
+  - SwiftKeychainWrapper (3.2.0)
 
 DEPENDENCIES:
   - BigInt
   - Nimble
   - Quick
+  - RNCryptor
   - RxBlocking (~> 4.0)
   - RxSwift (~> 4.0)
+  - SwiftKeychainWrapper
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - BigInt
     - Nimble
     - Quick
+    - RNCryptor
     - RxAtomic
     - RxBlocking
     - RxSwift
     - SipHash
+    - SwiftKeychainWrapper
 
 SPEC CHECKSUMS:
   BigInt: 76b5dfdfa3e2e478d4ffdf161aeede5502e2742f
   Nimble: 04f732da099ea4d153122aec8c2a88fd0c7219ae
   Quick: 2623cb30d7a7f41ca62f684f679586558f483d46
+  RNCryptor: c93d19029dcf7ff160aca0f24d6c9e7b0d82f664
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxBlocking: 138ad53217434444d6eeeb4fb406a45431d92e31
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
+  SwiftKeychainWrapper: 82c4c02cdc36f9a24f7edfcaab3e336401caa1a1
 
-PODFILE CHECKSUM: acecd4b1b72e7004ec713538fe6b42504e80bbda
+PODFILE CHECKSUM: d577e5366a50ce2b81941b2d77f427891f0b8f22
 
 COCOAPODS: 1.5.3

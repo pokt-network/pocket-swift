@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4156FE928C88D6F15B6D090A /* Pods_PocketSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E5CD1009677A53C073C2618 /* Pods_PocketSwift.framework */; };
 		7A0754D4B061327F0B4393B8 /* Pods_PocketSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B83A5DB3BFF44163DB2CAA96 /* Pods_PocketSwiftTests.framework */; };
-		C80407ED224698910014EFE0 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80407EC224698910014EFE0 /* Transaction.swift */; };
 		C80407EF2246A7350014EFE0 /* TransactionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80407EE2246A7350014EFE0 /* TransactionData.swift */; };
 		C80407F22246A7850014EFE0 /* AionTransactionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80407F12246A7850014EFE0 /* AionTransactionData.swift */; };
 		C80407F42246C7180014EFE0 /* RelayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80407F32246C7180014EFE0 /* RelayData.swift */; };
@@ -42,7 +41,7 @@
 		C83901FA223D9D150092A9DF /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83901EB223D9D150092A9DF /* WebService.swift */; };
 		C83901FB223D9D150092A9DF /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83901EC223D9D150092A9DF /* Repository.swift */; };
 		C83901FC223D9D150092A9DF /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83901ED223D9D150092A9DF /* Input.swift */; };
-		C83901FD223D9D150092A9DF /* PocketCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83901EE223D9D150092A9DF /* PocketCore.swift */; };
+		C83901FD223D9D150092A9DF /* Pocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83901EE223D9D150092A9DF /* Pocket.swift */; };
 		C8390200223D9DFD0092A9DF /* Blockchain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83901FF223D9DFD0092A9DF /* Blockchain.swift */; };
 		C8390202223D9F490092A9DF /* Relay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8390201223D9F490092A9DF /* Relay.swift */; };
 		C8390205223DA1330092A9DF /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8390204223DA1330092A9DF /* Utils.swift */; };
@@ -83,7 +82,6 @@
 		6F4FE746F32F5FD2E90B9482 /* Pods-PocketSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PocketSwift/Pods-PocketSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		A5ABEF640813FC6CE6759229 /* Pods-PocketSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketSwift/Pods-PocketSwift.release.xcconfig"; sourceTree = "<group>"; };
 		B83A5DB3BFF44163DB2CAA96 /* Pods_PocketSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C80407EC224698910014EFE0 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		C80407EE2246A7350014EFE0 /* TransactionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionData.swift; sourceTree = "<group>"; };
 		C80407F12246A7850014EFE0 /* AionTransactionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AionTransactionData.swift; sourceTree = "<group>"; };
 		C80407F32246C7180014EFE0 /* RelayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelayData.swift; sourceTree = "<group>"; };
@@ -121,7 +119,7 @@
 		C83901EB223D9D150092A9DF /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		C83901EC223D9D150092A9DF /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		C83901ED223D9D150092A9DF /* Input.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
-		C83901EE223D9D150092A9DF /* PocketCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PocketCore.swift; sourceTree = "<group>"; };
+		C83901EE223D9D150092A9DF /* Pocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pocket.swift; sourceTree = "<group>"; };
 		C83901FF223D9DFD0092A9DF /* Blockchain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blockchain.swift; sourceTree = "<group>"; };
 		C8390201223D9F490092A9DF /* Relay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relay.swift; sourceTree = "<group>"; };
 		C8390204223DA1330092A9DF /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -259,7 +257,7 @@
 				C8390206223DA2B00092A9DF /* Controller */,
 				C83901FE223D9DE90092A9DF /* Model */,
 				C8390203223DA11E0092A9DF /* Util */,
-				C83901EE223D9D150092A9DF /* PocketCore.swift */,
+				C83901EE223D9D150092A9DF /* Pocket.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -376,7 +374,6 @@
 				C8390234223DBA380092A9DF /* Node.swift */,
 				C80576A4223FF6F100B041EB /* Wallet.swift */,
 				C8F25FBF22402BC10081B039 /* Report.swift */,
-				C80407EC224698910014EFE0 /* Transaction.swift */,
 				C80407F32246C7180014EFE0 /* RelayData.swift */,
 			);
 			path = Model;
@@ -557,29 +554,29 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-PocketSwiftTests/Pods-PocketSwiftTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
+				"${BUILT_PRODUCTS_DIR}/RNCryptor/RNCryptor.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNCryptor.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -591,15 +588,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-PocketSwiftTests-checkManifestLockResult.txt",
 			);
@@ -613,15 +606,11 @@
 			buildActionMask = 8;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-PocketSwift-checkManifestLockResult.txt",
 			);
@@ -659,7 +648,7 @@
 				C8F25FC4224031CE0081B039 /* ReportController.swift in Sources */,
 				C839022B223DA9D30092A9DF /* PocketEth.swift in Sources */,
 				C83901F1223D9D150092A9DF /* Configuration.swift in Sources */,
-				C83901FD223D9D150092A9DF /* PocketCore.swift in Sources */,
+				C83901FD223D9D150092A9DF /* Pocket.swift in Sources */,
 				C84E023A2247C7AF00B891A8 /* EthRPCMethod.swift in Sources */,
 				C80407F42246C7180014EFE0 /* RelayData.swift in Sources */,
 				C80576A5223FF6F100B041EB /* Wallet.swift in Sources */,
@@ -675,7 +664,6 @@
 				C83901F0223D9D150092A9DF /* ServerConfiguration.swift in Sources */,
 				C82D773C224D218A00612EE1 /* NetRPCMethod.swift in Sources */,
 				C84F2C90223E88FA00BA1AA8 /* JSON.swift in Sources */,
-				C80407ED224698910014EFE0 /* Transaction.swift in Sources */,
 				C84E02372247C6C900B891A8 /* EthRPC.swift in Sources */,
 				C82D773E224D21F700612EE1 /* AionNetRPC.swift in Sources */,
 				C856BAD922491D5000150D85 /* DefaultBlock.swift in Sources */,
@@ -841,7 +829,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 92ZQH7W9RZ;
+				DEVELOPMENT_TEAM = 89229Z2MHH;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -869,7 +857,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 92ZQH7W9RZ;
+				DEVELOPMENT_TEAM = 89229Z2MHH;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";

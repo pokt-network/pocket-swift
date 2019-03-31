@@ -10,7 +10,7 @@ import Foundation
 import BigInt
 
 protocol EthRPC: RPC {
-    func send(transaction: Transaction, onSuccess: @escaping (String) -> (), onError: @escaping (Error) -> ())
+    //func send(transaction: Transaction, onSuccess: @escaping (String) -> (), onError: @escaping (Error) -> ())
     func sendTransaction(for wallet: Wallet, with params: [AnyHashable : Any], onSuccess: @escaping (String) -> (), onError: @escaping (Error) -> ())
     func getBalance(address: String, blockTag: DefaultBlock, onSuccess: @escaping (BigInt) -> (), onError: @escaping (Error) -> ())
     func getStorageAt(address: String, position: BigInt, blockTag: DefaultBlock, onSuccess: @escaping (BigInt) -> (), onError: @escaping (Error) -> ())

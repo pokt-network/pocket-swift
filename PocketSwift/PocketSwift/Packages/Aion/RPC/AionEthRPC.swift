@@ -11,41 +11,24 @@ import BigInt
 
 public struct AionEthRPC: EthRPC {
     
-    var pocket: PocketCore
-    var netID: Int
+    var pocket: Pocket
+    var netID: String
     var network: String
     
     private let pocketAion: PocketAion
     
     
-    init(pocketAion: PocketAion, netID: Int) {
+    init(pocketAion: PocketAion, netID: String) {
         self.pocket = pocketAion
         self.network = pocketAion.NETWORK
         self.netID = netID
         self.pocketAion = pocketAion
     }
-        
-    public func send(transaction: Transaction, onSuccess: @escaping (String) -> (), onError: @escaping (Error) -> ()) {
-        do {
-            guard let relay = try createEthRelay(ethMethod: EthRPCMethod.sendTransaction, params: [transaction.serializedTransaction]) else {
-                onError(PocketError.invalidRelay)
-                return
-            }
-            
-            self.pocket.send(relay: relay, onSuccess: { response in
-                
-            }, onError: { error in
-                onError(error)
-            })
-        }catch let error {
-            onError(error)
-        }
-    }
     
     public func sendTransaction(for wallet: Wallet, with params: [AnyHashable : Any], onSuccess: @escaping (String) -> (), onError: @escaping (Error) -> ()) {
         do {
-            let transaction: Transaction = try self.pocketAion.createTransaction(wallet: wallet, params: params)
-            send(transaction: transaction, onSuccess: onSuccess, onError: onError)
+            //let transaction: Transaction = try self.pocketAion.createTransaction(wallet: wallet, params: params)
+            //send(transaction: transaction, onSuccess: onSuccess, onError: onError)
         } catch let error {
             onError(error)
         }
@@ -61,8 +44,8 @@ public struct AionEthRPC: EthRPC {
             txParams["nrgPrice"] = nrgPrice.toHexString()
             txParams["nrg"] = nrg.toHexString()
             
-            let transaction: Transaction = try self.pocketAion.createTransaction(wallet: wallet, params: txParams)
-            send(transaction: transaction, onSuccess: onSuccess, onError: onError)
+            //let transaction: Transaction = try self.pocketAion.createTransaction(wallet: wallet, params: txParams)
+            //send(transaction: transaction, onSuccess: onSuccess, onError: onError)
         } catch let error {
             onError(error)
         }
