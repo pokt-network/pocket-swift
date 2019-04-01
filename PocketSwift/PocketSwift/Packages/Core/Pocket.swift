@@ -19,6 +19,11 @@ public class Pocket: NSObject {
     private let dispatchController: DispatchController
     private let reportController: ReportController
     private let dispatch: Dispatch
+    public var devID: String {
+        get {
+            return self.dispatch.configuration.devID
+        }
+    }
     
     init(devID: String, network: String, netIds: [String], maxNodes: Int = 5, requestTimeOut: Int = 1000, schedulerProvider: SchedulerProvider = .main){
         var blockchains: [Blockchain] = []
