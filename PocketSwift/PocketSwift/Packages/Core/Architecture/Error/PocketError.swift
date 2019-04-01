@@ -15,10 +15,9 @@ enum PocketError: Error {
     case invalidAddress
     case invalidParameter(message: String)
     case custom(message: String)
-    case pluginCreation(message: String)
     case walletCreation(message: String)
     case walletImport(message: String)
-    case transactionCreation(message: String)
+    case walletPersistence(message: String)
 }
 
 extension PocketError: LocalizedError {
@@ -34,10 +33,9 @@ extension PocketError: LocalizedError {
             return NSLocalizedString("Report is missing a property, please verify all properties.", comment: "Report is missing a property, please verify all properties.")
         case let .invalidParameter(message),
              let .custom(message),
-             let .pluginCreation(message),
              let .walletCreation(message),
-             let .walletImport(message),
-             let .transactionCreation(message):
+             let .walletPersistence(message),
+             let .walletImport(message):
             return NSLocalizedString(message, comment: message)
         }
     }
