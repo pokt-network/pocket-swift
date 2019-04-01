@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1088F0D32252AEFE004A0EB4 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1088F0D22252AEFE004A0EB4 /* JSON.swift */; };
 		4156FE928C88D6F15B6D090A /* Pods_PocketSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E5CD1009677A53C073C2618 /* Pods_PocketSwift.framework */; };
 		7A0754D4B061327F0B4393B8 /* Pods_PocketSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B83A5DB3BFF44163DB2CAA96 /* Pods_PocketSwiftTests.framework */; };
 		C80407F22246A7850014EFE0 /* AionTransactionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80407F12246A7850014EFE0 /* AionTransactionData.swift */; };
@@ -48,7 +49,6 @@
 		C8390231223DB8630092A9DF /* DispatchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8390230223DB8630092A9DF /* DispatchRepository.swift */; };
 		C8390233223DB8E20092A9DF /* DispatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8390232223DB8E20092A9DF /* DispatchController.swift */; };
 		C8390235223DBA380092A9DF /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8390234223DBA380092A9DF /* Node.swift */; };
-		C84F2C90223E88FA00BA1AA8 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84F2C8F223E88FA00BA1AA8 /* JSON.swift */; };
 		C84F2C92223E90C900BA1AA8 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84F2C91223E90C900BA1AA8 /* Array+Extensions.swift */; };
 		C8E43FD5223EFEC700623885 /* PocketError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E43FD4223EFEC700623885 /* PocketError.swift */; };
 		C8F25FC022402BC10081B039 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F25FBF22402BC10081B039 /* Report.swift */; };
@@ -68,6 +68,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1088F0D22252AEFE004A0EB4 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		3E5CD1009677A53C073C2618 /* Pods_PocketSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E15465B2934C5ED0BC6239C /* Pods-PocketSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PocketSwiftTests/Pods-PocketSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6F4FE746F32F5FD2E90B9482 /* Pods-PocketSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PocketSwift/Pods-PocketSwift.debug.xcconfig"; sourceTree = "<group>"; };
@@ -117,7 +118,6 @@
 		C8390230223DB8630092A9DF /* DispatchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchRepository.swift; sourceTree = "<group>"; };
 		C8390232223DB8E20092A9DF /* DispatchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchController.swift; sourceTree = "<group>"; };
 		C8390234223DBA380092A9DF /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
-		C84F2C8F223E88FA00BA1AA8 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		C84F2C91223E90C900BA1AA8 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		C8E43FD4223EFEC700623885 /* PocketError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketError.swift; sourceTree = "<group>"; };
 		C8F25FBF22402BC10081B039 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
@@ -358,7 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				C8390204223DA1330092A9DF /* Utils.swift */,
-				C84F2C8F223E88FA00BA1AA8 /* JSON.swift */,
+				1088F0D22252AEFE004A0EB4 /* JSON.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -600,6 +600,7 @@
 				C83901F3223D9D150092A9DF /* Observer.swift in Sources */,
 				C8390235223DBA380092A9DF /* Node.swift in Sources */,
 				C83901FB223D9D150092A9DF /* Repository.swift in Sources */,
+				1088F0D32252AEFE004A0EB4 /* JSON.swift in Sources */,
 				C839020B223DA2D80092A9DF /* RelayRepository.swift in Sources */,
 				C83901F5223D9D150092A9DF /* Dynamic.swift in Sources */,
 				C80576A1223FC57E00B041EB /* String+Extensions.swift in Sources */,
@@ -622,7 +623,6 @@
 				C8390205223DA1330092A9DF /* Utils.swift in Sources */,
 				C83901EF223D9D150092A9DF /* Dictionary+Extensions.swift in Sources */,
 				C83901F0223D9D150092A9DF /* ServerConfiguration.swift in Sources */,
-				C84F2C90223E88FA00BA1AA8 /* JSON.swift in Sources */,
 				C82D773E224D21F700612EE1 /* AionNetRPC.swift in Sources */,
 				C80576A3223FD0F400B041EB /* Error+Extensions.swift in Sources */,
 				C8390233223DB8E20092A9DF /* DispatchController.swift in Sources */,
