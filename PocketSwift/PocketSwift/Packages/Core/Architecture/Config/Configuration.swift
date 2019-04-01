@@ -10,11 +10,11 @@ import Foundation
 
 public class Configuration {
     
-    var blockchains: [Blockchain]
-    let devID: String
-    let maxNodes: Int
-    let requestTimeOut: Int
-    var nodes: Array<Node> = []
+    public var blockchains: [Blockchain]
+    public let devID: String
+    public let maxNodes: Int
+    public let requestTimeOut: Int
+    public var nodes: Array<Node> = []
     
     public init(devID: String, blockchains: [Blockchain] = [], maxNodes: Int = 5, requestTimeOut: Int = 1000) {
         self.devID = devID
@@ -22,10 +22,4 @@ public class Configuration {
         self.maxNodes = maxNodes
         self.requestTimeOut = requestTimeOut
     }
-    
-    func isNodeEmpty() -> Bool {
-        return self.nodes.count == 0
-    }
-    
-    
 }
