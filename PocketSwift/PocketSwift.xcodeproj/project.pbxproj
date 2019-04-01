@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		4156FE928C88D6F15B6D090A /* Pods_PocketSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E5CD1009677A53C073C2618 /* Pods_PocketSwift.framework */; };
 		7A0754D4B061327F0B4393B8 /* Pods_PocketSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B83A5DB3BFF44163DB2CAA96 /* Pods_PocketSwiftTests.framework */; };
-		C80407EF2246A7350014EFE0 /* TransactionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80407EE2246A7350014EFE0 /* TransactionData.swift */; };
 		C80407F22246A7850014EFE0 /* AionTransactionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80407F12246A7850014EFE0 /* AionTransactionData.swift */; };
-		C80407F42246C7180014EFE0 /* RelayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80407F32246C7180014EFE0 /* RelayData.swift */; };
 		C80407F72246C8B30014EFE0 /* AionEthRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80407F62246C8B30014EFE0 /* AionEthRPC.swift */; };
 		C80576A1223FC57E00B041EB /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80576A0223FC57E00B041EB /* String+Extensions.swift */; };
 		C80576A3223FD0F400B041EB /* Error+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80576A2223FD0F400B041EB /* Error+Extensions.swift */; };
@@ -20,8 +18,6 @@
 		C80D8B5F22458DBB003AE3E8 /* resource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C80D8B5E22458DBB003AE3E8 /* resource.bundle */; };
 		C80D8B6222458E7D003AE3E8 /* AionUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80D8B6122458E7D003AE3E8 /* AionUtils.swift */; };
 		C80D8B6422459400003AE3E8 /* PocketAionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80D8B6322459400003AE3E8 /* PocketAionTests.swift */; };
-		C82D7738224D20F400612EE1 /* RPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82D7737224D20F400612EE1 /* RPC.swift */; };
-		C82D773A224D215D00612EE1 /* NetRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82D7739224D215D00612EE1 /* NetRPC.swift */; };
 		C82D773C224D218A00612EE1 /* NetRPCMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82D773B224D218A00612EE1 /* NetRPCMethod.swift */; };
 		C82D773E224D21F700612EE1 /* AionNetRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82D773D224D21F700612EE1 /* AionNetRPC.swift */; };
 		C839019A223D82660092A9DF /* PocketSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8390190223D82660092A9DF /* PocketSwift.framework */; };
@@ -53,9 +49,7 @@
 		C8390231223DB8630092A9DF /* DispatchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8390230223DB8630092A9DF /* DispatchRepository.swift */; };
 		C8390233223DB8E20092A9DF /* DispatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8390232223DB8E20092A9DF /* DispatchController.swift */; };
 		C8390235223DBA380092A9DF /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8390234223DBA380092A9DF /* Node.swift */; };
-		C84E02372247C6C900B891A8 /* EthRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E02362247C6C900B891A8 /* EthRPC.swift */; };
 		C84E023A2247C7AF00B891A8 /* EthRPCMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E02392247C7AF00B891A8 /* EthRPCMethod.swift */; };
-		C84E023C2247C97A00B891A8 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E023B2247C97A00B891A8 /* Network.swift */; };
 		C84F2C90223E88FA00BA1AA8 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84F2C8F223E88FA00BA1AA8 /* JSON.swift */; };
 		C84F2C92223E90C900BA1AA8 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84F2C91223E90C900BA1AA8 /* Array+Extensions.swift */; };
 		C856BAD922491D5000150D85 /* DefaultBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C856BAD822491D5000150D85 /* DefaultBlock.swift */; };
@@ -82,9 +76,7 @@
 		6F4FE746F32F5FD2E90B9482 /* Pods-PocketSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PocketSwift/Pods-PocketSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		A5ABEF640813FC6CE6759229 /* Pods-PocketSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketSwift/Pods-PocketSwift.release.xcconfig"; sourceTree = "<group>"; };
 		B83A5DB3BFF44163DB2CAA96 /* Pods_PocketSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C80407EE2246A7350014EFE0 /* TransactionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionData.swift; sourceTree = "<group>"; };
 		C80407F12246A7850014EFE0 /* AionTransactionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AionTransactionData.swift; sourceTree = "<group>"; };
-		C80407F32246C7180014EFE0 /* RelayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelayData.swift; sourceTree = "<group>"; };
 		C80407F62246C8B30014EFE0 /* AionEthRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AionEthRPC.swift; sourceTree = "<group>"; };
 		C80576A0223FC57E00B041EB /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		C80576A2223FD0F400B041EB /* Error+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extensions.swift"; sourceTree = "<group>"; };
@@ -93,8 +85,6 @@
 		C80D8B5E22458DBB003AE3E8 /* resource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = resource.bundle; sourceTree = "<group>"; };
 		C80D8B6122458E7D003AE3E8 /* AionUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AionUtils.swift; sourceTree = "<group>"; };
 		C80D8B6322459400003AE3E8 /* PocketAionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketAionTests.swift; sourceTree = "<group>"; };
-		C82D7737224D20F400612EE1 /* RPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPC.swift; sourceTree = "<group>"; };
-		C82D7739224D215D00612EE1 /* NetRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetRPC.swift; sourceTree = "<group>"; };
 		C82D773B224D218A00612EE1 /* NetRPCMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetRPCMethod.swift; sourceTree = "<group>"; };
 		C82D773D224D21F700612EE1 /* AionNetRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AionNetRPC.swift; sourceTree = "<group>"; };
 		C8390190223D82660092A9DF /* PocketSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PocketSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,9 +121,7 @@
 		C8390230223DB8630092A9DF /* DispatchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchRepository.swift; sourceTree = "<group>"; };
 		C8390232223DB8E20092A9DF /* DispatchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchController.swift; sourceTree = "<group>"; };
 		C8390234223DBA380092A9DF /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
-		C84E02362247C6C900B891A8 /* EthRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthRPC.swift; sourceTree = "<group>"; };
 		C84E02392247C7AF00B891A8 /* EthRPCMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthRPCMethod.swift; sourceTree = "<group>"; };
-		C84E023B2247C97A00B891A8 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		C84F2C8F223E88FA00BA1AA8 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		C84F2C91223E90C900BA1AA8 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		C856BAD822491D5000150D85 /* DefaultBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBlock.swift; sourceTree = "<group>"; };
@@ -344,7 +332,6 @@
 				C83901E7223D9D150092A9DF /* LiveData.swift */,
 				C83901E8223D9D150092A9DF /* Endpoint.swift */,
 				C80934972241AF490073B734 /* SchedulerProvider.swift */,
-				C84E023B2247C97A00B891A8 /* Network.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -356,10 +343,6 @@
 				C83901EB223D9D150092A9DF /* WebService.swift */,
 				C83901EC223D9D150092A9DF /* Repository.swift */,
 				C83901ED223D9D150092A9DF /* Input.swift */,
-				C80407EE2246A7350014EFE0 /* TransactionData.swift */,
-				C84E02362247C6C900B891A8 /* EthRPC.swift */,
-				C82D7737224D20F400612EE1 /* RPC.swift */,
-				C82D7739224D215D00612EE1 /* NetRPC.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -374,7 +357,6 @@
 				C8390234223DBA380092A9DF /* Node.swift */,
 				C80576A4223FF6F100B041EB /* Wallet.swift */,
 				C8F25FBF22402BC10081B039 /* Report.swift */,
-				C80407F32246C7180014EFE0 /* RelayData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -631,9 +613,7 @@
 				C83901F2223D9D150092A9DF /* WebServiceImpl.swift in Sources */,
 				C84F2C92223E90C900BA1AA8 /* Array+Extensions.swift in Sources */,
 				C80934982241AF490073B734 /* SchedulerProvider.swift in Sources */,
-				C84E023C2247C97A00B891A8 /* Network.swift in Sources */,
 				C8390231223DB8630092A9DF /* DispatchRepository.swift in Sources */,
-				C82D773A224D215D00612EE1 /* NetRPC.swift in Sources */,
 				C83901F3223D9D150092A9DF /* Observer.swift in Sources */,
 				C8390235223DBA380092A9DF /* Node.swift in Sources */,
 				C83901FB223D9D150092A9DF /* Repository.swift in Sources */,
@@ -650,7 +630,6 @@
 				C83901F1223D9D150092A9DF /* Configuration.swift in Sources */,
 				C83901FD223D9D150092A9DF /* Pocket.swift in Sources */,
 				C84E023A2247C7AF00B891A8 /* EthRPCMethod.swift in Sources */,
-				C80407F42246C7180014EFE0 /* RelayData.swift in Sources */,
 				C80576A5223FF6F100B041EB /* Wallet.swift in Sources */,
 				C8390200223D9DFD0092A9DF /* Blockchain.swift in Sources */,
 				C839022F223DB54A0092A9DF /* Dispatch.swift in Sources */,
@@ -659,17 +638,14 @@
 				C8E43FD5223EFEC700623885 /* PocketError.swift in Sources */,
 				C839022D223DAA0B0092A9DF /* PocketAion.swift in Sources */,
 				C8390205223DA1330092A9DF /* Utils.swift in Sources */,
-				C80407EF2246A7350014EFE0 /* TransactionData.swift in Sources */,
 				C83901EF223D9D150092A9DF /* Dictionary+Extensions.swift in Sources */,
 				C83901F0223D9D150092A9DF /* ServerConfiguration.swift in Sources */,
 				C82D773C224D218A00612EE1 /* NetRPCMethod.swift in Sources */,
 				C84F2C90223E88FA00BA1AA8 /* JSON.swift in Sources */,
-				C84E02372247C6C900B891A8 /* EthRPC.swift in Sources */,
 				C82D773E224D21F700612EE1 /* AionNetRPC.swift in Sources */,
 				C856BAD922491D5000150D85 /* DefaultBlock.swift in Sources */,
 				C80576A3223FD0F400B041EB /* Error+Extensions.swift in Sources */,
 				C8390233223DB8E20092A9DF /* DispatchController.swift in Sources */,
-				C82D7738224D20F400612EE1 /* RPC.swift in Sources */,
 				C8F25FC2224031410081B039 /* ReportRepository.swift in Sources */,
 				C80407F22246A7850014EFE0 /* AionTransactionData.swift in Sources */,
 				C83901F9223D9D150092A9DF /* Model.swift in Sources */,

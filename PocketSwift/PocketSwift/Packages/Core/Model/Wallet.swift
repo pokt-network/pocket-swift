@@ -10,11 +10,6 @@ import Foundation
 import RNCryptor
 import SwiftKeychainWrapper
 
-public enum WalletPersistenceError: Error {
-    case invalidWallet
-    case walletSerializationError
-}
-
 public class Wallet {
     public let address: String
     public let privateKey: String
@@ -44,12 +39,12 @@ public class Wallet {
     public func save(passphrase: String) throws -> Bool {
         if isValid() {
             guard let jsonData = try toJSONString().data(using: .utf8) else {
-                throw WalletPersistenceError.invalidWallet
+                throw PocketError.walletPersistence(message: "Error encoding the wallet data")
             }
             let ciphertext = RNCryptor.encrypt(data: jsonData, withPassword: passphrase)
             return  Wallet.getKeychainWrapper().set(ciphertext, forKey: recordKey())
         } else {
-            throw WalletPersistenceError.invalidWallet
+            throw PocketError.walletPersistence(message: "Invalid wallet")
         }
     }
     
@@ -74,10 +69,10 @@ public class Wallet {
     
     public class func retrieveWallet(network: String, netID: String, address: String, passphrase: String) throws -> Wallet {
         guard let encryptedWalletData = Wallet.getKeychainWrapper().data(forKey: Wallet.recordKey(network: network, netID: netID, address: address)) else {
-            throw WalletPersistenceError.walletSerializationError
+            throw PocketError.walletPersistence(message: "Error deserializing wallet data")
         }
         guard let decryptedWalletJSON = String.init(data: try RNCryptor.decrypt(data: encryptedWalletData, withPassword: passphrase), encoding: .utf8) else {
-            throw WalletPersistenceError.walletSerializationError
+            throw PocketError.walletPersistence(message: "Error decrypting wallet data")
         }
         let wallet = try Wallet(jsonString: decryptedWalletJSON)
         return wallet
@@ -108,7 +103,7 @@ public class Wallet {
         object["netID"] = netID
         object["data"] = try Utils.dictionaryToJsonString(dict: data)
         guard let result = try Utils.dictionaryToJsonString(dict: object) else {
-            throw WalletPersistenceError.walletSerializationError
+            throw PocketError.walletPersistence(message: "Error serializing wallet")
         }
         return result
     }
