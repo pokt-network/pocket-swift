@@ -16,6 +16,7 @@
 		1047D1BA2252E96D001B7F10 /* EthRelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1B92252E96D001B7F10 /* EthRelay.swift */; };
 		1047D1BC22539DBC001B7F10 /* EthContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1BB22539DBC001B7F10 /* EthContract.swift */; };
 		1047D1C42253E8F8001B7F10 /* BigUInt+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1C32253E8F8001B7F10 /* BigUInt+Extensions.swift */; };
+		1047D1C62253EAE8001B7F10 /* PocketEthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1C52253EAE8001B7F10 /* PocketEthTests.swift */; };
 		1088F0D32252AEFE004A0EB4 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1088F0D22252AEFE004A0EB4 /* JSON.swift */; };
 		4156FE928C88D6F15B6D090A /* Pods_PocketSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E5CD1009677A53C073C2618 /* Pods_PocketSwift.framework */; };
 		7A0754D4B061327F0B4393B8 /* Pods_PocketSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B83A5DB3BFF44163DB2CAA96 /* Pods_PocketSwiftTests.framework */; };
@@ -94,6 +95,7 @@
 		1047D1B92252E96D001B7F10 /* EthRelay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthRelay.swift; sourceTree = "<group>"; };
 		1047D1BB22539DBC001B7F10 /* EthContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthContract.swift; sourceTree = "<group>"; };
 		1047D1C32253E8F8001B7F10 /* BigUInt+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BigUInt+Extensions.swift"; sourceTree = "<group>"; };
+		1047D1C52253EAE8001B7F10 /* PocketEthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketEthTests.swift; sourceTree = "<group>"; };
 		1088F0D22252AEFE004A0EB4 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		3E5CD1009677A53C073C2618 /* Pods_PocketSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E15465B2934C5ED0BC6239C /* Pods-PocketSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PocketSwiftTests/Pods-PocketSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 		C839019D223D82660092A9DF /* PocketSwiftTests */ = {
 			isa = PBXGroup;
 			children = (
+				1047D1C52253EAE8001B7F10 /* PocketEthTests.swift */,
 				C839019E223D82660092A9DF /* PocketCoreTests.swift */,
 				C80D8B6322459400003AE3E8 /* PocketAionTests.swift */,
 				C83901A0223D82660092A9DF /* Info.plist */,
@@ -743,6 +746,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C80D8B6422459400003AE3E8 /* PocketAionTests.swift in Sources */,
+				1047D1C62253EAE8001B7F10 /* PocketEthTests.swift in Sources */,
 				C839019F223D82660092A9DF /* PocketCoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -20,6 +20,20 @@
                ReferencedContainer = "container:PocketSwift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C8390198223D82660092A9DF"
+               BuildableName = "PocketSwiftTests.xctest"
+               BlueprintName = "PocketSwiftTests"
+               ReferencedContainer = "container:PocketSwift.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
