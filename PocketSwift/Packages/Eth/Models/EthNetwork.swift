@@ -13,7 +13,7 @@ public class EthNetwork {
     public let netID: String
     public let pocketEth: PocketEth
     
-    //public var net: NetRPC
+    private let resultKey = "result"
     
     private var _net: NetRPC!
     var net: NetRPC {
@@ -47,8 +47,18 @@ public class EthNetwork {
     
     public func send(relay: EthRelay, callback: @escaping BigIntegerCallback) {
         self.pocketEth.send(relay: relay, onSuccess: { (response) in
-            let responseObj = response.toDict()
-            //if let result = responseObj["result"]
+            guard let responseObj = response.toDict() else {
+                callback(PocketError.custom(message: "Error parsing relay response \(response)"), nil)
+                return
+            }
+            
+            guard let result = responseObj[self.resultKey] as? String? else {
+                callback(PocketError.custom(message: "Error parsing relay response result: \(response)"), nil)
+                return
+            }
+            
+            let bigIntResult = result?.toBigInt()
+            callback(nil, bigIntResult)
         }) { (error) in
             callback(PocketError.custom(message: error.localizedDescription), nil)
         }
@@ -56,7 +66,16 @@ public class EthNetwork {
     
     public func send(relay: EthRelay, callback: @escaping BooleanCallback) {
         self.pocketEth.send(relay: relay, onSuccess: { (response) in
+            guard let responseObj = response.toDict() else {
+                callback(PocketError.custom(message: "Error parsing relay response \(response)"), nil)
+                return
+            }
             
+            guard let boolResult = responseObj[self.resultKey] as? Bool? else {
+                callback(PocketError.custom(message: "Error parsing relay response result: \(response)"), nil)
+                return
+            }
+            callback(nil, boolResult)
         }) { (error) in
             callback(PocketError.custom(message: error.localizedDescription), nil)
         }
@@ -64,7 +83,16 @@ public class EthNetwork {
     
     public func send(relay: EthRelay, callback: @escaping JSONObjectCallback) {
         self.pocketEth.send(relay: relay, onSuccess: { (response) in
+            guard let responseObj = response.toDict() else {
+                callback(PocketError.custom(message: "Error parsing relay response \(response)"), nil)
+                return
+            }
             
+            guard let resultObj = responseObj[self.resultKey] as? [String: Any]? else {
+                callback(PocketError.custom(message: "Error parsing relay response result: \(response)"), nil)
+                return
+            }
+            callback(nil, resultObj)
         }) { (error) in
             callback(PocketError.custom(message: error.localizedDescription), nil)
         }
@@ -72,7 +100,17 @@ public class EthNetwork {
     
     public func send(relay: EthRelay, callback: @escaping JSONArrayCallback) {
         self.pocketEth.send(relay: relay, onSuccess: { (response) in
+            guard let responseObj = response.toDict() else {
+                callback(PocketError.custom(message: "Error parsing relay response \(response)"), nil)
+                return
+            }
             
+            guard let resultArr = responseObj[self.resultKey] as? [[String: Any]]? else {
+                callback(PocketError.custom(message: "Error parsing relay response result: \(response)"), nil)
+                return
+            }
+            
+            callback(nil, resultArr)
         }) { (error) in
             callback(PocketError.custom(message: error.localizedDescription), nil)
         }
@@ -80,15 +118,23 @@ public class EthNetwork {
     
     public func send(relay: EthRelay, callback: @escaping JSONObjectOrBooleanCallback) {
         self.pocketEth.send(relay: relay, onSuccess: { (response) in
+            guard let responseObj = response.toDict() else {
+                callback(PocketError.custom(message: "Error parsing relay response \(response)"), nil)
+                return
+            }
             
-        }) { (error) in
-            callback(PocketError.custom(message: error.localizedDescription), nil)
-        }
-    }
-    
-    public func send(relay: EthRelay, callback: @escaping AnyArrayCallback) {
-        self.pocketEth.send(relay: relay, onSuccess: { (response) in
+            guard let resultAny = responseObj[self.resultKey] else {
+                callback(PocketError.custom(message: "Error parsing relay response result: \(response)"), nil)
+                return
+            }
             
+            if let objectOrBoolean = try? ObjectOrBoolean.init(objectOrBoolean: resultAny) {
+                 callback(nil, objectOrBoolean)
+            } else {
+                callback(nil, nil)
+            }
+           
+            //callback(nil, resultArr)
         }) { (error) in
             callback(PocketError.custom(message: error.localizedDescription), nil)
         }

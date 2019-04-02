@@ -28,12 +28,52 @@ public class EthRPC {
         case getTransactionReceipt = "eth_getTransactionReceipt"
         case getLogs = "eth_getLogs"
         case estimateGas = "eth_estimateGas"
+        case protocolVersion = "eth_protocolVersion"
+        case syncing = "eth_syncing"
+        case gasPrice = "eth_gasPrice"
+        case blockNumber = "eth_blockNumber"
     }
     
     private let ethNetwork: EthNetwork
     
     init(ethNetwork: EthNetwork) {
         self.ethNetwork = ethNetwork
+    }
+    
+    public func protocolVersion(callback: @escaping StringCallback) {
+        do {
+            let relay = try self.ethNetwork.createEthRelay(method: EthRPCMethod.protocolVersion.rawValue, params: nil)
+            self.ethNetwork.send(relay: relay, callback: callback)
+        } catch let error  {
+            callback(PocketError.custom(message: error.localizedDescription), nil)
+        }
+    }
+    
+    public func syncing(callback: @escaping JSONObjectOrBooleanCallback) {
+        do {
+            let relay = try self.ethNetwork.createEthRelay(method: EthRPCMethod.syncing.rawValue, params: nil)
+            self.ethNetwork.send(relay: relay, callback: callback)
+        } catch let error  {
+            callback(PocketError.custom(message: error.localizedDescription), nil)
+        }
+    }
+    
+    public func gasPrice(callback: @escaping BigIntegerCallback) {
+        do {
+            let relay = try self.ethNetwork.createEthRelay(method: EthRPCMethod.gasPrice.rawValue, params: nil)
+            self.ethNetwork.send(relay: relay, callback: callback)
+        } catch let error  {
+            callback(PocketError.custom(message: error.localizedDescription), nil)
+        }
+    }
+    
+    public func blockNumber(callback: @escaping BigIntegerCallback) {
+        do {
+            let relay = try self.ethNetwork.createEthRelay(method: EthRPCMethod.blockNumber.rawValue, params: nil)
+            self.ethNetwork.send(relay: relay, callback: callback)
+        } catch let error  {
+            callback(PocketError.custom(message: error.localizedDescription), nil)
+        }
     }
     
     public func getBalance(address: String, blockTag: BlockTag?, callback: @escaping BigIntegerCallback) {
@@ -119,195 +159,100 @@ public class EthRPC {
         }
     }
     
-    public func call(from: String?, to: String, nrg: BigInt?, nrgPrice: BigInt?, value: BigInt?, data: String?, blockTag: BlockTag?, callback: @escaping StringCallback) {
+    public func call(from: String?, to: String, gas: BigInt?, gasPrice: BigInt?, value: BigInt?, data: String?, blockTag: BlockTag?, callback: @escaping StringCallback) {
         do {
             if to.isEmpty {
                 callback(PocketError.invalidParameter(message: "Destination address (to) param is missing"), nil)
                 return
             }
-            
             var txParams = [String: Any]()
-            txParams.fill("from", from, "to", to, "gas", nrg?.toHexString(), "gasPrice", nrgPrice?.toHexString(), "value", value?.toHexString(), "data", data)
+            txParams.fill("from", from, "to", to, "gas", gas?.toHexString(), "gasPrice", gasPrice?.toHexString(), "value", value?.toHexString(), "data", data)
             let params: [Any] = [txParams, BlockTag.tagOrLatest(blockTag: blockTag).getValue()]
             let relay = try self.ethNetwork.createEthRelay(method: EthRPCMethod.call.rawValue, params: params)
-            
-            self.pocket.send(relay: relay, onSuccess: { response in
-                guard let result = try? self.getString(dic: response.toDict()) else {
-                    onError(PocketError.custom(message: "Error parsing call response"))
-                    return
-                }
-                onSuccess(result)
-                
-            }, onError: {error in
-                callback(PocketError.custom(message: error.localizedDescription), nil)
-            })
+            self.ethNetwork.send(relay: relay, callback: callback)
         } catch let error {
             callback(PocketError.custom(message: error.localizedDescription), nil)
         }
     }
     
-    public func getBlockByHash(blockHash: String, fullTx: Bool = false, onSuccess: @escaping ([String: Any]) -> (), onError: @escaping (Error) -> ()) {
+    public func getBlockByHash(blockHash: String, fullTx: Bool = false, callback: @escaping JSONObjectCallback) {
         do{
-            
             if blockHash.isEmpty {
-                onError(PocketError.invalidParameter(message: "Block Hash param is missing"))
+                callback(PocketError.invalidParameter(message: "Block Hash param is missing"), nil)
                 return
             }
-            
             let params: [Any] = [blockHash, fullTx]
-            guard let relay = try self.createEthRelay(ethMethod: EthRPCMethod.getBlockByHash, params: params) else {
-                onError(PocketError.invalidRelay)
-                return
-            }
-            
-            self.pocket.send(relay: relay, onSuccess: { response in
-                guard let result = try? self.getJSON(dic: response.toDict()) else {
-                    onError(PocketError.custom(message: "Error parsing get block by hash count response"))
-                    return
-                }
-                onSuccess(result)
-                
-            }, onError: {error in
-                callback(PocketError.custom(message: error.localizedDescription), nil)
-            })
+            let relay = try self.ethNetwork.createEthRelay(method: EthRPCMethod.getBlockByHash.rawValue, params: params)
+            self.ethNetwork.send(relay: relay, callback: callback)
         }catch let error {
             callback(PocketError.custom(message: error.localizedDescription), nil)
         }
     }
     
-    public func getBlockByNumber(blockTag: BlockTag, fullTx: Bool = false, onSuccess: @escaping ([String: Any]) -> (), onError: @escaping (Error) -> ()) {
+    public func getBlockByNumber(blockTag: BlockTag?, fullTx: Bool = false, callback: @escaping JSONObjectCallback) {
         do{
-            let params: [Any] = [blockTag.getValue(), fullTx]
-            guard let relay = try self.createEthRelay(ethMethod: EthRPCMethod.getBlockByNumber, params: params) else {
-                onError(PocketError.invalidRelay)
-                return
-            }
-            
-            self.pocket.send(relay: relay, onSuccess: { response in
-                guard let result = try? self.getJSON(dic: response.toDict()) else {
-                    onError(PocketError.custom(message: "Error parsing get block by number response"))
-                    return
-                }
-                onSuccess(result)
-                
-            }, onError: {error in
-                callback(PocketError.custom(message: error.localizedDescription), nil)
-            })
+            let params: [Any] = [BlockTag.tagOrLatest(blockTag: blockTag).getValue(), fullTx]
+            let relay = try self.ethNetwork.createEthRelay(method: EthRPCMethod.getBlockByNumber.rawValue, params: params)
+            self.ethNetwork.send(relay: relay, callback: callback)
         }catch let error {
             callback(PocketError.custom(message: error.localizedDescription), nil)
         }
     }
     
-    public func getTransactionByHash(txHash: String, onSuccess: @escaping ([String: Any]) -> (), onError: @escaping (Error) -> ()) {
+    public func getTransactionByHash(txHash: String, callback: @escaping JSONObjectCallback) {
         do{
-            
             if txHash.isEmpty {
-                onError(PocketError.invalidParameter(message: "Transaction hash param is missing"))
+                callback(PocketError.invalidParameter(message: "Transaction hash param is missing"), nil)
                 return
             }
-            
             let params: [Any] = [txHash]
-            guard let relay = try self.createEthRelay(ethMethod: EthRPCMethod.getTransactionByHash, params: params) else {
-                onError(PocketError.invalidRelay)
-                return
-            }
-            
-            self.pocket.send(relay: relay, onSuccess: { response in
-                guard let result = try? self.getJSON(dic: response.toDict()) else {
-                    onError(PocketError.custom(message: "Error parsing get transaction by hash response"))
-                    return
-                }
-                onSuccess(result)
-                
-            }, onError: {error in
-                callback(PocketError.custom(message: error.localizedDescription), nil)
-            })
+            let relay = try self.ethNetwork.createEthRelay(method: EthRPCMethod.getTransactionByHash.rawValue, params: params)
+            self.ethNetwork.send(relay: relay, callback: callback)
         }catch let error {
             callback(PocketError.custom(message: error.localizedDescription), nil)
         }
     }
     
-    public func getTransactionByBlockHashAndIndex(blockHash: String, index: BigInt, onSuccess: @escaping ([String: Any]) -> (), onError: @escaping (Error) -> ()) {
+    public func getTransactionByBlockHashAndIndex(blockHash: String, index: BigInt, callback: @escaping JSONObjectCallback) {
         do{
             if blockHash.isEmpty {
-                onError(PocketError.invalidParameter(message: "One or more params are missing"))
+                callback(PocketError.invalidParameter(message: "One or more params are missing"), nil)
                 return
             }
             
             let params: [Any] = [blockHash, index.toHexString()]
-            guard let relay = try self.createEthRelay(ethMethod: EthRPCMethod.getTransactionByBlockHashAndIndex, params: params) else {
-                onError(PocketError.invalidRelay)
-                return
-            }
-            
-            self.pocket.send(relay: relay, onSuccess: { response in
-                guard let result = try? self.getJSON(dic: response.toDict()) else {
-                    onError(PocketError.custom(message: "Error parsing get transaction by hash and index response"))
-                    return
-                }
-                onSuccess(result)
-                
-            }, onError: {error in
-                callback(PocketError.custom(message: error.localizedDescription), nil)
-            })
+            let relay = try self.ethNetwork.createEthRelay(method: EthRPCMethod.getTransactionByBlockHashAndIndex.rawValue, params: params)
+            self.ethNetwork.send(relay: relay, callback: callback)
         }catch let error {
             callback(PocketError.custom(message: error.localizedDescription), nil)
         }
     }
     
-    public func getTransactionByBlockNumberAndIndex(blockTag: BlockTag, index: BigInt, onSuccess: @escaping ([String: Any]) -> (), onError: @escaping (Error) -> ()) {
+    public func getTransactionByBlockNumberAndIndex(blockTag: BlockTag?, index: BigInt, callback: @escaping JSONObjectCallback) {
         do{
-            let params: [Any] = [blockTag.getNumber(), index.toHexString()]
-            guard let relay = try self.createEthRelay(ethMethod: EthRPCMethod.getTransactionByBlockNumberAndIndex, params: params) else {
-                onError(PocketError.invalidRelay)
-                return
-            }
-            
-            self.pocket.send(relay: relay, onSuccess: { response in
-                guard let result = try? self.getJSON(dic: response.toDict()) else {
-                    onError(PocketError.custom(message: "Error parsing get transaction by hash and number response"))
-                    return
-                }
-                onSuccess(result)
-                
-            }, onError: {error in
-                callback(PocketError.custom(message: error.localizedDescription), nil)
-            })
+            let params: [Any] = [BlockTag.tagOrLatest(blockTag: blockTag).getValue(), index.toHexString()]
+            let relay = try self.ethNetwork.createEthRelay(method: EthRPCMethod.getTransactionByBlockNumberAndIndex.rawValue, params: params)
+            self.ethNetwork.send(relay: relay, callback: callback)
         }catch let error {
             callback(PocketError.custom(message: error.localizedDescription), nil)
         }
     }
     
-    public func getTransactionReceipt(txHash: String, onSuccess: @escaping ([String: Any]) -> (), onError: @escaping (Error) -> ()) {
+    public func getTransactionReceipt(txHash: String, callback: @escaping JSONObjectCallback) {
         do{
-            
             if txHash.isEmpty {
-                onError(PocketError.invalidParameter(message: "Transaction hash param is missing"))
+                callback(PocketError.invalidParameter(message: "Transaction hash param is missing"), nil)
                 return
             }
-            
             let params: [Any] = [txHash]
-            guard let relay = try self.createEthRelay(ethMethod: EthRPCMethod.getTransactionReceipt, params: params) else {
-                onError(PocketError.invalidRelay)
-                return
-            }
-            
-            self.pocket.send(relay: relay, onSuccess: { response in
-                guard let result = try? self.getJSON(dic: response.toDict()) else {
-                    onError(PocketError.custom(message: "Error parsing get transaction receipt response"))
-                    return
-                }
-                onSuccess(result)
-                
-            }, onError: {error in
-                callback(PocketError.custom(message: error.localizedDescription), nil)
-            })
+            let relay = try self.ethNetwork.createEthRelay(method: EthRPCMethod.getTransactionReceipt.rawValue, params: params)
+            self.ethNetwork.send(relay: relay, callback: callback)
         }catch let error {
             callback(PocketError.custom(message: error.localizedDescription), nil)
         }
     }
     
-    public func getLogs(fromBlock: BlockTag = .latest , toBlock: BlockTag = .latest, address: String?, topics: [String]?, blockhash: String?, onSuccess: @escaping ([[String: Any]]) -> (), onError: @escaping (Error) -> ()) {
+    public func getLogs(fromBlock: BlockTag = .latest , toBlock: BlockTag = .latest, address: String?, topics: [String]?, blockhash: String?, callback: @escaping JSONArrayCallback) {
         do{
             var txParams = [String: Any]()
             txParams.fill("address", address, "topics", topics)
@@ -320,52 +265,24 @@ public class EthRPC {
             }
             
             let params: [Any] = [txParams]
-            guard let relay = try self.createEthRelay(ethMethod: EthRPCMethod.getLogs, params: params) else {
-                onError(PocketError.invalidRelay)
-                return
-            }
-            
-            self.pocket.send(relay: relay, onSuccess: { response in
-                guard let result = try? self.getJSONArray(dic: response.toDict()) else {
-                    onError(PocketError.custom(message: "Error parsing get transaction receipt response"))
-                    return
-                }
-                onSuccess(result)
-                
-            }, onError: {error in
-                callback(PocketError.custom(message: error.localizedDescription), nil)
-            })
+            let relay = try self.ethNetwork.createEthRelay(method: EthRPCMethod.getLogs.rawValue, params: params)
+            self.ethNetwork.send(relay: relay, callback: callback)
         }catch let error {
             callback(PocketError.custom(message: error.localizedDescription), nil)
         }
     }
     
-    public func estimateGas(from: String?, to: String, nrg: BigInt?, nrgPrice: BigInt?, value: BigInt?, data: String?, blockTag: BlockTag, onSuccess: @escaping (BigInt) -> (), onError: @escaping (Error) -> ()) {
+    public func estimateGas(from: String?, to: String, gas: BigInt?, gasPrice: BigInt?, value: BigInt?, data: String?, blockTag: BlockTag?, callback: @escaping BigIntegerCallback) {
         do{
             if to.isEmpty {
-                onError(PocketError.invalidParameter(message: "Destination address (to) param is missing"))
+                callback(PocketError.invalidParameter(message: "Destination address (to) param is missing"), nil)
                 return
             }
-            
             var txParams = [String: Any]()
-            txParams.fill("to", to, "from", from, "nrg", nrg?.toHexString(), "nrgPrice", nrgPrice?.toHexString(), "value", value?.toHexString(), "data", data)
-            
-            let params: [Any] = [txParams, blockTag.getValue()]
-            guard let relay = try self.createEthRelay(ethMethod: EthRPCMethod.estimateGas, params: params) else {
-                onError(PocketError.invalidRelay)
-                return
-            }
-            
-            self.pocket.send(relay: relay, onSuccess: { response in
-                guard let result = try? self.getInteger(dic: response.toDict()) else {
-                    onError(PocketError.custom(message: "Error parsing get estimateGas response"))
-                    return
-                }
-                onSuccess(result)
-                
-            }, onError: {error in
-                callback(PocketError.custom(message: error.localizedDescription), nil)
-            })
+            txParams.fill("to", to, "from", from, "nrg", gas?.toHexString(), "nrgPrice", gasPrice?.toHexString(), "value", value?.toHexString(), "data", data)
+            let params: [Any] = [txParams, BlockTag.tagOrLatest(blockTag: blockTag)]
+            let relay = try self.ethNetwork.createEthRelay(method: EthRPCMethod.estimateGas.rawValue, params: params)
+            self.ethNetwork.send(relay: relay, callback: callback)
         }catch let error {
             callback(PocketError.custom(message: error.localizedDescription), nil)
         }
