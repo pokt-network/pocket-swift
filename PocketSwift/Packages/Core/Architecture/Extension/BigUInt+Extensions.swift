@@ -2,7 +2,7 @@
 //  BigUInt+Extensions.swift
 //  PocketSwift
 //
-//  Created by Pabel Nunez Landestoy on 4/2/19.
+//  Created by Luis De Leon on 4/2/19.
 //  Copyright © 2019 Wilson Garcia. All rights reserved.
 //
 
