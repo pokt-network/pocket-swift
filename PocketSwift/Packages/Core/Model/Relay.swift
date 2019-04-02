@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Relay: Model, Input {
+public class Relay: Model, Input {
     let network: String
     let netID: String
     let data: String
