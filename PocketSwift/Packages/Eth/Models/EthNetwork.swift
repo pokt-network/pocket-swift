@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import secp256k1_swift
+import Web3swift
+
 public class EthNetwork {
     
     public let devID: String
@@ -31,6 +34,24 @@ public class EthNetwork {
         self.devID = pocketEth.devID
         self._eth = EthRPC.init(ethNetwork: self)
         self._net = NetRPC.init(ethNetwork: self)
+    }
+    
+    public func importWallet(privateKey: String) throws -> Wallet {
+        let privateKeyData = Data(hex: privateKey)
+        guard let keyStore = PlainKeystore.init(privateKey: privateKeyData) else {
+            throw PocketError.walletCreation(message: "Invalid private key")
+        }
+        return try EthNetwork.walletFromKeystore(keyStore: keyStore, netID: self.netID)
+    }
+    
+    public func createWallet() throws -> Wallet {
+        guard let privateKey = SECP256K1.generatePrivateKey() else {
+            throw PocketError.walletCreation(message: "Invalid private key generated")
+        }
+        guard let keyStore = PlainKeystore.init(privateKey: privateKey) else {
+            throw PocketError.walletCreation(message: "Invalid private key generated")
+        }
+        return try EthNetwork.walletFromKeystore(keyStore: keyStore, netID: self.netID)
     }
     
     public func createEthRelay(method: String, params: [Any]?) throws -> EthRelay {
@@ -138,6 +159,16 @@ public class EthNetwork {
         }) { (error) in
             callback(PocketError.custom(message: error.localizedDescription), nil)
         }
+    }
+    
+    // Private interface
+    private static func walletFromKeystore(keyStore: PlainKeystore, netID: String) throws -> Wallet {
+        guard let address = keyStore.addresses?.first else {
+            throw PocketError.custom(message: "Error reading wallet data")
+        }
+        let keystorePrivateKey = try keyStore.UNSAFE_getPrivateKeyData(account: address).toHexString()
+        let wallet = Wallet.init(address: address.address, privateKey: keystorePrivateKey, network: PocketEth.NETWORK, netID: netID)
+        return wallet
     }
     
 }
