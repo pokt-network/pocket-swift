@@ -7,10 +7,8 @@
 //
 
 import Foundation
-import secp256k1_swift
-import Web3swift
 
-public class PocketEth: Pocket, PocketPlugin {
+public class PocketEth: Pocket {
     
     public static let NETWORK = "ETH"
     public enum Networks {
@@ -80,33 +78,5 @@ public class PocketEth: Pocket, PocketPlugin {
         }
         
         return result
-    }
-    
-    public func importWallet(privateKey: String, address: String?, network: String, netID: String, data: [AnyHashable : Any]?) throws -> Wallet {
-        let privateKeyData = Data(hex: privateKey)
-        guard let keyStore = PlainKeystore.init(privateKey: privateKeyData) else {
-            throw PocketError.walletCreation(message: "Invalid private key")
-        }
-        return try PocketEth.walletFromKeystore(keyStore: keyStore, netID: netID, data: data)
-    }
-    
-    public func createWallet(network: String, netID: String, data: [AnyHashable : Any]?) throws -> Wallet {
-        guard let privateKey = SECP256K1.generatePrivateKey() else {
-            throw PocketError.walletCreation(message: "Invalid private key generated")
-        }
-        guard let keyStore = PlainKeystore.init(privateKey: privateKey) else {
-            throw PocketError.walletCreation(message: "Invalid private key generated")
-        }
-        return try PocketEth.walletFromKeystore(keyStore: keyStore, netID: netID, data: data)
-    }
-    
-    // Private interface
-    private static func walletFromKeystore(keyStore: PlainKeystore, netID: String, data: [AnyHashable : Any]?) throws -> Wallet {
-        guard let address = keyStore.addresses?.first else {
-            throw PocketError.custom(message: "Error reading wallet data")
-        }
-        let keystorePrivateKey = try keyStore.UNSAFE_getPrivateKeyData(account: address).toHexString()
-        let wallet = Wallet.init(address: address.address, privateKey: keystorePrivateKey, network: PocketEth.NETWORK, netID: netID, data: data)
-        return wallet
     }
 }

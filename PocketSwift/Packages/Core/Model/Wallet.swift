@@ -15,15 +15,13 @@ public class Wallet {
     public let privateKey: String
     public let network: String
     public let netID: String
-    public let data: [AnyHashable: Any]?
     
     // Constructors
-    init(address: String, privateKey: String, network: String, netID: String, data: [AnyHashable: Any]?) {
+    init(address: String, privateKey: String, network: String, netID: String) {
         self.address = address
         self.privateKey = privateKey
         self.network = network
         self.netID = netID
-        self.data = data
     }
     
     private init(jsonString: String) throws {
@@ -32,7 +30,6 @@ public class Wallet {
         privateKey = dict["privateKey"] as? String ?? ""
         network = dict["network"] as? String ?? ""
         netID = dict["netID"] as? String ?? ""
-        data = try Utils.jsonStringToDictionary(string: dict["data"] as? String ?? "")
     }
     
     // Persistence public instance interface
@@ -57,9 +54,7 @@ public class Wallet {
     }
     
     public func equalsTo(wallet: Wallet) -> Bool {
-        let selfData: [AnyHashable: Any] = self.data ?? [AnyHashable: Any]()
-        let walletData: [AnyHashable: Any] = wallet.data ?? [AnyHashable: Any]()
-        return self.network == wallet.network && self.netID == wallet.netID && self.address == wallet.address && self.privateKey == wallet.privateKey && NSDictionary(dictionary: selfData).isEqual(to: walletData)
+        return self.network == wallet.network && self.netID == wallet.netID && self.address == wallet.address && self.privateKey == wallet.privateKey
     }
     
     // Persistence public class interface
@@ -101,7 +96,6 @@ public class Wallet {
         object["privateKey"] = privateKey
         object["network"] = network
         object["netID"] = netID
-        object["data"] = try Utils.dictionaryToJsonString(dict: data)
         guard let result = try Utils.dictionaryToJsonString(dict: object) else {
             throw PocketError.walletPersistence(message: "Error serializing wallet")
         }
