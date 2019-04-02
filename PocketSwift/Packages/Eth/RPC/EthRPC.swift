@@ -8,12 +8,20 @@
 
 import Foundation
 import BigInt
+import Web3swift
+import EthereumAddress
+
+extension EthereumTransaction {
+    public static func createRawTransaction(transaction: EthereumTransaction) -> JSONRPCrequest? {
+        return self.createRawTransaction(transaction: transaction)
+    }
+}
 
 public class EthRPC {
     
     private enum EthRPCMethod: String {
         case getBalance = "eth_getBalance"
-        case sendTransaction = "eth_sendTransaction"
+        case sendRawTransaction = "eth_sendRawTransaction"
         case getStorageAt = "eth_getStorageAt"
         case getTransactionCount = "eth_getTransactionCount"
         case getBlockTransactionCountByHash = "eth_getBlockTransactionCountByHash"
@@ -38,6 +46,39 @@ public class EthRPC {
     
     init(ethNetwork: EthNetwork) {
         self.ethNetwork = ethNetwork
+    }
+    
+    public func sendTransaction(wallet: Wallet, toAddress: String, gas: BigUInt, gasPrice: BigUInt, value: BigUInt = BigUInt.init(0), data: String?, nonce: BigUInt, callback: @escaping StringCallback) {
+        do {
+            if !wallet.netID.elementsEqual(self.ethNetwork.netID) {
+                callback(PocketError.custom(message: "Invalid wallet netid: \(wallet.netID)"), nil)
+                return
+            }
+            guard let recepientAddress = EthereumAddress.init(toAddress) else {
+                callback(PocketError.custom(message: "Invalid receipient address: \(toAddress)"), nil)
+                return
+            }
+            guard let pkData = wallet.privateKey.data(using: .utf8) else {
+                callback(PocketError.custom(message: "Invalid private key: \(wallet.privateKey)"), nil)
+                return
+            }
+            var dataParam = Data()
+            if let encodedData = data?.data(using: .utf8) {
+                dataParam = encodedData
+            }
+            var ethTx = EthereumTransaction.init(gasPrice: gasPrice, gasLimit: gas, to: recepientAddress, value: value, data: dataParam)
+            ethTx.nonce = nonce
+            try Web3Signer.FallbackSigner.sign(transaction: &ethTx, privateKey: pkData, useExtraEntropy: true)
+            guard let rawTx = String(data: try JSONEncoder().encode(EthereumTransaction.createRawTransaction(transaction: ethTx)), encoding: .utf8) else {
+                callback(PocketError.custom(message: "Error encoding transaction"), nil)
+                return
+            }
+            let params: [Any] = [rawTx]
+            let relay = try self.ethNetwork.createEthRelay(method: EthRPCMethod.sendRawTransaction.rawValue, params: params)
+            self.ethNetwork.send(relay: relay, callback: callback)
+        } catch let error  {
+            callback(PocketError.custom(message: error.localizedDescription), nil)
+        }
     }
     
     public func protocolVersion(callback: @escaping StringCallback) {
@@ -159,7 +200,7 @@ public class EthRPC {
         }
     }
     
-    public func call(from: String?, to: String, gas: BigInt?, gasPrice: BigInt?, value: BigInt?, data: String?, blockTag: BlockTag?, callback: @escaping StringCallback) {
+    public func call(from: String?, to: String, gas: BigUInt?, gasPrice: BigUInt?, value: BigUInt?, data: String?, blockTag: BlockTag?, callback: @escaping StringCallback) {
         do {
             if to.isEmpty {
                 callback(PocketError.invalidParameter(message: "Destination address (to) param is missing"), nil)

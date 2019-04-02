@@ -15,8 +15,7 @@
 		1047D1B82252E719001B7F10 /* ObjectOrBoolean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1B72252E719001B7F10 /* ObjectOrBoolean.swift */; };
 		1047D1BA2252E96D001B7F10 /* EthRelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1B92252E96D001B7F10 /* EthRelay.swift */; };
 		1047D1BC22539DBC001B7F10 /* EthContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1BB22539DBC001B7F10 /* EthContract.swift */; };
-		1047D1C02253A3FC001B7F10 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1BF2253A3FC001B7F10 /* Function.swift */; };
-		1047D1C22253A9C2001B7F10 /* InputOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1C12253A9C2001B7F10 /* InputOutput.swift */; };
+		1047D1C42253E8F8001B7F10 /* BigUInt+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1C32253E8F8001B7F10 /* BigUInt+Extensions.swift */; };
 		1088F0D32252AEFE004A0EB4 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1088F0D22252AEFE004A0EB4 /* JSON.swift */; };
 		4156FE928C88D6F15B6D090A /* Pods_PocketSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E5CD1009677A53C073C2618 /* Pods_PocketSwift.framework */; };
 		7A0754D4B061327F0B4393B8 /* Pods_PocketSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B83A5DB3BFF44163DB2CAA96 /* Pods_PocketSwiftTests.framework */; };
@@ -94,8 +93,7 @@
 		1047D1B72252E719001B7F10 /* ObjectOrBoolean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectOrBoolean.swift; sourceTree = "<group>"; };
 		1047D1B92252E96D001B7F10 /* EthRelay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthRelay.swift; sourceTree = "<group>"; };
 		1047D1BB22539DBC001B7F10 /* EthContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthContract.swift; sourceTree = "<group>"; };
-		1047D1BF2253A3FC001B7F10 /* Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
-		1047D1C12253A9C2001B7F10 /* InputOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputOutput.swift; sourceTree = "<group>"; };
+		1047D1C32253E8F8001B7F10 /* BigUInt+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BigUInt+Extensions.swift"; sourceTree = "<group>"; };
 		1088F0D22252AEFE004A0EB4 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		3E5CD1009677A53C073C2618 /* Pods_PocketSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E15465B2934C5ED0BC6239C /* Pods-PocketSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PocketSwiftTests/Pods-PocketSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -222,23 +220,6 @@
 			path = RPC;
 			sourceTree = "<group>";
 		};
-		1047D1BD2253A3EA001B7F10 /* Abi */ = {
-			isa = PBXGroup;
-			children = (
-				1047D1BE2253A3EF001B7F10 /* v2 */,
-			);
-			path = Abi;
-			sourceTree = "<group>";
-		};
-		1047D1BE2253A3EF001B7F10 /* v2 */ = {
-			isa = PBXGroup;
-			children = (
-				1047D1BF2253A3FC001B7F10 /* Function.swift */,
-				1047D1C12253A9C2001B7F10 /* InputOutput.swift */,
-			);
-			path = v2;
-			sourceTree = "<group>";
-		};
 		C80407F02246A7680014EFE0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -358,7 +339,6 @@
 		C83901D5223D9ABE0092A9DF /* Eth */ = {
 			isa = PBXGroup;
 			children = (
-				1047D1BD2253A3EA001B7F10 /* Abi */,
 				1047D1AE2252C050001B7F10 /* RPC */,
 				1047D1AB2252BFE5001B7F10 /* Models */,
 				C839022A223DA9D30092A9DF /* PocketEth.swift */,
@@ -717,11 +697,11 @@
 				C80576A1223FC57E00B041EB /* String+Extensions.swift in Sources */,
 				C8F25FC022402BC10081B039 /* Report.swift in Sources */,
 				1047D1B42252E6DE001B7F10 /* BlockTag.swift in Sources */,
+				1047D1C42253E8F8001B7F10 /* BigUInt+Extensions.swift in Sources */,
 				1047D1AD2252BFFF001B7F10 /* EthNetwork.swift in Sources */,
 				C80D8B6222458E7D003AE3E8 /* AionUtils.swift in Sources */,
 				C5CF2841225411610085B45E /* AionContract.swift in Sources */,
 				C83901F8223D9D150092A9DF /* Endpoint.swift in Sources */,
-				1047D1C02253A3FC001B7F10 /* Function.swift in Sources */,
 				C8FA35392249E01900D31B8C /* BigInt+Extensions.swift in Sources */,
 				C5CF2835225305B70085B45E /* AionRelay.swift in Sources */,
 				C8390209223DA2CB0092A9DF /* RelayController.swift in Sources */,
@@ -732,7 +712,6 @@
 				C5CF28332252CE880085B45E /* AionNetwork.swift in Sources */,
 				C83901FD223D9D150092A9DF /* Pocket.swift in Sources */,
 				C80576A5223FF6F100B041EB /* Wallet.swift in Sources */,
-				1047D1C22253A9C2001B7F10 /* InputOutput.swift in Sources */,
 				1047D1B82252E719001B7F10 /* ObjectOrBoolean.swift in Sources */,
 				C8390200223D9DFD0092A9DF /* Blockchain.swift in Sources */,
 				C839022F223DB54A0092A9DF /* Dispatch.swift in Sources */,
