@@ -49,7 +49,7 @@ public class Pocket: NSObject {
         self.init(devID: devID, network: network, netIds: netIds, maxNodes: maxNodes, requestTimeOut: requestTimeOut)
     }
     
-    public func send(relay: Relay, onSuccess: @escaping (_ data: String) ->(), onError: @escaping (_ error: Error) -> ()){
+    public func send(relay: Relay, onSuccess: @escaping (_ data: String) ->(), onError: @escaping (_ error: Error) -> ()) {
         if !relay.isValid() {
             onError(PocketError.invalidRelay)
             return

@@ -1,50 +1,89 @@
 PODS:
   - BigInt (3.1.0):
     - SipHash (~> 1.2)
-  - Nimble (7.3.1)
-  - Quick (1.3.2)
+  - CryptoSwift (0.15.0)
+  - EthereumABI (1.2.0):
+    - BigInt (~> 3.1)
+    - CryptoSwift (~> 0.13)
+    - EthereumAddress (~> 1.1.0)
+  - EthereumAddress (1.1.0):
+    - CryptoSwift (~> 0.13)
+  - Nimble (8.0.1)
+  - PromiseKit (6.8.3):
+    - PromiseKit/CorePromise (= 6.8.3)
+    - PromiseKit/Foundation (= 6.8.3)
+    - PromiseKit/UIKit (= 6.8.3)
+  - PromiseKit/CorePromise (6.8.3)
+  - PromiseKit/Foundation (6.8.3):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.8.3):
+    - PromiseKit/CorePromise
+  - Quick (2.0.0)
   - RNCryptor (5.0.3)
-  - RxAtomic (4.4.0)
-  - RxBlocking (4.4.0):
-    - RxAtomic (~> 4.4)
-    - RxSwift (~> 4.0)
-  - RxSwift (4.4.0):
-    - RxAtomic (~> 4.4)
+  - RxBlocking (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxSwift (4.5.0)
+  - secp256k1_swift (1.0.3)
   - SipHash (1.2.2)
   - SwiftKeychainWrapper (3.2.0)
+  - SwiftRLP (1.2):
+    - BigInt (~> 3.1)
+  - web3swift (2.1.2):
+    - BigInt (~> 3.1.0)
+    - CryptoSwift (~> 0.15.0)
+    - EthereumABI (~> 1.2.0)
+    - EthereumAddress (~> 1.1.0)
+    - PromiseKit (~> 6.8.3)
+    - secp256k1_swift (~> 1.0.3)
+    - SipHash (~> 1.2.2)
+    - SwiftRLP (~> 1.2)
 
 DEPENDENCIES:
   - BigInt
+  - CryptoSwift
   - Nimble
   - Quick
   - RNCryptor
   - RxBlocking (~> 4.0)
   - RxSwift (~> 4.0)
   - SwiftKeychainWrapper
+  - web3swift (~> 2.1.2)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - BigInt
+    - CryptoSwift
+    - EthereumABI
+    - EthereumAddress
     - Nimble
+    - PromiseKit
     - Quick
     - RNCryptor
-    - RxAtomic
     - RxBlocking
     - RxSwift
+    - secp256k1_swift
     - SipHash
     - SwiftKeychainWrapper
+    - SwiftRLP
+    - web3swift
 
 SPEC CHECKSUMS:
   BigInt: 76b5dfdfa3e2e478d4ffdf161aeede5502e2742f
-  Nimble: 04f732da099ea4d153122aec8c2a88fd0c7219ae
-  Quick: 2623cb30d7a7f41ca62f684f679586558f483d46
+  CryptoSwift: 769f58a9e89f64e8796c2e59ce5f002dc81a2438
+  EthereumABI: 3e7b3916d8c516c690e3b661ead56652a937cd79
+  EthereumAddress: 7a948eff69b004daffe719860c772496af4f4fd7
+  Nimble: 45f786ae66faa9a709624227fae502db55a8bdd0
+  PromiseKit: 94c6e781838c5bf4717677d0d882b0e7250c80fc
+  Quick: ce1276c7c27ba2da3cb2fd0cde053c3648b3b22d
   RNCryptor: c93d19029dcf7ff160aca0f24d6c9e7b0d82f664
-  RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
-  RxBlocking: 138ad53217434444d6eeeb4fb406a45431d92e31
-  RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
+  RxBlocking: 79413e4d916f44bb3e113c5b2cc059e36fe58910
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  secp256k1_swift: 4fc5c4b2d2c6d21ee8ccb868cdc92da12f38bed9
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
   SwiftKeychainWrapper: 82c4c02cdc36f9a24f7edfcaab3e336401caa1a1
+  SwiftRLP: 98a02b2210128353ca02e4c2f4d83e2a9796db4f
+  web3swift: 0f29d0a8ceb03f113930e550bc589544454533a0
 
-PODFILE CHECKSUM: d577e5366a50ce2b81941b2d77f427891f0b8f22
+PODFILE CHECKSUM: 8ac205045f1cec3fc16fd7d399156dc7dfb0701d
 
 COCOAPODS: 1.5.3

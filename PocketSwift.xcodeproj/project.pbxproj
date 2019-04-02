@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1047D1AD2252BFFF001B7F10 /* EthNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1AC2252BFFF001B7F10 /* EthNetwork.swift */; };
+		1047D1B02252C063001B7F10 /* NetRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1AF2252C063001B7F10 /* NetRPC.swift */; };
+		1047D1B22252C06F001B7F10 /* EthRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1B12252C06F001B7F10 /* EthRPC.swift */; };
+		1047D1B42252E6DE001B7F10 /* BlockTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1B32252E6DE001B7F10 /* BlockTag.swift */; };
+		1047D1B62252E6F1001B7F10 /* RPCCallbacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1B52252E6F1001B7F10 /* RPCCallbacks.swift */; };
+		1047D1B82252E719001B7F10 /* ObjectOrBoolean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1B72252E719001B7F10 /* ObjectOrBoolean.swift */; };
+		1047D1BA2252E96D001B7F10 /* EthRelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1B92252E96D001B7F10 /* EthRelay.swift */; };
 		1088F0D32252AEFE004A0EB4 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1088F0D22252AEFE004A0EB4 /* JSON.swift */; };
 		4156FE928C88D6F15B6D090A /* Pods_PocketSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E5CD1009677A53C073C2618 /* Pods_PocketSwift.framework */; };
 		7A0754D4B061327F0B4393B8 /* Pods_PocketSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B83A5DB3BFF44163DB2CAA96 /* Pods_PocketSwiftTests.framework */; };
@@ -76,6 +83,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1047D1AC2252BFFF001B7F10 /* EthNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthNetwork.swift; sourceTree = "<group>"; };
+		1047D1AF2252C063001B7F10 /* NetRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetRPC.swift; sourceTree = "<group>"; };
+		1047D1B12252C06F001B7F10 /* EthRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthRPC.swift; sourceTree = "<group>"; };
+		1047D1B32252E6DE001B7F10 /* BlockTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockTag.swift; sourceTree = "<group>"; };
+		1047D1B52252E6F1001B7F10 /* RPCCallbacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCCallbacks.swift; sourceTree = "<group>"; };
+		1047D1B72252E719001B7F10 /* ObjectOrBoolean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectOrBoolean.swift; sourceTree = "<group>"; };
+		1047D1B92252E96D001B7F10 /* EthRelay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthRelay.swift; sourceTree = "<group>"; };
 		1088F0D22252AEFE004A0EB4 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		3E5CD1009677A53C073C2618 /* Pods_PocketSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E15465B2934C5ED0BC6239C /* Pods-PocketSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PocketSwiftTests/Pods-PocketSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -179,6 +193,27 @@
 				C5CF28322252CE880085B45E /* AionNetwork.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		1047D1AB2252BFE5001B7F10 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1047D1AC2252BFFF001B7F10 /* EthNetwork.swift */,
+				1047D1B92252E96D001B7F10 /* EthRelay.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1047D1AE2252C050001B7F10 /* RPC */ = {
+			isa = PBXGroup;
+			children = (
+				1047D1AF2252C063001B7F10 /* NetRPC.swift */,
+				1047D1B12252C06F001B7F10 /* EthRPC.swift */,
+				1047D1B32252E6DE001B7F10 /* BlockTag.swift */,
+				1047D1B52252E6F1001B7F10 /* RPCCallbacks.swift */,
+				1047D1B72252E719001B7F10 /* ObjectOrBoolean.swift */,
+			);
+			path = RPC;
 			sourceTree = "<group>";
 		};
 		C80407F02246A7680014EFE0 /* Model */ = {
@@ -300,6 +335,8 @@
 		C83901D5223D9ABE0092A9DF /* Eth */ = {
 			isa = PBXGroup;
 			children = (
+				1047D1AE2252C050001B7F10 /* RPC */,
+				1047D1AB2252BFE5001B7F10 /* Models */,
 				C839022A223DA9D30092A9DF /* PocketEth.swift */,
 			);
 			path = Eth;
@@ -556,24 +593,36 @@
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
+				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/EthereumABI/EthereumABI.framework",
+				"${BUILT_PRODUCTS_DIR}/EthereumAddress/EthereumAddress.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/RNCryptor/RNCryptor.framework",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftRLP/SwiftRLP.framework",
+				"${BUILT_PRODUCTS_DIR}/secp256k1_swift/secp256k1_swift.framework",
+				"${BUILT_PRODUCTS_DIR}/web3swift/Web3swift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EthereumABI.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EthereumAddress.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNCryptor.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftRLP.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/secp256k1_swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Web3swift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -634,6 +683,7 @@
 				C8390231223DB8630092A9DF /* DispatchRepository.swift in Sources */,
 				C5CF283722531ABE0085B45E /* RPCCallbacks.swift in Sources */,
 				C83901F3223D9D150092A9DF /* Observer.swift in Sources */,
+				1047D1BA2252E96D001B7F10 /* EthRelay.swift in Sources */,
 				C8390235223DBA380092A9DF /* Node.swift in Sources */,
 				C83901FB223D9D150092A9DF /* Repository.swift in Sources */,
 				1088F0D32252AEFE004A0EB4 /* JSON.swift in Sources */,
@@ -641,18 +691,22 @@
 				C83901F5223D9D150092A9DF /* Dynamic.swift in Sources */,
 				C80576A1223FC57E00B041EB /* String+Extensions.swift in Sources */,
 				C8F25FC022402BC10081B039 /* Report.swift in Sources */,
+				1047D1B42252E6DE001B7F10 /* BlockTag.swift in Sources */,
+				1047D1AD2252BFFF001B7F10 /* EthNetwork.swift in Sources */,
 				C80D8B6222458E7D003AE3E8 /* AionUtils.swift in Sources */,
 				C5CF2841225411610085B45E /* AionContract.swift in Sources */,
 				C83901F8223D9D150092A9DF /* Endpoint.swift in Sources */,
 				C8FA35392249E01900D31B8C /* BigInt+Extensions.swift in Sources */,
 				C5CF2835225305B70085B45E /* AionRelay.swift in Sources */,
 				C8390209223DA2CB0092A9DF /* RelayController.swift in Sources */,
+				1047D1B62252E6F1001B7F10 /* RPCCallbacks.swift in Sources */,
 				C8F25FC4224031CE0081B039 /* ReportController.swift in Sources */,
 				C839022B223DA9D30092A9DF /* PocketEth.swift in Sources */,
 				C83901F1223D9D150092A9DF /* Configuration.swift in Sources */,
 				C5CF28332252CE880085B45E /* AionNetwork.swift in Sources */,
 				C83901FD223D9D150092A9DF /* Pocket.swift in Sources */,
 				C80576A5223FF6F100B041EB /* Wallet.swift in Sources */,
+				1047D1B82252E719001B7F10 /* ObjectOrBoolean.swift in Sources */,
 				C8390200223D9DFD0092A9DF /* Blockchain.swift in Sources */,
 				C839022F223DB54A0092A9DF /* Dispatch.swift in Sources */,
 				C80407F72246C8B30014EFE0 /* AionEthRPC.swift in Sources */,
@@ -661,6 +715,7 @@
 				C839022D223DAA0B0092A9DF /* PocketAion.swift in Sources */,
 				C8390205223DA1330092A9DF /* Utils.swift in Sources */,
 				C83901EF223D9D150092A9DF /* Dictionary+Extensions.swift in Sources */,
+				1047D1B02252C063001B7F10 /* NetRPC.swift in Sources */,
 				C83901F0223D9D150092A9DF /* ServerConfiguration.swift in Sources */,
 				C82D773E224D21F700612EE1 /* AionNetRPC.swift in Sources */,
 				C80576A3223FD0F400B041EB /* Error+Extensions.swift in Sources */,
@@ -670,6 +725,7 @@
 				C83901F9223D9D150092A9DF /* Model.swift in Sources */,
 				C5CF283B22538C2A0085B45E /* BlockTag.swift in Sources */,
 				C8390202223D9F490092A9DF /* Relay.swift in Sources */,
+				1047D1B22252C06F001B7F10 /* EthRPC.swift in Sources */,
 				C83901F6223D9D150092A9DF /* Controller.swift in Sources */,
 				C83901F7223D9D150092A9DF /* LiveData.swift in Sources */,
 			);
