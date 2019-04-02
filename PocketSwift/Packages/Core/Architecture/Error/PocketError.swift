@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum PocketError: Error {
+public enum PocketError: Error {
     case nodeNotFound
     case invalidRelay
     case invalidReport
