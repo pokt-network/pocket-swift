@@ -39,7 +39,7 @@ public class EthNetwork {
     public func importWallet(privateKey: String) throws -> Wallet {
         let privateKeyData = Data(hex: privateKey)
         guard let keyStore = PlainKeystore.init(privateKey: privateKeyData) else {
-            throw PocketError.walletCreation(message: "Invalid private key")
+            throw PocketError.walletImport(message: "Invalid private key")
         }
         return try EthNetwork.walletFromKeystore(keyStore: keyStore, netID: self.netID)
     }
@@ -60,7 +60,17 @@ public class EthNetwork {
     
     public func send(relay: EthRelay, callback: @escaping StringCallback) {
         self.pocketEth.send(relay: relay, onSuccess: { (response) in
+            guard let responseObj = response.toDict() else {
+                callback(PocketError.custom(message: "Error parsing relay response \(response)"), nil)
+                return
+            }
             
+            guard let result = responseObj[self.resultKey] as? String? else {
+                callback(PocketError.custom(message: "Error parsing relay response result: \(response)"), nil)
+                return
+            }
+            
+            callback(nil, result)
         }) { (error) in
             callback(PocketError.custom(message: error.localizedDescription), nil)
         }

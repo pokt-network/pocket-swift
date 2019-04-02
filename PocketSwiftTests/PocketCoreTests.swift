@@ -136,7 +136,7 @@ class PocketCoreTests: QuickSpec {
             let passphrase = "testpassphrase"
 
             func generateAndSaveWallet(address: String) -> Wallet {
-                let wallet = Wallet.init(address: "address1", privateKey: "pk", network: "TEST", netID: "1", data: nil)
+                let wallet = Wallet.init(address: "address1", privateKey: "pk", network: "TEST", netID: "1")
                 let isSaved = try? wallet.save(passphrase: passphrase)
                 XCTAssertEqual(isSaved, true)
                 return wallet

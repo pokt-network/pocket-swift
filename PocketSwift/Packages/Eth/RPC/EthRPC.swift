@@ -293,7 +293,7 @@ public class EthRPC {
         }
     }
     
-    public func getLogs(fromBlock: BlockTag = .latest , toBlock: BlockTag = .latest, address: String?, topics: [String]?, blockhash: String?, callback: @escaping JSONArrayCallback) {
+    public func getLogs(fromBlock: BlockTag? = .latest , toBlock: BlockTag? = .latest, address: String?, topics: [String]?, blockhash: String?, callback: @escaping JSONArrayCallback) {
         do{
             var txParams = [String: Any]()
             txParams.fill("address", address, "topics", topics)
@@ -301,8 +301,8 @@ public class EthRPC {
             if blockhash != nil {
                 txParams["blockhash"] = blockhash!
             } else {
-                txParams["fromBlock"] = fromBlock.getValue()
-                txParams["toBlock"] = toBlock.getValue()
+                txParams["fromBlock"] = BlockTag.tagOrLatest(blockTag: fromBlock).getValue()
+                txParams["toBlock"] = BlockTag.tagOrLatest(blockTag: toBlock).getValue()
             }
             
             let params: [Any] = [txParams]
@@ -321,7 +321,7 @@ public class EthRPC {
             }
             var txParams = [String: Any]()
             txParams.fill("to", to, "from", from, "nrg", gas?.toHexString(), "nrgPrice", gasPrice?.toHexString(), "value", value?.toHexString(), "data", data)
-            let params: [Any] = [txParams, BlockTag.tagOrLatest(blockTag: blockTag)]
+            let params: [Any] = [txParams, BlockTag.tagOrLatest(blockTag: blockTag).getValue()]
             let relay = try self.ethNetwork.createEthRelay(method: EthRPCMethod.estimateGas.rawValue, params: params)
             self.ethNetwork.send(relay: relay, callback: callback)
         }catch let error {
