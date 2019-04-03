@@ -26,7 +26,7 @@ class PocketEthTests: QuickSpec {
     let CALL_DATA = "0x22e6d17f00000000000000000000000000000000000000000000000000000000000000640000000000000000000000000000000000000000000000000000000000000001000000000000000000000000700989575bb2c2cafffdc3c4f583dccf904f90cb00000000000000000000000000000000000000000000000000000000000000a00fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff000000000000000000000000000000000000000000000000000000000000000c48656c6c6f20576f726c64210000000000000000000000000000000000000000";
     let TX_HASH = "0x5cdcf19fc3934f345fcc9204e48ad9087e5fd2817063d3f6fd0cf4ed9add2a18";
     let CONTRACT_ADDRESS = "0x700989575bb2c2cafffdc3c4f583dccf904f90cb";
-    //    let CONTRACT_ABI = [{"outputs":[{"name":"","type":"uint128"},{"name":"","type":"bool"},{"name":"","type":"address"},{"name":"","type":"string"},{"name":"","type":"bytes32"}],"letant":true,"payable":false,"inputs":[{"name":"a","type":"uint128"},{"name":"b","type":"bool"},{"name":"c","type":"address"},{"name":"d","type":"string"},{"name":"e","type":"bytes32"}],"name":"echo","type":"function"},{"outputs":[{"name":"","type":"uint128"}],"letant":true,"payable":false,"inputs":[],"name":"pocketTestState","type":"function"},{"outputs":[],"letant":false,"payable":false,"inputs":[{"name":"a","type":"uint128"}],"name":"addToState","type":"function"},{"outputs":[{"name":"","type":"uint128"}],"letant":true,"payable":false,"inputs":[{"name":"a","type":"uint128"},{"name":"b","type":"uint128"}],"name":"multiply","type":"function"}];
+    let CONTRACT_ABI = "[{\"outputs\":[{\"name\":\"\",\"type\":\"uint128\"},{\"name\":\"\",\"type\":\"bool\"},{\"name\":\"\",\"type\":\"address\"},{\"name\":\"\",\"type\":\"string\"},{\"name\":\"\",\"type\":\"bytes32\"}],\"letant\":true,\"payable\":false,\"inputs\":[{\"name\":\"a\",\"type\":\"uint128\"},{\"name\":\"b\",\"type\":\"bool\"},{\"name\":\"c\",\"type\":\"address\"},{\"name\":\"d\",\"type\":\"string\"},{\"name\":\"e\",\"type\":\"bytes32\"}],\"name\":\"echo\",\"type\":\"function\"},{\"outputs\":[{\"name\":\"\",\"type\":\"uint128\"}],\"letant\":true,\"payable\":false,\"inputs\":[],\"name\":\"pocketTestState\",\"type\":\"function\"},{\"outputs\":[],\"letant\":false,\"payable\":false,\"inputs\":[{\"name\":\"a\",\"type\":\"uint128\"}],\"name\":\"addToState\",\"type\":\"function\"},{\"outputs\":[{\"name\":\"\",\"type\":\"uint128\"}],\"letant\":true,\"payable\":false,\"inputs\":[{\"name\":\"a\",\"type\":\"uint128\"},{\"name\":\"b\",\"type\":\"uint128\"}],\"name\":\"multiply\",\"type\":\"function\"}]";
     let FUNCTION_NAME = "multiply";
     let FUNCTION_PARAMS = [2, 10];
     let PRIVATE_KEY = "b7942b268ade435dfc184a965035c878eb7c1814de09fcc384bf109edbf96108";
@@ -311,7 +311,7 @@ class PocketEthTests: QuickSpec {
             beforeEach {
                 do {
                     pocketEth = try PocketEth.init(devID: self.DEVID, netIds: [PocketEth.Networks.Rinkeby.netID], defaultNetID: PocketEth.Networks.Rinkeby.netID, maxNodes: 5, requestTimeOut: 10000)
-                } catch let error {
+                } catch {
                     XCTFail()
                 }
                 
@@ -337,6 +337,75 @@ class PocketEthTests: QuickSpec {
                     expect(response).notTo(beNil())
                 })
             }
+        }
+        
+        describe("EthContract class tests") {
+            
+            var pocketTestContract: EthContract!
+            var pocketEth: PocketEth!
+            beforeEach {
+                do {
+                    pocketEth = try PocketEth.init(devID: self.DEVID, netIds: [PocketEth.Networks.Rinkeby.netID], defaultNetID: PocketEth.Networks.Rinkeby.netID, maxNodes: 5, requestTimeOut: 10000)
+                    pocketTestContract = try pocketEth.rinkeby?.createEthContract(address: self.CONTRACT_ADDRESS, abiDefinition: self.CONTRACT_ABI)
+                } catch {
+                    XCTFail()
+                }
+            }
+            
+            
+            it("should execute a constant functions") {
+                do {
+                    try pocketTestContract.executeConstantFunction(functionName: "multiply", functionParams: ["2", "10"] as [AnyObject], fromAddress: nil, gas: nil, gasPrice: nil, value: nil, blockTag: nil, callback: { (error, results) in
+                        expect(error).to(beNil())
+                        expect(results).notTo(beNil())
+                        expect(results?.count).to(equal(1))
+                        expect(results?.first as? String).to(equal("0x14"))
+                    })
+                } catch {
+                    XCTFail()
+                }
+            }
+            
+            it("should execute a constant function with multiple returns") {
+                do {
+                    var params: [AnyObject] = []
+                    params.append(BigInt("100") as AnyObject)
+                    params.append(Bool.init(booleanLiteral: true) as AnyObject)
+                    params.append(self.CONTRACT_ADDRESS as AnyObject)
+                    params.append("Hello World!" as AnyObject)
+                    params.append("0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF" as AnyObject)
+                    
+                    try pocketTestContract.executeConstantFunction(functionName: "echo", functionParams: params, fromAddress: nil, gas: nil, gasPrice: nil, value: nil, blockTag: nil, callback: { (error, results) in
+                        expect(error).to(beNil())
+                        expect(results).notTo(beNil())
+                        expect(results?.count).to(equal(5))
+                        expect(results?[0] as? BigInt).to(equal(BigInt.init("100")))
+                        expect(results?[1] as? Bool).to(equal(Bool.init(booleanLiteral: true)))
+                        expect(results?[2] as? String).to(equal(self.CONTRACT_ADDRESS))
+                        expect(results?[1] as? String).to(equal("Hello World!"))
+                        expect(results?[0] as? String).to(equal("0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"))
+                    })
+                } catch {
+                    XCTFail()
+                }
+            }
+            
+            it("should execute a function that alters the smart contract state") {
+                do {
+                    let params: [AnyObject] = [BigInt.init("1") as AnyObject]
+                    guard let wallet = try pocketEth.rinkeby?.importWallet(privateKey: self.PRIVATE_KEY) else {
+                        XCTFail()
+                        return
+                    }
+                    try pocketTestContract.executeFunction(functionName: "addToState", wallet: wallet, functionParams: params, nonce: nil, gas: BigUInt.init(100000), gasPrice: BigUInt.init(10000000000), value: BigUInt.init(0), callback: { (error, txHash) in
+                        expect(error).to(beNil())
+                        expect(txHash).toNot(beNil())
+                    })
+                } catch {
+                    XCTFail()
+                }
+            }
+            
         }
     }
     
