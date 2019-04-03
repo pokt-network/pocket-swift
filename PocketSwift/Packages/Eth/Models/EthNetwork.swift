@@ -171,6 +171,10 @@ public class EthNetwork {
         }
     }
     
+    public func createEthContract(address: String, abiDefinition: String) throws -> EthContract {
+        return try EthContract.init(ethNetwork: self, address: address, abiDefinition: abiDefinition)
+    }
+    
     // Private interface
     private static func walletFromKeystore(keyStore: PlainKeystore, netID: String) throws -> Wallet {
         guard let address = keyStore.addresses?.first else {
