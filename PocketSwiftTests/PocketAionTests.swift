@@ -452,9 +452,13 @@ class PocketAionTests: QuickSpec {
                     pocketAion.mastery?.eth.getTransactionCount(address: wallet!.address, blockTag: BlockTag.latest, callback: { (error, result) in
                         expect(error).to(beNil())
                         expect(result).to(beAKindOf(BigInt.self))
-                        let nonce = result?.magnitude
+                        guard let nonce = result?.magnitude else{
+                            XCTFail()
+                            done()
+                            return
+                        }
                         
-                        pocketAion.mastery?.eth.sendTransaction(wallet: wallet!, nonce: nonce!, to: self.ADDRESS_TO, nrg: BigUInt(50000), nrgPrice: BigUInt(20000000000), value: BigUInt(20000000000), data: nil, callback: { (error, result) in
+                        pocketAion.mastery?.eth.sendTransaction(wallet: wallet!, nonce: nonce, to: self.ADDRESS_TO, nrg: BigUInt(50000), nrgPrice: BigUInt(20000000000), value: BigUInt(20000000000), data: nil, callback: { (error, result) in
                             expect(error).to(beNil())
                             expect(result).to(beAKindOf(String.self))
                             done()

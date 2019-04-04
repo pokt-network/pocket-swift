@@ -12,7 +12,6 @@ import BigInt
 public enum BlockTag {
     case earliest
     case latest
-    case pending
     case number(_ value: BigInt)
     
     func getValue() -> String {
@@ -23,8 +22,6 @@ public enum BlockTag {
             return "latest"
         case let .number(value):
             return value.toHexString()
-        default:
-            return "pending"
         }
     }
     
