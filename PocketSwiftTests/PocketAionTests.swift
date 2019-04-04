@@ -61,6 +61,8 @@ class PocketAionTests: QuickSpec {
     }
     
     override func spec() {
+        Nimble.AsyncDefaults.Timeout = 20
+        
         describe("Pocket Aion Class tests") {
             // PocketAion Instance
             guard let pocketAion = try? PocketAion(devID: self.DEVID, netIds: [netID.mastery.rawValue], maxNodes: 5, requestTimeOut: 10000) else {
@@ -106,7 +108,7 @@ class PocketAionTests: QuickSpec {
             }
             
             it("should retrieve the protocol version") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     pocketAion.mastery?.eth.protocolVersion( callback: { (error, result) in
                         expect(error).to(beNil())
                         expect(result).to(beAKindOf(String.self))
@@ -116,7 +118,7 @@ class PocketAionTests: QuickSpec {
             }
             
             it("should retrieve the sync status of the node") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     pocketAion.mastery?.eth.syncing( callback: { (error, result) in
                         expect(error).to(beNil())
                         expect(result).to(beAKindOf(ObjectOrBoolean.self))
@@ -126,7 +128,7 @@ class PocketAionTests: QuickSpec {
             }
             
             it("should retrieve the actual gas price") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     pocketAion.mastery?.eth.gasPrice( callback: { (error, result) in
                         expect(error).to(beNil())
                         expect(result).to(beAKindOf(BigInt.self))
@@ -136,7 +138,7 @@ class PocketAionTests: QuickSpec {
             }
             
             it("should retrieve the actual block number") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     
                     pocketAion.mastery?.eth.blockNumber( callback: { (error, result) in
                         expect(error).to(beNil())
@@ -147,7 +149,7 @@ class PocketAionTests: QuickSpec {
             }
             
             it("should retrieve an account balance") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     
                     pocketAion.mastery?.eth.getBalance(address: self.ADDRESS, blockTag: BlockTag.latest, callback: { (error, result) in
                         expect(error).to(beNil())
@@ -158,7 +160,7 @@ class PocketAionTests: QuickSpec {
             }
             
             it("should fail to retrieve account balance") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     
                     pocketAion.mastery?.eth.getBalance(address: "", blockTag: BlockTag.latest, callback: { (error, result) in
                         expect(error).toNot(beNil())
@@ -169,7 +171,7 @@ class PocketAionTests: QuickSpec {
             }
             
             it("should retrieve a storage information") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     
                     pocketAion.mastery?.eth.getStorageAt(address: self.STORAGE_ADDRESS, position: BigInt(0), blockTag: BlockTag.latest, callback: { (error, result) in
                         expect(error).to(beNil())
@@ -180,7 +182,7 @@ class PocketAionTests: QuickSpec {
             }
             
             it("should fail to retrieve a storage information by passing empty address") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     
                     pocketAion.mastery?.eth.getStorageAt(address: "", position: BigInt(0), blockTag: BlockTag.latest, callback: { (error, result) in
                         expect(error).toNot(beNil())
@@ -191,7 +193,7 @@ class PocketAionTests: QuickSpec {
             }
             
             it("should retrieve an address transaction count") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     
                     pocketAion.mastery?.eth.getTransactionCount(address: self.ADDRESS, blockTag: BlockTag.latest, callback: { (error, result) in
                         expect(error).to(beNil())
@@ -202,7 +204,7 @@ class PocketAionTests: QuickSpec {
             }
             
             it("should fail to retrieve an address transaction count by passing empty address") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     
                     pocketAion.mastery?.eth.getTransactionCount(address: "", blockTag: BlockTag.latest, callback: { (error, result) in
                         expect(error).toNot(beNil())
@@ -213,7 +215,7 @@ class PocketAionTests: QuickSpec {
             }
             
             it("should retrieve a block transaction count") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     
                     pocketAion.mastery?.eth.getBlockTransactionCountByHash(blockHash: self.BLOCK_HASH, callback: { (error, result) in
                         expect(error).to(beNil())
@@ -224,7 +226,7 @@ class PocketAionTests: QuickSpec {
             }
             
             it("should fail to retrieve a block transaction count by passing empty block hash") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     
                     pocketAion.mastery?.eth.getBlockTransactionCountByHash(blockHash: "", callback: { (error, result) in
                         expect(error).toNot(beNil())
@@ -235,7 +237,7 @@ class PocketAionTests: QuickSpec {
             }
             
             it("should retrieve a block transaction count by using the block number") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     
                     pocketAion.mastery?.eth.getBlockTransactionCountByNumber(blockTag: BlockTag.latest, callback: { (error, result) in
                         expect(error).to(beNil())
@@ -246,7 +248,7 @@ class PocketAionTests: QuickSpec {
             }
             
             it("should retrieve the code at the given address") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     
                     pocketAion.mastery?.eth.getCode(address: self.CODE_ADDRESS, blockTag: BlockTag.latest, callback: { (error, result) in
                         expect(error).to(beNil())
@@ -257,7 +259,7 @@ class PocketAionTests: QuickSpec {
             }
             
             it("should fail to retrieve the code at the given address by using empty address") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     
                     pocketAion.mastery?.eth.getCode(address: "", blockTag: BlockTag.latest, callback: { (error, result) in
                         expect(error).toNot(beNil())
@@ -268,7 +270,7 @@ class PocketAionTests: QuickSpec {
             }
             // call
             it("should execute a new message call") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     
                     pocketAion.mastery?.eth.call(from: nil, to: self.CALL_TO, gas: BigUInt(50000), gasPrice: BigUInt(20000000000), value: BigUInt(20000000000), data: self.CALL_DATA, blockTag: BlockTag.latest, callback: { (error, result) in
                         expect(error).to(beNil())
@@ -279,7 +281,7 @@ class PocketAionTests: QuickSpec {
             }
             
             it("should fail to execute a new message call without destination address") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     
                     pocketAion.mastery?.eth.call(from: nil, to: "", gas: BigUInt(50000), gasPrice: BigUInt(20000000000), value: BigUInt(20000000000), data: self.CALL_DATA, blockTag: BlockTag.latest, callback: { (error, result) in
                         expect(error).toNot(beNil())
@@ -290,7 +292,7 @@ class PocketAionTests: QuickSpec {
             }
             // getBlockByHash
             it("should retrieve the block information with the block hash") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     
                     pocketAion.mastery?.eth.getBlockByHash(blockHash: self.BLOCK_HASH, fullTx: true, callback: { (error, result) in
                         expect(error).to(beNil())
@@ -301,7 +303,7 @@ class PocketAionTests: QuickSpec {
             }
             
             it("should fail to retrieve the block information with an empty block hash") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     
                     pocketAion.mastery?.eth.getBlockByHash(blockHash: "", fullTx: true, callback: { (error, result) in
                         expect(error).toNot(beNil())
@@ -312,7 +314,7 @@ class PocketAionTests: QuickSpec {
             }
             // getBlockByNumber
             it("should retrieve the block information with the block number") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     
                     pocketAion.mastery?.eth.getBlockByNumber(blockTag: BlockTag.number(BigInt(self.BLOCK_NUMBER)), fullTx: true, callback: { (error, result) in
                         expect(error).to(beNil())
@@ -323,7 +325,7 @@ class PocketAionTests: QuickSpec {
             }
             // getTransactionByHash
             it("should retrieve a transaction information with the transaction hash") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     
                     pocketAion.mastery?.eth.getTransactionByHash(txHash: self.TX_HASH, callback: { (error, result) in
                         expect(error).to(beNil())
@@ -334,7 +336,7 @@ class PocketAionTests: QuickSpec {
             }
             
             it("should fail retrieve a transaction information with an empty tx hash") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     
                     pocketAion.mastery?.eth.getTransactionByHash(txHash: "", callback: { (error, result) in
                         expect(error).toNot(beNil())
@@ -345,7 +347,7 @@ class PocketAionTests: QuickSpec {
             }
             // getTransactionByBlockHashAndIndex
             it("should retrieve a transaction information with the block hash and index") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     
                     pocketAion.mastery?.eth.getTransactionByBlockHashAndIndex(blockHash: self.BLOCK_HASH, index: BigInt(0), callback: { (error, result) in
                         expect(error).to(beNil())
@@ -356,7 +358,7 @@ class PocketAionTests: QuickSpec {
             }
             
             it("should fail to retrieve a transaction information with an empty block hash") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     
                     pocketAion.mastery?.eth.getTransactionByBlockHashAndIndex(blockHash: "", index: BigInt(0), callback: { (error, result) in
                         expect(error).toNot(beNil())
@@ -367,7 +369,7 @@ class PocketAionTests: QuickSpec {
             }
             // getTransactionByBlockNumberAndIndex
             it("should retrieve a transaction information with the block hash and index") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     
                     pocketAion.mastery?.eth.getTransactionByBlockNumberAndIndex(blockTag: BlockTag.number(BigInt(self.BLOCK_NUMBER)), index: BigInt(0), callback: { (error, result) in
                         expect(error).to(beNil())
@@ -378,7 +380,7 @@ class PocketAionTests: QuickSpec {
             }
             
             it("should fail to retrieve a transaction information with an empty block hash") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     
                     pocketAion.mastery?.eth.getTransactionByBlockHashAndIndex(blockHash: "", index: BigInt(0), callback: { (error, result) in
                         expect(error).toNot(beNil())
@@ -389,7 +391,7 @@ class PocketAionTests: QuickSpec {
             }
             // getTransactionReceipt
             it("should retrieve a transaction receipt using the transaction hash") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     
                     pocketAion.mastery?.eth.getTransactionReceipt(txHash: self.TX_HASH, callback: { (error, result) in
                         expect(error).to(beNil())
@@ -400,7 +402,7 @@ class PocketAionTests: QuickSpec {
             }
             
             it("should fail to retrieve a transaction receipt using an empty transaction hash") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     
                     pocketAion.mastery?.eth.getTransactionReceipt(txHash: "", callback: { (error, result) in
                         expect(error).toNot(beNil())
@@ -412,7 +414,7 @@ class PocketAionTests: QuickSpec {
             // TODO: Need a valid block hash with filter changes
             // getLogs
 //            it("should retrieve the logs with the block hash") {
-//                waitUntil(timeout: 5) { done in
+//                waitUntil { done in
 //
 //                    pocketAion.mastery?.eth.getLogs(fromBlock: nil, toBlock: nil, address: nil, topics: nil, blockhash: self.BLOCK_HASH_LOGS, callback: { (error, result) in
 //                        expect(error).to(beNil())
@@ -422,7 +424,7 @@ class PocketAionTests: QuickSpec {
 //            }
             // estimateGas
             it("should retrieve the estimate gas value for a transaction") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     
                     pocketAion.mastery?.eth.estimateGas(from: nil, to: self.ESTIMATE_GAS_TO, gas: nil, gasPrice: nil, value: nil, data: self.ESTIMATE_GAS_DATA, blockTag: nil, callback: { (error, result) in
                         expect(error).to(beNil())
@@ -433,7 +435,7 @@ class PocketAionTests: QuickSpec {
             }
             
             it("should fail to retrieve the estimate gas value for a transaction using empty destination address") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     
                     pocketAion.mastery?.eth.estimateGas(from: nil, to: "", gas: nil, gasPrice: nil, value: nil, data: self.ESTIMATE_GAS_DATA, blockTag: nil, callback: { (error, result) in
                         expect(error).toNot(beNil())
@@ -446,7 +448,7 @@ class PocketAionTests: QuickSpec {
             it("should send a transaction") {
                 let wallet = try? pocketAion.mastery?.importWallet(privateKey: self.PRIVATE_KEY)
                 
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     pocketAion.mastery?.eth.getTransactionCount(address: wallet!.address, blockTag: BlockTag.latest, callback: { (error, result) in
                         expect(error).to(beNil())
                         expect(result).to(beAKindOf(BigInt.self))
@@ -462,7 +464,7 @@ class PocketAionTests: QuickSpec {
             }
             
             it("should fail to retrieve the estimate gas value for a transaction using empty destination address") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     pocketAion.mastery?.eth.estimateGas(from: nil, to: "", gas: nil, gasPrice: nil, value: nil, data: self.ESTIMATE_GAS_DATA, blockTag: nil, callback: { (error, result) in
                         expect(error).toNot(beNil())
                         expect(result).to(beNil())
@@ -477,7 +479,7 @@ class PocketAionTests: QuickSpec {
             let pocketAion = try? PocketAion(devID: self.DEVID, netIds: [netID.mastery.rawValue], maxNodes: 5, requestTimeOut: 10000)
             
             it("should retrieve the current network id") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     pocketAion?.mastery?.net.version(callback: { (error, result) in
                         expect(error).to(beNil())
                         expect(result).to(beAKindOf(String.self))
@@ -487,7 +489,7 @@ class PocketAionTests: QuickSpec {
             }
             
             it("should retrieve the listening status of the node") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     pocketAion?.mastery?.net.listening(callback: { (error, result) in
                         expect(error).to(beNil())
                         expect(result).to(beAKindOf(Bool.self))
@@ -497,7 +499,7 @@ class PocketAionTests: QuickSpec {
             }
             
             it("should retrieve the number of peers currently connected") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     pocketAion?.mastery?.net.peerCount(callback: { (error, result) in
                         expect(error).to(beNil())
                         expect(result).to(beAKindOf(BigInt.self))
@@ -514,7 +516,7 @@ class PocketAionTests: QuickSpec {
             let aionContract = try? AionContract.init(aionNetwork: pocketAion!.mastery!, address: CONTRACT_ADDRESS, abiDefinition: abi!)
 
             it("should return the result of multiply 2 by 10") {
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     try? aionContract?.executeConstantFunction(functionName: self.FUNCTION_NAME, functionParams: self.FUNCTION_PARAMS, fromAddress: nil, gas: BigUInt(50000), gasPrice: BigUInt(20000000000), value: nil, blockTag: nil, callback: { (error, result) in
                         expect(error).to(beNil())
                         expect(result).to(beAKindOf([Any].self))
@@ -526,7 +528,7 @@ class PocketAionTests: QuickSpec {
             it("should add 1 value to the test smart contract state") {
                 let wallet = try? pocketAion!.mastery?.importWallet(privateKey: self.PRIVATE_KEY2)
 
-                waitUntil(timeout: 5) { done in
+                waitUntil { done in
                     try? aionContract?.executeFunction(functionName: self.FUNCTION_NAME2, wallet: wallet!, nonce: nil, gas: BigUInt(50000), gasPrice: BigUInt(20000000000), value: nil, callback: { (error, result) in
                         expect(error).to(beNil())
                         expect(result).to(beAKindOf(String.self))
