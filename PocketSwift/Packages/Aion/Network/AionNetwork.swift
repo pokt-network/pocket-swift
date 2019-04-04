@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import BigInt
 
 public class AionNetwork {
     public let devID: String
@@ -55,7 +56,17 @@ public class AionNetwork {
     
     public func send(relay: AionRelay, callback: @escaping StringCallback) {
         self.pocketAion.send(relay: relay, onSuccess: { (response) in
+            guard let responseObj = response.toDict() else {
+                callback(PocketError.custom(message: "Error parsing relay response \(response)"), nil)
+                return
+            }
             
+            guard let result = responseObj[self.resultKey] as? String? else {
+                callback(PocketError.custom(message: "Error parsing relay response result: \(response)"), nil)
+                return
+            }
+            
+            callback(nil, result)
         }) { (error) in
             callback(PocketError.custom(message: error.localizedDescription), nil)
         }
@@ -67,13 +78,15 @@ public class AionNetwork {
                 callback(PocketError.custom(message: "Error parsing relay response \(response)"), nil)
                 return
             }
-            
-            guard let result = responseObj[self.resultKey] as? String? else {
+
+            guard let result = responseObj[self.resultKey] else {
                 callback(PocketError.custom(message: "Error parsing relay response result: \(response)"), nil)
                 return
             }
             
-            let bigIntResult = result?.toBigInt()
+            let resultStr = "\(result)"
+            
+            let bigIntResult = resultStr.toBigInt()
             callback(nil, bigIntResult)
         }) { (error) in
             callback(PocketError.custom(message: error.localizedDescription), nil)
