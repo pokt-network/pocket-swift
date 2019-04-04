@@ -10,7 +10,7 @@ import Foundation
 
 enum ServerConfiguration: String {
     case ServerURL = "dispatch.staging.pokt.network"
-    case ConnectionProtocol = "http"
+    case ConnectionProtocol = "https"
     case DispatchPath = "/v1/dispatch"
     case ReportPath = "/v1/report"
     case RelayPath = "/v1/relay"

@@ -21,18 +21,23 @@ extension String {
         }
         return nil
     }
-    
-    func toHex() -> BigInt? {
+    func toDictArray() -> [[String: Any]]? {
+        if let data = self.data(using: .utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]]
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        return nil
+    }
+    func toBigInt() -> BigInt? {
         if self.hasZeroHexPrefix() {
             let newVal = self.dropFirst(2)
             return BigInt(newVal, radix: 16)
         }
         
         return BigInt(self, radix: 16)
-    }
-    
-    func toBigInt() -> BigInt {
-        return BigInt(self)!
     }
     
     private func hasZeroHexPrefix() -> Bool{
