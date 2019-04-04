@@ -52,7 +52,7 @@ final class WebServiceImpl: WebService {
     private func getCode(response: URLResponse?, data: Data?) -> Int {
         if let httpResponse = response as? HTTPURLResponse {
             if let json = data, json.count != 0 {
-                print("Response: \(String(decoding: json, as: UTF8.self))")
+//                print("Response: \(String(decoding: json, as: UTF8.self))")
             }
             
             return httpResponse.statusCode

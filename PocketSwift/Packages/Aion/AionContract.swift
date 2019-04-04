@@ -34,7 +34,7 @@ public class AionContract {
         
     }
     
-    func encodeParameters(params: [Any], functionJSON: [String: Any]) throws -> String? {
+    private func encodeParameters(params: [Any], functionJSON: [String: Any]) throws -> String? {
         guard let functionJSONStr = try? functionJSON.toJson() else{
             throw PocketError.custom(message: "Failed to retrieve function json string.")
         }
@@ -50,7 +50,7 @@ public class AionContract {
         return encodedFunction
     }
     
-    func encodeFunction(functionStr: String, params: String) throws -> String {
+    private func encodeFunction(functionStr: String, params: String) throws -> String {
         // Generate code to run
         let jsContext = self.aionNetwork.pocketAion.jsContext
         guard let jsFile = try? AionUtils.getFileForResource(name: "encodeFunction", ext: "js") else{
