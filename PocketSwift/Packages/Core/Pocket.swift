@@ -108,7 +108,7 @@ public class Pocket: NSObject {
         
         if (nodes.isEmpty && retrieveNodes) {
             self.retrieveNodes(onSuccess: { (retrievedNodes) in
-                callback(Pocket.getRandomNode(nodes: nodes))
+                callback(Pocket.getRandomNode(nodes: retrievedNodes))
             }) { (error) in
                 callback(nil)
             }
