@@ -13,7 +13,7 @@ public struct AionEthRPC {
     
     private enum AionEthRPCMethod: String {
         case getBalance = "eth_getBalance"
-        case sendTransaction = "eth_sendTransaction"
+        case sendTransaction = "eth_sendRawTransaction"
         case getStorageAt = "eth_getStorageAt"
         case getTransactionCount = "eth_getTransactionCount"
         case getBlockTransactionCountByHash = "eth_getBlockTransactionCountByHash"
@@ -159,7 +159,7 @@ public struct AionEthRPC {
         }
     }
     
-    public func call(from: String?, to: String, gas: BigInt?, gasPrice: BigInt?, value: BigInt?, data: String?, blockTag: BlockTag?, callback: @escaping StringCallback) {
+    public func call(from: String?, to: String, gas: BigUInt?, gasPrice: BigUInt?, value: BigUInt?, data: String?, blockTag: BlockTag?, callback: @escaping StringCallback) {
         do {
             if to.isEmpty {
                 callback(PocketError.invalidParameter(message: "Destination address (to) param is missing"), nil)
@@ -252,7 +252,7 @@ public struct AionEthRPC {
         }
     }
     
-    public func getLogs(fromBlock: BlockTag? = .latest , toBlock: BlockTag? = .latest, address: String?, topics: [String]?, blockhash: String?, callback: @escaping JSONArrayCallback) {
+    public func getLogs(fromBlock: BlockTag? = .latest , toBlock: BlockTag? = .latest, address: String?, topics: [String]?, blockhash: String?, callback: @escaping JSONObjectCallback) {
         do{
             var txParams = [String: Any]()
             txParams.fill("address", address, "topics", topics)
@@ -280,10 +280,28 @@ public struct AionEthRPC {
             }
             var txParams = [String: Any]()
             txParams.fill("to", to, "from", from, "nrg", gas?.toHexString(), "nrgPrice", gasPrice?.toHexString(), "value", value?.toHexString(), "data", data)
-            let params: [Any] = [txParams, BlockTag.tagOrLatest(blockTag: blockTag)]
+            let params: [Any] = [txParams, BlockTag.tagOrLatest(blockTag: blockTag).getValue()]
             let relay = try self.aionNetwork.createAionRelay(method: AionEthRPCMethod.estimateGas.rawValue, params: params)
             self.aionNetwork.send(relay: relay, callback: callback)
         }catch let error {
+            callback(PocketError.custom(message: error.localizedDescription), nil)
+        }
+    }
+
+    public func sendTransaction(wallet: Wallet, nonce: BigUInt, to: String, nrg: BigUInt?, nrgPrice: BigUInt?, value: BigUInt?, data: String?, callback: @escaping StringCallback) {
+        do {
+            if to.isEmpty {
+                callback(PocketError.invalidParameter(message: "Destination address (to) param is missing"), nil)
+                return
+            }
+            var txParams = [String: Any]()
+            txParams.fill("from", wallet.address, "nonce", nonce.toHexString(), "to", to, "gas", nrg?.toHexString() ?? "", "gasPrice", nrgPrice?.toHexString() ?? "", "value", value?.toHexString() ?? "", "data", data ?? "")
+            // Sign Transaction
+            let txData = try self.aionNetwork.pocketAion.signTransaction(params: txParams, privateKey: wallet.privateKey)
+            let params: [Any] = [txData]
+            let relay = try self.aionNetwork.createAionRelay(method: AionEthRPCMethod.sendTransaction.rawValue, params: params)
+            self.aionNetwork.send(relay: relay, callback: callback)
+        } catch let error {
             callback(PocketError.custom(message: error.localizedDescription), nil)
         }
     }

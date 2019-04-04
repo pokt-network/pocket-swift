@@ -27,7 +27,7 @@ public class PocketAion: Pocket {
     public var mainnet: AionNetwork?
     public var mastery: AionNetwork?
     public var networks: [String: AionNetwork] = [String: AionNetwork]()
-    private let jsContext: JSContext = JSContext()
+    public let jsContext: JSContext = JSContext()
     
     init(devID: String, netIds: [String], defaultNetID: String = Networks.MASTERY.netID(), maxNodes: Int = 5, requestTimeOut: Int = 10000) throws {
         // Super init
@@ -121,6 +121,67 @@ public class PocketAion: Pocket {
         }
 
         throw PocketError.walletImport(message: "Failed to create account js object")
+    }
+    
+    internal func signTransaction(params: [String: Any], privateKey: String) throws -> String {
+        var signetTx: String?
+        // Transaction params
+        guard let nonce =  params["nonce"] as? String else {
+            throw PocketError.custom(message: "Failed to retrieve nonce")
+        }
+        
+        guard let to =  params["to"] as? String else {
+            throw PocketError.custom(message: "Failed to retrieve the receiver of the transaction (to) ")
+        }
+        // Optionals
+        let data = params["data"] as? String ?? ""
+        let value =  params["value"] as? String ?? ""
+        let gasPrice = params["gasPrice"] as? String ?? ""
+        let gas =  params["gas"] as? String ?? ""
+        
+        // Promise Handler
+        let promiseBlock: @convention(block) (JavaScriptCore.JSValue, JavaScriptCore.JSValue) -> () = { (error, result) in
+            // Check for errors
+            if !error.isNull {
+                try? self.throwErrorWith(message: "Failed to sign transaction with error: \(error)")
+            }else{
+                // Retrieve result object and raw transaction
+                let resultObject = result.toObject() as! [AnyHashable: Any]
+                
+                guard let rawTx = resultObject["rawTransaction"] as? String else {
+                    try? self.throwErrorWith(message: "Failed to retrieve signed transaction")
+                    return
+                }
+                // Assign pocket transaction value
+                signetTx = rawTx
+            }
+        }
+        
+        // Create Window object from js value
+        guard let window = self.jsContext.objectForKeyedSubscript("window") else {
+            throw PocketError.custom(message: "Failed to retrieve window js object")
+        }
+        
+        // Set the promise block handler to the transactionCreationCallback
+        window.setObject(promiseBlock, forKeyedSubscript: "transactionCreationCallback" as NSString)
+        
+        // Retrieve SignTransaction JS File
+        guard let signTxJSStr = try? AionUtils.getFileForResource(name: "signTransaction", ext: "js") else {
+            throw PocketError.custom(message: "Failed to retrieve sign-transaction js file")
+        }
+        
+        // Check if is empty and evaluate script with the transaction parameters using string format %@
+        if !signTxJSStr.isEmpty {
+            let string = String(format: signTxJSStr, nonce, to, value, data, gas, gasPrice, privateKey)
+            jsContext.evaluateScript(string)
+        }else {
+            throw PocketError.custom(message: "Failed to retrieve signed tx js string")
+        }
+        
+        // Clean global objects from context
+        removeJSGlobalObjects()
+        
+        return signetTx ?? ""
     }
     
     private func removeJSGlobalObjects() {
