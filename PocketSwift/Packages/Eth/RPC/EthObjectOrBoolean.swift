@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct ObjectOrBoolean {
+public struct EthObjectOrBoolean {
     
     public var booleanValue: Bool?
     public var objectValue: [String: Any]?

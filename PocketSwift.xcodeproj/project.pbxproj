@@ -10,12 +10,11 @@
 		1047D1AD2252BFFF001B7F10 /* EthNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1AC2252BFFF001B7F10 /* EthNetwork.swift */; };
 		1047D1B02252C063001B7F10 /* NetRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1AF2252C063001B7F10 /* NetRPC.swift */; };
 		1047D1B22252C06F001B7F10 /* EthRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1B12252C06F001B7F10 /* EthRPC.swift */; };
-		1047D1B42252E6DE001B7F10 /* BlockTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1B32252E6DE001B7F10 /* BlockTag.swift */; };
-		1047D1B62252E6F1001B7F10 /* RPCCallbacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1B52252E6F1001B7F10 /* RPCCallbacks.swift */; };
-		1047D1B82252E719001B7F10 /* ObjectOrBoolean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1B72252E719001B7F10 /* ObjectOrBoolean.swift */; };
+		1047D1B42252E6DE001B7F10 /* EthBlockTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1B32252E6DE001B7F10 /* EthBlockTag.swift */; };
+		1047D1B62252E6F1001B7F10 /* EthRPCCallbacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1B52252E6F1001B7F10 /* EthRPCCallbacks.swift */; };
+		1047D1B82252E719001B7F10 /* EthObjectOrBoolean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1B72252E719001B7F10 /* EthObjectOrBoolean.swift */; };
 		1047D1BA2252E96D001B7F10 /* EthRelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1B92252E96D001B7F10 /* EthRelay.swift */; };
 		1047D1BC22539DBC001B7F10 /* EthContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1BB22539DBC001B7F10 /* EthContract.swift */; };
-		1047D1C42253E8F8001B7F10 /* BigUInt+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1C32253E8F8001B7F10 /* BigUInt+Extensions.swift */; };
 		1047D1C62253EAE8001B7F10 /* PocketEthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1C52253EAE8001B7F10 /* PocketEthTests.swift */; };
 		1088F0D32252AEFE004A0EB4 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1088F0D22252AEFE004A0EB4 /* JSON.swift */; };
 		4156FE928C88D6F15B6D090A /* Pods_PocketSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E5CD1009677A53C073C2618 /* Pods_PocketSwift.framework */; };
@@ -89,12 +88,11 @@
 		1047D1AC2252BFFF001B7F10 /* EthNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthNetwork.swift; sourceTree = "<group>"; };
 		1047D1AF2252C063001B7F10 /* NetRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetRPC.swift; sourceTree = "<group>"; };
 		1047D1B12252C06F001B7F10 /* EthRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthRPC.swift; sourceTree = "<group>"; };
-		1047D1B32252E6DE001B7F10 /* BlockTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockTag.swift; sourceTree = "<group>"; };
-		1047D1B52252E6F1001B7F10 /* RPCCallbacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCCallbacks.swift; sourceTree = "<group>"; };
-		1047D1B72252E719001B7F10 /* ObjectOrBoolean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectOrBoolean.swift; sourceTree = "<group>"; };
+		1047D1B32252E6DE001B7F10 /* EthBlockTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthBlockTag.swift; sourceTree = "<group>"; };
+		1047D1B52252E6F1001B7F10 /* EthRPCCallbacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthRPCCallbacks.swift; sourceTree = "<group>"; };
+		1047D1B72252E719001B7F10 /* EthObjectOrBoolean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthObjectOrBoolean.swift; sourceTree = "<group>"; };
 		1047D1B92252E96D001B7F10 /* EthRelay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthRelay.swift; sourceTree = "<group>"; };
 		1047D1BB22539DBC001B7F10 /* EthContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthContract.swift; sourceTree = "<group>"; };
-		1047D1C32253E8F8001B7F10 /* BigUInt+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BigUInt+Extensions.swift"; sourceTree = "<group>"; };
 		1047D1C52253EAE8001B7F10 /* PocketEthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketEthTests.swift; sourceTree = "<group>"; };
 		1088F0D22252AEFE004A0EB4 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		3E5CD1009677A53C073C2618 /* Pods_PocketSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,14 +191,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C5CF28312252CE700085B45E /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				C5CF28322252CE880085B45E /* AionNetwork.swift */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
 		1047D1AB2252BFE5001B7F10 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,11 +205,19 @@
 			children = (
 				1047D1AF2252C063001B7F10 /* NetRPC.swift */,
 				1047D1B12252C06F001B7F10 /* EthRPC.swift */,
-				1047D1B32252E6DE001B7F10 /* BlockTag.swift */,
-				1047D1B52252E6F1001B7F10 /* RPCCallbacks.swift */,
-				1047D1B72252E719001B7F10 /* ObjectOrBoolean.swift */,
+				1047D1B32252E6DE001B7F10 /* EthBlockTag.swift */,
+				1047D1B52252E6F1001B7F10 /* EthRPCCallbacks.swift */,
+				1047D1B72252E719001B7F10 /* EthObjectOrBoolean.swift */,
 			);
 			path = RPC;
+			sourceTree = "<group>";
+		};
+		C5CF28312252CE700085B45E /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C5CF28322252CE880085B45E /* AionNetwork.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		C80407F02246A7680014EFE0 /* Model */ = {
@@ -699,8 +697,7 @@
 				C83901F5223D9D150092A9DF /* Dynamic.swift in Sources */,
 				C80576A1223FC57E00B041EB /* String+Extensions.swift in Sources */,
 				C8F25FC022402BC10081B039 /* Report.swift in Sources */,
-				1047D1B42252E6DE001B7F10 /* BlockTag.swift in Sources */,
-				1047D1C42253E8F8001B7F10 /* BigUInt+Extensions.swift in Sources */,
+				1047D1B42252E6DE001B7F10 /* EthBlockTag.swift in Sources */,
 				1047D1AD2252BFFF001B7F10 /* EthNetwork.swift in Sources */,
 				C80D8B6222458E7D003AE3E8 /* AionUtils.swift in Sources */,
 				C5CF2841225411610085B45E /* AionContract.swift in Sources */,
@@ -708,14 +705,14 @@
 				C8FA35392249E01900D31B8C /* BigInt+Extensions.swift in Sources */,
 				C5CF2835225305B70085B45E /* AionRelay.swift in Sources */,
 				C8390209223DA2CB0092A9DF /* RelayController.swift in Sources */,
-				1047D1B62252E6F1001B7F10 /* RPCCallbacks.swift in Sources */,
+				1047D1B62252E6F1001B7F10 /* EthRPCCallbacks.swift in Sources */,
 				C8F25FC4224031CE0081B039 /* ReportController.swift in Sources */,
 				C839022B223DA9D30092A9DF /* PocketEth.swift in Sources */,
 				C83901F1223D9D150092A9DF /* Configuration.swift in Sources */,
 				C5CF28332252CE880085B45E /* AionNetwork.swift in Sources */,
 				C83901FD223D9D150092A9DF /* Pocket.swift in Sources */,
 				C80576A5223FF6F100B041EB /* Wallet.swift in Sources */,
-				1047D1B82252E719001B7F10 /* ObjectOrBoolean.swift in Sources */,
+				1047D1B82252E719001B7F10 /* EthObjectOrBoolean.swift in Sources */,
 				C8390200223D9DFD0092A9DF /* Blockchain.swift in Sources */,
 				C839022F223DB54A0092A9DF /* Dispatch.swift in Sources */,
 				1047D1BC22539DBC001B7F10 /* EthContract.swift in Sources */,

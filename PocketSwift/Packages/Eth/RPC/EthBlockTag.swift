@@ -1,5 +1,5 @@
 //
-//  BlockTag.swift
+//  EthBlockTag.swift
 //  PocketSwift
 //
 //  Created by Luis De Leon on 4/1/19.
@@ -9,7 +9,7 @@
 import Foundation
 import BigInt
 
-public enum BlockTag {
+public enum EthBlockTag {
     case earliest
     case latest
     case pending
@@ -28,11 +28,11 @@ public enum BlockTag {
         }
     }
     
-    static func tagOrLatest(blockTag: BlockTag?) -> BlockTag {
+    static func tagOrLatest(blockTag: EthBlockTag?) -> EthBlockTag {
         if let result = blockTag {
             return result
         } else {
-            return BlockTag.latest
+            return EthBlockTag.latest
         }
     }
 }

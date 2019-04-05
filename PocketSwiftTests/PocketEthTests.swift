@@ -116,14 +116,14 @@ class PocketEthTests: QuickSpec {
             }
             
             it("should retrieve an account balance") {
-                pocketEth.rinkeby?.eth.getBalance(address: self.ADDRESS, blockTag: BlockTag.latest, callback: { (error, result) in
+                pocketEth.rinkeby?.eth.getBalance(address: self.ADDRESS, blockTag:  EthBlockTag.latest , callback: { (error, result) in
                     expect(error).to(beNil())
                     expect(result).to(beGreaterThanOrEqualTo(result))
                 })
             }
             
             it("should fail to retrieve account balance") {
-                pocketEth.rinkeby?.eth.getBalance(address: self.ADDRESS, blockTag: BlockTag.latest, callback: { (error, result) in
+                pocketEth.rinkeby?.eth.getBalance(address: self.ADDRESS, blockTag:  EthBlockTag.latest, callback: { (error, result) in
                     expect(error).toNot(beNil())
                     expect(result).to(beNil())
                 })
@@ -137,21 +137,21 @@ class PocketEthTests: QuickSpec {
             }
             
             it("should fail to retrieve a storage information by passing empty address") {
-                pocketEth.rinkeby?.eth.getStorageAt(address: "", position: BigInt(0), blockTag: BlockTag.latest, callback: { (error, result) in
+                pocketEth.rinkeby?.eth.getStorageAt(address: "", position: BigInt(0), blockTag:  EthBlockTag.latest, callback: { (error, result) in
                     expect(error).toNot(beNil())
                     expect(result).to(beNil())
                 })
             }
             
             it("should retrieve an address transaction count") {
-                pocketEth.rinkeby?.eth.getTransactionCount(address: self.ADDRESS, blockTag: BlockTag.latest, callback: { (error, result) in
+                pocketEth.rinkeby?.eth.getTransactionCount(address: self.ADDRESS, blockTag:  EthBlockTag.latest, callback: { (error, result) in
                     expect(error).to(beNil())
                     expect(result).to(beAKindOf(BigInt.self))
                 })
             }
             
             it("should fail to retrieve an address transaction count by passing empty address") {
-                pocketEth.rinkeby?.eth.getTransactionCount(address: "", blockTag: BlockTag.latest, callback: { (error, result) in
+                pocketEth.rinkeby?.eth.getTransactionCount(address: "", blockTag:  EthBlockTag.latest, callback: { (error, result) in
                     expect(error).toNot(beNil())
                     expect(result).to(beNil())
                 })
@@ -172,7 +172,7 @@ class PocketEthTests: QuickSpec {
             }
             
             it("should retrieve a block transaction count by using the block number") {
-                pocketEth.rinkeby?.eth.getBlockTransactionCountByNumber(blockTag: BlockTag.latest, callback: { (error, result) in
+                pocketEth.rinkeby?.eth.getBlockTransactionCountByNumber(blockTag:  EthBlockTag.latest, callback: { (error, result) in
                     expect(error).to(beNil())
                     expect(result).to(beAKindOf(BigInt.self))
                 })
@@ -186,21 +186,21 @@ class PocketEthTests: QuickSpec {
             }
             
             it("should fail to retrieve the code at the given address by using empty address") {
-                pocketEth.rinkeby?.eth.getCode(address: "", blockTag: BlockTag.latest, callback: { (error, result) in
+                pocketEth.rinkeby?.eth.getCode(address: "", blockTag:  EthBlockTag.latest, callback: { (error, result) in
                     expect(error).toNot(beNil())
                     expect(result).to(beNil())
                 })
             }
             // call
             it("should execute a new message call") {
-                pocketEth.rinkeby?.eth.call(from: nil, to: self.CONTRACT_ADDRESS, gas: BigUInt(50000), gasPrice: BigUInt(20000000000), value: BigUInt(20000000000), data: self.CALL_DATA, blockTag: BlockTag.latest, callback: { (error, result) in
+                pocketEth.rinkeby?.eth.call(from: nil, to: self.CONTRACT_ADDRESS, gas: BigUInt(50000), gasPrice: BigUInt(20000000000), value: BigUInt(20000000000), data: self.CALL_DATA, blockTag:  EthBlockTag.latest, callback: { (error, result) in
                     expect(error).to(beNil())
                     expect(result).to(beAKindOf(String.self))
                 })
             }
             
             it("should fail to execute a new message call without destination address") {
-                pocketEth.rinkeby?.eth.call(from: nil, to: "", gas: BigUInt(50000), gasPrice: BigUInt(20000000000), value: BigUInt(20000000000), data: self.CALL_DATA, blockTag: BlockTag.latest, callback: { (error, result) in
+                pocketEth.rinkeby?.eth.call(from: nil, to: "", gas: BigUInt(50000), gasPrice: BigUInt(20000000000), value: BigUInt(20000000000), data: self.CALL_DATA, blockTag:  EthBlockTag.latest, callback: { (error, result) in
                     expect(error).toNot(beNil())
                     expect(result).to(beNil())
                 })
@@ -221,7 +221,7 @@ class PocketEthTests: QuickSpec {
             }
             // getBlockByNumber
             it("should retrieve the block information with the block number") {
-                pocketEth.rinkeby?.eth.getBlockByNumber(blockTag: BlockTag.number(BigInt(self.BLOCK_NUMBER)), fullTx: true, callback: { (error, result) in
+                pocketEth.rinkeby?.eth.getBlockByNumber(blockTag:  EthBlockTag.number(BigInt(self.BLOCK_NUMBER)), fullTx: true, callback: { (error, result) in
                     expect(error).to(beNil())
                     expect(result).to(beAKindOf([String: Any].self))
                 })
@@ -256,7 +256,7 @@ class PocketEthTests: QuickSpec {
             }
             // getTransactionByBlockNumberAndIndex
             it("should retrieve a transaction information with the block hash and index") {
-                pocketEth.rinkeby?.eth.getTransactionByBlockNumberAndIndex(blockTag: BlockTag.number(BigInt(self.BLOCK_NUMBER)), index: BigInt(0), callback: { (error, result) in
+                pocketEth.rinkeby?.eth.getTransactionByBlockNumberAndIndex(blockTag:  EthBlockTag.number(BigInt(self.BLOCK_NUMBER)), index: BigInt(0), callback: { (error, result) in
                     expect(error).to(beNil())
                     expect(result).to(beAKindOf([String: Any].self))
                 })

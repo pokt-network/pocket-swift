@@ -44,7 +44,7 @@ public class EthContract {
         }
     }
     
-    public func executeConstantFunction(functionName: String, functionParams: [AnyObject] = [AnyObject](), fromAddress: String?, gas: BigUInt?, gasPrice: BigUInt?, value: BigUInt?, blockTag: BlockTag?, callback: @escaping AnyArrayCallback) throws {
+    public func executeConstantFunction(functionName: String, functionParams: [AnyObject] = [AnyObject](), fromAddress: String?, gas: BigUInt?, gasPrice: BigUInt?, value: BigUInt?, blockTag: EthBlockTag?, callback: @escaping AnyArrayCallback) throws {
         guard let abiFunction = self.functions[functionName] else {
             throw PocketError.custom(message: "Invalid function name: \(functionName)")
         }
