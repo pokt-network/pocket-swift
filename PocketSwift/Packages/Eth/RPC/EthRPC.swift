@@ -48,7 +48,7 @@ public class EthRPC {
         self.ethNetwork = ethNetwork
     }
     
-    public func sendTransaction(wallet: Wallet, toAddress: String, gas: BigUInt, gasPrice: BigUInt, value: BigUInt = BigUInt.init(0), data: String?, nonce: BigUInt, callback: @escaping StringCallback) {
+    public func sendTransaction(wallet: Wallet, toAddress: String, gas: BigUInt, gasPrice: BigUInt, value: BigUInt = BigUInt.init(0), data: String?, nonce: BigUInt, callback: @escaping EthStringCallback) {
         do {
             if !wallet.netID.elementsEqual(self.ethNetwork.netID) {
                 callback(PocketError.custom(message: "Invalid wallet netid: \(wallet.netID)"), nil)
@@ -81,7 +81,7 @@ public class EthRPC {
         }
     }
     
-    public func protocolVersion(callback: @escaping StringCallback) {
+    public func protocolVersion(callback: @escaping EthStringCallback) {
         do {
             let relay = try self.ethNetwork.createEthRelay(method: EthRPCMethod.protocolVersion.rawValue, params: nil)
             self.ethNetwork.send(relay: relay, callback: callback)
@@ -90,7 +90,7 @@ public class EthRPC {
         }
     }
     
-    public func syncing(callback: @escaping JSONObjectOrBooleanCallback) {
+    public func syncing(callback: @escaping EthJSONObjectOrBooleanCallback) {
         do {
             let relay = try self.ethNetwork.createEthRelay(method: EthRPCMethod.syncing.rawValue, params: nil)
             self.ethNetwork.send(relay: relay, callback: callback)
@@ -99,7 +99,7 @@ public class EthRPC {
         }
     }
     
-    public func gasPrice(callback: @escaping BigIntegerCallback) {
+    public func gasPrice(callback: @escaping EthBigIntegerCallback) {
         do {
             let relay = try self.ethNetwork.createEthRelay(method: EthRPCMethod.gasPrice.rawValue, params: nil)
             self.ethNetwork.send(relay: relay, callback: callback)
@@ -108,7 +108,7 @@ public class EthRPC {
         }
     }
     
-    public func blockNumber(callback: @escaping BigIntegerCallback) {
+    public func blockNumber(callback: @escaping EthBigIntegerCallback) {
         do {
             let relay = try self.ethNetwork.createEthRelay(method: EthRPCMethod.blockNumber.rawValue, params: nil)
             self.ethNetwork.send(relay: relay, callback: callback)
@@ -117,13 +117,13 @@ public class EthRPC {
         }
     }
     
-    public func getBalance(address: String, blockTag: BlockTag?, callback: @escaping BigIntegerCallback) {
+    public func getBalance(address: String, blockTag: EthBlockTag?, callback: @escaping EthBigIntegerCallback) {
         do {
             if address.isEmpty {
                 callback(PocketError.invalidAddress, nil)
                 return
             }
-            let params: [String] = [address, BlockTag.tagOrLatest(blockTag: blockTag).getValue()]
+            let params: [String] = [address, EthBlockTag.tagOrLatest(blockTag: blockTag).getValue()]
             let relay = try self.ethNetwork.createEthRelay(method: EthRPCMethod.getBalance.rawValue, params: params)
             self.ethNetwork.send(relay: relay, callback: callback)
         } catch let error {
@@ -131,13 +131,13 @@ public class EthRPC {
         }
     }
     
-    public func getStorageAt(address: String, position: BigInt, blockTag: BlockTag?, callback: @escaping StringCallback) {
+    public func getStorageAt(address: String, position: BigInt, blockTag: EthBlockTag?, callback: @escaping EthStringCallback) {
         do {
             if address.isEmpty {
                 callback(PocketError.invalidAddress, nil)
                 return
             }
-            let params: [String] = [address, position.toHexString(), BlockTag.tagOrLatest(blockTag: blockTag).getValue()]
+            let params: [String] = [address, position.toHexString(), EthBlockTag.tagOrLatest(blockTag: blockTag).getValue()]
             let relay = try self.ethNetwork.createEthRelay(method: EthRPCMethod.getStorageAt.rawValue, params: params)
             self.ethNetwork.send(relay: relay, callback: callback)
         } catch let error {
@@ -145,7 +145,7 @@ public class EthRPC {
         }
     }
     
-    public func getTransactionCount(address: String, blockTag: BlockTag?, callback: @escaping BigIntegerCallback) {
+    public func getTransactionCount(address: String, blockTag: EthBlockTag?, callback: @escaping EthBigIntegerCallback) {
         do {
             
             if address.isEmpty {
@@ -153,7 +153,7 @@ public class EthRPC {
                 return
             }
             
-            let params: [String] = [address, BlockTag.tagOrLatest(blockTag: blockTag).getValue()]
+            let params: [String] = [address, EthBlockTag.tagOrLatest(blockTag: blockTag).getValue()]
             let relay = try self.ethNetwork.createEthRelay(method: EthRPCMethod.getTransactionCount.rawValue, params: params)
             self.ethNetwork.send(relay: relay, callback: callback)
         } catch let error {
@@ -161,7 +161,7 @@ public class EthRPC {
         }
     }
     
-    public func getBlockTransactionCountByHash(blockHash: String, callback: @escaping BigIntegerCallback) {
+    public func getBlockTransactionCountByHash(blockHash: String, callback: @escaping EthBigIntegerCallback) {
         do {
             if blockHash.isEmpty {
                 callback(PocketError.invalidParameter(message: "Block hash param is missing"), nil)
@@ -175,9 +175,9 @@ public class EthRPC {
         }
     }
     
-    public func getBlockTransactionCountByNumber(blockTag: BlockTag?, callback: @escaping BigIntegerCallback) {
+    public func getBlockTransactionCountByNumber(blockTag: EthBlockTag?, callback: @escaping EthBigIntegerCallback) {
         do {
-            let params: [String] = [BlockTag.tagOrLatest(blockTag: blockTag).getValue()]
+            let params: [String] = [EthBlockTag.tagOrLatest(blockTag: blockTag).getValue()]
             let relay = try self.ethNetwork.createEthRelay(method: EthRPCMethod.getBlockTransactionCountByNumber.rawValue, params: params)
             self.ethNetwork.send(relay: relay, callback: callback)
         } catch let error {
@@ -185,14 +185,14 @@ public class EthRPC {
         }
     }
     
-    public func getCode(address: String, blockTag: BlockTag?, callback: @escaping StringCallback) {
+    public func getCode(address: String, blockTag: EthBlockTag?, callback: @escaping EthStringCallback) {
         do {
             if address.isEmpty {
                 callback(PocketError.invalidAddress, nil)
                 return
             }
             
-            let params: [String] = [address, BlockTag.tagOrLatest(blockTag: blockTag).getValue()]
+            let params: [String] = [address, EthBlockTag.tagOrLatest(blockTag: blockTag).getValue()]
             let relay = try self.ethNetwork.createEthRelay(method: EthRPCMethod.getCode.rawValue, params: params)
             self.ethNetwork.send(relay: relay, callback: callback)
         } catch let error {
@@ -200,7 +200,7 @@ public class EthRPC {
         }
     }
     
-    public func call(from: String?, to: String, gas: BigUInt?, gasPrice: BigUInt?, value: BigUInt?, data: String?, blockTag: BlockTag?, callback: @escaping StringCallback) {
+    public func call(from: String?, to: String, gas: BigUInt?, gasPrice: BigUInt?, value: BigUInt?, data: String?, blockTag: EthBlockTag?, callback: @escaping EthStringCallback) {
         do {
             if to.isEmpty {
                 callback(PocketError.invalidParameter(message: "Destination address (to) param is missing"), nil)
@@ -208,7 +208,7 @@ public class EthRPC {
             }
             var txParams = [String: Any]()
             txParams.fill("from", from, "to", to, "gas", gas?.toHexString(), "gasPrice", gasPrice?.toHexString(), "value", value?.toHexString(), "data", data)
-            let params: [Any] = [txParams, BlockTag.tagOrLatest(blockTag: blockTag).getValue()]
+            let params: [Any] = [txParams, EthBlockTag.tagOrLatest(blockTag: blockTag).getValue()]
             let relay = try self.ethNetwork.createEthRelay(method: EthRPCMethod.call.rawValue, params: params)
             self.ethNetwork.send(relay: relay, callback: callback)
         } catch let error {
@@ -216,7 +216,7 @@ public class EthRPC {
         }
     }
     
-    public func getBlockByHash(blockHash: String, fullTx: Bool = false, callback: @escaping JSONObjectCallback) {
+    public func getBlockByHash(blockHash: String, fullTx: Bool = false, callback: @escaping EthJSONObjectCallback) {
         do{
             if blockHash.isEmpty {
                 callback(PocketError.invalidParameter(message: "Block Hash param is missing"), nil)
@@ -230,9 +230,9 @@ public class EthRPC {
         }
     }
     
-    public func getBlockByNumber(blockTag: BlockTag?, fullTx: Bool = false, callback: @escaping JSONObjectCallback) {
+    public func getBlockByNumber(blockTag: EthBlockTag?, fullTx: Bool = false, callback: @escaping EthJSONObjectCallback) {
         do{
-            let params: [Any] = [BlockTag.tagOrLatest(blockTag: blockTag).getValue(), fullTx]
+            let params: [Any] = [EthBlockTag.tagOrLatest(blockTag: blockTag).getValue(), fullTx]
             let relay = try self.ethNetwork.createEthRelay(method: EthRPCMethod.getBlockByNumber.rawValue, params: params)
             self.ethNetwork.send(relay: relay, callback: callback)
         }catch let error {
@@ -240,7 +240,7 @@ public class EthRPC {
         }
     }
     
-    public func getTransactionByHash(txHash: String, callback: @escaping JSONObjectCallback) {
+    public func getTransactionByHash(txHash: String, callback: @escaping EthJSONObjectCallback) {
         do{
             if txHash.isEmpty {
                 callback(PocketError.invalidParameter(message: "Transaction hash param is missing"), nil)
@@ -254,7 +254,7 @@ public class EthRPC {
         }
     }
     
-    public func getTransactionByBlockHashAndIndex(blockHash: String, index: BigInt, callback: @escaping JSONObjectCallback) {
+    public func getTransactionByBlockHashAndIndex(blockHash: String, index: BigInt, callback: @escaping EthJSONObjectCallback) {
         do{
             if blockHash.isEmpty {
                 callback(PocketError.invalidParameter(message: "One or more params are missing"), nil)
@@ -269,9 +269,9 @@ public class EthRPC {
         }
     }
     
-    public func getTransactionByBlockNumberAndIndex(blockTag: BlockTag?, index: BigInt, callback: @escaping JSONObjectCallback) {
+    public func getTransactionByBlockNumberAndIndex(blockTag: EthBlockTag?, index: BigInt, callback: @escaping EthJSONObjectCallback) {
         do{
-            let params: [Any] = [BlockTag.tagOrLatest(blockTag: blockTag).getValue(), index.toHexString()]
+            let params: [Any] = [EthBlockTag.tagOrLatest(blockTag: blockTag).getValue(), index.toHexString()]
             let relay = try self.ethNetwork.createEthRelay(method: EthRPCMethod.getTransactionByBlockNumberAndIndex.rawValue, params: params)
             self.ethNetwork.send(relay: relay, callback: callback)
         }catch let error {
@@ -279,7 +279,7 @@ public class EthRPC {
         }
     }
     
-    public func getTransactionReceipt(txHash: String, callback: @escaping JSONObjectCallback) {
+    public func getTransactionReceipt(txHash: String, callback: @escaping EthJSONObjectCallback) {
         do{
             if txHash.isEmpty {
                 callback(PocketError.invalidParameter(message: "Transaction hash param is missing"), nil)
@@ -293,7 +293,7 @@ public class EthRPC {
         }
     }
     
-    public func getLogs(fromBlock: BlockTag? = .latest , toBlock: BlockTag? = .latest, address: String?, topics: [String]?, blockhash: String?, callback: @escaping JSONArrayCallback) {
+    public func getLogs(fromBlock: EthBlockTag? = .latest , toBlock: EthBlockTag? = .latest, address: String?, topics: [String]?, blockhash: String?, callback: @escaping EthJSONArrayCallback) {
         do{
             var txParams = [String: Any]()
             txParams.fill("address", address, "topics", topics)
@@ -301,8 +301,8 @@ public class EthRPC {
             if blockhash != nil {
                 txParams["blockhash"] = blockhash!
             } else {
-                txParams["fromBlock"] = BlockTag.tagOrLatest(blockTag: fromBlock).getValue()
-                txParams["toBlock"] = BlockTag.tagOrLatest(blockTag: toBlock).getValue()
+                txParams["fromBlock"] = EthBlockTag.tagOrLatest(blockTag: fromBlock).getValue()
+                txParams["toBlock"] = EthBlockTag.tagOrLatest(blockTag: toBlock).getValue()
             }
             
             let params: [Any] = [txParams]
@@ -313,7 +313,7 @@ public class EthRPC {
         }
     }
     
-    public func estimateGas(from: String?, to: String, gas: BigInt?, gasPrice: BigInt?, value: BigInt?, data: String?, blockTag: BlockTag?, callback: @escaping BigIntegerCallback) {
+    public func estimateGas(from: String?, to: String, gas: BigInt?, gasPrice: BigInt?, value: BigInt?, data: String?, blockTag: EthBlockTag?, callback: @escaping EthBigIntegerCallback) {
         do{
             if to.isEmpty {
                 callback(PocketError.invalidParameter(message: "Destination address (to) param is missing"), nil)
@@ -321,7 +321,7 @@ public class EthRPC {
             }
             var txParams = [String: Any]()
             txParams.fill("to", to, "from", from, "nrg", gas?.toHexString(), "nrgPrice", gasPrice?.toHexString(), "value", value?.toHexString(), "data", data)
-            let params: [Any] = [txParams, BlockTag.tagOrLatest(blockTag: blockTag).getValue()]
+            let params: [Any] = [txParams, EthBlockTag.tagOrLatest(blockTag: blockTag).getValue()]
             let relay = try self.ethNetwork.createEthRelay(method: EthRPCMethod.estimateGas.rawValue, params: params)
             self.ethNetwork.send(relay: relay, callback: callback)
         }catch let error {

@@ -23,7 +23,7 @@ public struct NetRPC {
         self.ethNetwork = ethNetwork
     }
     
-    public func version(callback: @escaping StringCallback) {
+    public func version(callback: @escaping EthStringCallback) {
         do {
             let ethRelay = try EthRelay.init(netID: self.ethNetwork.netID, devID: ethNetwork.devID, method: NetRPCMethod.version.rawValue, params: nil)
             self.ethNetwork.send(relay: ethRelay, callback: callback)
@@ -32,7 +32,7 @@ public struct NetRPC {
         }
     }
     
-    public func listening(callback: @escaping BooleanCallback) {
+    public func listening(callback: @escaping EthBooleanCallback) {
         do {
             let ethRelay = try EthRelay.init(netID: self.ethNetwork.netID, devID: ethNetwork.devID, method: NetRPCMethod.listening.rawValue, params: nil)
             self.ethNetwork.send(relay: ethRelay, callback: callback)
@@ -41,7 +41,7 @@ public struct NetRPC {
         }
     }
     
-    public func peerCount(callback: @escaping BigIntegerCallback) {
+    public func peerCount(callback: @escaping EthBigIntegerCallback) {
         do {
             let ethRelay = try EthRelay.init(netID: self.ethNetwork.netID, devID: ethNetwork.devID, method: NetRPCMethod.peerCount.rawValue, params: nil)
             self.ethNetwork.send(relay: ethRelay, callback: callback)

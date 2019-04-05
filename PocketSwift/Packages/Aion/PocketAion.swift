@@ -102,7 +102,7 @@ public class PocketAion: Pocket {
             throw PocketError.walletCreation(message: "Invalid address")
         }
 
-        return Wallet(address: address, privateKey: privateKey, network: PocketAion.NETWORK, netID: netID, data: nil)
+        return Wallet(address: address, privateKey: privateKey, network: PocketAion.NETWORK, netID: netID)
     }
     // Import Wallet
     internal func importWallet(privateKey: String, netID: String) throws -> Wallet {
@@ -117,7 +117,7 @@ public class PocketAion: Pocket {
             guard let privateKey = account["privateKey"] as? String else {
                 throw PocketError.walletImport(message: "Failed to import wallet with error")
             }
-            return Wallet(address: address, privateKey: privateKey, network: PocketAion.NETWORK, netID: netID, data: nil)
+            return Wallet(address: address, privateKey: privateKey, network: PocketAion.NETWORK, netID: netID)
         }
 
         throw PocketError.walletImport(message: "Failed to create account js object")
