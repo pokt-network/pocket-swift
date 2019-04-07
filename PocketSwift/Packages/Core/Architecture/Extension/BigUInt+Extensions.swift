@@ -9,7 +9,7 @@
 import Foundation
 import BigInt
 
-extension BigUInt {
+public extension BigUInt {
     func toHexString() -> String {
         let hex = String(self, radix: 16)
         let string = "0x".appending(hex)

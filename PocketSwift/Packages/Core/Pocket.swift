@@ -78,8 +78,10 @@ public class Pocket: NSObject {
                 // Report node error
                 self.send(report: Report.init(ip: node?.ip ?? "unknown node IP", message: error?.localizedDescription ?? "Unknown error"), onSuccess: { (response) in
                     // TODO: figure out what to do with the report response
+                    print("Lolo")
                 }, onError: { (error) in
                     // TODO: figure out what to do with the report error
+                    print("Lala")
                 })
             })
         }

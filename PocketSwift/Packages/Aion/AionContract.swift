@@ -45,7 +45,11 @@ public class AionContract {
         
         let functionParamsStr = formattedRpcParams.joined(separator: ",")
         
-        let encodedFunction = try self.encodeFunction(functionStr: functionJSONStr, params: functionParamsStr)
+        guard let functionJSONStrFinal = functionJSONStr else {
+            throw PocketError.custom(message: "Failed to format rpc params.")
+        }
+        
+        let encodedFunction = try self.encodeFunction(functionStr: functionJSONStrFinal, params: functionParamsStr)
         
         return encodedFunction
     }
@@ -84,13 +88,17 @@ public class AionContract {
             throw PocketError.custom(message: "Failed to retrieve encodeFunction")
         }
         
-        guard let functionStr = try? function.toJson() else{
+        guard let functionStr = try? function.toJson() else {
+            throw PocketError.custom(message: "Failed to parse function object")
+        }
+        
+        guard let functionStrFinal = functionStr else {
             throw PocketError.custom(message: "Failed to parse function object")
         }
         
         // Check if is empty and evaluate script with the transaction parameters using string format %@
         if !jsFile.isEmpty {
-            let jsCode = String(format: jsFile, encodedResult, functionStr)
+            let jsCode = String(format: jsFile, encodedResult, functionStrFinal)
             // Evaluate js code
             jsContext.evaluateScript(jsCode)
         }else {
@@ -111,6 +119,18 @@ public class AionContract {
         }
         
         return result
+    }
+    
+    public func encodeFunctionCall(functionName: String, functionParams: [Any] = [Any]()) throws -> String {
+        guard let abiFunction = self.functions[functionName] as? [String: Any] else {
+            throw PocketError.custom(message: "Invalid function name: \(functionName)")
+        }
+        
+        guard let encodedFunctionData = try encodeParameters(params: functionParams, functionJSON: abiFunction) else {
+            throw PocketError.custom(message: "Invalid function data for params: \(functionParams)")
+        }
+        
+        return encodedFunctionData
     }
     
     public func executeConstantFunction(functionName: String, functionParams: [Any] = [Any](), fromAddress: String?, gas: BigUInt?, gasPrice: BigUInt?, value: BigUInt?, blockTag: BlockTag?, callback: @escaping AnyArrayCallback) throws {
