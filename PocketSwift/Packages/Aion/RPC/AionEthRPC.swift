@@ -272,7 +272,7 @@ public struct AionEthRPC {
         }
     }
     
-    public func estimateGas(from: String?, to: String, gas: BigInt?, gasPrice: BigInt?, value: BigInt?, data: String?, blockTag: BlockTag?, callback: @escaping BigIntegerCallback) {
+    public func estimateGas(from: String?, to: String, gas: BigUInt?, gasPrice: BigUInt?, value: BigUInt?, data: String?, blockTag: BlockTag?, callback: @escaping BigIntegerCallback) {
         do{
             if to.isEmpty {
                 callback(PocketError.invalidParameter(message: "Destination address (to) param is missing"), nil)

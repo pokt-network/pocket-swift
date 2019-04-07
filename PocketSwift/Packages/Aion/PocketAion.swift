@@ -13,11 +13,11 @@ public class PocketAion: Pocket {
     
     public static let NETWORK = "AION"
 
-    enum Networks: String {
+    public enum Networks: String {
         case MAINNET = "256"
         case MASTERY = "32"
         
-        func netID() -> String {
+        public func netID() -> String {
             return self.rawValue
         }
     }
@@ -29,7 +29,7 @@ public class PocketAion: Pocket {
     public var networks: [String: AionNetwork] = [String: AionNetwork]()
     public let jsContext: JSContext = JSContext()
     
-    init(devID: String, netIds: [String], defaultNetID: String = Networks.MASTERY.netID(), maxNodes: Int = 5, requestTimeOut: Int = 10000) throws {
+    public init(devID: String, netIds: [String], defaultNetID: String = Networks.MASTERY.netID(), maxNodes: Int = 5, requestTimeOut: Int = 10000) throws {
         // Super init
         super.init(devID: devID, network: PocketAion.NETWORK, netIds: netIds, maxNodes: maxNodes, requestTimeOut: requestTimeOut, schedulerProvider: .main)
         // Exception handler for jsContext
@@ -105,7 +105,7 @@ public class PocketAion: Pocket {
         return Wallet(address: address, privateKey: privateKey, network: PocketAion.NETWORK, netID: netID)
     }
     // Import Wallet
-    internal func importWallet(privateKey: String, netID: String) throws -> Wallet {
+    public func importWallet(privateKey: String, netID: String) throws -> Wallet {
 
         if (self.jsContext.evaluateScript("var account = aionInstance.eth.accounts.privateKeyToAccount('\(privateKey)')") != nil) {
             guard let account = self.jsContext.objectForKeyedSubscript("account")?.toObject() as? [AnyHashable: Any] else {

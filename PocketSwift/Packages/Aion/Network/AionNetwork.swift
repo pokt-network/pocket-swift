@@ -17,12 +17,12 @@ public class AionNetwork {
     private let resultKey = "result"
     
     private var _net: AionNetRPC!
-    var net: AionNetRPC {
+    public var net: AionNetRPC {
         return _net
     }
     
     private var _eth: AionEthRPC!
-    var eth: AionEthRPC {
+    public var eth: AionEthRPC {
         return _eth
     }
     

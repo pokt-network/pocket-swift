@@ -26,35 +26,37 @@ Pod::Spec.new do |main|
                               "Pabel Nunez" => "pabel@pokt.network" 
                             }
 
-  # main.source              = { :git => "https://github.com/pokt-network/pocket-swift.git", :tag => "s.version.to_s" }
-  main.source              = { :git => "https://github.com/pokt-network/pocket-swift.git", :branch => "pocket-swift-0.01" }
+  main.source              = { :git => "https://github.com/pokt-network/pocket-swift.git", :branch => "master" }
   main.source_files        = "PocketSwift/PocketSwift/**/*.{h,m,swift}"
   main.exclude_files       = "PocketSwift/PocketSwiftTests/**/*.{h,m,swift}", "PocketSwift/Pods/*"
-
   main.swift_version       = "4.2"
   main.cocoapods_version   = ">= 1.4.0"
   main.platform            = :ios, "11.0"
 
   main.subspec 'Core' do |core|
-    core.source_files      = "PocketSwift/PocketSwift/Packages/Core/**/*.{h,m,swift}"
+    core.source_files      = "PocketSwift/Packages/Core/**/*.{h,m,swift}"
+    core.dependency "RxSwift",    "~> 4.0"
+    core.dependency "RxBlocking",    "~> 4.0"
+    core.dependency "SwiftKeychainWrapper"
+    core.dependency "RNCryptor"
   end
 
   main.subspec 'Eth' do |eth|
-    eth.source_files      = "PocketSwift/PocketSwift/Packages/Eth/**/*.{h,m,swift}"
+    eth.source_files      = "PocketSwift/Packages/Eth/**/*.{h,m,swift}"
     eth.dependency "PocketSwift/Core"
     eth.dependency "web3swift", "~> 2.1.2"
     eth.dependency "CryptoSwift"
+    eth.dependency "BigInt"
   end
 
   main.subspec 'Aion' do |aion|
-    aion.source_files      = "PocketSwift/PocketSwift/Packages/Aion/**/*.{h,m,swift}"
+    aion.source_files      = "PocketSwift/Packages/Aion/**/*.{h,m,swift}"
     aion.dependency "PocketSwift/Core"
+    aion.dependency "BigInt"
+    aion.resources = "PocketSwift/Packages/Aion/Resource/resource.bundle"
+    # aion.resource_bundles = {
+    #   "PocketSwiftAionBundle" => ['PocketSwift/Packages/Aion/Resource/*.bundle']
+    # }
   end
-
-  # Framework dependencies
-  main.dependency "RxSwift",    "~> 4.0"
-  main.dependency "RxBlocking",    "~> 4.0"
-  main.dependency "BigInt"
-
 
 end
