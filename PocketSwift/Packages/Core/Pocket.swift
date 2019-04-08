@@ -154,8 +154,5 @@ public class Pocket: NSObject {
     }
     
     deinit {
-        self.dispatchController.onCleared()
-        self.relayController.onCleared()
-        self.reportController.onCleared()
     }
 }
