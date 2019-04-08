@@ -9,7 +9,7 @@
 import Foundation
 
 struct Dispatch: Input {
-    var configuration: Configuration
+    public var configuration: Configuration
     
     init(configuration: Configuration) {
         self.configuration = configuration   }
