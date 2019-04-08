@@ -24,8 +24,7 @@ final class WebServiceImpl: WebService {
                     
                     observer.onNext(try endpoint.decode(data ?? Data(), self.getCode(response: response, data: data)))
                     observer.onCompleted()
-                    
-                } catch let DecodingError.dataCorrupted(context){
+                } catch let DecodingError.dataCorrupted(context) {
                     switch context.underlyingError!.code {
                     case 3840:
                         do{
@@ -51,10 +50,6 @@ final class WebServiceImpl: WebService {
     
     private func getCode(response: URLResponse?, data: Data?) -> Int {
         if let httpResponse = response as? HTTPURLResponse {
-//            if let json = data, json.count != 0 {
-//                print("Response: \(String(describing: String.init(data: data!, encoding: .utf8)))")
-//            }
-            
             return httpResponse.statusCode
         }
         return 500

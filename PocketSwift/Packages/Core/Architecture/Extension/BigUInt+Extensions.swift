@@ -16,4 +16,8 @@ public extension BigUInt {
         
         return string
     }
+    
+    func noPrefixHex() -> String {
+        return String(self, radix: 16)
+    }
 }

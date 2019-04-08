@@ -115,7 +115,9 @@ public class AionContract {
             result = decodedResponse.toArray()
         } else {
             result = []
-            result.append(decodedResponse.toObject()!)
+            if !decodedResponse.isUndefined {
+                result.append(decodedResponse.toObject()!)
+            }
         }
         
         return result

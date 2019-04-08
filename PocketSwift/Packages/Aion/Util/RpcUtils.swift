@@ -48,6 +48,8 @@ public class RpcParamsUtil {
     }
     
     private static func objectAsRpcParam(objParam: Any) -> String? {
+        var result: String?
+        
         if  objParam is Double ||
             objParam is Float ||
             objParam is Int ||
@@ -55,19 +57,20 @@ public class RpcParamsUtil {
             objParam is UInt8 ||// byte
             objParam is Int16// short
         {
-            let strValue = String(describing: objParam)
-            
-            return strValue
+            result = String(describing: objParam)
         } else if objParam is Bool {
             guard let boolValue = objParam as? Bool else {
                 return nil
             }
-            return boolValue.description.lowercased()
+            result = boolValue.description.lowercased()
         } else if objParam is String {
-            return "\"\(objParam)\""
+            result = "\"\(objParam)\""
         } else if objParam is BigUInt {
-            return "bigInt(" + "\"" + (objParam as! BigUInt).toHexString() + "\"" + ",16).value"
+            result = "bigInt(" + "\"" + (objParam as! BigUInt).noPrefixHex() + "\"" + ",16).value"
+        } else if objParam is BigInt {
+            result = "bigInt(" + "\"" + (objParam as! BigInt).noPrefixHex() + "\"" + ",16).value"
         }
-        return nil
+        
+        return result
     }
 }
