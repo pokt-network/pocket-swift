@@ -12,7 +12,9 @@ import Foundation
 
 class LiveData<ObservedType>: Dynamic {
     
-    private var observers: [String: Observer<ObservedType>]
+    //private var observers: [String: Observer<ObservedType>]
+    //private var observers: [Observer<ObservedType>]
+    private var observer: Observer<ObservedType>?
     var value: ObservedType? {
         didSet {
             if let _value = value {
@@ -30,11 +32,10 @@ class LiveData<ObservedType>: Dynamic {
     
     init(_ value: ObservedType? = nil) {
         self.value = value
-        self.observers = [:]
     }
     
     func observe(in owner: NSObject, for initCallback: ()->(), with observer: @escaping Observer<ObservedType>, error: ((Error?) -> ())? = nil) {
-        self.observers[owner.description] = observer
+        self.observer = observer
         if let _errorCallback = error {
             self.errorCallback = _errorCallback
         }
@@ -42,11 +43,13 @@ class LiveData<ObservedType>: Dynamic {
     }
     
     private func notify(_ value: ObservedType){
-        self.observers.forEach({ $0.value(value)})
+        if let observer = self.observer {
+            observer(value)
+        }
     }
     
     override func clean(){
-        self.observers.removeAll()
+        self.observer = nil
     }
     
     deinit {

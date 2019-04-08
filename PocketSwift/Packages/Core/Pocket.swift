@@ -15,9 +15,6 @@ protocol PocketPlugin {
 
 public class Pocket: NSObject {
     
-    private let relayController: RelayController
-    private let dispatchController: DispatchController
-    private let reportController: ReportController
     private let dispatch: Dispatch
     public var devID: String {
         get {
@@ -35,9 +32,9 @@ public class Pocket: NSObject {
         self.dispatch = Dispatch(configuration: configuration)
         
         // TODO: Check if we need this
-        self.relayController = RelayController(with: configuration, and: schedulerProvider)
-        self.dispatchController = DispatchController(with: configuration, and: schedulerProvider)
-        self.reportController = ReportController(with: configuration, and: schedulerProvider)
+//        self.relayController = RelayController(with: configuration, and: schedulerProvider)
+//        self.dispatchController = DispatchController(with: configuration, and: schedulerProvider)
+//        self.reportController = ReportController(with: configuration, and: schedulerProvider)
     }
     
     public convenience init(devID: String, network: String, netIds: [String], maxNodes: Int = 5, requestTimeOut: Int = 1000) {
@@ -61,8 +58,10 @@ public class Pocket: NSObject {
                 return
             }
             
-            self.relayController.relayObserver.observe(in: self, for: {
-                self.relayController.send(relay: relay, to: relayNode.ipPort)
+            let relayController = RelayController(with: self.dispatch.configuration, and: .main)
+            
+            relayController.relayObserver.observe(in: self, for: {
+                relayController.send(relay: relay, to: relayNode.ipPort)
             }, with: { response in
                 let errorObject = response.toDict()?.hasError()
                 
@@ -120,8 +119,11 @@ public class Pocket: NSObject {
     }
     
     func retrieveNodes(onSuccess: @escaping (_ nodes: [Node]) ->(), onError: @escaping (_ error: Error) -> ()) {
-        self.dispatchController.dispatchObserver.observe(in: self, for: {
-            self.dispatchController.retrieveServiceNodes(from: self.dispatch)
+        
+        let dispatchController = DispatchController(with: self.dispatch.configuration, and: .main)
+        
+        dispatchController.dispatchObserver.observe(in: self, for: {
+            dispatchController.retrieveServiceNodes(from: self.dispatch)
         }, with: { (response: JSON) in
             let nodes: [Node] = self.dispatch.parseDispatchResponse(response: response)
             if !nodes.isEmpty {
@@ -129,9 +131,9 @@ public class Pocket: NSObject {
             } else {
                 onError(PocketError.nodeNotFound)
             }
-        }, error: { error in
+        }) { (error) in
             onError(error!)
-        })
+        }
     }
     
     func send(report: Report, onSuccess: @escaping (_ data: String) ->(), onError: @escaping (_ error: Error) -> ()){
@@ -140,8 +142,10 @@ public class Pocket: NSObject {
             return
         }
 
-        self.reportController.reportObserver.observe(in: self, for: {
-            self.reportController.send(report: report)
+        let reportController = ReportController(with: self.dispatch.configuration, and: .main)
+        
+        reportController.reportObserver.observe(in: self, for: {
+            reportController.send(report: report)
         },with: {reponse in
 
         }, error: {error in
