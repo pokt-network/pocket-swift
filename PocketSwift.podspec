@@ -53,7 +53,7 @@ SOFTWARE.
   main.subspec 'Eth' do |eth|
     eth.source_files      = "PocketSwift/Packages/Eth/**/*.{h,m,swift}"
     eth.dependency "Core"
-    eth.dependency "pocket-web3swift", "~> 2.1.4"
+    eth.dependency "pocket-web3swift", "~> 2.1.5"
     eth.dependency "CryptoSwift"
     eth.dependency "BigInt"
   end

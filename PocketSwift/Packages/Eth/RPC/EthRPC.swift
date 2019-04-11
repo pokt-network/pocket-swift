@@ -11,12 +11,6 @@ import BigInt
 import Web3swift
 import EthereumAddress
 
-extension EthereumTransaction {
-    public static func createRawTransaction(transaction: EthereumTransaction) -> JSONRPCrequest? {
-        return self.createRawTransaction(transaction: transaction)
-    }
-}
-
 public class EthRPC {
     
     private enum EthRPCMethod: String {
@@ -58,10 +52,9 @@ public class EthRPC {
                 callback(PocketError.custom(message: "Invalid receipient address: \(toAddress)"), nil)
                 return
             }
-            guard let pkData = wallet.privateKey.data(using: .utf8) else {
-                callback(PocketError.custom(message: "Invalid private key: \(wallet.privateKey)"), nil)
-                return
-            }
+            
+            let pkData = Data.init(hex: wallet.privateKey)
+            
             var dataParam = Data()
             if let encodedData = data?.data(using: .utf8) {
                 dataParam = encodedData
@@ -69,11 +62,22 @@ public class EthRPC {
             var ethTx = EthereumTransaction.init(gasPrice: gasPrice, gasLimit: gas, to: recepientAddress, value: value, data: dataParam)
             ethTx.nonce = nonce
             try Web3Signer.FallbackSigner.sign(transaction: &ethTx, privateKey: pkData, useExtraEntropy: true)
-            guard let rawTx = String(data: try JSONEncoder().encode(EthereumTransaction.createRawTransaction(transaction: ethTx)), encoding: .utf8) else {
-                callback(PocketError.custom(message: "Error encoding transaction"), nil)
+            
+            guard let rawTxJSON: JSONRPCrequest = EthereumTransaction.createRawTransaction(transaction: ethTx) else {
+                callback(PocketError.custom(message: "Invalid transaction data"), nil)
                 return
             }
-            let params: [Any] = [rawTx]
+            
+            guard let jsonRPCParams = rawTxJSON.params else {
+                callback(PocketError.custom(message: "Invalid transaction data"), nil)
+                return
+            }
+            
+            var params = [Any]()
+            for element in jsonRPCParams.params {
+                params.append("\(element)")
+            }
+            
             let relay = try self.ethNetwork.createEthRelay(method: EthRPCMethod.sendRawTransaction.rawValue, params: params)
             self.ethNetwork.send(relay: relay, callback: callback)
         } catch let error  {
@@ -321,7 +325,7 @@ public class EthRPC {
             }
             var txParams = [String: Any]()
             txParams.fill("to", to, "from", from, "nrg", gas?.toHexString(), "nrgPrice", gasPrice?.toHexString(), "value", value?.toHexString(), "data", data)
-            let params: [Any] = [txParams, EthBlockTag.tagOrLatest(blockTag: blockTag).getValue()]
+            let params: [Any] = [txParams]
             let relay = try self.ethNetwork.createEthRelay(method: EthRPCMethod.estimateGas.rawValue, params: params)
             self.ethNetwork.send(relay: relay, callback: callback)
         }catch let error {

@@ -147,7 +147,7 @@ public class EthNetwork {
         }
     }
     
-    public func send(relay: EthRelay, callback: @escaping JSONObjectOrBooleanCallback) {
+    public func send(relay: EthRelay, callback: @escaping EthJSONObjectOrBooleanCallback) {
         self.pocketEth.send(relay: relay, onSuccess: { (response) in
             guard let responseObj = response.toDict() else {
                 callback(PocketError.custom(message: "Error parsing relay response \(response)"), nil)
@@ -159,7 +159,7 @@ public class EthNetwork {
                 return
             }
             
-            if let objectOrBoolean = try? ObjectOrBoolean.init(objectOrBoolean: resultAny) {
+            if let objectOrBoolean = try? EthObjectOrBoolean.init(objectOrBoolean: resultAny) {
                  callback(nil, objectOrBoolean)
             } else {
                 callback(nil, nil)

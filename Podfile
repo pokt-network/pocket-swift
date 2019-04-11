@@ -11,7 +11,7 @@ target 'PocketSwift' do
   pod 'BigInt'
   pod 'SwiftKeychainWrapper'
   pod 'RNCryptor'
-  pod 'pocket-web3swift', '~> 2.1.4'
+  pod 'pocket-web3swift', '~> 2.1.5'
   pod 'CryptoSwift'
 
   target 'PocketSwiftTests' do

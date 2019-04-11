@@ -14,5 +14,5 @@ public typealias EthBigIntegerCallback = (PocketError?, BigInt?) -> Void
 public typealias EthBooleanCallback = (PocketError?, Bool?) -> Void
 public typealias EthJSONObjectCallback = (PocketError?, [String: Any]?) -> Void
 public typealias EthJSONArrayCallback = (PocketError?, [[String: Any]]?) -> Void
-public typealias EthJSONObjectOrBooleanCallback = (PocketError?, ObjectOrBoolean?) -> Void
+public typealias EthJSONObjectOrBooleanCallback = (PocketError?, EthObjectOrBoolean?) -> Void
 public typealias EthAnyArrayCallback = (PocketError?, [Any]?) -> Void
