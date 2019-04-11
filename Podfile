@@ -11,12 +11,12 @@ target 'PocketSwift' do
   pod 'BigInt'
   pod 'SwiftKeychainWrapper'
   pod 'RNCryptor'
-  pod 'web3swift', '~> 2.1.2'
+  pod 'pocket-web3swift', '~> 2.1.4'
   pod 'CryptoSwift'
 
   target 'PocketSwiftTests' do
     inherit! :search_paths
-    
+
     pod 'Quick', :inhibit_warnings => true
     pod 'Nimble', :inhibit_warnings => true
   end

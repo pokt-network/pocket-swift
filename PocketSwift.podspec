@@ -1,35 +1,43 @@
-#
-#  Be sure to run `pod spec lint PocketSwift.podspec' to ensure this is a
-#  valid spec and to remove all comments including this before submitting the spec.
-#
-#  To learn more about Podspec attributes see http://docs.cocoapods.org/specification.html
-#  To see working Podspecs in the CocoaPods repo see https://github.com/CocoaPods/Specs/
-#
 
 Pod::Spec.new do |main|
 
-  # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  These will help people to find your library, and whilst it
-  #  can feel like a chore to fill in it's definitely to your advantage. The
-  #  summary should be tweet-length, and the description more in depth.
-  #
-
   main.name                = "PocketSwift"
   main.version             = "0.0.1"
-  main.summary             = "A short description of PocketSwift."
-  main.homepage            = "https://github.com/wgarcia4190/BlockchainSwift"
-  main.license             = { :type => 'MIT' }
-  main.author              = { 
+  main.summary             = "Pocket-swift package with a set of plugins that allows you to connect to the Eth and Aion Networks."
+  main.homepage            = "https://github.com/pokt-network/pocket-swift"
+  main.license             = { :type => 'MIT', :text => 'MIT License
+
+Copyright (c) 2019 Pocket Network
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+' }
+
+  main.author              = {
                               "Wilson Garcia" => "wilson@pokt.network",
                               "Luis C. de Leon" => "luis@pokt.network",
-                              "Pabel Nunez" => "pabel@pokt.network" 
+                              "Pabel Nunez" => "pabel@pokt.network"
                             }
 
   main.source              = { :git => "https://github.com/pokt-network/pocket-swift.git", :branch => "master" }
-  main.source_files        = "PocketSwift/PocketSwift/**/*.{h,m,swift}"
-  main.exclude_files       = "PocketSwift/PocketSwiftTests/**/*.{h,m,swift}", "PocketSwift/Pods/*"
-  main.swift_version       = "4.2"
+  main.source_files        = "PocketSwift/**/*.{h,m,swift}"
+  main.exclude_files       = "PocketSwiftTests/**/*.{h,m,swift}", "Pods/*"
+  main.swift_version       = "5"
   main.cocoapods_version   = ">= 1.4.0"
   main.platform            = :ios, "11.0"
 
@@ -39,19 +47,20 @@ Pod::Spec.new do |main|
     core.dependency "RxBlocking",    "~> 4.0"
     core.dependency "SwiftKeychainWrapper"
     core.dependency "RNCryptor"
+    core.dependency "BigInt"
   end
 
   main.subspec 'Eth' do |eth|
     eth.source_files      = "PocketSwift/Packages/Eth/**/*.{h,m,swift}"
-    eth.dependency "PocketSwift/Core"
-    eth.dependency "web3swift", "~> 2.1.2"
+    eth.dependency "Core"
+    eth.dependency "pocket-web3swift", "~> 2.1.4"
     eth.dependency "CryptoSwift"
     eth.dependency "BigInt"
   end
 
   main.subspec 'Aion' do |aion|
     aion.source_files      = "PocketSwift/Packages/Aion/**/*.{h,m,swift}"
-    aion.dependency "PocketSwift/Core"
+    aion.dependency "Core"
     aion.dependency "BigInt"
     aion.resources = "PocketSwift/Packages/Aion/Resource/resource.bundle"
     # aion.resource_bundles = {
