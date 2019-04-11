@@ -45,11 +45,7 @@ public class AionContract {
         
         let functionParamsStr = formattedRpcParams.joined(separator: ",")
         
-        guard let functionJSONStrFinal = functionJSONStr else {
-            throw PocketError.custom(message: "Failed to format rpc params.")
-        }
-        
-        let encodedFunction = try self.encodeFunction(functionStr: functionJSONStrFinal, params: functionParamsStr)
+        let encodedFunction = try self.encodeFunction(functionStr: functionJSONStr, params: functionParamsStr)
         
         return encodedFunction
     }
@@ -92,13 +88,9 @@ public class AionContract {
             throw PocketError.custom(message: "Failed to parse function object")
         }
         
-        guard let functionStrFinal = functionStr else {
-            throw PocketError.custom(message: "Failed to parse function object")
-        }
-        
         // Check if is empty and evaluate script with the transaction parameters using string format %@
         if !jsFile.isEmpty {
-            let jsCode = String(format: jsFile, encodedResult, functionStrFinal)
+            let jsCode = String(format: jsFile, encodedResult, functionStr)
             // Evaluate js code
             jsContext.evaluateScript(jsCode)
         }else {
