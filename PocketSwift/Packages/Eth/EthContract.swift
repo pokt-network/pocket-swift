@@ -10,6 +10,7 @@ import Foundation
 import BigInt
 import Web3swift
 import EthereumABI
+import EthereumAddress
 
 public class EthContract {
     
@@ -53,17 +54,19 @@ public class EthContract {
             throw PocketError.custom(message: "Invalid function data for params: \(functionParams)")
         }
         
-        let encodedHexData = encodedFunctionData.toHexString()
+        let encodedHexData = "0x"+encodedFunctionData.toHexString()
         self.ethNetwork.eth.call(from: fromAddress, to: self.address, gas: gas, gasPrice: gasPrice, value: value, data: encodedHexData, blockTag: blockTag) { (error, callResponse) in
             if let error = error {
                 callback(error, nil)
                 return
             }
             
-            guard let callResponseHex = callResponse?.data(using: .utf8) else {
+            guard let responseHex = callResponse else {
                 callback(PocketError.custom(message: "Invalid response hex: \(callResponse ?? "No data returned")"), nil)
                 return
             }
+            
+            let callResponseHex = Data.init(hex: responseHex)
             
             guard let decodedDict = abiFunction.decodeReturnData(callResponseHex) else {
                 callback(PocketError.custom(message: "Error decoding response hex: \(callResponseHex)"), nil)
@@ -71,8 +74,15 @@ public class EthContract {
             }
             
             var result: [Any] = []
-            for (_, value) in decodedDict {
-                result.append(value)
+            let dict = decodedDict.sorted {$0.key < $1.key}
+            for (_ , value) in dict {
+                if value is Data {
+                    result.append((value as! Data).toHexString())
+                } else if value is EthereumAddress {
+                    result.append((value as! EthereumAddress).address)
+                }else {
+                    result.append(value)
+                }
             }
             
             callback(nil, result)
@@ -88,7 +98,7 @@ public class EthContract {
             throw PocketError.custom(message: "Invalid function data for params: \(functionParams)")
         }
         
-        let encodedHexData = encodedFunctionData.toHexString()
+        let encodedHexData = "0x"+encodedFunctionData.toHexString()
         
         if let nonceParam = nonce {
             self.ethNetwork.eth.sendTransaction(wallet: wallet, toAddress: self.address, gas: gas, gasPrice: gasPrice, data: encodedHexData, nonce: nonceParam, callback: callback)

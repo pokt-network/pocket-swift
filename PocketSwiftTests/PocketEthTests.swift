@@ -97,7 +97,7 @@ class PocketEthTests: QuickSpec {
             it("should retrieve the sync status of the node") {
                 pocketEth.rinkeby?.eth.syncing( callback: { (error, result) in
                     expect(error).to(beNil())
-                    expect(result).to(beAKindOf(Bool.self))
+                    expect(result).to(beAKindOf(EthObjectOrBoolean.self))
                 })
             }
             
@@ -123,7 +123,7 @@ class PocketEthTests: QuickSpec {
             }
             
             it("should fail to retrieve account balance") {
-                pocketEth.rinkeby?.eth.getBalance(address: self.ADDRESS, blockTag:  EthBlockTag.latest, callback: { (error, result) in
+                pocketEth.rinkeby?.eth.getBalance(address: "", blockTag:  EthBlockTag.latest, callback: { (error, result) in
                     expect(error).toNot(beNil())
                     expect(result).to(beNil())
                 })
@@ -291,7 +291,7 @@ class PocketEthTests: QuickSpec {
             }
             // estimateGas
             it("should retrieve the estimate gas value for a transaction") {
-                pocketEth.rinkeby?.eth.estimateGas(from: nil, to: self.CONTRACT_ADDRESS, gas: nil, gasPrice: nil, value: nil, data: "", blockTag: nil, callback: { (error, result) in
+                pocketEth.rinkeby?.eth.estimateGas(from: nil, to: self.CONTRACT_ADDRESS, gas: nil, gasPrice: nil, value: nil, data: self.CALL_DATA, blockTag: nil, callback: { (error, result) in
                     expect(error).to(beNil())
                     expect(result).to(beAKindOf(BigInt.self))
                 })
@@ -355,11 +355,11 @@ class PocketEthTests: QuickSpec {
             
             it("should execute a constant functions") {
                 do {
-                    try pocketTestContract.executeConstantFunction(functionName: "multiply", functionParams: ["2", "10"] as [AnyObject], fromAddress: nil, gas: nil, gasPrice: nil, value: nil, blockTag: nil, callback: { (error, results) in
+                    try pocketTestContract.executeConstantFunction(functionName: "multiply", functionParams: [BigInt("2"), BigInt("10")] as [AnyObject], fromAddress: nil, gas: nil, gasPrice: nil, value: nil, blockTag: nil, callback: { (error, results) in
                         expect(error).to(beNil())
                         expect(results).notTo(beNil())
                         expect(results?.count).to(equal(1))
-                        expect(results?.first as? String).to(equal("0x14"))
+                        expect("\(results?.first ?? 1)").to(equal("20"))
                     })
                 } catch {
                     XCTFail()
@@ -379,11 +379,11 @@ class PocketEthTests: QuickSpec {
                         expect(error).to(beNil())
                         expect(results).notTo(beNil())
                         expect(results?.count).to(equal(5))
-                        expect(results?[0] as? BigInt).to(equal(BigInt.init("100")))
+                        expect("\(results?[4] ?? 0)").to(equal("ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0f"))
                         expect(results?[1] as? Bool).to(equal(Bool.init(booleanLiteral: true)))
-                        expect(results?[2] as? String).to(equal(self.CONTRACT_ADDRESS))
-                        expect(results?[1] as? String).to(equal("Hello World!"))
-                        expect(results?[0] as? String).to(equal("0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"))
+                        expect("\(results?[3] ?? 0)").to(equal("Hello World!"))
+                        expect("\(results?[0] ?? 0)").to(equal("100"))
+                        expect("\(results?[2] ?? 0)".uppercased()).to(equal(self.CONTRACT_ADDRESS.uppercased()))
                     })
                 } catch {
                     XCTFail()
