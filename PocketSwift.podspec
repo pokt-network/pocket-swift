@@ -52,7 +52,7 @@ SOFTWARE.
 
   main.subspec 'Eth' do |eth|
     eth.source_files      = "PocketSwift/Packages/Eth/**/*.{h,m,swift}"
-    eth.dependency "Core"
+    eth.dependency "PocketSwift/Core"
     eth.dependency "pocket-web3swift", "~> 2.1.5"
     eth.dependency "CryptoSwift"
     eth.dependency "BigInt"
@@ -60,7 +60,7 @@ SOFTWARE.
 
   main.subspec 'Aion' do |aion|
     aion.source_files      = "PocketSwift/Packages/Aion/**/*.{h,m,swift}"
-    aion.dependency "Core"
+    aion.dependency "PocketSwift/Core"
     aion.dependency "BigInt"
     aion.resources = "PocketSwift/Packages/Aion/Resource/resource.bundle"
     # aion.resource_bundles = {
