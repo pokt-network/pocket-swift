@@ -8,14 +8,14 @@ jobs:
 
     # Specify the Xcode version to use
     macos:
-      xcode: "8.3.3"
+      xcode: "10.2"
 
     steps:
       - checkout
       # Install CocoaPods
       - run:
           name: Install Cocoapods
-          command: gem install cocoapods --pre
+          command: sudo gem install cocoapods --pre
       - run:
           name: Install Pods
           command: pod install
