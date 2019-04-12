@@ -11,11 +11,15 @@ jobs:
       xcode: "8.3.3"
 
     steps:
+      - run:
+        name: Install Latest cocoapods
+        command: gem install cocoapods --pre
+
       - checkout
 
       # Install CocoaPods
       - run:
-          name: Install CocoaPods
+          name: Install Pods
           command: pod install
 
       # Build the app and run tests
