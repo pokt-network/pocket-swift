@@ -12,12 +12,10 @@ jobs:
 
     steps:
       - checkout
+
       # Install CocoaPods
       - run:
-          name: Install Cocoapods
-          command: sudo gem install cocoapods --pre
-      - run:
-          name: Install Pods
+          name: Install CocoaPods
           command: pod install
 
       # Build the app and run tests
