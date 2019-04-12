@@ -117,11 +117,12 @@ public class AionNetwork {
                 return
             }
             
-            guard let resultObj = responseObj[self.resultKey] as? [String: Any]? else {
-                callback(PocketError.custom(message: "Error parsing relay response result: \(response)"), nil)
-                return
+            let result = responseObj[self.resultKey] as? [String: Any]?
+            if result == nil {
+                callback(nil, nil)
+            } else {
+                callback(nil, result ?? [String: Any]())
             }
-            callback(nil, resultObj)
         }) { (error) in
             callback(PocketError.custom(message: error.localizedDescription), nil)
         }
