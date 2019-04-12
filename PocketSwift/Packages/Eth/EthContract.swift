@@ -18,6 +18,13 @@ public class EthContract {
     private let address: String
     private var functions: [String: ABI.Element]! = [String: ABI.Element]()
     
+    /// Initializes the EthContract instance
+    ///
+    /// - Parameters:
+    ///   - ethNetwork: Desired EthNetwork type
+    ///   - address: Smart contract address
+    ///   - abiDefinition: Abi definition as JSON string
+    /// - Throws: PocketError
     init(ethNetwork: EthNetwork, address: String, abiDefinition: String) throws {
         self.ethNetwork = ethNetwork
         self.address = address
@@ -45,7 +52,19 @@ public class EthContract {
         }
     }
     
-    public func executeConstantFunction(functionName: String, functionParams: [AnyObject] = [AnyObject](), fromAddress: String?, gas: BigUInt?, gasPrice: BigUInt?, value: BigUInt?, blockTag: EthBlockTag?, callback: @escaping AnyArrayCallback) throws {
+    /// Executes a constant function
+    ///
+    /// - Parameters:
+    ///   - functionName: Function name string
+    ///   - functionParams: Function parameters array
+    ///   - fromAddress: Sender's address string
+    ///   - gas: Desired gas value in wei(optional)
+    ///   - gasPrice: Desired gasPrice value in wei(optional)
+    ///   - value: Desired value to send in wei(optional)
+    ///   - blockTag: .latest, .earliest, .pending or block number
+    ///   - callback: Returns an Array of Any, [Any]
+    /// - Throws: PocketError
+    public func executeConstantFunction(functionName: String, functionParams: [AnyObject] = [AnyObject](), fromAddress: String?, gas: BigUInt?, gasPrice: BigUInt?, value: BigUInt?, blockTag: EthBlockTag?, callback: @escaping EthAnyArrayCallback) throws {
         guard let abiFunction = self.functions[functionName] else {
             throw PocketError.custom(message: "Invalid function name: \(functionName)")
         }
@@ -89,7 +108,20 @@ public class EthContract {
         }
     }
     
-    public func executeFunction(functionName: String, wallet: Wallet, functionParams: [AnyObject] = [AnyObject](), nonce: BigUInt?, gas: BigUInt, gasPrice: BigUInt, value: BigUInt, callback: @escaping StringCallback) throws {
+    /// Executes a function
+    ///
+    /// - Parameters:
+    ///   - functionName: Function name string
+    ///   - wallet: Sender's wallet
+    ///   - functionParams: Function parameters array
+    ///   - fromAddress: Sender's address string
+    ///   - nonce: Transaction count of the sender
+    ///   - gas: Desired gas value in wei(optional)
+    ///   - gasPrice: Desired gasPrice value in wei(optional)
+    ///   - value: Desired value to send in wei(optional)
+    ///   - blockTag: .latest, .earliest, .pending or block number
+    ///   - callback: Returns an string
+    public func executeFunction(functionName: String, wallet: Wallet, functionParams: [AnyObject] = [AnyObject](), nonce: BigUInt?, gas: BigUInt, gasPrice: BigUInt, value: BigUInt, callback: @escaping EthStringCallback) throws {
         guard let abiFunction = self.functions[functionName] else {
             throw PocketError.custom(message: "Invalid function name: \(functionName)")
         }

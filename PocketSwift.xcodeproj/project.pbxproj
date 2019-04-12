@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -212,17 +212,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C5CF28312252CE700085B45E /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				C5CF28322252CE880085B45E /* AionNetwork.swift */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
 		C80407F02246A7680014EFE0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C5CF28322252CE880085B45E /* AionNetwork.swift */,
 				C80407F12246A7850014EFE0 /* AionTransactionData.swift */,
 				C5CF2834225305B70085B45E /* AionRelay.swift */,
 			);
@@ -326,7 +319,6 @@
 		C83901D4223D9AB70092A9DF /* Aion */ = {
 			isa = PBXGroup;
 			children = (
-				C5CF28312252CE700085B45E /* Network */,
 				C80407F02246A7680014EFE0 /* Model */,
 				C80D8B5B22458C32003AE3E8 /* Resource */,
 				C80407F52246C88F0014EFE0 /* RPC */,
