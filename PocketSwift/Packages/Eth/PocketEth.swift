@@ -40,15 +40,15 @@ public class PocketEth: Pocket {
     public var kovan: EthNetwork?
     public var networks: [String: EthNetwork] = [String: EthNetwork]()
     
-    init(devID: String, netIds: [String], defaultNetID: String = PocketEth.Networks.Rinkeby.netID, maxNodes: Int = 5, requestTimeOut: Int = 10000) throws {
-        super.init(devID: devID, network: PocketEth.NETWORK, netIds: netIds, maxNodes: maxNodes, requestTimeOut: requestTimeOut, schedulerProvider: .main)
+    public init(devID: String, netIds: [String], defaultNetID: String? = PocketEth.Networks.Rinkeby.netID, maxNodes: Int? = 5, requestTimeOut: Int? = 10000) throws {
+        super.init(devID: devID, network: PocketEth.NETWORK, netIds: netIds, maxNodes: maxNodes!, requestTimeOut: requestTimeOut!, schedulerProvider: .main)
         if (netIds.isEmpty) {
             throw PocketError.custom(message: "netIds cannot be empty")
         }
         var defaultNetwork: EthNetwork?
         netIds.forEach { (netID) in
             let network = self.network(netID: netID)
-            if (netID.elementsEqual(defaultNetID)) {
+            if (netID.elementsEqual(defaultNetID!)) {
                 defaultNetwork = network
             }
         }
