@@ -20,7 +20,7 @@ public class ReportRepository: Repository {
     }
     
     func send(report: Report, observer: LiveData<String>) {
-        let reportEndpoints: Endpoint<String> = Endpoint(name: "SendReport", method: .post, path: ServerConfiguration.ReportPath.rawValue, parameters: report.toParameters())
+        let reportEndpoints: Endpoint<String> = Endpoint(name: "SendReport", method: .post, path: ServerConfiguration.ReportPath.value(), parameters: report.toParameters())
         request(with: reportEndpoints, andNotify: observer)
     }
 }
