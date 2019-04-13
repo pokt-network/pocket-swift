@@ -29,7 +29,6 @@ class PocketCoreTests: QuickSpec {
             
             context("get"){
                 it("should retrieve a list of nodes from the Node Dispatcher") {
-                    
                     pocketCore.retrieveNodes(onSuccess: { nodes in
                         expect(nodes).toEventuallyNot(beNil())
                         expect(nodes).toEventuallyNot(beEmpty())
@@ -63,7 +62,7 @@ class PocketCoreTests: QuickSpec {
                 }
                 
                 it("should fail to send a relay to a node in the network with bad relay properties \"netID\"") {
-                    var pocket = Pocket(devID: "DEVID1", network: "ETH1", netIds: ["402", "110"], maxNodes: 5, requestTimeOut: 1000, schedulerProvider: .test)
+                    let pocket = Pocket(devID: "DEVID1", network: "ETH1", netIds: ["402", "110"], maxNodes: 5, requestTimeOut: 1000, schedulerProvider: .test)
                     let address: String = "0xf892400Dc3C5a5eeBc96070ccd575D6A720F0F9f"
                     let data: String = "{\"jsonrpc\":\"2.0\",\"method\":\"eth_getBalance\",\"params\":[\"\(address)\",\"latest\"],\"id\":67}"
                     let relay = Relay.init(network: "ETH", netID: "10", data: data, devID: "DEVID1")

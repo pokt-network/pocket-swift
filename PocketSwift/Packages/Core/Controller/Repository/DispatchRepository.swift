@@ -20,7 +20,7 @@ public class DispatchRepository: Repository {
     }
     
     func retrieveServiceNodes(from dispatch: Dispatch, observer: LiveData<JSON>) {
-        let nodeEndpoints: Endpoint<JSON> = Endpoint(name: "RetrieveServiceNodes", method: .post, path: ServerConfiguration.DispatchPath.rawValue, parameters: dispatch.toParameters())
+        let nodeEndpoints: Endpoint<JSON> = Endpoint(name: "RetrieveServiceNodes", method: .post, path: ServerConfiguration.DispatchPath.value(), parameters: dispatch.toParameters())
         request(with: nodeEndpoints, andNotify: observer)
     }
 }

@@ -20,7 +20,7 @@ public class RelayRepository: Repository {
     }
     
     func send(relay: Relay, to baseURL: String, observer: LiveData<String>) {
-        let relayEndpoint: Endpoint<String> = Endpoint(baseURL: baseURL, name: "Relay", method: .post, path: ServerConfiguration.RelayPath.rawValue, parameters: relay.toParameters())
+        let relayEndpoint: Endpoint<String> = Endpoint(baseURL: baseURL, name: "Relay", method: .post, path: ServerConfiguration.RelayPath.value(), parameters: relay.toParameters())
         request(with: relayEndpoint, andNotify: observer)
     }
 }
