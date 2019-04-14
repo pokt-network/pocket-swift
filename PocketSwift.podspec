@@ -34,7 +34,7 @@ SOFTWARE.
                               "Pabel Nunez" => "pabel@pokt.network"
                             }
 
-  main.source              = { :git => "https://github.com/pokt-network/pocket-swift.git", :branch => "master" }
+  main.source              = { :git => "https://github.com/pokt-network/pocket-swift.git", :tag => main.version.to_s }
   main.source_files        = "PocketSwift/**/*.{h,m,swift}"
   main.exclude_files       = "PocketSwiftTests/**/*.{h,m,swift}", "Pods/*"
   main.swift_version       = "5"
