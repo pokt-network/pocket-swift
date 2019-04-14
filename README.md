@@ -6,7 +6,7 @@
 <h1 align="left">PocketSwift</h1>
 <h6 align="left">Official Swift client to use with the Pocket Network</h6>
 <div align="lef">
-  <a  href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference">
+  <a  href="https://swift.org/">
     <img src="https://img.shields.io/badge/swift-reference-yellow.svg"/>
   </a>
 </div>
@@ -54,14 +54,19 @@ You should have at least have a basic knowledge of blockchain technology and kno
 
 The PocketSwift packages are managed using [Cocoapods](https://cocoapods.org/), see below how to install each individual package.
 
-<!-- We will be using Cocoapods, to download the pod files into your project. Inside your pod file, enter: 
-For the full package that includes the ETH and Aion plugin, as well as the Core package
-pod 'PocketSwift' -->
-<!--
-For individual installation
-pod PocketSwift/Eth
-pod PocketSwift/Aion
-Pod PocketSwift/Core -->
+We will be using Cocoapods, to download the pod files into your project. Inside your pod file, enter: 
+For the full package that includes the ETH and Aion plugin, as well as the Core package:
+
+Full package: 
+`pod 'PocketSwift'`
+
+For individual installation:
+
+`pod PocketSwift/Eth`
+
+`pod PocketSwift/Aion`
+
+`Pod PocketSwift/Core`
 
 <h1 align="left">Usage</h1>
 
