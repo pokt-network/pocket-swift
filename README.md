@@ -74,4 +74,4 @@ If you would like you know how integrate PocketSwift into your DApp, visit our [
 
 <h1 align="left">Contact Us</h1>
 
-We have created a Discord server where you can meet with the Pocket team, as well as fellow App Developers, and Service Nodes. [Click here to join!]()
+We have created a Discord server where you can meet with the Pocket team, as well as fellow App Developers, and Service Nodes. [Click here to join!](https://discord.gg/sarhfXP)
