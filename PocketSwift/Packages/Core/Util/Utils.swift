@@ -13,9 +13,21 @@ public enum JsonSerializationError: Error {
     case jsonToArrayError
 }
 
+/**
+ Pocket Core Utility class
+ */
+
 class Utils {
     private init(){}
-        
+    
+    /**
+     Method used to pre-check for null or empty values.
+     - Parameters:
+        - values : the values to be pre-checked
+     
+     - Throws: `Error` if params are invalid.
+     - Returns: true if values are valid
+     */
     class func areDirty(_ values: String?...) throws -> Bool {
         for value in values {
             if value == nil || value!.isEmpty {
@@ -25,6 +37,14 @@ class Utils {
         return true
     }
     
+    /**
+     Method used to pre-check for null or empty values.
+     - Parameters:
+        - values : the values to be pre-checked
+     
+     - Throws: `Error` if params are invalid.
+     - Returns: tuple with the value of the property and a boolean that determines if values are valid
+     */
     class func  areNilOrClean(_ values: (String, Any?)...) -> (result: Bool, property: String) {
         for value in values {
             if value.1 == nil || (value.1 as! String).isEmpty {
@@ -34,6 +54,15 @@ class Utils {
         return (false, "")
     }
     
+    
+    /**
+     Method used to convert a JSON into a Dictionary.
+     - Parameters:
+        - string : the JSON object as string
+     
+     - Throws: `Error` if string is not a valid JSON
+     - Returns: Dictionary that represents the JSON Object
+     */
     class func jsonStringToDictionary(string: String) throws -> [AnyHashable: Any]? {
         guard let object = string.data(using: .utf8, allowLossyConversion: false) else {
             throw JsonSerializationError.jsonToDictError
@@ -46,6 +75,14 @@ class Utils {
         return rawData
     }
     
+    /**
+     Method used to convert a Dictionary into a JSON.
+     - Parameters:
+        - dic : the JSON object as Dictionary
+     
+     - Throws: `Error` if string is not a valid JSON
+     - Returns: String that represents the JSON Object
+     */
     class func dictionaryToJsonString(dict: [AnyHashable: Any]?) throws -> String? {
         let object = dict ?? [AnyHashable: Any]()
         let data = try JSONSerialization.data(withJSONObject: object, options: .sortedKeys)
