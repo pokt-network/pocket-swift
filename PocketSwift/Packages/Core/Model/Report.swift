@@ -8,6 +8,16 @@
 
 import Foundation
 
+
+/**
+ A Model Class that represents a Report.
+ 
+ Used to report a fallen node.
+ - Parameters:
+ - ip : The ip of the Node that is currently unavailable.
+ - message: The message to report this node.
+
+ */
 public struct Report: Model, Input {
     let ip: String
     let message: String

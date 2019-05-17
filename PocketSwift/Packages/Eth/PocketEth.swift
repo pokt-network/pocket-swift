@@ -40,6 +40,16 @@ public class PocketEth: Pocket {
     public var kovan: EthNetwork?
     public var networks: [String: EthNetwork] = [String: EthNetwork]()
     
+    /**
+     Pocket Eth Plugging.
+     - Parameters:
+     - devID : Developer Identifier
+     - defaultNetID: Network name.
+     - netIds: Arrays of Network ID
+     - maxNodes: Maximum amount of nodes
+     - requestTimeOut: Amount of time in miliseconds that the server is going to wait before returning a TimeOutException
+     
+     */
     public init(devID: String, netIds: [String], defaultNetID: String? = PocketEth.Networks.Rinkeby.netID, maxNodes: Int? = 5, requestTimeOut: Int? = 10000) throws {
         super.init(devID: devID, network: PocketEth.NETWORK, netIds: netIds, maxNodes: maxNodes!, requestTimeOut: requestTimeOut!, schedulerProvider: .main)
         if (netIds.isEmpty) {

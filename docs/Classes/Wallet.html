@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Wallet Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/Wallet" class="dashAnchor"></a>
+    <a title="Wallet Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">PocketSwift Docs</a> (25% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">PocketSwift Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Wallet Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/AionContract.html">AionContract</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AionNetwork.html">AionNetwork</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11PocketSwift9AionRelayC">AionRelay</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Configuration.html">Configuration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11PocketSwift10ControllerC">Controller</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11PocketSwift18DispatchControllerC">DispatchController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11PocketSwift18DispatchRepositoryC">DispatchRepository</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EthContract.html">EthContract</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EthNetwork.html">EthNetwork</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EthRPC.html">EthRPC</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11PocketSwift8EthRelayC">EthRelay</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ObjectAssociation.html">ObjectAssociation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Pocket.html">Pocket</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PocketAion.html">PocketAion</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PocketAion/Networks.html">– Networks</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PocketEth.html">PocketEth</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PocketEth/Networks.html">– Networks</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11PocketSwift5RelayC">Relay</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11PocketSwift15RelayControllerC">RelayController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11PocketSwift15RelayRepositoryC">RelayRepository</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11PocketSwift16ReportControllerC">ReportController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11PocketSwift16ReportRepositoryC">ReportRepository</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RpcParamsUtil.html">RpcParamsUtil</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Wallet.html">Wallet</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/BlockTag.html">BlockTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/EthBlockTag.html">EthBlockTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/JSON.html">JSON</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/JSONError.html">JSONError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/JsonSerializationError.html">JsonSerializationError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/PocketError.html">PocketError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/BigInt.html">BigInt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/BigUInt.html">BigUInt</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/AionEthRPC.html">AionEthRPC</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AionNetRPC.html">AionNetRPC</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:11PocketSwift10BlockchainV">Blockchain</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/EthObjectOrBoolean.html">EthObjectOrBoolean</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NetRPC.html">NetRPC</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Node.html">Node</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ObjectOrBoolean.html">ObjectOrBoolean</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:11PocketSwift6ReportV">Report</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift16AnyArrayCallbacka">AnyArrayCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift18BigIntegerCallbacka">BigIntegerCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift15BooleanCallbacka">BooleanCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift19EthAnyArrayCallbacka">EthAnyArrayCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift21EthBigIntegerCallbacka">EthBigIntegerCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift18EthBooleanCallbacka">EthBooleanCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift20EthJSONArrayCallbacka">EthJSONArrayCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift21EthJSONObjectCallbacka">EthJSONObjectCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift30EthJSONObjectOrBooleanCallbacka">EthJSONObjectOrBooleanCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift17EthStringCallbacka">EthStringCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift17JSONArrayCallbacka">JSONArrayCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift18JSONObjectCallbacka">JSONObjectCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift27JSONObjectOrBooleanCallbacka">JSONObjectOrBooleanCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift14StringCallbacka">StringCallback</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Wallet</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Wallet</span></code></pre>
+
+                </div>
+              </div>
+            <p>A Model Class that represents a Wallet.</p>
+
+<p>Used to represent a Crypto Wallet.</p>
+
+<ul>
+<li>privateKey : The private key for this wallet.</li>
+<li>address: The wallet address.</li>
+<li>network: The blockchain network name, ie: ETH, AION.</li>
+<li>netID: The netid of the Blockchain.</li>
+</ul>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift6WalletC7addressSSvp"></a>
+                    <a name="//apple_ref/swift/Property/address" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift6WalletC7addressSSvp">address</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">address</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift6WalletC10privateKeySSvp"></a>
+                    <a name="//apple_ref/swift/Property/privateKey" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift6WalletC10privateKeySSvp">privateKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">privateKey</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift6WalletC7networkSSvp"></a>
+                    <a name="//apple_ref/swift/Property/network" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift6WalletC7networkSSvp">network</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">network</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift6WalletC5netIDSSvp"></a>
+                    <a name="//apple_ref/swift/Property/netID" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift6WalletC5netIDSSvp">netID</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">netID</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift6WalletC4save10passphraseSbSS_tKF"></a>
+                    <a name="//apple_ref/swift/Method/save(passphrase:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift6WalletC4save10passphraseSbSS_tKF">save(passphrase:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Encrypt and Store a Wallet locally</p>
+
+<ul>
+<li><p>passphrase: The passphrase for this wallet.</p></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">save</span><span class="p">(</span><span class="nv">passphrase</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>true if the <code>Wallet</code> was saved</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift6WalletC6deleteSbyKF"></a>
+                    <a name="//apple_ref/swift/Method/delete()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift6WalletC6deleteSbyKF">delete()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Delete a Wallet previously encrypted</p>
+<li><p>passphrase: The passphrase for this wallet.</p></li>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <p><code>PocketError.walletPersistence</code>
+       if there was an error storing the Wallet</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">delete</span><span class="p">()</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>true if the <code>Wallet</code> was deleted</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift6WalletC7isSavedSbyF"></a>
+                    <a name="//apple_ref/swift/Method/isSaved()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift6WalletC7isSavedSbyF">isSaved()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">isSaved</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift6WalletC8equalsTo6walletSbAC_tF"></a>
+                    <a name="//apple_ref/swift/Method/equalsTo(wallet:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift6WalletC8equalsTo6walletSbAC_tF">equalsTo(wallet:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">equalsTo</span><span class="p">(</span><span class="nv">wallet</span><span class="p">:</span> <span class="kt">Wallet</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift6WalletC20getWalletsRecordKeysSaySSGyFZ"></a>
+                    <a name="//apple_ref/swift/Method/getWalletsRecordKeys()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift6WalletC20getWalletsRecordKeysSaySSGyFZ">getWalletsRecordKeys()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">getWalletsRecordKeys</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift6WalletC08retrieveC07network5netID7address10passphraseACSS_S3StKFZ"></a>
+                    <a name="//apple_ref/swift/Method/retrieveWallet(network:netID:address:passphrase:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift6WalletC08retrieveC07network5netID7address10passphraseACSS_S3StKFZ">retrieveWallet(network:netID:address:passphrase:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Decrypts a Wallet</p>
+<li>address: The wallet address.</li>
+<li>network: The blockchain network name, ie: ETH, AION.</li>
+<li>netID: The netid of the Blockchain.</li>
+<li><p>passphrase: The passphrase for this wallet.</p></li>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <p><code>PocketError.walletPersistence</code>
+       if <code>Wallet</code> cannot be decrypted</p>
+
+</div>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <p><code>Wallet</code></p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">retrieveWallet</span><span class="p">(</span><span class="nv">network</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">netID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">address</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">passphrase</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Wallet</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a <code>Wallet</code></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift6WalletC7isSaved7network5netID7addressSbSS_S2StFZ"></a>
+                    <a name="//apple_ref/swift/Method/isSaved(network:netID:address:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift6WalletC7isSaved7network5netID7addressSbSS_S2StFZ">isSaved(network:netID:address:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">isSaved</span><span class="p">(</span><span class="nv">network</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">netID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">address</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift6WalletC9recordKeySSyF"></a>
+                    <a name="//apple_ref/swift/Method/recordKey()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift6WalletC9recordKeySSyF">recordKey()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retrieves all record keys for this Wallet.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">recordKey</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a valid record key</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="https://github.com/pokt-network/pocket-swift" target="_blank" rel="external">Wilson Garcia, Luis C. de Leon, and Pabel Nunez</a>. All rights reserved. (Last updated: 2019-05-17)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

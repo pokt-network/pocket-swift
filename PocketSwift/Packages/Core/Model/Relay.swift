@@ -8,6 +8,16 @@
 
 import Foundation
 
+/**
+ A Model Class that represents a Relay.
+ 
+ - Parameters:
+ - data : The json string with the information needed for create the Relay.
+ - devId: The id used to interact with Pocket Api.
+ - network: The blockchain network name, ie: ETH, AION.
+ - netID: The netid of the Blockchain.
+ 
+ */
 public class Relay: Model, Input {
     let network: String
     let netID: String

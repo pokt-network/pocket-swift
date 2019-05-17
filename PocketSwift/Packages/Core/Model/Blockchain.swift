@@ -8,6 +8,14 @@
 
 import Foundation
 
+/**
+ A Model Class that represents a Blockchain.
+ 
+ - Parameters:
+ - name : The name of the Blockchain.
+ - netID: The netid of the Blockchain.
+ 
+ */
 public struct Blockchain: Model, Input {
     let network: String
     let netID: String
