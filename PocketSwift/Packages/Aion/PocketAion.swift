@@ -9,6 +9,8 @@
 import Foundation
 import JavaScriptCore
 
+
+
 public class PocketAion: Pocket {
     
     public static let NETWORK = "AION"
@@ -28,6 +30,17 @@ public class PocketAion: Pocket {
     public var mastery: AionNetwork?
     public var networks: [String: AionNetwork] = [String: AionNetwork]()
     public let jsContext: JSContext = JSContext()
+    
+    /**
+     Pocket Aion Plugging.
+     - Parameters:
+     - devID : Developer Identifier
+     - defaultNetID: Network name.
+     - netIds: Arrays of Network ID
+     - maxNodes: Maximum amount of nodes
+     - requestTimeOut: Amount of time in miliseconds that the server is going to wait before returning a TimeOutException
+     
+     */
     
     public init(devID: String, netIds: [String], defaultNetID: String = Networks.MASTERY.netID(), maxNodes: Int = 5, requestTimeOut: Int = 10000) throws {
         // Super init

@@ -12,6 +12,18 @@ public class AionRelay: Relay {
     
     private let relayData: RelayData
     
+    
+    /**
+     Aion Relay RPC model class
+     - Parameters:
+     - netID: the netId of the blockchain.
+     - devID: the id used to interact with Pocket Api.
+     - method: RPC method.
+     - params: extra params.
+     
+     - SeeAlso: `RelayData`
+     */
+    
     init(netID: String, devID: String, method: String, params: [Any]?) throws {
         self.relayData = RelayData.init(method: method, params: params)
         let data = try self.relayData.toParameters().toJson() ?? "{}"

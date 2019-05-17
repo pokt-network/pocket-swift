@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Pocket Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/Pocket" class="dashAnchor"></a>
+    <a title="Pocket Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">PocketSwift Docs</a> (25% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">PocketSwift Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Pocket Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/AionContract.html">AionContract</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AionNetwork.html">AionNetwork</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11PocketSwift9AionRelayC">AionRelay</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Configuration.html">Configuration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11PocketSwift10ControllerC">Controller</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11PocketSwift18DispatchControllerC">DispatchController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11PocketSwift18DispatchRepositoryC">DispatchRepository</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EthContract.html">EthContract</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EthNetwork.html">EthNetwork</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EthRPC.html">EthRPC</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11PocketSwift8EthRelayC">EthRelay</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ObjectAssociation.html">ObjectAssociation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Pocket.html">Pocket</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PocketAion.html">PocketAion</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PocketAion/Networks.html">– Networks</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PocketEth.html">PocketEth</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PocketEth/Networks.html">– Networks</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11PocketSwift5RelayC">Relay</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11PocketSwift15RelayControllerC">RelayController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11PocketSwift15RelayRepositoryC">RelayRepository</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11PocketSwift16ReportControllerC">ReportController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11PocketSwift16ReportRepositoryC">ReportRepository</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RpcParamsUtil.html">RpcParamsUtil</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Wallet.html">Wallet</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/BlockTag.html">BlockTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/EthBlockTag.html">EthBlockTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/JSON.html">JSON</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/JSONError.html">JSONError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/JsonSerializationError.html">JsonSerializationError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/PocketError.html">PocketError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/BigInt.html">BigInt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/BigUInt.html">BigUInt</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/AionEthRPC.html">AionEthRPC</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AionNetRPC.html">AionNetRPC</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:11PocketSwift10BlockchainV">Blockchain</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/EthObjectOrBoolean.html">EthObjectOrBoolean</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NetRPC.html">NetRPC</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Node.html">Node</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ObjectOrBoolean.html">ObjectOrBoolean</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:11PocketSwift6ReportV">Report</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift16AnyArrayCallbacka">AnyArrayCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift18BigIntegerCallbacka">BigIntegerCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift15BooleanCallbacka">BooleanCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift19EthAnyArrayCallbacka">EthAnyArrayCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift21EthBigIntegerCallbacka">EthBigIntegerCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift18EthBooleanCallbacka">EthBooleanCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift20EthJSONArrayCallbacka">EthJSONArrayCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift21EthJSONObjectCallbacka">EthJSONObjectCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift30EthJSONObjectOrBooleanCallbacka">EthJSONObjectOrBooleanCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift17EthStringCallbacka">EthStringCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift17JSONArrayCallbacka">JSONArrayCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift18JSONObjectCallbacka">JSONObjectCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift27JSONObjectOrBooleanCallbacka">JSONObjectOrBooleanCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift14StringCallbacka">StringCallback</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Pocket</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Pocket</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                </div>
+              </div>
+            <p>Undocumented</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift0A0C5devIDSSvp"></a>
+                    <a name="//apple_ref/swift/Property/devID" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift0A0C5devIDSSvp">devID</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">devID</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift0A0C5devID7network6netIds8maxNodes14requestTimeOutACSS_SSSaySSGS2itcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(devID:network:netIds:maxNodes:requestTimeOut:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift0A0C5devID7network6netIds8maxNodes14requestTimeOutACSS_SSSaySSGS2itcfc">init(devID:network:netIds:maxNodes:requestTimeOut:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create new instance of Pocket.</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code>   <span class="kt">Pocket</span><span class="p">(</span><span class="nv">devID</span><span class="p">:</span> <span class="s">"DEVID1"</span><span class="p">,</span> <span class="nv">network</span><span class="p">:</span> <span class="s">"ETH"</span><span class="p">,</span> <span class="nv">netIds</span><span class="p">:</span> <span class="p">[</span><span class="s">"4"</span><span class="p">,</span> <span class="s">"1"</span><span class="p">],</span> <span class="nv">maxNodes</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">requestTimeOut</span><span class="p">:</span> <span class="mi">1000</span><span class="p">)</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">devID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">network</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">netIds</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="nv">maxNodes</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">requestTimeOut</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>devID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Developer Identifier</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>network</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Name of the Blockchain network that is going to be used.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>netIds</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Arrays of Network ID</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>maxNodes</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Maximum amount of nodes</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>requestTimeOut</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Amount of time in miliseconds that the server is going to wait before returning a TimeOutException</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift0A0C5devID7network03netD08maxNodes14requestTimeOutACSS_S2SS2itcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(devID:network:netID:maxNodes:requestTimeOut:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift0A0C5devID7network03netD08maxNodes14requestTimeOutACSS_S2SS2itcfc">init(devID:network:netID:maxNodes:requestTimeOut:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create new instance of Pocket.</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code>   <span class="kt">Pocket</span><span class="p">(</span><span class="nv">devID</span><span class="p">:</span> <span class="s">"DEVID1"</span><span class="p">,</span> <span class="nv">network</span><span class="p">:</span> <span class="s">"ETH"</span><span class="p">,</span> <span class="nv">netID</span><span class="p">:</span> <span class="s">"4"</span><span class="p">,</span> <span class="nv">maxNodes</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">requestTimeOut</span><span class="p">:</span> <span class="mi">1000</span><span class="p">)</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">devID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">network</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">netID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">maxNodes</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">requestTimeOut</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>devID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Developer Identifier</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>network</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Name of the Blockchain network that is going to be used.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>netID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Network ID</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>maxNodes</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Maximum amount of nodes</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>requestTimeOut</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Amount of time in miliseconds that the server is going to wait before returning a TimeOutException</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift0A0C4send5relay9onSuccess0E5ErroryAA5RelayC_ySScys0G0_pctF"></a>
+                    <a name="//apple_ref/swift/Method/send(relay:onSuccess:onError:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift0A0C4send5relay9onSuccess0E5ErroryAA5RelayC_ySScys0G0_pctF">send(relay:onSuccess:onError:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Send a relay object to the server and returns an String with the response. This response depends of the structure of the Relay.</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code>    <span class="k">let</span> <span class="nv">pocket</span> <span class="o">=</span> <span class="kt">Pocket</span><span class="p">(</span><span class="nv">devID</span><span class="p">:</span> <span class="s">"DEVID1"</span><span class="p">,</span> <span class="nv">network</span><span class="p">:</span> <span class="s">"ETH"</span><span class="p">,</span> <span class="nv">netID</span><span class="p">:</span> <span class="s">"4"</span><span class="p">,</span> <span class="nv">maxNodes</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">requestTimeOut</span><span class="p">:</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="k">let</span> <span class="nv">relay</span> <span class="o">=</span> <span class="kt">Relay</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">network</span><span class="p">:</span> <span class="s">"ETH"</span><span class="p">,</span> <span class="nv">netID</span><span class="p">:</span> <span class="s">"10"</span><span class="p">,</span> <span class="nv">data</span><span class="p">:</span> <span class="n">data</span><span class="p">,</span> <span class="nv">devID</span><span class="p">:</span> <span class="s">"DEVID1"</span><span class="p">)</span>
+    <span class="n">pocket</span><span class="o">.</span><span class="nf">send</span><span class="p">(</span><span class="nv">relay</span><span class="p">:</span> <span class="n">relay</span><span class="p">,</span> <span class="nv">onSuccess</span><span class="p">:</span> <span class="p">{</span> <span class="n">response</span> <span class="k">in</span>
+       <span class="c1">//Positive Response</span>
+    <span class="p">},</span> <span class="nv">onError</span><span class="p">:</span> <span class="p">{</span><span class="n">error</span> <span class="k">in</span>
+       <span class="c1">// Negative Response</span>
+    <span class="p">})</span>
+</code></pre>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code><a href="../Classes.html#/s:11PocketSwift5RelayC">Relay</a></code>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">send</span><span class="p">(</span><span class="nv">relay</span><span class="p">:</span> <span class="kt"><a href="../Classes.html#/s:11PocketSwift5RelayC">Relay</a></span><span class="p">,</span> <span class="nv">onSuccess</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span><span class="p">(),</span> <span class="nv">onError</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>relay</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Relay Object</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>onSuccess</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Callback that is going to be called if the server returns a positive response.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>onError</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Callback that is going to be called if the server returns a negative response.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift0A0C4send7network5netID4data9onSuccess0H5ErrorySS_S2SySScys0J0_pctF"></a>
+                    <a name="//apple_ref/swift/Method/send(network:netID:data:onSuccess:onError:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift0A0C4send7network5netID4data9onSuccess0H5ErrorySS_S2SySScys0J0_pctF">send(network:netID:data:onSuccess:onError:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a relay object and send it to the server and returns an String with the response. This response depends of the structure of the Relay.</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code>    <span class="k">let</span> <span class="nv">pocket</span> <span class="o">=</span> <span class="kt">Pocket</span><span class="p">(</span><span class="nv">devID</span><span class="p">:</span> <span class="s">"DEVID1"</span><span class="p">,</span> <span class="nv">network</span><span class="p">:</span> <span class="s">"ETH"</span><span class="p">,</span> <span class="nv">netID</span><span class="p">:</span> <span class="s">"4"</span><span class="p">,</span> <span class="nv">maxNodes</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">requestTimeOut</span><span class="p">:</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="k">let</span> <span class="nv">relay</span> <span class="o">=</span> <span class="kt">Relay</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">network</span><span class="p">:</span> <span class="s">"ETH"</span><span class="p">,</span> <span class="nv">netID</span><span class="p">:</span> <span class="s">"10"</span><span class="p">,</span> <span class="nv">data</span><span class="p">:</span> <span class="n">data</span><span class="p">,</span> <span class="nv">devID</span><span class="p">:</span> <span class="s">"DEVID1"</span><span class="p">)</span>
+    <span class="n">pocket</span><span class="o">.</span><span class="nf">send</span><span class="p">(</span><span class="nv">relay</span><span class="p">:</span> <span class="n">relay</span><span class="p">,</span> <span class="nv">onSuccess</span><span class="p">:</span> <span class="p">{</span> <span class="n">response</span> <span class="k">in</span>
+       <span class="c1">//Positive Response</span>
+    <span class="p">},</span> <span class="nv">onError</span><span class="p">:</span> <span class="p">{</span><span class="n">error</span> <span class="k">in</span>
+       <span class="c1">// Negative Response</span>
+    <span class="p">})</span>
+</code></pre>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code><a href="../Classes.html#/s:11PocketSwift5RelayC">Relay</a></code>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">send</span><span class="p">(</span><span class="nv">network</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">netID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">onSuccess</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span><span class="p">(),</span> <span class="nv">onError</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>relay</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Relay Object</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>onSuccess</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Callback that is going to be called if the server returns a positive response.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>onError</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Callback that is going to be called if the server returns a negative response.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift0A0C13addBlockchain7network5netIDySS_SStF"></a>
+                    <a name="//apple_ref/swift/Method/addBlockchain(network:netID:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift0A0C13addBlockchain7network5netIDySS_SStF">addBlockchain(network:netID:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Adds a new Blockchain to the dispatch configuration.</p>
+<h3 id='usage-example' class='heading'>Usage Example:</h3>
+<pre class="highlight swift"><code>   <span class="k">let</span> <span class="nv">pocket</span> <span class="o">=</span> <span class="kt">Pocket</span><span class="p">(</span><span class="nv">devID</span><span class="p">:</span> <span class="s">"DEVID1"</span><span class="p">,</span> <span class="nv">network</span><span class="p">:</span> <span class="s">"ETH"</span><span class="p">,</span> <span class="nv">netID</span><span class="p">:</span> <span class="s">"4"</span><span class="p">,</span> <span class="nv">maxNodes</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">requestTimeOut</span><span class="p">:</span> <span class="mi">1000</span><span class="p">)</span>
+   <span class="n">pocket</span><span class="o">.</span><span class="nf">addBlockchain</span><span class="p">(</span><span class="s">"AION"</span><span class="p">,</span> <span class="s">"254"</span><span class="p">)</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">addBlockchain</span><span class="p">(</span><span class="nv">network</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">netID</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>network</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Name of the Blockchain network that is going to be used.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>netID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Network ID</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="https://github.com/pokt-network/pocket-swift" target="_blank" rel="external">Wilson Garcia, Luis C. de Leon, and Pabel Nunez</a>. All rights reserved. (Last updated: 2019-05-17)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

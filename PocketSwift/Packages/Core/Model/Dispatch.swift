@@ -8,6 +8,15 @@
 
 import Foundation
 
+/**
+ A Model Class that wraps the user Configuration.
+ 
+ - Parameters:
+ - configuration : The configuration to be used.
+ 
+ - SeeAlso: `Configuration`
+ */
+
 struct Dispatch: Input {
     public var configuration: Configuration
     
@@ -46,6 +55,16 @@ struct Dispatch: Input {
         return nodes
     }
     
+    /**
+     Parse the response from the Dispatch service
+     
+     - Parameters:
+     - response : the response from the Dispatcher.
+     
+     - SeeAlso: `Node`
+     - SeeAlso: `JSON`
+     - Returns: An Array of `Node`
+     */
     func parseDispatchResponse(response: JSON) -> [Node] {
         var nodes: [Node] = []
         

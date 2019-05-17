@@ -1,0 +1,1244 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/AionContract.swift",
+      "line": 13,
+      "symbol": "AionContract",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/AionContract.swift",
+      "line": 19,
+      "symbol": "AionContract.init(aionNetwork:address:abiDefinition:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/AionContract.swift",
+      "line": 118,
+      "symbol": "AionContract.encodeFunctionCall(functionName:functionParams:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/AionContract.swift",
+      "line": 130,
+      "symbol": "AionContract.executeConstantFunction(functionName:functionParams:fromAddress:gas:gasPrice:value:blockTag:callback:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/AionContract.swift",
+      "line": 163,
+      "symbol": "AionContract.executeFunction(functionName:wallet:functionParams:nonce:gas:gasPrice:value:callback:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/Model/AionNetwork.swift",
+      "line": 12,
+      "symbol": "AionNetwork",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/Model/AionNetwork.swift",
+      "line": 13,
+      "symbol": "AionNetwork.devID",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/Model/AionNetwork.swift",
+      "line": 14,
+      "symbol": "AionNetwork.netID",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/Model/AionNetwork.swift",
+      "line": 15,
+      "symbol": "AionNetwork.pocketAion",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/Model/AionNetwork.swift",
+      "line": 20,
+      "symbol": "AionNetwork.net",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/Model/AionNetwork.swift",
+      "line": 25,
+      "symbol": "AionNetwork.eth",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/Model/AionNetwork.swift",
+      "line": 37,
+      "symbol": "AionNetwork.createWallet()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/Model/AionNetwork.swift",
+      "line": 45,
+      "symbol": "AionNetwork.importWallet(privateKey:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/Model/AionNetwork.swift",
+      "line": 53,
+      "symbol": "AionNetwork.createAionRelay(method:params:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/Model/AionNetwork.swift",
+      "line": 57,
+      "symbol": "AionNetwork.send(relay:callback:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/Model/AionNetwork.swift",
+      "line": 75,
+      "symbol": "AionNetwork.send(relay:callback:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/Model/AionNetwork.swift",
+      "line": 96,
+      "symbol": "AionNetwork.send(relay:callback:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/Model/AionNetwork.swift",
+      "line": 113,
+      "symbol": "AionNetwork.send(relay:callback:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/Model/AionNetwork.swift",
+      "line": 131,
+      "symbol": "AionNetwork.send(relay:callback:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/Model/AionNetwork.swift",
+      "line": 149,
+      "symbol": "AionNetwork.send(relay:callback:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/Model/AionRelay.swift",
+      "line": 11,
+      "symbol": "AionRelay",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/PocketAion.swift",
+      "line": 14,
+      "symbol": "PocketAion",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/PocketAion.swift",
+      "line": 16,
+      "symbol": "PocketAion.NETWORK",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/PocketAion.swift",
+      "line": 18,
+      "symbol": "PocketAion.Networks",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/PocketAion.swift",
+      "line": 19,
+      "symbol": "PocketAion.Networks.MAINNET",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/PocketAion.swift",
+      "line": 20,
+      "symbol": "PocketAion.Networks.MASTERY",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/PocketAion.swift",
+      "line": 22,
+      "symbol": "PocketAion.Networks.netID()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/PocketAion.swift",
+      "line": 28,
+      "symbol": "PocketAion.defaultNetwork",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/PocketAion.swift",
+      "line": 29,
+      "symbol": "PocketAion.mainnet",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/PocketAion.swift",
+      "line": 30,
+      "symbol": "PocketAion.mastery",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/PocketAion.swift",
+      "line": 31,
+      "symbol": "PocketAion.networks",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/PocketAion.swift",
+      "line": 32,
+      "symbol": "PocketAion.jsContext",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/PocketAion.swift",
+      "line": 82,
+      "symbol": "PocketAion.network(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/PocketAion.swift",
+      "line": 105,
+      "symbol": "PocketAion.createWallet(netID:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/PocketAion.swift",
+      "line": 121,
+      "symbol": "PocketAion.importWallet(privateKey:netID:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/RPC/AionEthRPC.swift",
+      "line": 12,
+      "symbol": "AionEthRPC",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/RPC/AionNetRPC.swift",
+      "line": 12,
+      "symbol": "AionNetRPC",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/RPC/AionNetRPC.swift",
+      "line": 26,
+      "symbol": "AionNetRPC.version(callback:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/RPC/AionNetRPC.swift",
+      "line": 35,
+      "symbol": "AionNetRPC.listening(callback:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/RPC/AionNetRPC.swift",
+      "line": 44,
+      "symbol": "AionNetRPC.peerCount(callback:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/RPC/BlockTag.swift",
+      "line": 12,
+      "symbol": "BlockTag",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/RPC/BlockTag.swift",
+      "line": 13,
+      "symbol": "BlockTag.earliest",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/RPC/BlockTag.swift",
+      "line": 14,
+      "symbol": "BlockTag.latest",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/RPC/BlockTag.swift",
+      "line": 15,
+      "symbol": "BlockTag.number(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/RPC/ObjectOrBoolean.swift",
+      "line": 11,
+      "symbol": "ObjectOrBoolean",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/RPC/ObjectOrBoolean.swift",
+      "line": 13,
+      "symbol": "ObjectOrBoolean.booleanValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/RPC/ObjectOrBoolean.swift",
+      "line": 14,
+      "symbol": "ObjectOrBoolean.objectValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/RPC/ObjectOrBoolean.swift",
+      "line": 16,
+      "symbol": "ObjectOrBoolean.isObject",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/RPC/ObjectOrBoolean.swift",
+      "line": 22,
+      "symbol": "ObjectOrBoolean.isBoolean",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/RPC/RPCCallbacks.swift",
+      "line": 12,
+      "symbol": "StringCallback",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/RPC/RPCCallbacks.swift",
+      "line": 13,
+      "symbol": "BigIntegerCallback",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/RPC/RPCCallbacks.swift",
+      "line": 14,
+      "symbol": "BooleanCallback",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/RPC/RPCCallbacks.swift",
+      "line": 15,
+      "symbol": "JSONObjectCallback",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/RPC/RPCCallbacks.swift",
+      "line": 16,
+      "symbol": "JSONArrayCallback",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/RPC/RPCCallbacks.swift",
+      "line": 17,
+      "symbol": "JSONObjectOrBooleanCallback",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/RPC/RPCCallbacks.swift",
+      "line": 18,
+      "symbol": "AnyArrayCallback",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/Util/RpcUtils.swift",
+      "line": 12,
+      "symbol": "RpcParamsUtil",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Aion/Util/RpcUtils.swift",
+      "line": 14,
+      "symbol": "RpcParamsUtil.formatRpcParams(params:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Architecture/Component/Controller.swift",
+      "line": 11,
+      "symbol": "Controller",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Architecture/Component/ObjectAssociation.swift",
+      "line": 11,
+      "symbol": "ObjectAssociation",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Architecture/Component/ObjectAssociation.swift",
+      "line": 15,
+      "symbol": "ObjectAssociation.init(policy:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Architecture/Component/ObjectAssociation.swift",
+      "line": 19,
+      "symbol": "ObjectAssociation.subscript(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.subscript",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Architecture/Config/Configuration.swift",
+      "line": 11,
+      "symbol": "Configuration",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Architecture/Config/Configuration.swift",
+      "line": 13,
+      "symbol": "Configuration.blockchains",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Architecture/Config/Configuration.swift",
+      "line": 14,
+      "symbol": "Configuration.devID",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Architecture/Config/Configuration.swift",
+      "line": 15,
+      "symbol": "Configuration.maxNodes",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Architecture/Config/Configuration.swift",
+      "line": 16,
+      "symbol": "Configuration.requestTimeOut",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Architecture/Config/Configuration.swift",
+      "line": 17,
+      "symbol": "Configuration.nodes",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Architecture/Config/Configuration.swift",
+      "line": 19,
+      "symbol": "Configuration.init(devID:blockchains:maxNodes:requestTimeOut:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Architecture/Error/PocketError.swift",
+      "line": null,
+      "symbol": "PocketError",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Architecture/Error/PocketError.swift",
+      "line": 11,
+      "symbol": "PocketError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Architecture/Error/PocketError.swift",
+      "line": 12,
+      "symbol": "PocketError.nodeNotFound",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Architecture/Error/PocketError.swift",
+      "line": 13,
+      "symbol": "PocketError.invalidRelay",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Architecture/Error/PocketError.swift",
+      "line": 14,
+      "symbol": "PocketError.invalidReport",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Architecture/Error/PocketError.swift",
+      "line": 15,
+      "symbol": "PocketError.invalidAddress",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Architecture/Error/PocketError.swift",
+      "line": 16,
+      "symbol": "PocketError.invalidParameter(message:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Architecture/Error/PocketError.swift",
+      "line": 17,
+      "symbol": "PocketError.custom(message:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Architecture/Error/PocketError.swift",
+      "line": 18,
+      "symbol": "PocketError.walletCreation(message:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Architecture/Error/PocketError.swift",
+      "line": 19,
+      "symbol": "PocketError.walletImport(message:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Architecture/Error/PocketError.swift",
+      "line": 20,
+      "symbol": "PocketError.walletPersistence(message:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Architecture/Extension/BigInt+Extensions.swift",
+      "line": 13,
+      "symbol": "BigInt.toHexString()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Architecture/Extension/BigInt+Extensions.swift",
+      "line": 20,
+      "symbol": "BigInt.noPrefixHex()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Architecture/Extension/BigUInt+Extensions.swift",
+      "line": 13,
+      "symbol": "BigUInt.toHexString()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Architecture/Extension/BigUInt+Extensions.swift",
+      "line": 20,
+      "symbol": "BigUInt.noPrefixHex()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Controller/DispatchController.swift",
+      "line": 11,
+      "symbol": "DispatchController",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Controller/RelayController.swift",
+      "line": 11,
+      "symbol": "RelayController",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Controller/ReportController.swift",
+      "line": 11,
+      "symbol": "ReportController",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Controller/Repository/DispatchRepository.swift",
+      "line": 12,
+      "symbol": "DispatchRepository",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Controller/Repository/RelayRepository.swift",
+      "line": 12,
+      "symbol": "RelayRepository",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Controller/Repository/ReportRepository.swift",
+      "line": 12,
+      "symbol": "ReportRepository",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Model/Node.swift",
+      "line": 22,
+      "symbol": "Node.network",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Model/Node.swift",
+      "line": 23,
+      "symbol": "Node.netID",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Model/Node.swift",
+      "line": 24,
+      "symbol": "Node.ip",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Model/Node.swift",
+      "line": 25,
+      "symbol": "Node.port",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Model/Node.swift",
+      "line": 26,
+      "symbol": "Node.ipPort",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Model/Wallet.swift",
+      "line": 25,
+      "symbol": "Wallet.address",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Model/Wallet.swift",
+      "line": 26,
+      "symbol": "Wallet.privateKey",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Model/Wallet.swift",
+      "line": 27,
+      "symbol": "Wallet.network",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Model/Wallet.swift",
+      "line": 28,
+      "symbol": "Wallet.netID",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Model/Wallet.swift",
+      "line": 81,
+      "symbol": "Wallet.isSaved()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Model/Wallet.swift",
+      "line": 85,
+      "symbol": "Wallet.equalsTo(wallet:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Model/Wallet.swift",
+      "line": 90,
+      "symbol": "Wallet.getWalletsRecordKeys()",
+      "symbol_kind": "source.lang.swift.decl.function.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Model/Wallet.swift",
+      "line": 122,
+      "symbol": "Wallet.isSaved(network:netID:address:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Pocket.swift",
+      "line": 16,
+      "symbol": "Pocket",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Pocket.swift",
+      "line": 19,
+      "symbol": "Pocket.devID",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Util/JSON.swift",
+      "line": 11,
+      "symbol": "JSONError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Util/JSON.swift",
+      "line": 12,
+      "symbol": "JSONError.encodingError",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Util/JSON.swift",
+      "line": 15,
+      "symbol": "JSON",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Util/JSON.swift",
+      "line": 16,
+      "symbol": "JSON.integer(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Util/JSON.swift",
+      "line": 17,
+      "symbol": "JSON.double(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Util/JSON.swift",
+      "line": 18,
+      "symbol": "JSON.string(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Util/JSON.swift",
+      "line": 19,
+      "symbol": "JSON.boolean(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Util/JSON.swift",
+      "line": 20,
+      "symbol": "JSON.array(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Util/JSON.swift",
+      "line": 21,
+      "symbol": "JSON.object(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Util/JSON.swift",
+      "line": 22,
+      "symbol": "JSON.null",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Util/JSON.swift",
+      "line": 65,
+      "symbol": "JSON.valueToJsonPrimitive(anyValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Util/JSON.swift",
+      "line": 95,
+      "symbol": "JSON.value()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Util/Utils.swift",
+      "line": 11,
+      "symbol": "JsonSerializationError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Util/Utils.swift",
+      "line": 12,
+      "symbol": "JsonSerializationError.jsonToDictError",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Core/Util/Utils.swift",
+      "line": 13,
+      "symbol": "JsonSerializationError.jsonToArrayError",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/EthContract.swift",
+      "line": 15,
+      "symbol": "EthContract",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/Models/EthNetwork.swift",
+      "line": 13,
+      "symbol": "EthNetwork",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/Models/EthNetwork.swift",
+      "line": 15,
+      "symbol": "EthNetwork.devID",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/Models/EthNetwork.swift",
+      "line": 16,
+      "symbol": "EthNetwork.netID",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/Models/EthNetwork.swift",
+      "line": 17,
+      "symbol": "EthNetwork.pocketEth",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/Models/EthNetwork.swift",
+      "line": 22,
+      "symbol": "EthNetwork.net",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/Models/EthNetwork.swift",
+      "line": 27,
+      "symbol": "EthNetwork.eth",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/Models/EthNetwork.swift",
+      "line": 39,
+      "symbol": "EthNetwork.importWallet(privateKey:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/Models/EthNetwork.swift",
+      "line": 47,
+      "symbol": "EthNetwork.createWallet()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/Models/EthNetwork.swift",
+      "line": 57,
+      "symbol": "EthNetwork.createEthRelay(method:params:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/Models/EthNetwork.swift",
+      "line": 61,
+      "symbol": "EthNetwork.send(relay:callback:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/Models/EthNetwork.swift",
+      "line": 79,
+      "symbol": "EthNetwork.send(relay:callback:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/Models/EthNetwork.swift",
+      "line": 98,
+      "symbol": "EthNetwork.send(relay:callback:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/Models/EthNetwork.swift",
+      "line": 115,
+      "symbol": "EthNetwork.send(relay:callback:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/Models/EthNetwork.swift",
+      "line": 133,
+      "symbol": "EthNetwork.send(relay:callback:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/Models/EthNetwork.swift",
+      "line": 151,
+      "symbol": "EthNetwork.send(relay:callback:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/Models/EthNetwork.swift",
+      "line": 175,
+      "symbol": "EthNetwork.createEthContract(address:abiDefinition:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/Models/EthRelay.swift",
+      "line": 11,
+      "symbol": "EthRelay",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/PocketEth.swift",
+      "line": 11,
+      "symbol": "PocketEth",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/PocketEth.swift",
+      "line": 13,
+      "symbol": "PocketEth.NETWORK",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/PocketEth.swift",
+      "line": 14,
+      "symbol": "PocketEth.Networks",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/PocketEth.swift",
+      "line": 15,
+      "symbol": "PocketEth.Networks.Mainnet",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/PocketEth.swift",
+      "line": 16,
+      "symbol": "PocketEth.Networks.Ropsten",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/PocketEth.swift",
+      "line": 17,
+      "symbol": "PocketEth.Networks.Rinkeby",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/PocketEth.swift",
+      "line": 18,
+      "symbol": "PocketEth.Networks.Goerli",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/PocketEth.swift",
+      "line": 19,
+      "symbol": "PocketEth.Networks.Kovan",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/PocketEth.swift",
+      "line": 21,
+      "symbol": "PocketEth.Networks.netID",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/PocketEth.swift",
+      "line": 35,
+      "symbol": "PocketEth.defaultNetwork",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/PocketEth.swift",
+      "line": 36,
+      "symbol": "PocketEth.mainnet",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/PocketEth.swift",
+      "line": 37,
+      "symbol": "PocketEth.ropsten",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/PocketEth.swift",
+      "line": 38,
+      "symbol": "PocketEth.rinkeby",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/PocketEth.swift",
+      "line": 39,
+      "symbol": "PocketEth.goerli",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/PocketEth.swift",
+      "line": 40,
+      "symbol": "PocketEth.kovan",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/PocketEth.swift",
+      "line": 41,
+      "symbol": "PocketEth.networks",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/PocketEth.swift",
+      "line": 68,
+      "symbol": "PocketEth.network(netID:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/RPC/EthBlockTag.swift",
+      "line": 12,
+      "symbol": "EthBlockTag",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/RPC/EthBlockTag.swift",
+      "line": 13,
+      "symbol": "EthBlockTag.earliest",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/RPC/EthBlockTag.swift",
+      "line": 14,
+      "symbol": "EthBlockTag.latest",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/RPC/EthBlockTag.swift",
+      "line": 15,
+      "symbol": "EthBlockTag.pending",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/RPC/EthBlockTag.swift",
+      "line": 16,
+      "symbol": "EthBlockTag.number(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/RPC/EthObjectOrBoolean.swift",
+      "line": 11,
+      "symbol": "EthObjectOrBoolean",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/RPC/EthObjectOrBoolean.swift",
+      "line": 13,
+      "symbol": "EthObjectOrBoolean.booleanValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/RPC/EthObjectOrBoolean.swift",
+      "line": 14,
+      "symbol": "EthObjectOrBoolean.objectValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/RPC/EthObjectOrBoolean.swift",
+      "line": 16,
+      "symbol": "EthObjectOrBoolean.isObject",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/RPC/EthObjectOrBoolean.swift",
+      "line": 22,
+      "symbol": "EthObjectOrBoolean.isBoolean",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/RPC/EthRPC.swift",
+      "line": 14,
+      "symbol": "EthRPC",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/RPC/EthRPCCallbacks.swift",
+      "line": 12,
+      "symbol": "EthStringCallback",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/RPC/EthRPCCallbacks.swift",
+      "line": 13,
+      "symbol": "EthBigIntegerCallback",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/RPC/EthRPCCallbacks.swift",
+      "line": 14,
+      "symbol": "EthBooleanCallback",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/RPC/EthRPCCallbacks.swift",
+      "line": 15,
+      "symbol": "EthJSONObjectCallback",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/RPC/EthRPCCallbacks.swift",
+      "line": 16,
+      "symbol": "EthJSONArrayCallback",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/RPC/EthRPCCallbacks.swift",
+      "line": 17,
+      "symbol": "EthJSONObjectOrBooleanCallback",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/RPC/EthRPCCallbacks.swift",
+      "line": 18,
+      "symbol": "EthAnyArrayCallback",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/RPC/NetRPC.swift",
+      "line": 12,
+      "symbol": "NetRPC",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/RPC/NetRPC.swift",
+      "line": 26,
+      "symbol": "NetRPC.version(callback:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/RPC/NetRPC.swift",
+      "line": 35,
+      "symbol": "NetRPC.listening(callback:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift/PocketSwift/Packages/Eth/RPC/NetRPC.swift",
+      "line": 44,
+      "symbol": "NetRPC.peerCount(callback:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/wilson/Development/Projects/Pocket/Pocket-Swift/pocket-swift"
+}
