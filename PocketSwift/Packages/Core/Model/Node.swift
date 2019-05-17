@@ -8,6 +8,16 @@
 
 import Foundation
 
+/**
+ A Model Class that represents a Node.
+ 
+ - Parameters:
+ - ipPort : Ip url for this Node.
+ - network: The blockchain network name, ie: ETH, AION.
+ - netID: The netid of the Blockchain.
+ 
+ */
+
 public struct Node: Model {
     public let network: String
     public let netID: String
@@ -55,6 +65,15 @@ public struct Node: Model {
         }
     }
     
+    
+    /**
+     Compares if 2 nodes are equals
+     
+     - Parameters:
+     - network: The blockchain network name, ie: ETH, AION.
+     - netID: The netid of the Blockchain.
+     
+     */
     func isEqual(netID: String, network: String) -> Bool {
         if self.netID.elementsEqual(netID) && self.network.elementsEqual(network) {
             return true

@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>AionNetwork Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/AionNetwork" class="dashAnchor"></a>
+    <a title="AionNetwork Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">PocketSwift Docs</a> (25% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">PocketSwift Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        AionNetwork Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/AionContract.html">AionContract</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AionNetwork.html">AionNetwork</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11PocketSwift9AionRelayC">AionRelay</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Configuration.html">Configuration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11PocketSwift10ControllerC">Controller</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11PocketSwift18DispatchControllerC">DispatchController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11PocketSwift18DispatchRepositoryC">DispatchRepository</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EthContract.html">EthContract</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EthNetwork.html">EthNetwork</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/EthRPC.html">EthRPC</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11PocketSwift8EthRelayC">EthRelay</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ObjectAssociation.html">ObjectAssociation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Pocket.html">Pocket</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PocketAion.html">PocketAion</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PocketAion/Networks.html">– Networks</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PocketEth.html">PocketEth</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PocketEth/Networks.html">– Networks</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11PocketSwift5RelayC">Relay</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11PocketSwift15RelayControllerC">RelayController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11PocketSwift15RelayRepositoryC">RelayRepository</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11PocketSwift16ReportControllerC">ReportController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11PocketSwift16ReportRepositoryC">ReportRepository</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RpcParamsUtil.html">RpcParamsUtil</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Wallet.html">Wallet</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/BlockTag.html">BlockTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/EthBlockTag.html">EthBlockTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/JSON.html">JSON</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/JSONError.html">JSONError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/JsonSerializationError.html">JsonSerializationError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/PocketError.html">PocketError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/BigInt.html">BigInt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/BigUInt.html">BigUInt</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/AionEthRPC.html">AionEthRPC</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AionNetRPC.html">AionNetRPC</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:11PocketSwift10BlockchainV">Blockchain</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/EthObjectOrBoolean.html">EthObjectOrBoolean</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NetRPC.html">NetRPC</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Node.html">Node</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ObjectOrBoolean.html">ObjectOrBoolean</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:11PocketSwift6ReportV">Report</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift16AnyArrayCallbacka">AnyArrayCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift18BigIntegerCallbacka">BigIntegerCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift15BooleanCallbacka">BooleanCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift19EthAnyArrayCallbacka">EthAnyArrayCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift21EthBigIntegerCallbacka">EthBigIntegerCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift18EthBooleanCallbacka">EthBooleanCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift20EthJSONArrayCallbacka">EthJSONArrayCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift21EthJSONObjectCallbacka">EthJSONObjectCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift30EthJSONObjectOrBooleanCallbacka">EthJSONObjectOrBooleanCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift17EthStringCallbacka">EthStringCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift17JSONArrayCallbacka">JSONArrayCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift18JSONObjectCallbacka">JSONObjectCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift27JSONObjectOrBooleanCallbacka">JSONObjectOrBooleanCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11PocketSwift14StringCallbacka">StringCallback</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>AionNetwork</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">AionNetwork</span></code></pre>
+
+                </div>
+              </div>
+            <p>Undocumented</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift11AionNetworkC5devIDSSvp"></a>
+                    <a name="//apple_ref/swift/Property/devID" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift11AionNetworkC5devIDSSvp">devID</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">devID</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift11AionNetworkC5netIDSSvp"></a>
+                    <a name="//apple_ref/swift/Property/netID" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift11AionNetworkC5netIDSSvp">netID</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">netID</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift11AionNetworkC06pocketC0AA0aC0Cvp"></a>
+                    <a name="//apple_ref/swift/Property/pocketAion" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift11AionNetworkC06pocketC0AA0aC0Cvp">pocketAion</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">pocketAion</span><span class="p">:</span> <span class="kt"><a href="../Classes/PocketAion.html">PocketAion</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift11AionNetworkC3netAA0C6NetRPCVvp"></a>
+                    <a name="//apple_ref/swift/Property/net" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift11AionNetworkC3netAA0C6NetRPCVvp">net</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">net</span><span class="p">:</span> <span class="kt"><a href="../Structs/AionNetRPC.html">AionNetRPC</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift11AionNetworkC3ethAA0C6EthRPCVvp"></a>
+                    <a name="//apple_ref/swift/Property/eth" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift11AionNetworkC3ethAA0C6EthRPCVvp">eth</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">eth</span><span class="p">:</span> <span class="kt"><a href="../Structs/AionEthRPC.html">AionEthRPC</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift11AionNetworkC12createWalletAA0F0CyKF"></a>
+                    <a name="//apple_ref/swift/Method/createWallet()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift11AionNetworkC12createWalletAA0F0CyKF">createWallet()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">createWallet</span><span class="p">()</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/Wallet.html">Wallet</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift11AionNetworkC12importWallet10privateKeyAA0F0CSS_tKF"></a>
+                    <a name="//apple_ref/swift/Method/importWallet(privateKey:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift11AionNetworkC12importWallet10privateKeyAA0F0CSS_tKF">importWallet(privateKey:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">importWallet</span><span class="p">(</span><span class="nv">privateKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/Wallet.html">Wallet</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift11AionNetworkC06createC5Relay6method6paramsAA0cF0CSS_SayypGSgtKF"></a>
+                    <a name="//apple_ref/swift/Method/createAionRelay(method:params:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift11AionNetworkC06createC5Relay6method6paramsAA0cF0CSS_SayypGSgtKF">createAionRelay(method:params:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">createAionRelay</span><span class="p">(</span><span class="nv">method</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">params</span><span class="p">:</span> <span class="p">[</span><span class="kt">Any</span><span class="p">]?)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes.html#/s:11PocketSwift9AionRelayC">AionRelay</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift11AionNetworkC4send5relay8callbackyAA0C5RelayC_yAA0A5ErrorOSg_SSSgtctF"></a>
+                    <a name="//apple_ref/swift/Method/send(relay:callback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift11AionNetworkC4send5relay8callbackyAA0C5RelayC_yAA0A5ErrorOSg_SSSgtctF">send(relay:callback:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">send</span><span class="p">(</span><span class="nv">relay</span><span class="p">:</span> <span class="kt"><a href="../Classes.html#/s:11PocketSwift9AionRelayC">AionRelay</a></span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:11PocketSwift14StringCallbacka">StringCallback</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift11AionNetworkC4sendyyAA0C5RelayC_XetcACF"></a>
+                    <a name="//apple_ref/swift/Method/send(relay:callback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift11AionNetworkC4sendyyAA0C5RelayC_XetcACF">send(relay:callback:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">send</span><span class="p">(</span><span class="nv">relay</span><span class="p">:</span> <span class="kt"><a href="../Classes.html#/s:11PocketSwift9AionRelayC">AionRelay</a></span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:11PocketSwift18BigIntegerCallbacka">BigIntegerCallback</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift11AionNetworkC4send5relay8callbackyAA0C5RelayC_yAA0A5ErrorOSg_SbSgtctF"></a>
+                    <a name="//apple_ref/swift/Method/send(relay:callback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift11AionNetworkC4send5relay8callbackyAA0C5RelayC_yAA0A5ErrorOSg_SbSgtctF">send(relay:callback:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">send</span><span class="p">(</span><span class="nv">relay</span><span class="p">:</span> <span class="kt"><a href="../Classes.html#/s:11PocketSwift9AionRelayC">AionRelay</a></span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:11PocketSwift15BooleanCallbacka">BooleanCallback</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift11AionNetworkC4send5relay8callbackyAA0C5RelayC_yAA0A5ErrorOSg_SDySSypGSgtctF"></a>
+                    <a name="//apple_ref/swift/Method/send(relay:callback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift11AionNetworkC4send5relay8callbackyAA0C5RelayC_yAA0A5ErrorOSg_SDySSypGSgtctF">send(relay:callback:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">send</span><span class="p">(</span><span class="nv">relay</span><span class="p">:</span> <span class="kt"><a href="../Classes.html#/s:11PocketSwift9AionRelayC">AionRelay</a></span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:11PocketSwift18JSONObjectCallbacka">JSONObjectCallback</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift11AionNetworkC4send5relay8callbackyAA0C5RelayC_yAA0A5ErrorOSg_SaySDySSypGGSgtctF"></a>
+                    <a name="//apple_ref/swift/Method/send(relay:callback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift11AionNetworkC4send5relay8callbackyAA0C5RelayC_yAA0A5ErrorOSg_SaySDySSypGGSgtctF">send(relay:callback:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">send</span><span class="p">(</span><span class="nv">relay</span><span class="p">:</span> <span class="kt"><a href="../Classes.html#/s:11PocketSwift9AionRelayC">AionRelay</a></span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:11PocketSwift17JSONArrayCallbacka">JSONArrayCallback</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11PocketSwift11AionNetworkC4send5relay8callbackyAA0C5RelayC_yAA0A5ErrorOSg_AA15ObjectOrBooleanVSgtctF"></a>
+                    <a name="//apple_ref/swift/Method/send(relay:callback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11PocketSwift11AionNetworkC4send5relay8callbackyAA0C5RelayC_yAA0A5ErrorOSg_AA15ObjectOrBooleanVSgtctF">send(relay:callback:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">send</span><span class="p">(</span><span class="nv">relay</span><span class="p">:</span> <span class="kt"><a href="../Classes.html#/s:11PocketSwift9AionRelayC">AionRelay</a></span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:11PocketSwift27JSONObjectOrBooleanCallbacka">JSONObjectOrBooleanCallback</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="https://github.com/pokt-network/pocket-swift" target="_blank" rel="external">Wilson Garcia, Luis C. de Leon, and Pabel Nunez</a>. All rights reserved. (Last updated: 2019-05-17)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
