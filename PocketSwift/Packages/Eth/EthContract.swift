@@ -25,7 +25,7 @@ public class EthContract {
     ///   - address: Smart contract address
     ///   - abiDefinition: Abi definition as JSON string
     /// - Throws: PocketError
-    init(ethNetwork: EthNetwork, address: String, abiDefinition: String) throws {
+    public init(ethNetwork: EthNetwork, address: String, abiDefinition: String) throws {
         self.ethNetwork = ethNetwork
         self.address = address
         guard let abiDefinitionData = abiDefinition.data(using: .utf8) else {
@@ -121,7 +121,7 @@ public class EthContract {
     ///   - value: Desired value to send in wei(optional)
     ///   - blockTag: .latest, .earliest, .pending or block number
     ///   - callback: Returns an string
-    public func executeFunction(functionName: String, wallet: Wallet, functionParams: [AnyObject] = [AnyObject](), nonce: BigUInt?, gas: BigUInt, gasPrice: BigUInt, value: BigUInt, callback: @escaping EthStringCallback) throws {
+    public func executeFunction(functionName: String, wallet: Wallet, functionParams: [AnyObject] = [AnyObject](), nonce: BigUInt?, gas: BigUInt, gasPrice: BigUInt, value: BigUInt?, callback: @escaping EthStringCallback) throws {
         guard let abiFunction = self.functions[functionName] else {
             throw PocketError.custom(message: "Invalid function name: \(functionName)")
         }
