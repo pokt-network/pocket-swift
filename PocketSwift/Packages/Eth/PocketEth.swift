@@ -41,14 +41,18 @@ public class PocketEth: Pocket {
     public var networks: [String: EthNetwork] = [String: EthNetwork]()
     
     /**
-     Pocket Eth Plugging.
+     Create new instance of Pocket.
      - Parameters:
-     - devID : Developer Identifier
-     - defaultNetID: Network name.
-     - netIds: Arrays of Network ID
-     - maxNodes: Maximum amount of nodes
-     - requestTimeOut: Amount of time in miliseconds that the server is going to wait before returning a TimeOutException
+        - devID : Developer Identifier
+        - defaultNetID: Network name.
+        - netIds: Arrays of Network ID
+        - maxNodes: Maximum amount of nodes
+        - requestTimeOut: Amount of time in miliseconds that the server is going to wait before returning a TimeOutException
      
+     ### Usage Example: ###
+     ````
+        Pocket(devID: "DEVID1", network: "ETH", netID: "4", maxNodes: 5, requestTimeOut: 1000)
+     ````
      */
     public init(devID: String, netIds: [String], defaultNetID: String? = PocketEth.Networks.Rinkeby.netID, maxNodes: Int? = 5, requestTimeOut: Int? = 10000) throws {
         super.init(devID: devID, network: PocketEth.NETWORK, netIds: netIds, maxNodes: maxNodes!, requestTimeOut: requestTimeOut!, schedulerProvider: .main)
@@ -64,7 +68,7 @@ public class PocketEth: Pocket {
         }
         self.defaultNetwork = defaultNetwork
     }
-    
+
     public func network(netID: String) -> EthNetwork {
         let result: EthNetwork
         if let networkValue = self.networks[netID] {

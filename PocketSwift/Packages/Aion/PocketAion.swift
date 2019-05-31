@@ -24,22 +24,26 @@ public class PocketAion: Pocket {
         }
     }
     
-    // Attributes
+    // Define Network Attributes
     public var defaultNetwork: AionNetwork?
     public var mainnet: AionNetwork?
     public var mastery: AionNetwork?
     public var networks: [String: AionNetwork] = [String: AionNetwork]()
     public let jsContext: JSContext = JSContext()
     
-    /**
-     Pocket Aion Plugging.
+     /**
+     Create new instance of Pocket.
      - Parameters:
-     - devID : Developer Identifier
-     - defaultNetID: Network name.
-     - netIds: Arrays of Network ID
-     - maxNodes: Maximum amount of nodes
-     - requestTimeOut: Amount of time in miliseconds that the server is going to wait before returning a TimeOutException
+        - devID : Developer Identifier
+        - network: Name of the Blockchain network that is going to be used.
+        - netID: Network ID
+        - maxNodes: Maximum amount of nodes
+        - requestTimeOut: Amount of time in miliseconds that the server is going to wait before returning a TimeOutException
      
+     ### Usage Example: ###
+     ````
+        Pocket(devID: "DEVID1", network: "AION", netID: "32", maxNodes: 5, requestTimeOut: 1000)
+     ````
      */
     
     public init(devID: String, netIds: [String], defaultNetID: String = Networks.MASTERY.netID(), maxNodes: Int = 5, requestTimeOut: Int = 10000) throws {
@@ -101,7 +105,20 @@ public class PocketAion: Pocket {
     private func throwErrorWith(message: String) throws {
         throw PocketError.custom(message: "Unknown error happened: \(message)")
     }
-    // Create Wallet
+    /**
+        Create a wallet by generating public and private keys for Mastery or Mainnet
+            - Parameters:
+                - netID: Network ID
+            - Throws:
+                `PocketError.walletCreation`
+                if there was an error creating a wallet
+
+
+        ### Usage Example ###
+        ````  
+        createWallet(netID: “32”)
+        ````
+    */
     public func createWallet(netID: String) throws -> Wallet {
         guard let account = self.jsContext.evaluateScript("aionInstance.eth.accounts.create()")?.toObject() as? [AnyHashable: Any] else {
             throw PocketError.walletCreation(message: "Failed to create account")
@@ -117,7 +134,22 @@ public class PocketAion: Pocket {
 
         return Wallet(address: address, privateKey: privateKey, network: PocketAion.NETWORK, netID: netID)
     }
-    // Import Wallet
+    
+    /**
+        Import and access a wallet on Mastery or Mainnet network. 
+            - Parameters:
+                - privateKey: wallet private key
+                - netID: Network ID
+            - Throws:
+                `PocketError.walletCreation`
+                if there was an error importing a wallet
+
+
+        ### Usage Example ###
+        ````  
+        importWallet(privateKey: "0x0",netID: “32”)
+        ````
+    */
     public func importWallet(privateKey: String, netID: String) throws -> Wallet {
 
         if (self.jsContext.evaluateScript("var account = aionInstance.eth.accounts.privateKeyToAccount('\(privateKey)')") != nil) {
@@ -136,6 +168,13 @@ public class PocketAion: Pocket {
         throw PocketError.walletImport(message: "Failed to create account js object")
     }
     
+    /**
+        Signing the transaction before it’s sent to the Aion network.
+        - Parameters:
+            - privateKey: wallet private key
+            - params: Parameters
+    */
+
     internal func signTransaction(params: [String: Any], privateKey: String) throws -> String {
         var signetTx: String?
         // Transaction params
@@ -146,7 +185,7 @@ public class PocketAion: Pocket {
         guard let to =  params["to"] as? String else {
             throw PocketError.custom(message: "Failed to retrieve the receiver of the transaction (to) ")
         }
-        // Optionals
+        // Optional params
         let data = params["data"] as? String ?? ""
         let value =  params["value"] as? String ?? ""
         let gasPrice = params["gasPrice"] as? String ?? ""

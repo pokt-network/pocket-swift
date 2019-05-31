@@ -16,6 +16,21 @@ public class AionContract {
     private let address: String
     private var functions = [String: Any]()
     
+ /**
+        Initializes the AionContract instance
+            - Parameters:
+                - aionNetwork: Desired Aion Network(Mastery or Mainnet)
+                - address: Smart contract address
+                - abiDefinition: Abi definition as JSON string
+            - Throws:
+                `PocketError`
+
+
+        ### Usage Example ###
+        ````  
+        init(aionNetwork: mastery,address: "0x0",abiDefinition: "[{abi\def\goes:here}]")
+        ````
+    */
     public init(aionNetwork: AionNetwork, address: String, abiDefinition: String) throws {
         self.aionNetwork = aionNetwork
         self.address = address
@@ -126,7 +141,26 @@ public class AionContract {
         
         return encodedFunctionData
     }
-    
+    /**
+
+        Read data from the blockchain without changing the state
+        - Parameters:
+            - functionName: Function name string
+            - functionParams: Function parameters array
+            - fromAddress: Sender's address string
+            - gas: Desired gas value in wei(optional)
+            - gasPrice: Desired gasPrice value in wei(optional)
+            - value: Desired value to send in wei(optional)
+            - blockTag: .latest, .earliest, .pending or block number
+            - callback: Returns an Array of Any, [Any]
+        - Throws: 
+            - `PocketError`
+
+        ### Usage Example ###
+        ````  
+        executeConstantFunction(functionName: "readData", functionParams: [], fromAddress: nil, gas: 2000, gasPrice: 200000, value: nil, blockTag: .latest, callback: callback)
+        ````
+    */
     public func executeConstantFunction(functionName: String, functionParams: [Any] = [Any](), fromAddress: String?, gas: BigUInt?, gasPrice: BigUInt?, value: BigUInt?, blockTag: BlockTag?, callback: @escaping AnyArrayCallback) throws {
         
         guard let abiFunction = self.functions[functionName] as? [String: Any] else {
@@ -159,6 +193,29 @@ public class AionContract {
         }
         
     }
+
+    /**
+
+        Write data to the blockchain(changing the state)
+        - Parameters:
+            - functionName: Function name string
+            - wallet: Sender's wallet
+            - functionParams: Function parameters array
+            - fromAddress: Sender's address string
+            - nonce: Transaction count of the sender
+            - gas: Desired gas value in wei(optional)
+            - gasPrice: Desired gasPrice value in wei(optional)
+            - value: Desired value to send in wei(optional)
+            - blockTag: .latest, .earliest, .pending or block number
+            - callback:  Returns an string
+        - Throws: 
+            - `PocketError`
+
+        ### Usage Example ###
+        ````  
+        executeFunction(functionName: "writeData", wallet: <senders wallet>,functionParams: params, fromAddress: nil, gas: nil, gasPrice: nil, value: nil, blockTag: .latest, callback: callback)
+        ````
+    */
     
     public func executeFunction(functionName: String, wallet: Wallet, functionParams: [Any] = [Any](), nonce: BigUInt?, gas: BigUInt, gasPrice: BigUInt, value: BigUInt?, callback: @escaping StringCallback) throws {
         
