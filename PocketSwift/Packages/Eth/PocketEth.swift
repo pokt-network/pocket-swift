@@ -69,6 +69,16 @@ public class PocketEth: Pocket {
         self.defaultNetwork = defaultNetwork
     }
 
+    /**
+        Checks the network identifier list and returns the subnetwork.
+            - Parameters:
+                - netId: Network Identifier
+
+        ### Usage Example: ###
+        ````
+            network(netID: "4") // returns rinkeby
+        ````
+     */
     public func network(netID: String) -> EthNetwork {
         let result: EthNetwork
         if let networkValue = self.networks[netID] {
