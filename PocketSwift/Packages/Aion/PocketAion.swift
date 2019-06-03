@@ -44,8 +44,7 @@ public class PocketAion: Pocket {
      ````
         Pocket(devID: "DEVID1", network: "AION", netID: "32", maxNodes: 5, requestTimeOut: 1000)
      ````
-     */
-    
+    */
     public init(devID: String, netIds: [String], defaultNetID: String = Networks.MASTERY.netID(), maxNodes: Int = 5, requestTimeOut: Int = 10000) throws {
         // Super init
         super.init(devID: devID, network: PocketAion.NETWORK, netIds: netIds, maxNodes: maxNodes, requestTimeOut: requestTimeOut, schedulerProvider: .main)
@@ -82,7 +81,16 @@ public class PocketAion: Pocket {
         }
         self.defaultNetwork = defaultNetwork
     }
-    
+    /**
+     checks the network identifier list and returns the subnetwork.
+     - Parameters:
+        - netId: Network Identifier
+
+     ### Usage Example: ###
+     ````
+        network(netID: "32") // returns mastery
+     ````
+     */
     public func network(_ netID: String) -> AionNetwork {
         let result: AionNetwork
         if let networkValue = self.networks[netID] {

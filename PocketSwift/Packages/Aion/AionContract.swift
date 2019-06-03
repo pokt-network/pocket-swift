@@ -16,7 +16,7 @@ public class AionContract {
     private let address: String
     private var functions = [String: Any]()
     
- /**
+    /**
         Initializes the AionContract instance
             - Parameters:
                 - aionNetwork: Desired Aion Network(Mastery or Mainnet)
@@ -142,19 +142,18 @@ public class AionContract {
         return encodedFunctionData
     }
     /**
-
         Read data from the blockchain without changing the state
-        - Parameters:
-            - functionName: Function name string
-            - functionParams: Function parameters array
-            - fromAddress: Sender's address string
-            - gas: Desired gas value in wei(optional)
-            - gasPrice: Desired gasPrice value in wei(optional)
-            - value: Desired value to send in wei(optional)
-            - blockTag: .latest, .earliest, .pending or block number
-            - callback: Returns an Array of Any, [Any]
-        - Throws: 
-            - `PocketError`
+            - Parameters:
+                - functionName: Function name string
+                - functionParams: Function parameters array
+                - fromAddress: Sender's address string
+                - gas: Desired gas value in wei(optional)
+                - gasPrice: Desired gasPrice value in wei(optional)
+                - value: Desired value to send in wei(optional)
+                - blockTag: .latest, .earliest, .pending or block number
+                - callback: Returns an Array of Any, [Any]
+            - Throws: 
+                - `PocketError`
 
         ### Usage Example ###
         ````  
@@ -197,19 +196,19 @@ public class AionContract {
     /**
 
         Write data to the blockchain(changing the state)
-        - Parameters:
-            - functionName: Function name string
-            - wallet: Sender's wallet
-            - functionParams: Function parameters array
-            - fromAddress: Sender's address string
-            - nonce: Transaction count of the sender
-            - gas: Desired gas value in wei(optional)
-            - gasPrice: Desired gasPrice value in wei(optional)
-            - value: Desired value to send in wei(optional)
-            - blockTag: .latest, .earliest, .pending or block number
-            - callback:  Returns an string
-        - Throws: 
-            - `PocketError`
+            - Parameters:
+                - functionName: Function name string
+                - wallet: Sender's wallet
+                - functionParams: Function parameters array
+                - fromAddress: Sender's address string
+                - nonce: Transaction count of the sender
+                - gas: Desired gas value in wei(optional)
+                - gasPrice: Desired gasPrice value in wei(optional)
+                - value: Desired value to send in wei(optional)
+                - blockTag: .latest, .earliest, .pending or block number
+                - callback:  Returns an string
+            - Throws: 
+                - `PocketError`
 
         ### Usage Example ###
         ````  
