@@ -22,7 +22,9 @@ public struct NetRPC {
     init(ethNetwork: EthNetwork) {
         self.ethNetwork = ethNetwork
     }
-    
+    /**
+        Returns the current network id. ("1": Ethereum Mainnet, "4": Rinkeby Testnet, etc)
+     */    
     public func version(callback: @escaping EthStringCallback) {
         do {
             let ethRelay = try EthRelay.init(netID: self.ethNetwork.netID, devID: ethNetwork.devID, method: NetRPCMethod.version.rawValue, params: nil)
@@ -31,7 +33,9 @@ public struct NetRPC {
             callback(PocketError.custom(message: error.localizedDescription), nil)
         }
     }
-    
+    /**
+        Returns true if client is actively listening for network connections on the ETH network.
+     */    
     public func listening(callback: @escaping EthBooleanCallback) {
         do {
             let ethRelay = try EthRelay.init(netID: self.ethNetwork.netID, devID: ethNetwork.devID, method: NetRPCMethod.listening.rawValue, params: nil)
@@ -40,7 +44,9 @@ public struct NetRPC {
             callback(PocketError.custom(message: error.localizedDescription), nil)
         }
     }
-    
+    /**
+        Returns number of peers currently connected to the client on the ETH network.
+     */    
     public func peerCount(callback: @escaping EthBigIntegerCallback) {
         do {
             let ethRelay = try EthRelay.init(netID: self.ethNetwork.netID, devID: ethNetwork.devID, method: NetRPCMethod.peerCount.rawValue, params: nil)
