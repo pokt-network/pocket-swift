@@ -46,7 +46,7 @@ public class Wallet {
     /**
      Encrypt and Store a Wallet locally
      - Parameters:
-     - passphrase: The passphrase for this wallet.
+        - passphrase: The passphrase for this wallet.
      
      - Returns: true if the `Wallet` was saved
      */
@@ -65,28 +65,45 @@ public class Wallet {
     
     
     /**
-     Delete a Wallet previously encrypted
-     - Parameters:
-     - passphrase: The passphrase for this wallet.
+        Delete a Wallet previously encrypted
+            - Parameters:
+                - passphrase: The passphrase for this wallet.
      
-     - Throws: `PocketError.walletPersistence`
+            - Throws: `PocketError.walletPersistence`
                 if there was an error storing the Wallet
      
-     - Returns: true if the `Wallet` was deleted
+            - Returns: true if the `Wallet` was deleted
      */
     public func delete() throws -> Bool {
         return Wallet.getKeychainWrapper().removeObject(forKey: recordKey())
     }
-    
+
+    /**
+        Verify if a Wallet is saved
+            - Parameters:
+                - passphrase: The passphrase for this wallet.
+
+            - Returns: true if the `Wallet` is saved
+     */   
     public func isSaved() -> Bool {
         return Wallet.getKeychainWrapper().allKeys().contains(self.recordKey())
     }
-    
+    /**
+        Verify if a Wallet data is correct
+            - Parameters:
+                - wallet: the private key of a wallet
+
+            - Returns: true if the `Wallet` is correct
+     */    
     public func equalsTo(wallet: Wallet) -> Bool {
         return self.network == wallet.network && self.netID == wallet.netID && self.address == wallet.address && self.privateKey == wallet.privateKey
     }
-    
-    // Persistence public class interface
+    /**
+        Obtain the stored walled in keychain
+            - Parameters: None
+               
+            - Returns: an array of encrypted keys 
+     */        
     public class func getWalletsRecordKeys() -> [String] {
         return Array(Wallet.getKeychainWrapper().allKeys())
     }

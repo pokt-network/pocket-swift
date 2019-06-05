@@ -33,7 +33,16 @@ public class AionNetwork {
         self._eth = AionEthRPC(aionNetwork: self)
         self._net = AionNetRPC(aionNetwork: self)
     }
-    // Create Wallet
+    /**
+        Creates a new Aion Wallet:
+            - Parameters: none
+            - Throws: `error`
+
+         ### Usage Example: ###
+         ````
+            pocketAion.mastery?.createWallet()
+        ````
+    */     
     public func createWallet() throws -> Wallet {
         do {
             return try self.pocketAion.createWallet(netID: self.netID)
@@ -41,7 +50,16 @@ public class AionNetwork {
             throw error
         }
     }
-    // Import Wallet
+    /**
+     Import an existing Aion Wallet
+     - Parameters:
+        - privateKey: Wallet private key
+
+     ### Usage Example: ###
+     ````
+        pocketAion.mastery?.importWallet(privateKey: 'your_private_key')
+     ````
+     */ 
     public func importWallet(privateKey: String) throws -> Wallet {
         do {
             return try self.pocketAion.importWallet(privateKey: privateKey, netID: self.netID)
@@ -49,11 +67,15 @@ public class AionNetwork {
             throw error
         }
     }
-    // Create Relay
+    /**
+        Creates a relay to send to the Service Node 
+    */
     public func createAionRelay(method: String, params: [Any]?) throws -> AionRelay {
         return try AionRelay.init(netID: netID, devID: devID, method: method, params: params)
     }
-    
+    /**
+        Sends a relay request to the Service Node and callback returns a string or error
+    */       
     public func send(relay: AionRelay, callback: @escaping StringCallback) {
         self.pocketAion.send(relay: relay, onSuccess: { (response) in
             guard let responseObj = response.toDict() else {
@@ -71,7 +93,9 @@ public class AionNetwork {
             callback(PocketError.custom(message: error.localizedDescription), nil)
         }
     }
-    
+    /**
+        Sends a relay request to the Service Node and callback returns a BigInteger or error
+    */     
     public func send(relay: AionRelay, callback: @escaping BigIntegerCallback) {
         self.pocketAion.send(relay: relay, onSuccess: { (response) in
             guard let responseObj = response.toDict() else {
@@ -92,7 +116,9 @@ public class AionNetwork {
             callback(PocketError.custom(message: error.localizedDescription), nil)
         }
     }
-    
+    /**
+        Sends a relay request to the Service Node and callback returns a Bool or error
+    */       
     public func send(relay: AionRelay, callback: @escaping BooleanCallback) {
         self.pocketAion.send(relay: relay, onSuccess: { (response) in
             guard let responseObj = response.toDict() else {
@@ -109,7 +135,9 @@ public class AionNetwork {
             callback(PocketError.custom(message: error.localizedDescription), nil)
         }
     }
-    
+    /**
+        Sends a relay request to the Service Node and callback returns a JSONObject or error
+    */     
     public func send(relay: AionRelay, callback: @escaping JSONObjectCallback) {
         self.pocketAion.send(relay: relay, onSuccess: { (response) in
             guard let responseObj = response.toDict() else {
@@ -127,7 +155,9 @@ public class AionNetwork {
             callback(PocketError.custom(message: error.localizedDescription), nil)
         }
     }
-    
+    /**
+        Sends a relay request to the Service Node and callback returns a JSONArray or error
+    */     
     public func send(relay: AionRelay, callback: @escaping JSONArrayCallback) {
         self.pocketAion.send(relay: relay, onSuccess: { (response) in
             guard let responseObj = response.toDict() else {
@@ -145,7 +175,9 @@ public class AionNetwork {
             callback(PocketError.custom(message: error.localizedDescription), nil)
         }
     }
-    
+    /**
+        Sends a relay request to the Service Node and callback returns a JSONObjectOrBoolean or error
+    */     
     public func send(relay: AionRelay, callback: @escaping JSONObjectOrBooleanCallback) {
         self.pocketAion.send(relay: relay, onSuccess: { (response) in
             guard let responseObj = response.toDict() else {
