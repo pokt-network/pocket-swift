@@ -15,11 +15,11 @@ public class AionRelay: Relay {
     
     /**
      Aion Relay RPC model class
-     - Parameters:
-     - netID: the netId of the blockchain.
-     - devID: the id used to interact with Pocket Api.
-     - method: RPC method.
-     - params: extra params.
+        - Parameters:
+            - netID: the netId of the blockchain.
+            - devID: the id used to interact with Pocket Api.
+            - method: RPC method.
+            - params: extra params.
      
      - SeeAlso: `RelayData`
      */

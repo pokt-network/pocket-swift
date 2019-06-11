@@ -11,6 +11,9 @@ import BigInt
 
 public struct AionNetRPC {
     
+    /**
+        Defines RPC methods to obtain network information(version: network id, listening: see if it can pick up on network information, peerCount: how many peers connected to the network )
+    */
     private enum NetRPCMethod: String {
         case version = "net_version"
         case listening = "net_listening"
@@ -23,7 +26,7 @@ public struct AionNetRPC {
         self.aionNetwork = aionNetwork
     }
     /**
-        Returns the current network id. ("1": Ethereum Mainnet, "4": Rinkeby Testnet, etc)
+        Returns the current network id. ("256": Aion  Mainnet, "32": Mastery Testnet)
      */      
     public func version(callback: @escaping StringCallback) {
         do {
@@ -34,7 +37,7 @@ public struct AionNetRPC {
         }
     }
     /**
-        Returns true if client is actively listening for network connections on the ETH network.
+        Returns true if client is actively listening for network connections on the Aion network.
      */       
     public func listening(callback: @escaping BooleanCallback) {
         do {
@@ -45,7 +48,7 @@ public struct AionNetRPC {
         }
     }
     /**
-        Returns number of peers currently connected to the client on the ETH network.
+        Returns number of peers currently connected to the client on the Aion network.
      */     
     public func peerCount(callback: @escaping BigIntegerCallback) {
         do {

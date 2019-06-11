@@ -12,19 +12,28 @@ public struct EthObjectOrBoolean {
     
     public var booleanValue: Bool?
     public var objectValue: [String: Any]?
-    
+
+    /**
+        If the data is an object, return the object value
+    */    
     public var isObject: Bool {
         get {
             return objectValue != nil
         }
     }
     
+    /**
+        If the data is a Boolean, return the Boolean value(True or False)
+    */    
     public var isBoolean: Bool {
         get {
             return booleanValue != nil
         }
     }
-    
+
+    /**
+        Checks the recieved data to see if it's an object or Boolean and then returns the value. 
+    */    
     init(objectOrBoolean: Any) throws {
         if let objectParam = objectOrBoolean as? [String: Any] {
             self.objectValue = objectParam
