@@ -10,7 +10,10 @@ import Foundation
 import BigInt
 
 public struct NetRPC {
-    
+
+    /**
+        Defines RPC methods to obtain network information(version: network id, listening: see if it can pick up on network information, peerCount: how many peers connected to the network )
+    */    
     private enum NetRPCMethod: String {
         case version = "net_version"
         case listening = "net_listening"

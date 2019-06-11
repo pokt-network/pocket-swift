@@ -40,8 +40,8 @@ public class EthRPC {
     
     /**
      Ethereum RPC
-     - Parameters:
-     - ethNetwork : Aion operation executor.
+        - Parameters:
+            - ethNetwork : Aion operation executor.
      
      - SeeAlso: `EthNetwork`
      */
@@ -52,15 +52,15 @@ public class EthRPC {
     
     /**
      Creates new message call transaction or a contract creation, if the data field contains code.
-     - Parameters:
-     - wallet: the wallet to be used in this transaction.
-     - nonce: Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
-     - to: The address the transaction is directed to.
-     - nrg: Integer of the gas provided for the transaction execution. It will return unused gas.
-     - nrgPrice: Integer of the gasPrice used for each paid gas.
-     - value : Integer of the value sent with this transaction
-     - data : The compiled code of a contract OR the hash of the invoked method signature and encoded parameters.
-     - callback : listener for this transaction status.
+        - Parameters:
+            - wallet: the wallet to be used in this transaction.
+            - nonce: Integer of a nonce. This allows to overwrite your own pending transactions that use the same nonce.
+            - to: The address the transaction is directed to.
+            - nrg: Integer of the gas provided for the transaction execution. It will return unused gas.
+            - nrgPrice: Integer of the gasPrice used for each paid gas.
+            - value : Integer of the value sent with this transaction
+            - data : The compiled code of a contract OR the hash of the invoked method signature and encoded parameters.
+            - callback : listener for this transaction status.
      
      - SeeAlso: `EthStringCallback`
      - SeeAlso: `Wallet`
@@ -111,8 +111,8 @@ public class EthRPC {
     
     /**
      Returns the current price per gas in wei.
-     - Parameters:
-     - callback : listener for the protocol version.
+        - Parameters:
+            - callback : listener for the protocol version.
      
      - SeeAlso: `EthStringCallback`
      */
@@ -127,8 +127,8 @@ public class EthRPC {
     
     /**
      Returns the current ethereum protocol version.
-     - Parameters:
-     - callback : listener for the syncing status.
+        - Parameters:
+            - callback : listener for the syncing status.
      
      - SeeAlso: `EthJSONObjectOrBooleanCallback`
      */
@@ -143,8 +143,8 @@ public class EthRPC {
     
     /**
      Returns the current price per gas in wei.
-     - Parameters:
-     - callback : listener for the price.
+        - Parameters:
+            - callback : listener for the price.
      
      - SeeAlso: `EthBigIntegerCallback`
      */
@@ -159,8 +159,8 @@ public class EthRPC {
     
     /**
      Returns the number of most recent block.
-     - Parameters:
-     - callback : listener for the most recent block
+        - Parameters:
+            - callback : listener for the most recent block
      
      - SeeAlso: `EthBigIntegerCallback`
      */
@@ -175,10 +175,10 @@ public class EthRPC {
     
     /**
      Returns the number of most recent block.
-     - Parameters:
-     - address : address to check for balance.
-     - blockTag : integer block number, or the string "latest", "earliest" or "pending".
-     - callback : listener for balance from address.
+        - Parameters:
+            - address : address to check for balance.
+            - blockTag : integer block number, or the string "latest", "earliest" or "pending".
+            - callback : listener for balance from address.
      
      - SeeAlso: `EthBigIntegerCallback`
      - SeeAlso: `EthBlockTag`
@@ -199,11 +199,11 @@ public class EthRPC {
     
     /**
      Returns the value from a storage position at a given address.
-     - Parameters:
-     - address : address to check for balance.
-     - position integer of the position in the storage.
-     - blockTag : integer block number, or the string "latest", "earliest" or "pending".
-     - callback : listener for balance from address.
+        - Parameters:
+            - address : address to check for balance.
+            - position integer of the position in the storage.
+            - blockTag : integer block number, or the string "latest", "earliest" or "pending".
+            - callback : listener for balance from address.
      
      - SeeAlso: `EthStringCallback`
      - SeeAlso: `EthBlockTag`
@@ -225,10 +225,10 @@ public class EthRPC {
     
     /**
      Returns the number of transactions sent from an address.
-     - Parameters:
-     - address : address to check for balance.
-     - blockTag : integer block number, or the string "latest", "earliest" or "pending".
-     - callback : listener for balance from address.
+        - Parameters:
+            - address : address to check for balance.
+            - blockTag : integer block number, or the string "latest", "earliest" or "pending".
+            - callback : listener for balance from address.
      
      - SeeAlso: `EthBigIntegerCallback`
      - SeeAlso: `EthBlockTag`
@@ -251,9 +251,9 @@ public class EthRPC {
     
     /**
      Returns the number of transactions in a block from a block matching the given block hash.
-     - Parameters:
-     - blockHashHex : hash of a block.
-     - callback : listener for the transaction count By Hash.
+        - Parameters:
+            - blockHashHex : hash of a block.
+            - callback : listener for the transaction count By Hash.
      
      - SeeAlso: `EthBigIntegerCallback`
      */
@@ -273,9 +273,9 @@ public class EthRPC {
     
     /**
      Returns the number of transactions in a block matching the given block number.
-     - Parameters:
-     - blockTag : integer block number, or the string "latest", "earliest" or "pending".
-     - callback : listener for the transaction count By Number.
+        - Parameters:
+            - blockTag : integer block number, or the string "latest", "earliest" or "pending".
+            - callback : listener for the transaction count By Number.
      
      - SeeAlso: `EthBigIntegerCallback`
      - SeeAlso: `EthBlockTag`
@@ -292,10 +292,10 @@ public class EthRPC {
     
     /**
      Returns code at a given address.
-     - Parameters:
-     - address : address
-     - blockTag : integer block number, or the string "latest", "earliest" or "pending".
-     - callback : listener to get the code.
+        - Parameters:
+            - address : address
+            - blockTag : integer block number, or the string "latest", "earliest" or "pending".
+            - callback : listener to get the code.
      
      - SeeAlso: `EthStringCallback
      - SeeAlso: `EthBlockTag`
@@ -317,15 +317,15 @@ public class EthRPC {
     
     /**
      Executes a new message call immediately without creating a transaction on the block chain.
-     - Parameters:
-     - from: The address the transaction is sent from.
-     - to: The address the transaction is directed to.
-     - gas: Integer of the gas provided for the transaction execution.
-     - gasPrice: Integer of the gasPrice used for each paid gas.
-     - value: Integer of the value sent with this transaction.
-     - data: Hash of the method signature and encoded parameters.
-     - blockTag : integer block number, or the string "latest", "earliest" or "pending".
-     - callback : listener for this call status.
+        - Parameters:
+            - from: The address the transaction is sent from.
+            - to: The address the transaction is directed to.
+            - gas: Integer of the gas provided for the transaction execution.
+            - gasPrice: Integer of the gasPrice used for each paid gas.
+            - value: Integer of the value sent with this transaction.
+            - data: Hash of the method signature and encoded parameters.
+            - blockTag : integer block number, or the string "latest", "earliest" or "pending".
+            - callback : listener for this call status.
      
      - SeeAlso: `EthStringCallback`
      - SeeAlso: `EthBlockTag`
@@ -372,10 +372,10 @@ public class EthRPC {
     
     /**
      Returns information about a block by hash.
-     - Parameters:
-     - blockTag : integer block number, or the string "latest", "earliest" or "pending".
-     - fullTx : Full transaction objects.
-     - callback : listener to get the Block By Number.
+        - Parameters:
+            - blockTag : integer block number, or the string "latest", "earliest" or "pending".
+            - fullTx : Full transaction objects.
+            - callback : listener to get the Block By Number.
      
      - SeeAlso: `EthJSONObjectCallback`
      - SeeAlso: `EthBlockTag`
@@ -392,9 +392,9 @@ public class EthRPC {
     
     /**
      Returns the information about a transaction requested by transaction hash.
-     - Parameters:
-     - txHash : hash of a transaction.
-     - callback : listener to get transaction by Hash.
+        - Parameters:
+            - txHash : hash of a transaction.
+            - callback : listener to get transaction by Hash.
      
      - SeeAlso: `EthJSONObjectCallback`
      */
@@ -414,10 +414,10 @@ public class EthRPC {
     
     /**
      Returns information about a transaction by block number and transaction index position.
-     - Parameters:
-     - blockHash : hash of a block.
-     - index:  the transaction index position.
-     - callback : listener to get the transaction Block Hash Index.
+        - Parameters:
+            - blockHash : hash of a block.
+            - index:  the transaction index position.
+            - callback : listener to get the transaction Block Hash Index.
      
      - SeeAlso: `EthJSONObjectCallback`
      - SeeAlso: `BigInt`
@@ -439,10 +439,10 @@ public class EthRPC {
     
     /**
      Returns information about a transaction by block number and transaction index position.
-     - Parameters:
-     - blockTag : integer block number, or the string "latest", "earliest" or "pending".
-     - index:  the transaction index position.
-     - callback : listener to get the transaction by block number at index.
+        - Parameters:
+            - blockTag : integer block number, or the string "latest", "earliest" or "pending".
+            - index:  the transaction index position.
+            - callback : listener to get the transaction by block number at index.
      
      - SeeAlso: `EthJSONObjectCallback`
      - SeeAlso: `EthBlockTag`
@@ -460,9 +460,9 @@ public class EthRPC {
     
     /**
      Returns the receipt of a transaction by transaction hash.
-     - Parameters:
-     - txHash : hash of a transaction.
-     - callback : listener to get the transaction receipt.
+        - Parameters:
+            - txHash : hash of a transaction.
+            - callback : listener to get the transaction receipt.
      
      - SeeAlso: `EthJSONObjectCallback`
      */
@@ -482,13 +482,13 @@ public class EthRPC {
     
     /**
      Returns an array of all logs matching a given filter object.
-     - Parameters:
-     - fromBlock : Integer block number, or "latest" for the last mined block or "pending", "earliest" for not yet mined transactions.
-     - toBlock : Integer block number, or "latest" for the last mined block or "pending", "earliest" for not yet mined transactions.
-     - address : Contract address or a list of addresses from which logs should originate.
-     - topics : Topics are order-dependent. Each topic can also be an array of DATA with "or" options.
-     - blockHash : is a new filter option which restricts the logs returned to the single block with the 32-byte hash blockHash.
-     - callback : listener to get logs.
+        - Parameters:
+            - fromBlock : Integer block number, or "latest" for the last mined block or "pending", "earliest" for not yet mined transactions.
+            - toBlock : Integer block number, or "latest" for the last mined block or "pending", "earliest" for not yet mined transactions.
+            - address : Contract address or a list of addresses from which logs should originate.
+            - topics : Topics are order-dependent. Each topic can also be an array of DATA with "or" options.
+            - blockHash : is a new filter option which restricts the logs returned to the single block with the 32-byte hash blockHash.
+            - callback : listener to get logs.
      
      - SeeAlso: `EthJSONArrayCallback`
      - SeeAlso: `EthBlockTag`
@@ -517,15 +517,15 @@ public class EthRPC {
      Generates and returns an estimate of how much gas is necessary to allow the transaction to complete.
      The transaction will not be added to the blockchain. Note that the estimate may be significantly more
      than the amount of gas actually used by the transaction, for a variety of reasons including EVM mechanics and node performance.
-     - Parameters:
-     - to: The address the transaction is directed to.
-     - blockTag : integer block number, or the string "latest", "earliest" or "pending".
-     - from : The address the transaction is sent from.
-     - gas : Integer of the gas provided for the transaction execution.
-     - gasPrice : Integer of the gasPrice used for each paid gas.
-     - value : Integer of the value sent with this transaction
-     - data : Hash of the method signature and encoded parameters.
-     - callback : listener for the estimated gas call.
+        - Parameters:
+            - to: The address the transaction is directed to.
+            - blockTag : integer block number, or the string "latest", "earliest" or "pending".
+            - from : The address the transaction is sent from.
+            - gas : Integer of the gas provided for the transaction execution.
+            - gasPrice : Integer of the gasPrice used for each paid gas.
+            - value : Integer of the value sent with this transaction
+            - data : Hash of the method signature and encoded parameters.
+            - callback : listener for the estimated gas call.
      
      - SeeAlso: `EthBigIntegerCallback`
      - SeeAlso: `BigUInt`

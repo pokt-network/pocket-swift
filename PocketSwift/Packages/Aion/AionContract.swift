@@ -48,7 +48,18 @@ public class AionContract {
         }
         
     }
-    
+
+    /**
+        Encode parameter to ABI(Application Binary Interface) data.
+
+            - Parameters:
+                - params: rpc params
+                - functionJSON: 
+        Throws:
+            - Pocket Error:
+                - Failed to retrieve function json string.
+                - Failed to format rpc params.
+    */
     private func encodeParameters(params: [Any], functionJSON: [String: Any]) throws -> String? {
         guard let functionJSONStr = try? functionJSON.toJson() else{
             throw PocketError.custom(message: "Failed to retrieve function json string.")
@@ -65,6 +76,14 @@ public class AionContract {
         return encodedFunction
     }
     
+    /**
+        Encode function to call ABI(Application Binary Interface) data, and returns data as string.
+
+        Throws:
+            - Pocket Error:
+                - Failed to retrieve encodeFunction.js file
+                - Failed to retrieve signed tx js string
+    */
     private func encodeFunction(functionStr: String, params: String) throws -> String {
         // Generate code to run
         let jsContext = self.aionNetwork.pocketAion.jsContext
@@ -89,7 +108,14 @@ public class AionContract {
         // return function call result
         return functionCallData.toString()
     }
-    
+      /**
+        Decodes the data recieved from the blockchain 
+            - Parameters:
+                - encodedresult: TX String that was returned   
+                - function: functions from the abi
+            - Throws:
+                PocketError
+    */
     private func decodeReturnData(encodedResult: String, function: [String: Any]) throws -> [Any] {
         
         let jsContext = self.aionNetwork.pocketAion.jsContext
@@ -129,7 +155,16 @@ public class AionContract {
         
         return result
     }
-    
+
+    /**
+        Takes the functin name and parameters given and checks it against the ABI to make sure its valid
+            - Parameters:
+                - functionName: Function name string
+                - functionParams: Function parameters array
+
+            - Throws:
+                - `PocketError`
+    */
     public func encodeFunctionCall(functionName: String, functionParams: [Any] = [Any]()) throws -> String {
         guard let abiFunction = self.functions[functionName] as? [String: Any] else {
             throw PocketError.custom(message: "Invalid function name: \(functionName)")

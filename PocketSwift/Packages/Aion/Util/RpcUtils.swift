@@ -10,7 +10,11 @@ import Foundation
 import BigInt
 
 public class RpcParamsUtil {
-    
+    /**
+        Takes the RPC params and formats it as an `ANY` Object and returns the results as a String 
+            - Params:
+                - formatRpcParams:  
+    */
     public static func formatRpcParams(params: [Any]) -> [String]?{
         var results = [Any]()
         var resultStrArray = [String]()
