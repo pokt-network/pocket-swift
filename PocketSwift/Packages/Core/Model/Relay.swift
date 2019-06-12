@@ -31,6 +31,9 @@ public class Relay: Model, Input {
         self.devID = devID
     }
     
+    /**
+      Checks if this Relay has been configured correctly.
+    */
     func isValid() -> Bool {
         do {
             return try Utils.areDirty(self.network, self.data, self.devID)
