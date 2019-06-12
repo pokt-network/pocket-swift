@@ -33,6 +33,12 @@ public struct Report: Model, Input {
         return data
     }
     
+    /**
+        Checks if this Report has been configured correctly.
+
+        - Returns:
+            - whether or not it's correctly configured
+    */
     func isValid() -> Bool {
         do {
             return try Utils.areDirty(self.ip, self.message)
