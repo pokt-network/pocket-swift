@@ -37,6 +37,17 @@ struct Dispatch: Input {
         return parameter
     }
     
+    /**
+        Creates an ArrayList of Node elements
+
+        - Parameters:
+            - jsonObject the jsonObject from the jsonArray response
+
+        - Return: 
+            - A list of Node
+
+        See Node
+     */
     private func createNodesArray(dictionary: [String: JSON]) -> [Node] {
         if dictionary.isEmpty {
             fatalError("Failed to parse Node objec")
