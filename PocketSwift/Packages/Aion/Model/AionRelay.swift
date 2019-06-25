@@ -27,7 +27,7 @@ public class AionRelay: Relay {
     init(netID: String, devID: String, method: String, params: [Any]?) throws {
         self.relayData = RelayData.init(method: method, params: params)
         let data = try self.relayData.toParameters().toJson() ?? "{}"
-        super.init(network: PocketAion.NETWORK, netID: netID, data: data, devID: devID)
+        super.init(network: PocketAion.NETWORK, netID: netID, data: data, devID: devID, httpMethod: nil, path: nil, queryParams: nil)
     }
     
     required init(from decoder: Decoder) throws {

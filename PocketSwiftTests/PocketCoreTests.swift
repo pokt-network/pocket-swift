@@ -14,13 +14,15 @@ import RxBlocking
 @testable import PocketSwift
 
 class PocketCoreTests: QuickSpec {
-
+    // Change DEVID to a registered developer ID
+    let DEVID = "DEVID1"
+    
     override func spec() {
         describe("Pocket Core Class tests") {
             var pocketCore: Pocket!
             
             beforeEach {
-                pocketCore = Pocket(devID: "DEVID1", network: "ETH", netIds: ["4", "1"], maxNodes: 5, requestTimeOut: 1000, schedulerProvider: .test)
+                pocketCore = Pocket(devID: self.DEVID, network: "ETH", netIds: ["4", "1"], maxNodes: 5, requestTimeOut: 1000, schedulerProvider: .test)
             }
             
             it("should instantiate a Pocket Core instance") {
@@ -38,7 +40,7 @@ class PocketCoreTests: QuickSpec {
                 }
                 
                 it("should fail to retrieve a list of nodes from the Node Dispatcher") {
-                    let pocket = Pocket(devID: "DEVID1", network: "ETH2", netIds: ["4", "1"], maxNodes: 5, requestTimeOut: 1000, schedulerProvider: .test)
+                    let pocket = Pocket(devID: self.DEVID, network: "ETH2", netIds: ["4", "1"], maxNodes: 5, requestTimeOut: 1000, schedulerProvider: .test)
                     pocket.retrieveNodes(onSuccess: { nodes in
                         XCTFail()
                     }, onError: {error in
@@ -49,7 +51,7 @@ class PocketCoreTests: QuickSpec {
                 it("should send a relay to a node in the network") {
                     let address: String = "0xf892400Dc3C5a5eeBc96070ccd575D6A720F0F9f"
                     let data: String = "{\"jsonrpc\":\"2.0\",\"method\":\"eth_getBalance\",\"params\":[\"\(address)\",\"latest\"],\"id\":67}"
-                    let relay = Relay.init(network: "ETH", netID: "4", data: data, devID: "DEVID1")
+                    let relay = Relay.init(network: "ETH", netID: "4", data: data, devID: self.DEVID, httpMethod: nil, path: nil, queryParams: nil)
                         
                     expect(relay.isValid()).to(beTrue())
                         
@@ -62,10 +64,10 @@ class PocketCoreTests: QuickSpec {
                 }
                 
                 it("should fail to send a relay to a node in the network with bad relay properties \"netID\"") {
-                    let pocket = Pocket(devID: "DEVID1", network: "ETH1", netIds: ["402", "110"], maxNodes: 5, requestTimeOut: 1000, schedulerProvider: .test)
+                    let pocket = Pocket(devID: self.DEVID, network: "ETH1", netIds: ["402", "110"], maxNodes: 5, requestTimeOut: 1000, schedulerProvider: .test)
                     let address: String = "0xf892400Dc3C5a5eeBc96070ccd575D6A720F0F9f"
                     let data: String = "{\"jsonrpc\":\"2.0\",\"method\":\"eth_getBalance\",\"params\":[\"\(address)\",\"latest\"],\"id\":67}"
-                    let relay = Relay.init(network: "ETH", netID: "10", data: data, devID: "DEVID1")
+                    let relay = Relay.init(network: "ETH", netID: "10", data: data, devID: self.DEVID, httpMethod: nil, path: nil, queryParams: nil)
                         
                     expect(relay.isValid()).to(beTrue())
                         
@@ -76,10 +78,24 @@ class PocketCoreTests: QuickSpec {
                     })
                 }
                 
+                it("should send a relay to a node that supports REST API requests in the network") {
+                    let strArr = ["test":"enabled", "visitor":"false"]
+                    let relay = Relay.init(network: "TEZOS", netID: "MAINNET", data: nil, devID: self.DEVID, httpMethod: "GET", path: "/network/version", queryParams: strArr)
+                    
+                    expect(relay.isValid()).to(beTrue())
+                    
+                    pocketCore.send(relay: relay, onSuccess: { response in
+                        expect(response).notTo(beNil())
+                        expect(response).notTo(beEmpty())
+                    }, onError: {error in
+                        XCTFail()
+                    })
+                }
+                
                 it("should fail to send a relay to a node in the network with bad relay properties \"Data\"") {
                     let address: String = "0xf892400Dc3C5a5eeBc96070ccd575D6A720F0F9fssss"
                     let data: String = "{\"jsonrpc\":\"2.0\",\"method\":\"eth_getBalance\",\"params\":[\"\(address)\",\"latest\"],\"id\":67}"
-                    let relay = Relay.init(network: "ETH", netID: "4", data: data, devID: "DEVID1")
+                    let relay = Relay.init(network: "ETH", netID: "4", data: data, devID: self.DEVID, httpMethod: nil, path: nil, queryParams: nil)
                         
                     expect(relay.isValid()).to(beTrue())
                         
