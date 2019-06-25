@@ -16,6 +16,7 @@ import BigInt
 class PocketEthTests: QuickSpec {
     
     // Test Variables
+    // Change DEVID to a registered developer ID
     let DEVID = "DEVID1"
     let MASTERY_NETWORK = 32;
     let MAX_NODES = 10;

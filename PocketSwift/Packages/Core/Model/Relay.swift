@@ -16,19 +16,25 @@ import Foundation
  - devId: The id used to interact with Pocket Api.
  - network: The blockchain network name, ie: ETH, AION.
  - netID: The netid of the Blockchain.
- 
+ - httpMethod: HTTP Method for rest api requests, GET, POST, DELETE, etc.
+ - path: URL path for the rest api request.
+ - queryParams: 
  */
 public class Relay: Model, Input {
     let network: String
     let netID: String
     let data: String
     let devID: String
+    let httpMethod: String;
+    let path: String;
     
-    init(network: String, netID: String, data: String, devID: String) {
+    init(network: String, netID: String, data: String?, devID: String, httpMethod: String?, path: String?, queryParams: [String: String]?) {
         self.network = network
         self.netID = netID
-        self.data = data
+        self.data = data ?? ""
         self.devID = devID
+        self.httpMethod = httpMethod ?? ""
+        self.path = Relay.appendQueryParams(path: path ?? "", queryParams: queryParams ?? [String: String]())
     }
     
     /**
@@ -36,7 +42,7 @@ public class Relay: Model, Input {
     */
     func isValid() -> Bool {
         do {
-            return try Utils.areDirty(self.network, self.data, self.devID)
+            return try Utils.areDirty(self.network, self.devID)
         } catch {
             fatalError("There was a problem validating your relay")
         }
@@ -44,7 +50,20 @@ public class Relay: Model, Input {
     
     func toParameters() -> Parameters {
         var data: Parameters = [:]
-        data.fill("Blockchain", self.network, "NetID", "\(self.netID)", "Data", self.data, "DevID", self.devID)
+        data.fill("Blockchain", self.network, "NetID", "\(self.netID)", "Data", self.data, "DevID", self.devID, "METHOD", self.httpMethod, "PATH", self.path)
         return data
+    }
+    
+    private class func appendQueryParams(path: String, queryParams: [String: String]) -> String {
+        var paramsStr = "";
+        
+        if queryParams.count > 0 {
+            for param in queryParams {
+                paramsStr += param.key + "=" + param.value + "&"
+            }
+            return path + "?" + paramsStr
+        }else{
+            return path
+        }
     }
 }

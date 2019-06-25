@@ -19,6 +19,7 @@ class PocketAionTests: QuickSpec {
         case mastery = "32"
         case prod = "256"
     }
+    // Change DEVID to a registered developer ID
     let DEVID = "DEVID1"
     // Test Variables
     let DEV_ID = "DEVID1";
