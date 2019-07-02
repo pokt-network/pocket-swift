@@ -2,7 +2,7 @@
 Pod::Spec.new do |main|
 
   main.name                = "PocketSwift"
-  main.version             = "0.0.1"
+  main.version             = "0.0.2"
   main.summary             = "Pocket-swift package with a set of plugins that allows you to connect to the Eth and Aion Networks."
   main.homepage            = "https://github.com/pokt-network/pocket-swift"
   main.license             = { :type => 'MIT', :text => 'MIT License
