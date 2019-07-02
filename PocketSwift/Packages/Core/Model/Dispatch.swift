@@ -20,7 +20,7 @@ import Foundation
 struct Dispatch: Input {
     public var configuration: Configuration
     
-    init(configuration: Configuration) {
+    public init(configuration: Configuration) {
         self.configuration = configuration   }
     
     private func getBlockchains() -> Array<Parameters> {

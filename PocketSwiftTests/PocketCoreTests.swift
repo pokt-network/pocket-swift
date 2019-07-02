@@ -79,12 +79,15 @@ class PocketCoreTests: QuickSpec {
                 }
                 
                 it("should send a relay to a node that supports REST API requests in the network") {
+                    let pocket = Pocket(devID: self.DEVID, network: "TEZOS", netIds: ["MAINNET"], maxNodes: 5, requestTimeOut: 10000, schedulerProvider: .test)
+                    
                     let strArr = ["test":"enabled", "visitor":"false"]
-                    let relay = Relay.init(network: "TEZOS", netID: "MAINNET", data: nil, devID: self.DEVID, httpMethod: "GET", path: "/network/version", queryParams: strArr)
+                    
+                    let relay = Relay.init(network: "TEZOS", netID: "MAINNET", data: nil, devID: self.DEVID, httpMethod: .GET, path: "/network/version", queryParams: strArr)
                     
                     expect(relay.isValid()).to(beTrue())
                     
-                    pocketCore.send(relay: relay, onSuccess: { response in
+                    pocket.send(relay: relay, onSuccess: { response in
                         expect(response).notTo(beNil())
                         expect(response).notTo(beEmpty())
                     }, onError: {error in
