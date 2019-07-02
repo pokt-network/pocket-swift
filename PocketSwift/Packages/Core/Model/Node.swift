@@ -29,7 +29,7 @@ public struct Node: Model {
     private let SSLProtocol = "https://"
     private let SSLDefaultPort = 443
     
-    init(network: String, netID: String, ip: String, port: Int, ipPort: String) {
+    public init(network: String, netID: String, ip: String, port: Int, ipPort: String) {
         self.netID = netID
         self.network = network
         self.ip = ip
@@ -45,7 +45,7 @@ public struct Node: Model {
         }
     }
     
-    init(network: String, netID: String, ipPort: String) {
+    public init(network: String, netID: String, ipPort: String) {
         // Assign
         self.netID = netID
         self.network = network

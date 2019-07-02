@@ -28,7 +28,7 @@ public class Wallet {
     public let netID: String
     
     // Constructors
-    init(address: String, privateKey: String, network: String, netID: String) {
+    public init(address: String, privateKey: String, network: String, netID: String) {
         self.address = address
         self.privateKey = privateKey
         self.network = network

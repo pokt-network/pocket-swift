@@ -20,7 +20,7 @@ public struct Blockchain: Model, Input {
     let network: String
     let netID: String
     
-    init(network: String, netID: String) {
+    public init(network: String, netID: String) {
         self.network = network
         self.netID = netID
     }
