@@ -28,12 +28,19 @@ public class Relay: Model, Input {
     let httpMethod: String;
     let path: String;
     
-    init(network: String, netID: String, data: String?, devID: String, httpMethod: String?, path: String?, queryParams: [String: String]?) {
+    public enum HttpMethod: String {
+        case POST = "POST"
+        case GET = "GET"
+        case PUT = "PUT"
+        case DELETE = "DELETE"
+    }
+    
+    public init(network: String, netID: String, data: String?, devID: String, httpMethod: HttpMethod?, path: String?, queryParams: [String: String]?) {
         self.network = network
         self.netID = netID
         self.data = data ?? ""
         self.devID = devID
-        self.httpMethod = httpMethod ?? ""
+        self.httpMethod = httpMethod?.rawValue ?? ""
         self.path = Relay.appendQueryParams(path: path ?? "", queryParams: queryParams ?? [String: String]())
     }
     
