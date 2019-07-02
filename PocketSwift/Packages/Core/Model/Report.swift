@@ -22,7 +22,7 @@ public struct Report: Model, Input {
     let ip: String
     let message: String
     
-    init(ip: String, message: String) {
+    public init(ip: String, message: String) {
         self.ip = ip
         self.message = message
     }
