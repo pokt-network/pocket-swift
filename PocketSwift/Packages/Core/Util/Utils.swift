@@ -74,7 +74,29 @@ class Utils {
         
         return rawData
     }
-    
+    /**
+     Method used to serialize a Dictionary into a JSON.
+     - Parameters:
+     - dic : the JSON object as Dictionary
+     
+     - Throws: `Error` if string is not a valid JSON
+     - Returns: String that represents the JSON Object
+     */
+    static func serializeObjectToJson(object: [AnyHashable: Any]) throws -> String? {
+        do {
+            if #available(iOS 11.0, *) {
+                let data = try JSONSerialization.data(withJSONObject: object, options: .sortedKeys)
+                return String(data: data, encoding: .utf8)
+            } else {
+                // Fallback on earlier versions
+                let data = try JSONSerialization.data(withJSONObject: object, options: .prettyPrinted)
+                return String(data: data, encoding: .utf8)
+            }
+        } catch {
+            throw error
+        }
+
+    }
     /**
      Method used to convert a Dictionary into a JSON.
      - Parameters:
@@ -85,14 +107,7 @@ class Utils {
      */
     class func dictionaryToJsonString(dict: [AnyHashable: Any]?) throws -> String? {
         let object = dict ?? [AnyHashable: Any]()
-        if #available(iOS 11.0, *) {
-            let data = try JSONSerialization.data(withJSONObject: object, options: .sortedKeys)
-            return String(data: data, encoding: .utf8)
-        } else {
-            // Fallback on earlier versions
-            let data = try JSONSerialization.data(withJSONObject: object, options: .prettyPrinted)
-            return String(data: data, encoding: .utf8)
-        }
         
+        return try Utils.serializeObjectToJson(object: object)
     }
 }
