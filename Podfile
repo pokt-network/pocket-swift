@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '11.4'
+platform :ios, '10.0'
 inhibit_all_warnings!
 use_frameworks!
 
