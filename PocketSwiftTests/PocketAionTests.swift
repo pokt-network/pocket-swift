@@ -22,7 +22,6 @@ class PocketAionTests: QuickSpec {
     // Change DEVID to a registered developer ID
     let DEVID = "DEVID1"
     // Test Variables
-    let DEV_ID = "DEVID1";
     let MASTERY_NETWORK = 32;
     let MAX_NODES = 10;
     let TIMEOUT = 10000;
