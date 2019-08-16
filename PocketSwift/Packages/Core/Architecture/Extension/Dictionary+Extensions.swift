@@ -28,8 +28,15 @@ extension Dictionary where Key == String, Value == Any {
     }
     
     func toJson() throws -> String? {
-        let data = try JSONSerialization.data(withJSONObject: self, options: .sortedKeys)
-        return String(data: data, encoding: .utf8)
+        if #available(iOS 11.0, *) {
+            let data = try JSONSerialization.data(withJSONObject: self, options: .sortedKeys)
+            return String(data: data, encoding: .utf8)
+        } else {
+            // Fallback on earlier versions
+            let data = try JSONSerialization.data(withJSONObject: self, options: .prettyPrinted)
+            return String(data: data, encoding: .utf8)
+        }
+        
     }
     
     func hasError() -> (Bool, String?) {

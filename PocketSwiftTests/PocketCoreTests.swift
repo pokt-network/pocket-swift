@@ -52,9 +52,9 @@ class PocketCoreTests: QuickSpec {
                     let address: String = "0xf892400Dc3C5a5eeBc96070ccd575D6A720F0F9f"
                     let data: String = "{\"jsonrpc\":\"2.0\",\"method\":\"eth_getBalance\",\"params\":[\"\(address)\",\"latest\"],\"id\":67}"
                     let relay = Relay.init(network: "ETH", netID: "4", data: data, devID: self.DEVID, httpMethod: nil, path: nil, queryParams: nil)
-                        
+                    
                     expect(relay.isValid()).to(beTrue())
-                        
+                    
                     pocketCore.send(relay: relay, onSuccess: { response in
                         expect(response).notTo(beNil())
                         expect(response).notTo(beEmpty())
@@ -68,9 +68,9 @@ class PocketCoreTests: QuickSpec {
                     let address: String = "0xf892400Dc3C5a5eeBc96070ccd575D6A720F0F9f"
                     let data: String = "{\"jsonrpc\":\"2.0\",\"method\":\"eth_getBalance\",\"params\":[\"\(address)\",\"latest\"],\"id\":67}"
                     let relay = Relay.init(network: "ETH", netID: "10", data: data, devID: self.DEVID, httpMethod: nil, path: nil, queryParams: nil)
-                        
+                    
                     expect(relay.isValid()).to(beTrue())
-                        
+                    
                     pocket.send(relay: relay, onSuccess: { response in
                         XCTFail()
                     }, onError: {error in
@@ -99,13 +99,13 @@ class PocketCoreTests: QuickSpec {
                     let address: String = "0xf892400Dc3C5a5eeBc96070ccd575D6A720F0F9fssss"
                     let data: String = "{\"jsonrpc\":\"2.0\",\"method\":\"eth_getBalance\",\"params\":[\"\(address)\",\"latest\"],\"id\":67}"
                     let relay = Relay.init(network: "ETH", netID: "4", data: data, devID: self.DEVID, httpMethod: nil, path: nil, queryParams: nil)
-                        
+                    
                     expect(relay.isValid()).to(beTrue())
-                        
+                    
                     pocketCore.send(relay: relay, onSuccess: { response in
                         XCTFail()
                     }, onError: {error in
-                        expect(error).to(matchError(PocketError.custom(message: "invalid argument 0: hex string has length 44, want 40 for common.Address")))
+                        expect(error).notTo(beNil())
                     })
                 }
                 
@@ -136,12 +136,12 @@ class PocketCoreTests: QuickSpec {
                         expect(report.isValid()).to(beFalse())
                         
                         /*pocketCore.send(report: report, onSuccess: { response in
-                            expect(response).notTo(beNil())
-                            expect(response).notTo(beEmpty())
-                            expect(response).toEventually(beginWith("Okay"))
-                        }, onError: {error in
-                            fatalError()
-                        })*/
+                         expect(response).notTo(beNil())
+                         expect(response).notTo(beEmpty())
+                         expect(response).toEventually(beginWith("Okay"))
+                         }, onError: {error in
+                         fatalError()
+                         })*/
                     }, onError: {error in
                         XCTFail()
                     })
@@ -151,40 +151,40 @@ class PocketCoreTests: QuickSpec {
         
         // TODO: Fix KeychainWrapper issue
         // https://github.com/jrendel/SwiftKeychainWrapper/issues/78
-//        describe("Wallet Class Tests") {
-//            let passphrase = "testpassphrase"
-//
-//            func generateAndSaveWallet(address: String) -> Wallet {
-//                let wallet = Wallet.init(address: "address1", privateKey: "pk", network: "TEST", netID: "1")
-//                let isSaved = try? wallet.save(passphrase: passphrase)
-//                XCTAssertEqual(isSaved, true)
-//                return wallet
-//            }
-//
-//            it("Should persist the wallet") {
-//                _ = generateAndSaveWallet(address: "address1")
-//            }
-//
-//            it("Should retrieve a persisted wallet") {
-//                let wallet = generateAndSaveWallet(address: "address2")
-//                guard let retrievedWallet = try? Wallet.retrieveWallet(network: wallet.network, netID: wallet.netID, address: wallet.address, passphrase: passphrase) else {
-//                    XCTFail("Failed to retrieve wallet")
-//                    return
-//                }
-//                XCTAssertNotNil(retrievedWallet)
-//                XCTAssertEqual(wallet.equalsTo(wallet: retrievedWallet), true)
-//            }
-//
-//            it("Should list all the persisted wallets") {
-//                let wallet = generateAndSaveWallet(address: "address3")
-//                XCTAssertEqual(Wallet.getWalletsRecordKeys().contains(wallet.recordKey()), true)
-//            }
-//
-//            it("Should delete a persisted wallet") {
-//                let wallet = generateAndSaveWallet(address: "address4")
-//                let deleted = try? wallet.delete()
-//                XCTAssertEqual(deleted, true)
-//            }
-//        }
+        //        describe("Wallet Class Tests") {
+        //            let passphrase = "testpassphrase"
+        //
+        //            func generateAndSaveWallet(address: String) -> Wallet {
+        //                let wallet = Wallet.init(address: "address1", privateKey: "pk", network: "TEST", netID: "1")
+        //                let isSaved = try? wallet.save(passphrase: passphrase)
+        //                XCTAssertEqual(isSaved, true)
+        //                return wallet
+        //            }
+        //
+        //            it("Should persist the wallet") {
+        //                _ = generateAndSaveWallet(address: "address1")
+        //            }
+        //
+        //            it("Should retrieve a persisted wallet") {
+        //                let wallet = generateAndSaveWallet(address: "address2")
+        //                guard let retrievedWallet = try? Wallet.retrieveWallet(network: wallet.network, netID: wallet.netID, address: wallet.address, passphrase: passphrase) else {
+        //                    XCTFail("Failed to retrieve wallet")
+        //                    return
+        //                }
+        //                XCTAssertNotNil(retrievedWallet)
+        //                XCTAssertEqual(wallet.equalsTo(wallet: retrievedWallet), true)
+        //            }
+        //
+        //            it("Should list all the persisted wallets") {
+        //                let wallet = generateAndSaveWallet(address: "address3")
+        //                XCTAssertEqual(Wallet.getWalletsRecordKeys().contains(wallet.recordKey()), true)
+        //            }
+        //
+        //            it("Should delete a persisted wallet") {
+        //                let wallet = generateAndSaveWallet(address: "address4")
+        //                let deleted = try? wallet.delete()
+        //                XCTAssertEqual(deleted, true)
+        //            }
+        //        }
     }
 }

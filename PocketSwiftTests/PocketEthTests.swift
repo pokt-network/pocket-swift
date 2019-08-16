@@ -61,10 +61,12 @@ class PocketEthTests: QuickSpec {
             
             it("should import a Wallet instance") {
                 let wallet = try? pocketEth.rinkeby?.importWallet(privateKey: self.PRIVATE_KEY)
+                
                 expect(wallet).notTo(beNil())
                 expect(wallet?.address).notTo(beNil())
                 expect(wallet?.netID).notTo(beNil())
                 expect(wallet?.privateKey).notTo(beNil())
+
             }
             
             it("should fail to import a Wallet due to bad Private Key") {
@@ -398,7 +400,8 @@ class PocketEthTests: QuickSpec {
                         XCTFail()
                         return
                     }
-                    try pocketTestContract.executeFunction(functionName: "addToState", wallet: wallet, functionParams: params, nonce: nil, gas: BigUInt.init(100000), gasPrice: BigUInt.init(10000000000), value: BigUInt.init(0), callback: { (error, txHash) in
+                    
+                    try pocketTestContract.executeFunction(functionName: "addToState", wallet: wallet, functionParams: params, nonce: nil, gas: BigUInt.init(100000), gasPrice: BigUInt.init(10000000000 as UInt64), value: BigUInt.init(0), callback: { (error, txHash) in
                         expect(error).to(beNil())
                         expect(txHash).toNot(beNil())
                     })

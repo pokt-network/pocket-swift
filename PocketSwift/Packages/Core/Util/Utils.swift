@@ -85,7 +85,14 @@ class Utils {
      */
     class func dictionaryToJsonString(dict: [AnyHashable: Any]?) throws -> String? {
         let object = dict ?? [AnyHashable: Any]()
-        let data = try JSONSerialization.data(withJSONObject: object, options: .sortedKeys)
-        return String(data: data, encoding: .utf8)
+        if #available(iOS 11.0, *) {
+            let data = try JSONSerialization.data(withJSONObject: object, options: .sortedKeys)
+            return String(data: data, encoding: .utf8)
+        } else {
+            // Fallback on earlier versions
+            let data = try JSONSerialization.data(withJSONObject: object, options: .prettyPrinted)
+            return String(data: data, encoding: .utf8)
+        }
+        
     }
 }
