@@ -2,7 +2,7 @@
 Pod::Spec.new do |main|
 
   main.name                = "PocketSwift"
-  main.version             = "0.0.2"
+  main.version             = "0.0.3"
   main.summary             = "Pocket-swift package with a set of plugins that allows you to connect to the Eth and Aion Networks."
   main.homepage            = "https://github.com/pokt-network/pocket-swift"
   main.license             = { :type => 'MIT', :text => 'MIT License
@@ -39,7 +39,7 @@ SOFTWARE.
   main.exclude_files       = "PocketSwiftTests/**/*.{h,m,swift}", "Pods/*"
   main.swift_version       = "5"
   main.cocoapods_version   = ">= 1.4.0"
-  main.platform            = :ios, "11.0"
+  main.platform            = :ios, "10.0"
 
   main.subspec 'Core' do |core|
     core.source_files      = "PocketSwift/Packages/Core/**/*.{h,m,swift}"
