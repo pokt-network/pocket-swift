@@ -493,6 +493,7 @@
 				C839018C223D82660092A9DF /* Sources */,
 				C839018D223D82660092A9DF /* Frameworks */,
 				C839018E223D82660092A9DF /* Resources */,
+				C544CC80230E28BC000F01EC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -641,6 +642,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PocketSwift-PocketSwiftTests/Pods-PocketSwift-PocketSwiftTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		C544CC80230E28BC000F01EC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
