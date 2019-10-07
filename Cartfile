@@ -4,3 +4,4 @@ github "RNCryptor/RNCryptor"
 github "attaswift/BigInt"
 github "pokt-network/web3swift"
 github "krzyzanowskim/CryptoSwift"
+github "shamatar/EthereumABI" == 1.1.1
