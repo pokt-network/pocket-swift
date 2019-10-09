@@ -2,5 +2,4 @@ github "ReactiveX/RxSwift" ~> 4.0
 github "jimisaacs/SwiftKeychainWrapper" "jimisaacs/fix-3.4.0"
 github "RNCryptor/RNCryptor"
 github "attaswift/BigInt"
-github "matter-labs/web3swift" "develop"
-github "krzyzanowskim/CryptoSwift"
+github "pokt-network/web3swift" "carthage-support"
