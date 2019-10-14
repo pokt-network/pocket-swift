@@ -52,7 +52,7 @@ public struct Node: Model {
         self.ipPort = ipPort
 
         // Parse ipPort
-        var ipPortData = ipPort.components(separatedBy: ":")
+        let ipPortData = ipPort.components(separatedBy: ":")
         self.ip = ipPortData[0]
         self.port = Int(ipPortData[1]) ?? 0
 

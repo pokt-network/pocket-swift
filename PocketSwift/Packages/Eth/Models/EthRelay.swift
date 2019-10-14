@@ -25,7 +25,7 @@ public class EthRelay: Relay {
     init(netID: String, devID: String, method: String, params: [Any]?) throws {
         self.relayData = RelayData.init(method: method, params: params)
         let data = try self.relayData.toParameters().toJson() ?? "{}"
-        super.init(network: PocketEth.NETWORK, netID: netID, data: data, devID: devID, httpMethod: nil, path: nil, queryParams: nil)
+        super.init(network: PocketEth.NETWORK, netID: netID, data: data, devID: devID, httpMethod: nil, path: nil, queryParams: nil, headers: nil)
     }
     
     required init(from decoder: Decoder) throws {
