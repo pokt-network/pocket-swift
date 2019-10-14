@@ -173,7 +173,7 @@ public class Pocket: NSObject {
      */
     
     open func send(network: String, netID: String, data: String, onSuccess: @escaping (_ data: String) ->(), onError: @escaping (_ error: Error) -> ()) {
-        self.send(relay: Relay.init(network: network, netID: netID, data: data, devID: self.dispatch.configuration.devID, httpMethod: nil, path: nil, queryParams: nil), onSuccess: onSuccess, onError: onError)
+        self.send(relay: Relay.init(network: network, netID: netID, data: data, devID: self.dispatch.configuration.devID, httpMethod: nil, path: nil, queryParams: nil, headers: nil), onSuccess: onSuccess, onError: onError)
     }
     
     /**

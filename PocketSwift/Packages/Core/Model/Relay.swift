@@ -12,13 +12,14 @@ import Foundation
  A Model Class that represents a Relay.
  
  - Parameters:
- - data : The json string with the information needed for create the Relay.
+ - data:The json string with the information needed for create the Relay.
  - devId: The id used to interact with Pocket Api.
  - network: The blockchain network name, ie: ETH, AION.
  - netID: The netid of the Blockchain.
  - httpMethod: HTTP Method for rest api requests, GET, POST, DELETE, etc.
  - path: URL path for the rest api request.
- - queryParams: 
+ - queryParams: Query parameters for networks with REST API support.
+ - headers: HTTP headers.
  */
 public class Relay: Model, Input {
     let network: String
@@ -27,6 +28,7 @@ public class Relay: Model, Input {
     let devID: String
     let httpMethod: String;
     let path: String;
+    let headers: [String:String];
     
     public enum HttpMethod: String {
         case POST = "POST"
@@ -35,15 +37,20 @@ public class Relay: Model, Input {
         case DELETE = "DELETE"
     }
     
-    public init(network: String, netID: String, data: String?, devID: String, httpMethod: HttpMethod?, path: String?, queryParams: [String: String]?) {
+    public init(network: String, netID: String, data: String?, devID: String, httpMethod: HttpMethod?, path: String?, queryParams: [String: String]?, headers: [String: Any]?) {
         self.network = network
         self.netID = netID
         self.data = data ?? ""
         self.devID = devID
         self.httpMethod = httpMethod?.rawValue ?? ""
         self.path = Relay.appendQueryParams(path: path ?? "", queryParams: queryParams ?? [String: String]())
+        if headers == nil {
+            self.headers = [String: String]()
+        }else {
+            self.headers = headers as? [String : String] ?? [String : String]()
+        }
     }
-    
+
     /**
       Checks if this Relay has been configured correctly.
     */
@@ -57,7 +64,11 @@ public class Relay: Model, Input {
     
     func toParameters() -> Parameters {
         var data: Parameters = [:]
-        data.fill("Blockchain", self.network, "NetID", "\(self.netID)", "Data", self.data, "DevID", self.devID, "METHOD", self.httpMethod, "PATH", self.path)
+        if self.headers.isEmpty {
+            data.fill("Blockchain", self.network, "NetID", "\(self.netID)", "Data", self.data, "DevID", self.devID, "METHOD", self.httpMethod, "PATH", self.path)
+        }else {
+            data.fill("Blockchain", self.network, "NetID", "\(self.netID)", "Data", self.data, "DevID", self.devID, "METHOD", self.httpMethod, "PATH", self.path, "HEADERS", self.headers)
+        }
         return data
     }
     

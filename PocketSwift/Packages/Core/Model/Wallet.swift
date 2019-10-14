@@ -36,7 +36,7 @@ public class Wallet {
     }
     
     private init(jsonString: String) throws {
-        var dict = try Utils.jsonStringToDictionary(string: jsonString) ?? [AnyHashable: Any]()
+        let dict = try Utils.jsonStringToDictionary(string: jsonString) ?? [AnyHashable: Any]()
         address = dict["address"] as? String ?? ""
         privateKey = dict["privateKey"] as? String ?? ""
         network = dict["network"] as? String ?? ""
