@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://www.pokt.network">
-    <img src="https://pokt.network/wp-content/uploads/2018/12/Logo-488x228-px.png" alt="drawing" width="340"/>
+    <img src="https://user-images.githubusercontent.com/16605170/74199287-94f17680-4c18-11ea-9de2-b094fab91431.png" alt="Pocket Network logo" width="340"/>
   </a>
 </div>
 <h1 align="left">PocketSwift</h1>
@@ -54,10 +54,10 @@ You should have at least have a basic knowledge of blockchain technology and kno
 
 The PocketSwift packages are managed using [Cocoapods](https://cocoapods.org/), see below how to install each individual package.
 
-We will be using Cocoapods, to download the pod files into your project. Inside your pod file, enter: 
+We will be using Cocoapods, to download the pod files into your project. Inside your pod file, enter:
 For the full package that includes the ETH and Aion plugin, as well as the Core package:
 
-Full package: 
+Full package:
 `pod 'PocketSwift'`
 
 For individual installation:
@@ -70,7 +70,7 @@ For individual installation:
 
 <h1 align="left">Usage</h1>
 
-If you would like you know how integrate PocketSwift into your DApp, visit our [developer portal](https://pocket-network.readme.io/) that has a lot of useful tutorials and material about Pocket Network and Pocket MVP. 
+If you would like you know how integrate PocketSwift into your DApp, visit our [developer portal](https://pocket-network.readme.io/) that has a lot of useful tutorials and material about Pocket Network and Pocket MVP.
 
 <h1 align="left">Contact Us</h1>
 
